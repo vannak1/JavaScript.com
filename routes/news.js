@@ -12,7 +12,7 @@ router.
   get('/', function(req, res) {
     debug('Fetching and listing news');
 
-    res.send('List news');
+    res.render('news/index', { today: new Date() });
   }).
   get('/new', csrfProtection, function(req, res) {
     debug('Rendering form for submission');
