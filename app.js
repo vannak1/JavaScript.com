@@ -4,12 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mcapi = require('mailchimp-api');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var news = require('./routes/news');
 
 var app = express();
+mc = new mcapi.Mailchimp(process.env.MAILCHIMP_API);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
