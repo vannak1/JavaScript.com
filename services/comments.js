@@ -2,8 +2,8 @@ var db = require('./db');
 
 var Comments = {
   // Returns all comments by article
-  byArticle: function (articleID, cb) {
-    db.query('SELECT * FROM comments WHERE article_id = $1', [ articleID ], cb)
+  byFlow: function (flowID, cb) {
+    db.query('SELECT * FROM comments WHERE article_id = $1', [ flowID ], cb)
   },
   // Creates a new comment
   create: function (newComment, cb) {

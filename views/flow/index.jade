@@ -9,7 +9,8 @@ block content
 
   - for flow_item in flow_collection
     section.article
-      h3= flow_item.title
+      h3
+        a(href="/flow/"+flow_item.id)= flow_item.title
       = flow_item.body
       p(class="read-more")
         a(href=flow_item.url) Read More

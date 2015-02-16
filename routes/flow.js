@@ -4,6 +4,7 @@ var csrf = require('csurf');
 var cookieParser = require('cookie-parser')();
 var bodyParser = require('body-parser');
 var Flow = require('../services/flow');
+var Comments = require('../services/comments');
 
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
@@ -53,7 +54,7 @@ router.
     // TODO: Fetch image and save it to S3
     // req.user['_json']['avatar_url']
     // req.user['_json']['login']
-    res.redirect('/flow/new');
+    res.redirect('/flow');
   }).
   get('/signout', function(req, res){
     req.logout();
@@ -66,9 +67,40 @@ router.
     });
   }).
 
+  get('/:id([0-9]+)', cookieParser, csrfProtection, function(req, res) {
+    var user = {
+      "authenticated": req.isAuthenticated(),
+    }
+
+    if (user.authenticated) {
+      user.login      = req.user['_json']['login'];
+      user.avatar_url = req.user['_json']['avatar_url'];
+    }
+
+    Flow.byID(req.params.id, function(flow) {
+      Comments.byFlow(req.params.id, function(comments) {
+        console.log(comments)
+        res.render('flow/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken() });
+      });
+    });
+  }).
+
+  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
+    var newComment = req.body;
+    newComment["article_id"] = req.params.id
+
+    Comments.create(newComment, function() {
+      res.redirect('/flow');
+    });
+  }).
+
+  get('/sign_in', function(req, res) {
+    res.render('flow/sign_in');
+  }).
+
   get('/new', cookieParser, csrfProtection, function(req, res) {
     if(!req.isAuthenticated()){
-      res.render('flow/sign_in');
+      res.redirect('/flow/sign_in');
     }else{
       var csrfToken = req.csrfToken();
       var login = req.user['_json']['login'];

@@ -11,6 +11,10 @@ var Flow = {
     db.query('SELECT * FROM articles WHERE news = false', [], cb)
   },
 
+  byID: function(id, cb) {
+    db.query('SELECT * FROM articles WHERE news = false and id = $1', [id], cb)
+  },
+
   // Creates a new Flow item
   create: function (newFlow, cb) {
     var title = newFlow.title;
