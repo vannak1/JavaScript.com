@@ -10,14 +10,20 @@ block content
   hr
   div.row
     div.g
+      div.g-b.g-b--1of1
+        div.card
+          h3 Subscribe to newsletter
+            form(action='/subscribe', method='post', class='form-inline')
+              div(class='input-append')
+                input(type='email', name='email', placeholder='email address')
+                input(type='submit', class='btn', value='Add Member')
+  hr
+  div.row
+    div.g
       div.g-b.g-b--3of4
         each item in news
           h2= item.title
           p!= item.body
           hr
 
-  h3 Subscribe to newsletter
-    form(action='/subscribe', method='post', class='form-inline')
-      div(class='input-append')
-        input(type='email', name='email', placeholder='email address')
-        input(type='submit', class='btn', value='Add Member')
+
