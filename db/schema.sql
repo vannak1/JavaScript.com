@@ -9,4 +9,9 @@ CREATE TABLE articles (
   created_at timestamp DEFAULT statement_timestamp()
 );
 
+CREATE TABLE users (
+  id    integer PRIMARY KEY,
+  email text NOT NULL
+);
+
 COMMIT;
