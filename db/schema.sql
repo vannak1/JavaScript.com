@@ -10,4 +10,10 @@ CREATE TABLE articles (
   created_at TIMESTAMP DEFAULT statement_timestamp()
 );
 
+-- DROPT TABLE users
+CREATE TABLE users (
+  id    SERIAL PRIMARY KEY,
+  email text NOT NULL
+);
+
 COMMIT;
