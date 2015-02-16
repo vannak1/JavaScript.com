@@ -4,9 +4,9 @@ var path    = require('path');
 var bodyParser = require('body-parser');
 var mcapi = require('mailchimp-api');
 
+mc = new mcapi.Mailchimp(process.env.MAILCHIMP_API);
 var parseForm = bodyParser.urlencoded({ extended: false });
 
-mc = new mcapi.Mailchimp(process.env.MAILCHIMP_API);
 
 var News = require('./../services/news');
 var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
@@ -20,11 +20,18 @@ router.get('/', function(req, res, next) {
 
 /* POST subscribe an email to JS5 list. */
 router.post('/subscribe', parseForm, function(req, res) {
-  mc.lists.subscribe({id: process.env.LIST_ID, email:{email:req.body.email}}, function(data) {
+  mc.lists.subscribe(
+    {
+      id: process.env.LIST_ID,
+      email: {email:req.body.email},
+      double_optin: false,
+      send_welcome: true
+    },
+    function(data) {
       res.redirect('/');
     },
     function(error) {
-      res.redirect('/');
+      console.log(error);
     });
 });
 
