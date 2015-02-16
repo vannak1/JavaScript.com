@@ -1,8 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 JavaScript.com
 
   each item in news
+    hr
     p= item.title
+    p= item.body
