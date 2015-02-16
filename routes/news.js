@@ -14,15 +14,10 @@ router.
 
     res.render('news/index', { today: new Date() });
   }).
-  get('/new', csrfProtection, function(req, res) {
-    debug('Rendering form for submission');
+  get('/:update', function(req, res) {
+    debug('Updating news items from rss');
 
-    var csrfToken = req.csrfToken();
-    // TODO render template with csrfToken
-    res.send(csrfToken);
-  }).
-  post('/', parseForm, csrfProtection, function(req, res) {
-    debug('Creating news');
+    // Not implemented yet
 
     res.redirect('/');
   });

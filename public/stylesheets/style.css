@@ -3,6 +3,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.links {
+  text-align: right;
+
+  a {
+    font-size: 3em;
+  }
+}
+
 a {
   color: #00B7FF;
+  text-decoration: none;
+  border-bottom: none;
 }

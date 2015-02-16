@@ -4,5 +4,22 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/mvcss.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/application.js')
   body
-    block content
+    header.header
+      div.row
+        div.g
+          div.g-b.g-b--1of2
+            h1 JavaScript.com
+          div.links.g-b.g-b--1of2
+            a Community
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            a Something
+      hr
+
+    main.content
+      block content

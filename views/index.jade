@@ -1,9 +1,18 @@
 extends layout
 
 block content
-  h1 JavaScript.com
+  div.row
+    div.g
+      div.g-b.g-b--1of2
+        h1 VIDEO
+      div.g-b.g-b--1of2
+        h1 TEXT
+  hr
+  div.row
+    div.g
+      div.g-b.g-b--3of4
+        each item in news
+          h2= item.title
+          p!= item.body
+          hr
 
-  each item in news
-    hr
-    p= item.title
-    p!= item.body
