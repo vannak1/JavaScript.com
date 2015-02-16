@@ -22,7 +22,7 @@ passport.use(new GitHubStrategy({
     clientID: process.env.GH_CLIENT_ID,
     clientSecret: process.env.GH_CLIENT_SECRET,
     callbackURL: (process.env.NODE_ENV === 'production' ?
-      "http://javascriptcom.herokuapp.com/" : "http://localhost:3000/flow/auth/github/callback")
+      "http://javascriptcom.herokuapp.com/flow/auth/github/callback" : "http://localhost:3000/flow/auth/github/callback")
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -39,7 +39,7 @@ passport.use(new GitHubStrategy({
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('/flow/new')
 }
 /* End GitHub Auth */
 
@@ -49,7 +49,7 @@ router.
     // The request will be redirected to GitHub for authentication, so this
     // function will not be called.
   }).
-  get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
+  get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/flow/new' }), function(req, res) {
     // TODO: Fetch image and save it to S3
     // req.user['_json']['avatar_url']
     // req.user['_json']['login']
