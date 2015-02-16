@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    h1= flow.title
+    p= flow.body
+    p(class="read-more")
+        a(href=flow.url) Read More
+    p(class="github-user")
+        | From #[a(href="#") GitHub User]
+
+    if user.authenticated
+        form(action="/flow/"+flow.id+"/comment" method="POST")
+            p
+                textarea(name="body" rows=5 cols=80)
+            p
+                input(type="hidden" name="_csrf" value=token)
+                input(type="submit" value="Submit")
+    else
+        p
+            a(href="/flow/auth/github") Sign In with GitHub
+
+
+    - for comment in comments
+        section.comment
+            p= comment.body
+            p(class="github-user")
+                | From #[a(href="#") GitHub User]
+
+
