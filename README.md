@@ -4,8 +4,11 @@ This is the repo for the JavaScript.com website.
 
 ## Running
 
-Install dependencies with `npm install`.
+Install dependencies with `npm install`.  
 Run the application with `npm start`.
+
+For debugging all the things, run `DEBUG=* npm start`.
+
 
 ## Development
 
