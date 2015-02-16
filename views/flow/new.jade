@@ -1,0 +1,16 @@
+extend ../layout
+
+block content
+  h1 New Story
+  form(action="/flow" method="POST")
+    p
+      | Title: &nbsp;
+      input(type="text" name="title")
+    p
+      textarea(name="body" rows=10 cols=80)
+    p
+      | Link: &nbsp;
+      input(type="text" name="url")
+    p
+      input(type="hidden" name="_csrf" value=csrfToken)
+      input(type="submit" value="Submit")

@@ -14,6 +14,9 @@ router.
 
     res.render('news/index', { today: new Date() });
   }).
+  // If we are not going to manually
+  // have people submitting news, then we can
+  // remove the following endpoints.
   get('/new', csrfProtection, function(req, res) {
     debug('Rendering form for submission');
 

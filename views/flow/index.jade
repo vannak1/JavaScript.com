@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  h1 Latest News
+  p= `Today ${new Date()}`
+
+  p
+    a(href="flow/new") New Story
+
+  - for flow_item in flow_collection
+    section.article
+      h3= flow_item.title
+      = flow_item.body
+      p(class="read-more")
+        a(href=flow_item.url) Read More
+      p(class="github-user")
+        | From #[a(href="#") GitHub User]
