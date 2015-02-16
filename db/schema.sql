@@ -1,12 +1,13 @@
 BEGIN;
 
+-- DROP TABLE articles;
 CREATE TABLE articles (
-  id    integer PRIMARY KEY,
-  title text NOT NULL,
-  body  text NOT NULL,
-  url   text,
-  news  boolean NOT NULL DEFAULT FALSE,
-  created_at timestamp DEFAULT statement_timestamp()
+  id         SERIAL PRIMARY KEY,
+  title      TEXT NOT NULL,
+  body       TEXT,
+  url        TEXT,
+  news       BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT statement_timestamp()
 );
 
 COMMIT;
