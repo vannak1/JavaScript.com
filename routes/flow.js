@@ -8,7 +8,58 @@ var Flow = require('../services/flow');
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
 
+/* GitHub Auth */
+var passport = require('passport');
+var GitHubStrategy = require('passport-github').Strategy;
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+});
+passport.use(new GitHubStrategy({
+    clientID: process.env.GH_CLIENT_ID,
+    clientSecret: process.env.GH_CLIENT_SECRET,
+    callbackURL: (process.env.NODE_ENV === 'production' ?
+      "http://javascriptcom.herokuapp.com/flow/auth/github/callback" : "http://localhost:3000/flow/auth/github/callback")
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+
+      // To keep the example simple, the user's GitHub profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the GitHub account with a user record in your database,
+      // and return that user instead.
+      return done(null, profile);
+    });
+  }
+));
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/flow/new')
+}
+/* End GitHub Auth */
+
 router.
+
+  get('/auth/github', passport.authenticate('github'), function(req, res){
+    // The request will be redirected to GitHub for authentication, so this
+    // function will not be called.
+  }).
+  get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/flow/new' }), function(req, res) {
+    // TODO: Fetch image and save it to S3
+    // req.user['_json']['avatar_url']
+    // req.user['_json']['login']
+    res.redirect('/flow/new');
+  }).
+  get('/signout', function(req, res){
+    req.logout();
+    res.redirect('/flow');
+  }).
+
   get('/', function(req, res) {
     Flow.all(function(flow_collection) {
       res.render('flow/index', { flow_collection: flow_collection });
@@ -16,11 +67,18 @@ router.
   }).
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
-    var csrfToken = req.csrfToken();
-    res.render('flow/new', { csrfToken: csrfToken });
+    if(!req.isAuthenticated()){
+      res.render('flow/sign_in');
+    }else{
+      var csrfToken = req.csrfToken();
+      var login = req.user['_json']['login'];
+      var avatar = req.user['_json']['avatar_url'];
+
+      res.render('flow/new', { login: login, avatar: avatar, token: csrfToken });
+    }
   }).
 
-  post('/', cookieParser, parseForm, csrfProtection, function(req, res) {
+  post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
     Flow.create(newFlow, function() {
       res.redirect('/flow');

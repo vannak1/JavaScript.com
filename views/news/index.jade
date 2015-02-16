@@ -1,5 +1,10 @@
 extends ../layout
 
 block content
-  h1 Latest News
-  p= `Today ${today}`
+  div.row
+    div.g
+      div.g-b.g-b--1of1
+        each item in news
+          h2= item.title
+          p!= item.body
+          hr

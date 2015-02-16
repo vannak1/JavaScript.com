@@ -10,6 +10,13 @@ var flow = require('./routes/flow');
 
 var app = express();
 
+// Must come before calls to app.use
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'replace-me-with-secret-key'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

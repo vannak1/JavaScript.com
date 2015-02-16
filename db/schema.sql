@@ -19,4 +19,18 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT statement_timestamp()
 );
 
+-- DROP TABLE comments
+CREATE TABLE comments (
+  id          SERIAL PRIMARY KEY,
+  article_id  INTEGER REFERENCES articles(id) NOT NULL,
+  email       TEXT,
+  username    TEXT,
+  avatar_url  TEXT,
+  body        TEXT,
+  flagged     BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at  TIMESTAMP DEFAULT statement_timestamp()
+);
+
+CREATE INDEX ON comments(article_id);
+
 COMMIT;
