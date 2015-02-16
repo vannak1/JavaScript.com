@@ -1,29 +1,31 @@
-var FivejsParser = require('feedparser');
-var Request      = require('request');
+var FeedParser = require('feedparser');
+var Request    = require('request');
 
 var Fivejs = {
   get: function(cb) {
     var req  = Request('https://fivejs.codeschool.com/feed.rss');
-    var feed = new FivejsParser();
+    var feed = new FeedParser();
 
     req.on('response', function(res) {
       res.pipe(feed);
     });
 
+    var stories = [];
     feed.on('readable', function() {
       var post;
-      var stories = [];
 
       while (post = this.read()) {
         stories.push({
           "title": post.title,
           "url": post.link,
           "body": post.description
-        })
+        });
       }
-
-      cb(stories);
     });
+
+    feed.on('end', function() {
+      cb(stories.slice(0,3));
+    })
   }
 };
 
