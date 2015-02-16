@@ -19,4 +19,14 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT statement_timestamp()
 );
 
+-- DROP TABLE comments
+CREATE TABLE comments (
+  id          SERIAL PRIMARY KEY,
+  email       TEXT,
+  username    TEXT,
+  avatar_url  TEXT,
+  flagged     BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at  TIMESTAMP DEFAULT statement_timestamp()
+)
+
 COMMIT;
