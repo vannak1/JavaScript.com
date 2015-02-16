@@ -16,3 +16,10 @@ a {
   text-decoration: none;
   border-bottom: none;
 }
+
+.article {
+  width: 60%;
+  padding: 20px;
+  margin-bottom: 2px;
+  background-color: #CCCCCC
+}
