@@ -1,5 +1,8 @@
 var db = require('./db');
 
+/* Our curated news section. Mostly fivejs at the moment. Note that in the very near
+ * future, we will be saving fivejs feeds to news items.
+ */
 var News = {
   // Returns the most recent news items for display on the index page
   recent: function (cb) {

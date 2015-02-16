@@ -5,10 +5,12 @@ body {
 
 .links {
   text-align: right;
+  padding-top: .5em;
+}
 
-  a {
-    font-size: 3em;
-  }
+.links a {
+  font-size: 1.5em;
+  margin-left: 1em;
 }
 
 a {
