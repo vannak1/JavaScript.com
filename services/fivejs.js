@@ -2,7 +2,7 @@ var FeedParser = require('feedparser');
 var Request    = require('request');
 
 var Fivejs = {
-  get: function(cb) {
+  get(cb) {
     var req  = Request('https://fivejs.codeschool.com/feed.rss');
     var feed = new FeedParser();
 
