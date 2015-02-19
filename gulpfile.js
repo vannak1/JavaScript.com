@@ -51,7 +51,9 @@ gulp.task('default', function() {
 gulp.task('minify-css', function () {
   gulp.src(options.css.file)
       .pipe(minifycss())
+      .on('error', function(error) { console.log(error.message); })
       .pipe(rename({ suffix: '.min' }))
+      .on('error', function(error) { console.log(error.message); })
       .pipe(gulp.dest(options.css.destination));
 });
 
@@ -62,5 +64,6 @@ gulp.task('minify-css', function () {
 gulp.task('sass', function () {
   gulp.src(options.sass.files)
       .pipe(sass({ indentedSyntax: true }))
+      .on('error', function(error) { console.log(error.message); })
       .pipe(gulp.dest(options.sass.destination));
 });
