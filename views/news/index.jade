@@ -1,10 +1,9 @@
 extends ../layout
 
 block content
+
   div.row
-    div.g
-      div.g-b.g-b--1of1
-        each item in news
-          h2= item.title
-          p!= item.body
-          hr
+    div.cell.cell--s.well.well--xl
+      each item in news
+        h2= item.title
+        p!= item.body

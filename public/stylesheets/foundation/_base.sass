@@ -58,14 +58,12 @@ h4, .h4
 // ----- Links ----- //
 
 a
-  border-bottom: $b-border
   color: $c-highlight
   text-decoration: none
+  transition: $b-transition
 
-  &:hover,
-  &:focus
-    border-bottom-color: $c-highlight
-    color: $c-subdue
+  +state
+    color: darken($c-highlight, 10%)
 
 // ----- Images ----- //
 

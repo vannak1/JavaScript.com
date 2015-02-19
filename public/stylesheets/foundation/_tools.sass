@@ -16,6 +16,22 @@
 .bcs
   background: $c-subdue
 
+// ----- Palette ----- //
+
+@for $i from 1 through length($tool-background-vars)
+
+  .bc-#{nth($tool-background-names, $i)}
+    background: nth($tool-background-vars, $i)
+
+// -------------------------------------
+//   Border
+// -------------------------------------
+
+// ----- Sides ----- //
+
+.bdrb
+  border-bottom: $b-border
+
 // -------------------------------------
 //   Display
 // -------------------------------------

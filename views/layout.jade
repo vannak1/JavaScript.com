@@ -7,16 +7,19 @@ html
     script(src='/javascripts/jquery.min.js')
     script(src='/javascripts/application.js')
   body
-    header.header
-      div.row
+
+    header.row.header
+      div.cell.well
         div.g
-          div.g-b.g-b--1of2
-            h1
-              a(href="/") JavaScript.com
-          div.links.g-b.g-b--1of2
-            a(href="/news") News
-            a(href="/flow") Community
-      hr
+          div.g-b.g-b--m--1of2
+            h1.header-logo.mbf
+              a.header-logo-item(href="/")
+                img.header-logo-item(src="images/logo.svg" alt="Code School")
+          div.g-b.g-b--m--1of2
+            nav.header-nav
+              a.header-nav-item(href="/news") News
+              a.header-nav-item(href="/flow") Community
+              a.btn.btn--a.header-nav-item.header-nav-item--btn(href="#") Learn JavaScript
 
     main.content
       block content

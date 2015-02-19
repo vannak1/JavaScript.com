@@ -1,0 +1,73 @@
+// *************************************
+//
+//   Form
+//   -> User input environment
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// %form.form[condensed]
+//
+//   %fieldset.form-field[inline]
+//     %label.form-label
+//     %input.form-input
+//
+// *************************************
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Condensed ----- //
+
+.form--condensed
+
+  .form-field
+    margin-bottom: $b-space-s
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Field ----- //
+
+.form-field
+  border: 0
+  margin: 0 0 $b-space
+  padding: 0
+
+// Inline
+
+.form-field--inline
+
+  .form-btn
+    display: block
+    line-height: 2.9
+    min-width: 100%
+
+// ----- Input ----- //
+
+.form-input
+  background: $form-input-background
+  border: $b-border-l
+  border-radius: $b-borderRadius
+  box-sizing: border-box
+  font-size: 100%
+  font-style: italic
+  padding: 0.75em $b-space // FIXME: Magic number!
+  position: relative
+  transition: border-color 0.2s ease-in-out
+  width: 100%
+
+  &:focus
+    border-color: $c-highlight
+    outline: none
+
+// ----- Label ----- //
+
+.form-label
+  display: block
+  font-size: $b-fontSize-m
+  font-weight: bold
+  margin-bottom: $b-space-xs

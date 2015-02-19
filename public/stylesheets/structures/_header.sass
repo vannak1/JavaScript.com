@@ -1,0 +1,68 @@
+// *************************************
+//
+//   Header
+//   -> Main header
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .header
+//
+//   .header-intro
+//     / ...
+//
+//   %nav.header-nav
+//     %a.header-nav-item
+//     %a.header-nav-item
+//
+// *************************************
+
+.header
+  background: $header-background
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Intro ----- //
+
+.header-intro
+  border-bottom: $b-borderWidth $b-borderStyle $c-text-invert
+  padding-bottom: $b-space
+
+// ----- Logo ----- //
+
+// Item
+
+.header-logo-item
+  display: block
+
+// ----- Nav ----- //
+
+.header-nav
+  float: right
+  margin-top: 13px // FIXME: Magic number!
+
+// Item
+
+.header-nav-item
+  border-bottom: $b-borderWidth-l $b-borderStyle transparent
+  color: $c-text-invert
+  font-family: $b-fontFamily-heading
+  margin-right: $b-space-l
+
+  &:last-child
+    margin-right: 0
+
+  +state
+    border-bottom-color: $c-text-invert
+    color: $c-text-invert
+
+// Item Modifiers
+
+.header-nav-item--btn
+  border: 0
+
+  +state
+    border: 0

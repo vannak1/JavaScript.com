@@ -1,29 +1,32 @@
 extends layout
 
 block content
-  div.row
-    div.g
-      div.g-b.g-b--1of2
-        h1 VIDEO
-      div.g-b.g-b--1of2
+
+  div.row.bc-regent
+    div.cell.well
+      div.g
+        div.g-b.g-b--1of2
+          p Video goes here.
+        div.g-b.g-b--1of2
           iframe(width='100%' height='300px' src="http://campus.codeschool.com/courses/try-javascript")
-  hr
-  div.row
-    div.g
-      div.g-b.g-b--1of1
-        div.card
-          h3 Subscribe to newsletter
-            form(action='/subscribe', method='post', class='form-inline')
-              div(class='input-append')
-                input(type='email', name='email', placeholder='email address')
-                input(type='submit', class='btn', value='Add Member')
-  hr
-  div.row
-    div.g
-      div.g-b.g-b--3of4
-        each item in news
-          h2= item.title
-          p!= item.body
-          hr
 
+  div.row.bdrb
+    div.cell.well
+      div.g
+        div.g-b.g-b--m--1of2
+          p.mtm.pts.tfh
+            strong Want the latest JavaScript news delivered right to your inbox?
+        div.g-b.g-b--m--1of2
+          form.form.mtm(action='/subscribe', method='post', class='form-inline')
+            fieldset.form-field.form-field--inline
+              div.g
+                div.g-b.g-b--m--3of5
+                  input.form-input.form-input--inline(type='email', name='email', placeholder='Email Address')
+                div.g-b.g-b--m--2of5
+                  input.btn.btn--b.form-btn(type='submit', value='Sign Up')
 
+  div.row
+    div.cell.cell--s.well.well--xl
+      each item in news
+        h2= item.title
+        p!= item.body
