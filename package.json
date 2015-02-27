@@ -23,7 +23,8 @@
     "passport-github": "^0.1.5",
     "pg": "^4.2.0",
     "request": "^2.53.0",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "akismet-api": "^1.1.5"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
