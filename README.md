@@ -5,7 +5,7 @@ This is the repo for the JavaScript.com website.
 ## Installing NVM
 
 - Install NVM (`$ brew install nvm` and follow instructions)
-- `$ nvm install io.js-v1.2.0`
+- `$ nvm install iojs-v1.2.0`
 - `$ nvm use iojs-v1.2.0`
 
 ## Running
