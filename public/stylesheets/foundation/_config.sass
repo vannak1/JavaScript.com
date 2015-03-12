@@ -21,15 +21,27 @@
 
 // ----- Palette ----- //
 
+// Grayscale
+
 $black: #000
-$concrete: #efefef
-$forest: #7eab68
-$regent: #9cd4df
-$sienna: #e55c52
 $slate: #37443d
+$concrete: #efefef
 $snow: #f9f9f7
-$tulip: #e5bb31
 $white: #fff
+
+// Blue
+
+$bostonBlue: #369aaf
+$regent: #9cd4df
+
+// Red
+
+$sienna: #e55c52
+
+// Yellow
+
+$tulip: #e5bb31
+$goldenDream: #f1d332
 
 // ----- Base ----- //
 
@@ -102,10 +114,8 @@ $b-space-xl: $b-space * 4
 
 // ----- Tools ----- //
 
-// Text
-
-$tool-background-names: 'regent'
-$tool-background-vars: $regent
+$tool-background-names: 'bostonBlue', 'regent'
+$tool-background-vars: $bostonBlue, $regent
 
 // -------------------------------------
 //   Components
@@ -137,4 +147,3 @@ $g-selector: if($g-silent, unquote("%"), unquote("."))
 // ----- Header ----- //
 
 $header-height: 500px
-
