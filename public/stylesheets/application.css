@@ -465,10 +465,10 @@ img {
     color: #fff; }
 
 .btn--b {
-  background: #7eab68;
+  background: #f1d332;
   color: #fff; }
   .btn--b:active, .btn--b:focus, .btn--b:hover {
-    background: #77a262;
+    background: #e4c82f;
     color: #fff; }
 
 .cell {
