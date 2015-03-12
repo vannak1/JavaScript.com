@@ -11,7 +11,7 @@
 //
 //   %fieldset.form-field[inline]
 //     %label.form-label
-//     %input.form-input
+//     %input.form-input[dark]
 //
 // *************************************
 
@@ -30,6 +30,12 @@
 //   Scaffolding
 // -------------------------------------
 
+// ----- Button ----- //
+
+.form-btn
+  border: $form-shared-borderWidth solid transparent
+  line-height: $form-shared-lineHeight
+
 // ----- Field ----- //
 
 .form-field
@@ -43,26 +49,48 @@
 
   .form-btn
     display: block
-    line-height: 2.9
     min-width: 100%
 
 // ----- Input ----- //
 
 .form-input
   background: $form-input-background
-  border: $b-border-l
   border-radius: $b-borderRadius
+  border: $form-shared-borderWidth $b-borderStyle $c-border
   box-sizing: border-box
+  font-family: $b-fontFamily-heading
   font-size: 100%
-  font-style: italic
-  padding: 0.75em $b-space // FIXME: Magic number!
+  line-height: $form-shared-lineHeight
+  padding: 0 $b-space
   position: relative
-  transition: border-color 0.2s ease-in-out
+  transition: $b-transition
   width: 100%
+
+  &::placeholder
+    color: $c-subdue
+    font-style: italic
 
   &:focus
     border-color: $c-highlight
     outline: none
+
+// Dark
+
+.form-input--dark
+  background: $form-input--dark-background
+  border-color: transparent
+  color: $c-text-invert
+
+  &::placeholder
+    color: $form-input--dark-color
+
+  &:focus
+    background-color: $form-input--dark--focus-background
+    border-color: transparent
+    color: $c-text-invert
+
+    &::placeholder
+      color: $form-input--dark--focus-color
 
 // ----- Label ----- //
 

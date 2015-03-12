@@ -150,7 +150,6 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
-  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -264,8 +263,6 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -483,6 +480,10 @@ img {
 .form--condensed .form-field {
   margin-bottom: 0.625em; }
 
+.form-btn {
+  border: 2px solid transparent;
+  line-height: 3; }
+
 .form-field {
   border: 0;
   margin: 0 0 1.25em;
@@ -490,23 +491,60 @@ img {
 
 .form-field--inline .form-btn {
   display: block;
-  line-height: 2.9;
   min-width: 100%; }
 
 .form-input {
   background: #fbfbfb;
-  border: 2px solid #efefef;
   border-radius: 6px;
+  border: 2px solid #efefef;
   box-sizing: border-box;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 100%;
-  font-style: italic;
-  padding: 0.75em 1.25em;
+  line-height: 3;
+  padding: 0 1.25em;
   position: relative;
-  transition: border-color 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   width: 100%; }
+  .form-input::-webkit-input-placeholder {
+    color: #bcbcbc;
+    font-style: italic; }
+  .form-input::-moz-placeholder {
+    color: #bcbcbc;
+    font-style: italic; }
+  .form-input:-ms-input-placeholder {
+    color: #bcbcbc;
+    font-style: italic; }
+  .form-input::placeholder {
+    color: #bcbcbc;
+    font-style: italic; }
   .form-input:focus {
     border-color: #e5bb31;
     outline: none; }
+
+.form-input--dark {
+  background: #287383;
+  border-color: transparent;
+  color: #fff; }
+  .form-input--dark::-webkit-input-placeholder {
+    color: #369aaf; }
+  .form-input--dark::-moz-placeholder {
+    color: #369aaf; }
+  .form-input--dark:-ms-input-placeholder {
+    color: #369aaf; }
+  .form-input--dark::placeholder {
+    color: #369aaf; }
+  .form-input--dark:focus {
+    background-color: #256b7a;
+    border-color: transparent;
+    color: #fff; }
+    .form-input--dark:focus::-webkit-input-placeholder {
+      color: #308a9d; }
+    .form-input--dark:focus::-moz-placeholder {
+      color: #308a9d; }
+    .form-input--dark:focus:-ms-input-placeholder {
+      color: #308a9d; }
+    .form-input--dark:focus::placeholder {
+      color: #308a9d; }
 
 .form-label {
   display: block;
