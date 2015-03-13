@@ -696,7 +696,8 @@ img {
   padding-bottom: 1.25em; }
 
 .header-logo-item {
-  display: block; }
+  display: block;
+  margin-left: -4px; }
 
 .header-nav {
   float: right;
