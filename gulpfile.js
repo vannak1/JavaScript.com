@@ -8,11 +8,12 @@
 //   Modules
 // -------------------------------------
 
-var gulp      = require('gulp');
-var watch     = require('gulp-watch');
-var sass      = require('gulp-sass');
-var minifycss = require('gulp-minify-css');
-var rename    = require('gulp-rename');
+var gulp         = require('gulp');
+var watch        = require('gulp-watch');
+var sass         = require('gulp-sass');
+var minifycss    = require('gulp-minify-css');
+var rename       = require('gulp-rename');
+var autoprefixer = require('gulp-autoprefixer');
 
 // -------------------------------------
 //   Variables
@@ -50,7 +51,7 @@ gulp.task('default', function() {
 
 gulp.task('minify-css', function () {
   gulp.src(options.css.file)
-      .pipe(minifycss())
+      .pipe(minifycss({ advanced: false }))
       .on('error', function(error) { console.log(error.message); })
       .pipe(rename({ suffix: '.min' }))
       .on('error', function(error) { console.log(error.message); })
@@ -65,5 +66,9 @@ gulp.task('sass', function () {
   gulp.src(options.sass.files)
       .pipe(sass({ indentedSyntax: true }))
       .on('error', function(error) { console.log(error.message); })
+      .pipe(autoprefixer({
+        browsers: [ 'last 2 versions', 'Explorer >= 9' ],
+        cascade: false
+      }))
       .pipe(gulp.dest(options.sass.destination));
 });

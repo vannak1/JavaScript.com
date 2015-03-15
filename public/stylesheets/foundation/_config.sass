@@ -21,15 +21,27 @@
 
 // ----- Palette ----- //
 
+// Grayscale
+
 $black: #000
-$concrete: #efefef
-$forest: #7eab68
-$regent: #9cd4df
-$sienna: #e55c52
 $slate: #37443d
+$concrete: #efefef
 $snow: #f9f9f7
-$tulip: #e5bb31
 $white: #fff
+
+// Blue
+
+$bostonBlue: #4399af
+$regent: #9cd4df
+
+// Red
+
+$sienna: #e55c52
+
+// Yellow
+
+$tulip: #e5bb31
+$goldenDream: #f1d332
 
 // ----- Base ----- //
 
@@ -47,12 +59,16 @@ $c-text: $slate
 
 $btn--a-background: $sienna
 $btn--a-color: $c-text-invert
-$btn--b-background: $forest
+$btn--b-background: $goldenDream
 $btn--b-color: $c-text-invert
 
 // Form
 
 $form-input-background: #fbfbfb
+$form-input--dark-color: $bostonBlue
+$form-input--dark--focus-color: shade($form-input--dark-color, 10%)
+$form-input--dark-background: shade($form-input--dark-color, 25%)
+$form-input--dark--focus-background: shade($form-input--dark-color, 30%)
 
 // ----- Structures ----- //
 
@@ -79,11 +95,14 @@ $b-boxShadow: 0 2px 0 rgba($c-text, 0.25)
 $b-fontFamily-heading: 'Open Sans', Arial, Helvetica, sans-serif
 $b-fontFamily: Georgia, Times, 'Times New Roman', serif
 $b-fontSize: 16px
-$b-fontSize-xs: 60%
-$b-fontSize-s: 75%
-$b-fontSize-m: 90%
+$b-fontSize-xs: 75%
+$b-fontSize-s: 90%
 $b-fontSize-l: 115%
 $b-fontSize-xl: 150%
+$b-fontSize-h1: 200%
+$b-fontSize-h2: 150%
+$b-fontSize-h3: 125%
+$b-fontSize-h4: 110%
 $b-lineHeight: 1.5
 
 // ----- Settings ----- //
@@ -102,14 +121,17 @@ $b-space-xl: $b-space * 4
 
 // ----- Tools ----- //
 
-// Text
-
-$tool-background-names: 'regent'
-$tool-background-vars: $regent
+$tool-background-names: 'bostonBlue', 'regent'
+$tool-background-vars: $bostonBlue, $regent
 
 // -------------------------------------
 //   Components
 // -------------------------------------
+
+// ----- Form ----- //
+
+$form-shared-borderWidth: $b-borderWidth-l
+$form-shared-lineHeight: 3
 
 // ----- Grid ----- //
 
@@ -137,4 +159,3 @@ $g-selector: if($g-silent, unquote("%"), unquote("."))
 // ----- Header ----- //
 
 $header-height: 500px
-

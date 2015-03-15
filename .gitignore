@@ -24,6 +24,7 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
-# Users Environment Variables
+# User environment variables
+.DS_Store
 .lock-wscript
 .service-credentials
