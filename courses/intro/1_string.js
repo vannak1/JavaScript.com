@@ -4,9 +4,11 @@ var assert       = require('chai').assert,
     CS           = require('./cs.js'),
     consoleInput = code[0].code,
     userName;
+
 if(typeof(sandbox) == 'undefined') {
   var sandbox = new Sandbox();
 }
+
 describe('set_name', function() {
   it('f_no_name', function() {
     var nameUsed;
@@ -20,6 +22,7 @@ describe('set_name', function() {
     }
     assert(nameUsed);
   });
+
   it('f_empty_string', function() {
     var isNotEmptyString;
     CS.traverse(consoleInput, function(node) {
@@ -30,6 +33,7 @@ describe('set_name', function() {
     assert(isNotEmptyString);
   });
 });
+
 details("output", function() {
   var message;
   try {
@@ -52,7 +56,7 @@ failures = {
     "hint": "Here's an example that you can type in: `\"Gregg\";`"
   },
   "f_empty_string": {
-    "message": "You have the quotes, but you need to put your name inside them."
+    "message": "You have the quotes, but you need to put your name inside them.",
     "hint": "Here's an example that you can type in: `\"Gregg\";`"
   }
 }
@@ -67,5 +71,5 @@ module.exports = {
   ],
   "tests": tests,
   "failures": failures,
-  "answer": "Gregg"
+  "answer": "\"Gregg\""
 }
