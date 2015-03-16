@@ -4,18 +4,25 @@ This is the repo for the JavaScript.com website.
 
 ## Installing NVM
 
-- Install NVM (`$ brew install nvm` and follow instructions)
-- `$ nvm install iojs-v1.2.0`
-- `$ nvm use iojs-v1.2.0`
+Install NVM (`$ brew install nvm` and follow instructions)
+
+```bash
+nvm install iojs-v1.2.0
+nvm use iojs-v1.2.0
+npm install -g gulp
+npm install
+```
+
+This app authenticates with GitHub, so you'll need to create a GitHub Application and set ENVs for `GH_CLIENT_ID` and `GH_CLIENT_SECRET`.
 
 ## Running
 
-* Install dependencies with `$ npm install`.
-* Create the local PostgreSQL database with `$ createdb javascriptcom`.
-* Load schema with `$ psql javascriptcom < db/schema.sql`
-* This app authenticates with GitHub, so you'll need to create a GitHub Application and set ENVs for `GH_CLIENT_ID` and `GH_CLIENT_SECRET`.
-* Run the application with `$ npm start`.
-* Compile and watch Sass with `$ gulp`.
+Run the application with `$ npm start`. You can also set the environment variables at start time. Here's an example:
+
+```bash
+$ GH_CLIENT_ID=myid GH_CLIENT_SECRET=mysecret npm start
+```
+Compile and watch Sass with `$ gulp`.
 
 For debugging all the things, run `DEBUG=* npm start`.
 

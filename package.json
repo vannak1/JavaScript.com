@@ -6,7 +6,8 @@
     "iojs": "1.2.0"
   },
   "scripts": {
-    "start": "node --harmony_object_literals ./bin/www"
+    "start": "node --harmony_object_literals ./bin/www",
+    "postinstall": "./db/setup.sh"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
