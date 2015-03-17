@@ -684,6 +684,38 @@ img {
   .g-b--l--4of5 {
     width: 80%; } }
 
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.list--divided > .list-item {
+  border-bottom: 2px solid #efefef;
+  padding-bottom: 1.25em; }
+  .list--divided > .list-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0; }
+
+.list--inline > .list-item {
+  display: inline;
+  margin-right: 1.25em; }
+  .list--inline > .list-item:last-child {
+    margin-right: 0; }
+
+.list--inline--divided > .list-item:not(:first-child)::before {
+  content: '|';
+  margin-left: -1ch;
+  margin-right: 0.625em; }
+
+.list--l > .list-item {
+  margin-bottom: 2.5em; }
+
+.list-item {
+  display: block;
+  margin-bottom: 1.25em; }
+  .list-item:last-child {
+    margin-bottom: 0; }
+
 .row {
   overflow: hidden;
   padding: 0 1.25em; }
