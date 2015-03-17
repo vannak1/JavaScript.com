@@ -694,6 +694,29 @@ img {
 .row--b {
   background: #bcbcbc; }
 
+.sector {
+  position: relative; }
+  .sector::before {
+    content: '';
+    height: 9999px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 9999px;
+    z-index: -1; }
+  .sector:first-child::before {
+    left: auto;
+    right: 0; }
+
+.sector--white::before {
+  background: #fff; }
+
+.sector--snow::before {
+  background: #f9f9f7; }
+
+.has-sector {
+  overflow: hidden; }
+
 .well {
   margin-bottom: 1.25em;
   margin-top: 1.25em; }
