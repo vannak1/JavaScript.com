@@ -696,6 +696,9 @@ img {
     border-bottom: 0;
     padding-bottom: 0; }
 
+.list--divided--f > .list-item {
+  padding-bottom: 0; }
+
 .list--inline > .list-item {
   display: inline;
   margin-right: 1.25em; }
@@ -706,6 +709,9 @@ img {
   content: '|';
   margin-left: -1ch;
   margin-right: 0.625em; }
+
+.list--f > .list-item {
+  margin-bottom: 0; }
 
 .list--l > .list-item {
   margin-bottom: 2.5em; }
