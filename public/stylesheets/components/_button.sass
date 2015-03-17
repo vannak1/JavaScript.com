@@ -8,6 +8,8 @@
 //   Template (Haml)
 // -------------------------------------
 //
+// .has-btn
+//
 // .btn[a|b s|l block bordered|rounded]
 //
 // *************************************
@@ -19,7 +21,7 @@
   color: $btn-color
   font-family: $b-fontFamily-heading
   font-family: $b-fontFamily-heading
-  font-size: $btn-fontSize
+  font-size: 100%
   line-height: 3
   padding: 0 $b-space-l
   transition: $b-transition
@@ -55,3 +57,15 @@
 
   +state
     background: shade($btn--b-background, 10%)
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+
+.has-btn
+
+  > .btn
+    margin-right: $b-space-xs
+
+    &:last-child
+      margin-right: 0

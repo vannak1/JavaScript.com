@@ -486,6 +486,11 @@ img {
   .btn--b:active, .btn--b:focus, .btn--b:hover {
     background: #d8bd2d; }
 
+.has-btn > .btn {
+  margin-right: 0.3125em; }
+  .has-btn > .btn:last-child {
+    margin-right: 0; }
+
 .cell {
   margin-left: auto;
   margin-right: auto;
