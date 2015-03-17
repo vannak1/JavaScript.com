@@ -2,50 +2,56 @@
 //
 //   Button
 //   -> Clickable control
+//      CodePen: http://codepen.io/drewbarontini/pen/yAveh
 //
 // -------------------------------------
 //   Template (Haml)
 // -------------------------------------
 //
-// .btn[a|b]
+// .btn[a|b s|l block bordered|rounded]
 //
 // *************************************
 
 .btn
-  border-radius: $b-borderRadius
-  border: 0
-  cursor: pointer
-  display: inline-block
+  +action
+  background: $btn-background
+  border-radius: $btn-borderRadius
+  color: $btn-color
   font-family: $b-fontFamily-heading
-  font-size: $b-fontSize
+  font-family: $b-fontFamily-heading
+  font-size: $btn-fontSize
   line-height: 3
   padding: 0 $b-space-l
-  text-align: center
-  text-decoration: none
   transition: $b-transition
+
+  +state
+    background: shade($btn-background, 10%)
+    color: $btn-color
 
 // -------------------------------------
 //   Modifiers
 // -------------------------------------
 
+// ----- Behavior ----- //
+
+.btn--block
+  display: block
+
 // ----- Hierarchy ----- //
 
-// Primary
-
-.btn--a
-  background: $btn--a-background
-  color: $btn--a-color
+.btn--a--bordered
+  background: transparent
+  border-color: $btn-background
+  color: $btn-background
 
   +state
-    background: shade($btn--a-background, 10%)
-    color: $btn--a-color
+    background: $btn-background
+    color: $c-text-invert
 
 // Secondary
 
 .btn--b
   background: $btn--b-background
-  color: $btn--b-color
 
   +state
-    background: shade($btn--b-background, 5%)
-    color: $btn--b-color
+    background: shade($btn--b-background, 10%)
