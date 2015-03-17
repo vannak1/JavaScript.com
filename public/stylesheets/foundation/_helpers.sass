@@ -78,6 +78,14 @@
       src: url('#{$path}.eot')
       src: url('#{$path}.eot?#iefix') format('embedded-opentype'), url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype'), url('#{$path}.svg##{$family}') format('svg')
 
+// ----- List Reset ----- //
+// -> Removes default list styles
+
+=list-reset
+  list-style-type: none
+  margin: 0
+  padding: 0
+
 // ----- Respond-to ----- //
 // -> Generates a media query
 //
@@ -138,6 +146,11 @@
     display: block
     height: 150%
     width: 0
+
+// ----- List Reset ----- //
+
+.lr
+  +list-reset
 
 // -------------------------------------
 //   Animations
