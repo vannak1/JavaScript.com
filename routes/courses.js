@@ -8,7 +8,13 @@ router
     res.json(Course.all());
   })
   .get('/:id.json', function(req, res) {
-    res.json(Course.find(req.params.id));
+    var course = Course.find(req.params.id);
+
+    if (course.error) {
+      res.status(404).json(course);
+    } else {
+      res.json(course);
+    }
   });
 
 module.exports = router;

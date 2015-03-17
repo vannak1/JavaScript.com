@@ -54,6 +54,10 @@ gulp.task('default', function() {
     gulp.start('sass');
     gulp.start('minify-css');
   });
+
+  watch(options.js.files, function(files) {
+    gulp.start(uglify);
+  });
 });
 
 // -------------------------------------
