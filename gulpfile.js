@@ -14,6 +14,8 @@ var sass         = require('gulp-sass');
 var minifycss    = require('gulp-minify-css');
 var rename       = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
+var uglify       = require('gulp-uglify');
+var concat       = require('gulp-concat');
 
 // -------------------------------------
 //   Variables
@@ -30,6 +32,15 @@ var options = {
   sass: {
     files: ['public/stylesheets/*.sass', 'public/stylesheets/**/*.sass'],
     destination: 'public/stylesheets'
+  },
+
+  js: {
+    files: ['bower_components/angular/angular.js',
+            'bower_components/jquery/dist/jquery.js',
+            'public/javascripts/**/*.js'],
+
+    destFile: 'application.js',
+    destDir:  'public/javascripts'
   }
 
 };
@@ -71,4 +82,17 @@ gulp.task('sass', function () {
         cascade: false
       }))
       .pipe(gulp.dest(options.sass.destination));
+});
+
+// -------------------------------------
+//   Task: JavaScript Uglify
+// -------------------------------------
+
+gulp.task('uglify', function() {
+  options.js.files.push('!public/javascripts/application.js');
+
+  gulp.src(options.js.files)
+    .pipe(concat('application.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(options.js.destDir));
 });
