@@ -529,16 +529,16 @@ img {
   transition: all 0.3s ease-in-out;
   width: 100%; }
   .form-input::-webkit-input-placeholder {
-    color: #bcbcbc;
+    color: #6d7c79;
     font-style: italic; }
   .form-input::-moz-placeholder {
-    color: #bcbcbc;
+    color: #6d7c79;
     font-style: italic; }
   .form-input:-ms-input-placeholder {
-    color: #bcbcbc;
+    color: #6d7c79;
     font-style: italic; }
   .form-input::placeholder {
-    color: #bcbcbc;
+    color: #6d7c79;
     font-style: italic; }
   .form-input:focus {
     border-color: #e5bb31;
@@ -735,7 +735,7 @@ img {
   background: #e5bb31; }
 
 .row--b {
-  background: #bcbcbc; }
+  background: #6d7c79; }
 
 .sector {
   position: relative; }
@@ -806,7 +806,7 @@ img {
   background: #000; }
 
 .bcs {
-  background: #bcbcbc; }
+  background: #6d7c79; }
 
 .bc-bostonBlue {
   background: #4399af; }
@@ -1032,7 +1032,7 @@ img {
   color: #fff; }
 
 .tcs {
-  color: #bcbcbc; }
+  color: #6d7c79; }
 
 .tct {
   color: #37443d; }
