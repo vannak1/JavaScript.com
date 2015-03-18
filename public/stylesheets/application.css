@@ -799,6 +799,9 @@ img {
   .header-nav-item--btn:active, .header-nav-item--btn:focus, .header-nav-item--btn:hover {
     border: 0; }
 
+.icon {
+  fill: currentColor; }
+
 .label {
   color: #6d7c79;
   display: block;
