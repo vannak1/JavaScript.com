@@ -420,9 +420,10 @@ a {
   a:active, a:focus, a:hover {
     color: #caa019; }
 
-img {
+img, svg {
   height: auto;
-  max-width: 100%; }
+  max-width: 100%;
+  vertical-align: middle; }
 
 .bucket--flag {
   display: table; }
@@ -436,7 +437,7 @@ img {
 .bucket-media {
   float: left;
   margin-right: 1.25em; }
-  .bucket-media > img {
+  .bucket-media > img, .bucket-media svg {
     display: block;
     max-width: none; }
 
@@ -452,7 +453,7 @@ img {
 .bucket-media {
   float: left;
   margin-right: 1.25em; }
-  .bucket-media > img {
+  .bucket-media > img, .bucket-media svg {
     display: block;
     max-width: none; }
 
