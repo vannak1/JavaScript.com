@@ -16,6 +16,7 @@ var rename       = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify       = require('gulp-uglify');
 var concat       = require('gulp-concat');
+var gutil        = require('gulp-util');
 
 // -------------------------------------
 //   Variables
@@ -96,7 +97,7 @@ gulp.task('uglify', function() {
   options.js.files.push('!public/javascripts/application.js');
 
   gulp.src(options.js.files)
-    .pipe(concat('application.js'))
     .pipe(uglify())
+    .pipe(concat('application.js'))
     .pipe(gulp.dest(options.js.destDir));
 });
