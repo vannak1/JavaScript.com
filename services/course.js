@@ -7,11 +7,7 @@ var Course = {
   },
   find(id) {
     if (this.all().indexOf(id) > -1) {
-      files = fs.readdirSync(path.join(__dirname, '..', 'courses', id));
-
-      return files.map(function(file) {
-        return require(path.join(__dirname, '..', 'courses', id, file));
-      });
+      return require(path.join(__dirname, '..', 'courses', id, 'index.js'))
     } else {
       return { error: `invalid course ${id}` };
     }
