@@ -392,16 +392,16 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   margin-top: 0; }
 
 h1, .h1 {
-  font-size: 200%; }
+  font-size: 225%; }
 
 h2, .h2 {
-  font-size: 150%; }
+  font-size: 175%; }
 
 h3, .h3 {
-  font-size: 125%; }
+  font-size: 137.5%; }
 
 h4, .h4 {
-  font-size: 110%; }
+  font-size: 112.5%; }
 
 a {
   color: #e5bb31;
@@ -571,7 +571,7 @@ img {
 
 .form-label {
   display: block;
-  font-size: 90%;
+  font-size: 87.5%;
   font-weight: bold;
   margin-bottom: 0.3125em; }
 
@@ -803,7 +803,7 @@ img {
   color: #6d7c79;
   display: block;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-size: 90%;
+  font-size: 87.5%;
   font-weight: bold; }
 
 .label--highlight {
@@ -1053,17 +1053,17 @@ img {
 .tfh {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif; }
 
-.tsxs {
-  font-size: 75%; }
-
 .tss {
-  font-size: 90%; }
+  font-size: 87.5%; }
 
 .tsl {
-  font-size: 115%; }
+  font-size: 112.5%; }
 
 .tsxl {
-  font-size: 150%; }
+  font-size: 125%; }
+
+.tsxxl {
+  font-size: 137.5%; }
 
 .tsi {
   font-style: italic; }
