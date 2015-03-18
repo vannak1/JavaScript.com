@@ -21,6 +21,14 @@
   @else
     @return ($target / $context) * 1em
 
+// ----- Font Size ----- //
+// -> Calculates a font size percentage
+//
+// $target - value of desired font size in pixels
+
+@function font-size($target, $context: $b-fontSize)
+  @return percentage($target / $context)
+
 // ----- Shade ----- //
 // -> Slightly darken a color
 //    via: http://sass-guidelin.es/#lightening-and-darkening-colors (modified)
