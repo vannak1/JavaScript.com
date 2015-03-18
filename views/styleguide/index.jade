@@ -1,4 +1,4 @@
-extends /layouts/layout
+extends /views/layouts/layout
 
 block content
 
@@ -63,6 +63,31 @@ block content
               h3 Secondary
 
               a.btn.btn--b(href='#') Button
+
+    li.list-item
+      .row
+        .cell.cell--s.well.well--l
+
+          h2.mbm#icon Icon
+
+          - iconPartialIcons = [ 'twitter' ]
+
+          each name in iconPartialIcons
+            - iconPartial = { name: name }
+            ul.list.list--inline.mbm
+              li.list-item
+                include /views/partials/_icon
+              li.list-item
+                .dib.tcs
+                  include /views/partials/_icon
+              li.list-item
+                .dib.tch
+                  include /views/partials/_icon
+              li.list-item
+                .bc-bostonBlue.dib.tci
+                  include /views/partials/_icon
+              li.list-item
+                code= name
 
     li.list-item
       .row

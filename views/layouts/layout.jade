@@ -6,8 +6,11 @@ html
     link(rel='stylesheet' href='/stylesheets/application.min.css')
 
   body
+    .dn
+      include /public/images/icons/icons.svg
+
     - headerPartial = { isBleed: 'true' }
-    include /partials/_header
+    include /views/partials/_header
 
     main.content
       block content
