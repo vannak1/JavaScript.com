@@ -799,6 +799,16 @@ img {
   .header-nav-item--btn:active, .header-nav-item--btn:focus, .header-nav-item--btn:hover {
     border: 0; }
 
+.label {
+  color: #6d7c79;
+  display: block;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  font-weight: bold; }
+
+.label--highlight {
+  color: #e5bb31; }
+
 .bch {
   background: #e5bb31; }
 
