@@ -17,6 +17,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var uglify       = require('gulp-uglify');
 var concat       = require('gulp-concat');
 var gutil        = require('gulp-util');
+var browserify   = require('browserify');
+var transform    = require('vinyl-transform');
 
 // -------------------------------------
 //   Variables
@@ -38,12 +40,24 @@ var options = {
   js: {
     files: ['bower_components/angular/angular.js',
             'bower_components/jquery/dist/jquery.js',
+            'bower_components/codemirror/lib/codemirror.js',
+            'bower_components/cs_console/compiled/cs_console.js',
+            'bower_components/mocha/mocha.js',
+            'bower_components/abecedary/dist/abecedary.js',
+            'bower_components/abecedary/dist/runner.js',
             'public/javascripts/**/*.js'],
 
     destFile: 'application.js',
     destDir:  'public/javascripts'
-  }
+  },
 
+  browserify: {
+    files: ['node_modules/chai/index.js',
+            'node_modules/javascript-sandbox/lib/index.js'],
+
+    destFile: 'browserify.js',
+    destDir:  'public/javascripts'
+  }
 };
 
 // -------------------------------------
@@ -90,6 +104,23 @@ gulp.task('sass', function () {
 });
 
 // -------------------------------------
+//   Task: Browserify
+// -------------------------------------
+
+gulp.task('browserify', function() {
+  var browserified = transform(function(filename) {
+    var b = browserify(filename);
+
+    return b.bundle();
+  });
+
+  return gulp.src(options.browserify.files)
+    .pipe(browserified)
+    .pipe(concat(options.browserify.destFile))
+    .pipe(gulp.dest(options.browserify.destDir));
+});
+
+// -------------------------------------
 //   Task: JavaScript Uglify
 // -------------------------------------
 
@@ -97,7 +128,7 @@ gulp.task('uglify', function() {
   options.js.files.push('!public/javascripts/application.js');
 
   gulp.src(options.js.files)
-    .pipe(uglify())
-    .pipe(concat('application.js'))
+    .pipe(uglify({ mangle: false }))
+    .pipe(concat(options.js.destFile))
     .pipe(gulp.dest(options.js.destDir));
 });

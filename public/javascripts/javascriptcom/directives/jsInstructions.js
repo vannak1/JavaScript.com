@@ -3,7 +3,7 @@ angular.module('javascriptcom').directive('jsInstructions', function() {
     templateUrl: 'javascripts/javascriptcom/templates/js-instructions.html',
     replace: true,
     link: function(scope, element) {
-      element.text(scope.challenges[0].instructions)
+      element.text(scope.challenge['instructions']);
     }
   };
 });
