@@ -715,6 +715,9 @@ img, svg {
 .list--divided--f > .list-item {
   padding-bottom: 0; }
 
+.list--divided--l > .list-item {
+  padding-bottom: 2.5em; }
+
 .list--inline > .list-item {
   display: inline;
   margin-right: 1.25em; }
