@@ -9,6 +9,8 @@ var news = require('./routes/news');
 var flow = require('./routes/flow');
 
 var app = express();
+var baseURL = (process.env.NODE_ENV === 'production' ?
+    "http://javascriptcom.herokuapp.com/" : "http://localhost:3000/")
 
 // Must come before calls to app.use
 var passport = require('passport');
