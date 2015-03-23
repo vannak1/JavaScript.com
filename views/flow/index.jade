@@ -1,18 +1,47 @@
 extends /views/layouts/layout
 
 block content
-  h1 Latest News
-  p= `Today ${new Date()}`
 
-  p
-    a(href="flow/new") New Story
+  //
+    h1 Latest News
+    p= `Today ${new Date()}`
 
-  - for flow_item in flow_collection
-    section.article
-      h3
-        a(href="/flow/"+flow_item.id)= flow_item.title
-      = flow_item.body
-      p(class="read-more")
-        a(href=flow_item.url) Read More
-      p(class="github-user")
-        | From #[a(href="#") GitHub User]
+    p
+      a(href="flow/new") New Story
+
+    - for flow_item in flow_collection
+      section.article
+        h3
+          a(href="/flow/"+flow_item.id)= flow_item.title
+        = flow_item.body
+        p(class="read-more")
+          a(href=flow_item.url) Read More
+        p(class="github-user")
+          | From #[a(href="#") GitHub User]
+
+  section.row
+    .cell.cell--s.well.well--l.well--xl
+
+      .bdrb.pbm.mbl
+        .split
+          .split-item
+            .split-cell
+              h1.h2.tcs Top News
+            .split-cell
+              a.btn.btn--a.btn--a--bordered(href='/flow/new') New Post
+
+      ul.list.list--l.list--divided.list--divided--l
+
+        - index = 6; while(index--)
+          li.list-item
+            .bucket
+              .bucket-media
+                img.thumb(src='http://placehold.it/40')
+              .bucket-content
+                h2.h3
+                  a.tct(href='#') This is an Article's Title in Title Case
+                p.tcs.tfh Given Surname | 3 hours ago
+                p.mbf.
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  Vivamus vitae risus vitae lorem iaculis placerat. Aliquam sit
+                  amet felis. Etiam congue. Donec risus risus, pretium...
