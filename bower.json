@@ -20,6 +20,7 @@
     "cs_console": "*",
     "codemirror": "~3.16.0",
     "abecedary": "~0.0.5",
-    "mocha": "~2.2.1"
+    "mocha": "~2.2.1",
+    "lodash": "~3.5.0"
   }
 }

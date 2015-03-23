@@ -7,7 +7,7 @@ var assert = require('chai').assert,
   isString,
   variable,
   userName = 'Tyler',
-  input = code[0].code;
+  input = code;
 
 describe('set_a_var', function(){
 

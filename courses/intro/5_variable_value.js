@@ -6,19 +6,19 @@ var assert = require('chai').assert,
   varFound,
   isString,
   message,
-  input = code[0].code;
+  input = code;
 
   var userName = code[0].clientStore.userName;
 
   before(function(){
-  
+
     var exec = "var "+ code[0].clientStore.variable + " = '" + code[0].clientStore.userName + "' \\n " + input;
     try {
       message = sandbox.evaluate(exec)
     } catch(e) {
       message = e.message
     }
-  }); 
+  });
 describe('set_a_var', function(){
 
   it('f_null', function(){

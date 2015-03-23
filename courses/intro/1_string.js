@@ -1,8 +1,8 @@
 tests = `
 var assert       = require('chai').assert,
     Sandbox      = require('javascript-sandbox'),
-    CS           = require('./cs.js'),
-    consoleInput = code[0].code,
+    Helper     = require('/courses/helper/index.js'),
+    consoleInput = code,
     userName;
 
 if(typeof(sandbox) == 'undefined') {
@@ -10,9 +10,25 @@ if(typeof(sandbox) == 'undefined') {
 }
 
 describe('set_name', function() {
+
+  details(function() {
+    var message;
+    try {
+      message = sandbox.evaluate(consoleInput)
+    } catch(e) {
+      message = e.message
+    }
+    return {
+      output: message,
+      clientStore: {
+        userName: userName
+      }
+    };
+  });
+
   it('f_no_name', function() {
     var nameUsed;
-    CS.traverse(consoleInput, function(node) {
+    Helper.traverse(consoleInput, function(node) {
       if (node.type == "Program" && node.body[0].type == "ExpressionStatement") {
         nameUsed = typeof eval(node.body[0].expression.raw) == "string";
       }
@@ -25,28 +41,13 @@ describe('set_name', function() {
 
   it('f_empty_string', function() {
     var isNotEmptyString;
-    CS.traverse(consoleInput, function(node) {
+    Helper.traverse(consoleInput, function(node) {
       if (node.type == "Program" && node.body[0].type == "ExpressionStatement") {
         isNotEmptyString = eval(node.body[0].expression.raw) != "";
       }
     });
     assert(isNotEmptyString);
   });
-});
-
-details("output", function() {
-  var message;
-  try {
-    message = sandbox.evaluate(consoleInput)
-  } catch(e) {
-    message = e.message
-  }
-  return {
-    result: message,
-    clientStore: {
-      userName: userName
-    }
-  };
 });
 `
 

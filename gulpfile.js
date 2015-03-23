@@ -19,6 +19,8 @@ var concat       = require('gulp-concat');
 var gutil        = require('gulp-util');
 var browserify   = require('browserify');
 var transform    = require('vinyl-transform');
+var shell        = require('gulp-shell');
+var _            = require('lodash');
 
 // -------------------------------------
 //   Variables
@@ -40,24 +42,36 @@ var options = {
   js: {
     files: ['bower_components/angular/angular.js',
             'bower_components/jquery/dist/jquery.js',
+            'bower_components/lodash/lodash.js',
             'bower_components/codemirror/lib/codemirror.js',
             'bower_components/cs_console/compiled/cs_console.js',
-            'bower_components/mocha/mocha.js',
             'bower_components/abecedary/dist/abecedary.js',
-            'bower_components/abecedary/dist/runner.js',
-            'public/javascripts/**/*.js'],
+            'client/**/*.js'],
 
     destFile: 'application.js',
     destDir:  'public/javascripts'
   },
 
   browserify: {
-    files: ['node_modules/chai/index.js',
-            'node_modules/javascript-sandbox/lib/index.js'],
+    files: ['chai',
+            'javascript-sandbox',
+            'esprima',
+            'estraverse',
+            './courses/helper/index.js'],
+    destFile: 'vendor.js',
+    destDir:  'bower_components/abecedary/dist'
+  },
 
-    destFile: 'browserify.js',
+  abecedary: {
+    files: [
+      'bower_components/abecedary/dist/vendor.js',
+      'node_modules/mocha/mocha.js',
+      'bower_components/abecedary/dist/reporter.js',
+    ],
+    destFile: 'abecedary-javascript-com.js',
     destDir:  'public/javascripts'
-  }
+  },
+
 };
 
 // -------------------------------------
@@ -71,7 +85,15 @@ gulp.task('default', function() {
   });
 
   watch(options.js.files, function(files) {
-    gulp.start(uglify);
+    gulp.start('javascript');
+  });
+
+  watch(options.browserify.files, function(files) {
+    gulp.start('browserify');
+  });
+
+  watch(options.abecedary.files, function(files) {
+    gulp.start('abecedary');
   });
 });
 
@@ -108,27 +130,37 @@ gulp.task('sass', function () {
 // -------------------------------------
 
 gulp.task('browserify', function() {
-  var browserified = transform(function(filename) {
-    var b = browserify(filename);
+  var files = _.collect(options.browserify.files, function(file) {
+    return '-r ' + file;
+  }).join(' ');
 
-    return b.bundle();
-  });
+  var output = options.browserify.destDir + '/' + options.browserify.destFile;
 
-  return gulp.src(options.browserify.files)
-    .pipe(browserified)
-    .pipe(concat(options.browserify.destFile))
-    .pipe(gulp.dest(options.browserify.destDir));
+
+  return gulp.task('browserify', shell.task(['node_modules/browserify/bin/cmd.js '+files+' -o ' + output]));
+});
+
+
+
+// -------------------------------------
+//   Task: Abecedary
+// -------------------------------------
+
+gulp.task('abecedary', function() {
+  // Combine the non-browserified files and the browserified ones
+  // to create the runner script, included in the test iframe.
+  gulp.src(options.abecedary.files)
+    .pipe(concat(options.abecedary.destFile))
+    .pipe(gulp.dest(options.abecedary.destDir));
 });
 
 // -------------------------------------
-//   Task: JavaScript Uglify
+//   Task: JavaScript
 // -------------------------------------
 
-gulp.task('uglify', function() {
-  options.js.files.push('!public/javascripts/application.js');
-
+gulp.task('javascript', function() {
   gulp.src(options.js.files)
-    .pipe(uglify({ mangle: false }))
+    // .pipe(uglify({ mangle: false }))
     .pipe(concat(options.js.destFile))
     .pipe(gulp.dest(options.js.destDir));
 });

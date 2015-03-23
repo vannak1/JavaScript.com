@@ -31,6 +31,8 @@
   "devDependencies": {
     "browserify": "9.0.3",
     "chai": "~1.8.1",
+    "esprima": "^2.1.0",
+    "estraverse": "^3.1.0",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-concat": "^2.5.2",
@@ -42,6 +44,8 @@
     "gulp-util": "^3.0.4",
     "gulp-watch": "^4.1.1",
     "javascript-sandbox": "https://github.com/codeschool/javascript-sandbox/tarball/master",
+    "lodash": "^3.5.0",
+    "mocha": "^2.2.1",
     "vinyl-transform": "^1.0.0"
   }
 }

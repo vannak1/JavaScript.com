@@ -1,0 +1,109 @@
+// *************************************
+//
+//   Console
+//   -> Terminal window
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .console[single]
+//
+//   .console-ui
+//
+//     .console-hint
+//
+//     .console-msg[error|help|success]
+//       %p.console-msg-title
+//
+// *************************************
+
+$console-cursor-size: 6px !default
+$console-maxHeight: 300px !default
+$console-minHeight: 50px !default
+$c-error: #b24626 !default
+$c-text: #585a5b !default
+$c-warning: #f2c342 !default
+$c-success: #31a480 !default
+
+$c-text-invert: #fff !default
+$console-background: $c-text !default
+$console-color: $c-text-invert !default
+
+$b-space: em(20px) !default
+$b-borderRadius: 3px !default
+$b-space-s: em(10px) !default
+$c-subdue: #828582 !default
+
+
+.console
+  background: $console-background
+  box-sizing: border-box
+  min-height: 100%
+  overflow: auto
+  padding: $b-space
+  width: 100%
+
+  ul
+    @extend .lr
+
+  li
+    color: $console-color
+
+  .CodeMirror
+    background: $console-background
+    color: $console-color
+
+    div.CodeMirror-cursor
+      border-color: $console-color
+      border-size: $console-cursor-size
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Single ----- //
+
+.console--single
+  border-radius: $b-borderRadius
+  overflow: auto
+
+  .cs-console-height
+    max-height: $console-maxHeight
+    min-height: $console-minHeight
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Hint ----- //
+
+.console-hint
+  margin-top: $b-space-s
+
+// ----- Message ----- //
+
+.console-msg
+  color: $c-subdue
+  margin-top: $b-space-s
+
+// Error
+
+.console-msg--error
+  color: $c-error
+
+// Help
+
+.console-msg--help
+  color: $c-warning
+
+// Success
+
+.console-msg--success
+  color: $c-success
+
+// Title
+
+.console-msg-title
+  color: $console-color
+  margin-top: $b-space-s

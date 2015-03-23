@@ -2,7 +2,7 @@ tests = `
 var assert       = require('chai').assert,
     Sandbox      = require('javascript-sandbox'),
     CS           = require('./cs.js'),
-    consoleInput = code[0].code,
+    consoleInput = code,
     message;
 if(typeof(sandbox) == 'undefined') {
   var sandbox = new Sandbox();
