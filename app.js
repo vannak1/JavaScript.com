@@ -71,4 +71,4 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 
 // Set absolute paths for partials
-app.locals.basedir = path.join(__dirname, 'views');
+app.locals.basedir = path.join(__dirname, '');
