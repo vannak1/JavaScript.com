@@ -3,6 +3,8 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 
+baseURL = (process.env.NODE_ENV === 'production' ? "http://javascriptcom.herokuapp.com/" : "http://localhost:3000/");
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var news = require('./routes/news');
