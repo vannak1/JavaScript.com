@@ -748,6 +748,10 @@ img, svg {
 .row--b {
   background: #6d7c79; }
 
+.thumb {
+  border-radius: 50%;
+  display: block; }
+
 .sector {
   position: relative; }
   .sector::before {
