@@ -778,6 +778,28 @@ img, svg {
 .has-sector {
   overflow: hidden; }
 
+.split {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.split--divided .split-item:not(:last-child) {
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 0.75em; }
+.split--divided .split-item:not(:first-child) {
+  padding-top: 0.75em; }
+
+.split-cell {
+  display: table-cell; }
+  .split-cell:first-child {
+    width: 10000px; }
+  .split-cell:last-child {
+    white-space: nowrap; }
+
+.split-item {
+  display: table;
+  width: 100%; }
+
 .well {
   margin-bottom: 1.25em;
   margin-top: 1.25em; }
