@@ -795,10 +795,13 @@ img, svg {
   padding: 0; }
 
 .split--divided .split-item:not(:last-child) {
-  border-bottom: 1px solid #dddddd;
-  padding-bottom: 0.75em; }
+  border-bottom: 2px solid #efefef;
+  padding-bottom: 1.25em; }
 .split--divided .split-item:not(:first-child) {
-  padding-top: 0.75em; }
+  padding-top: 1.25em; }
+
+.split--middle .split-cell {
+  vertical-align: middle; }
 
 .split-cell {
   display: table-cell; }
