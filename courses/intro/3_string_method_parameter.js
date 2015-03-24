@@ -60,13 +60,13 @@ failures = {
 
 module.exports = {
   'title': 'String Method Parameter',
-  'instructions': `Nice pop-up box, {{username}}, but there wasn't much in it. How can we get that box to show your name?
+  'instructions': `Nice pop-up box, {{state.username}}, but there wasn't much in it. How can we get that box to show your name?
 
 Well, many methods (like the \`alert\` method) can take instructions, which we call *parameters*. By sending a string into the \`alert\` method, we can put text on the pop-up box. Try it!
 
-> \`alert("{{username}}");\``,
+> \`alert("{{state.username}}");\``,
   'hints': [
-    "Type in your first name surrounded by double quotes inside the alert method: `alert(\"{{username}}\");`"
+    "Type in your first name surrounded by double quotes inside the alert method: `alert(\"{{state.username}}\");`"
   ],
   'tests': tests,
   'failures': failures,

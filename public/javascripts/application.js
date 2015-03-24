@@ -55792,7 +55792,7 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
   };
 }]);
 
-angular.module('javascriptcom').directive('jsInstructions', function() {
+angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked', 'jsChallengeState', function($compile, marked, jsChallengeState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/instructions.html',
     replace: true,
@@ -55801,9 +55801,11 @@ angular.module('javascriptcom').directive('jsInstructions', function() {
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function() {}
+    controller: function() {
+
+    }
   };
-});
+}]);
 
 angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function SafeHtmlDirective($sce) {
   return {
@@ -55901,13 +55903,16 @@ angular.module('javascriptcom').factory('jsCommandFactory', ['_', 'jsHelpCommand
 // Represents a Mocha report object with a better interface
 
 angular.module('javascriptcom').factory('jsCommandReport', ['_', function(_) {
-
   function jsCommandReport(challenge, report) {
     this.challenge = challenge;
     this.report = report;
 
     this.isSuccess = function() {
       return this.report.failures.length == 0;
+    }
+
+    this.state = function() {
+      return this.report.details.state;
     }
 
     this.successMessage = function() {
@@ -55946,7 +55951,7 @@ angular.module('javascriptcom').factory('jsCommandReport', ['_', function(_) {
   return jsCommandReport;
 }]);
 
-angular.module('javascriptcom').factory('jsExecutor', ['Abecedary', function(_) {
+angular.module('javascriptcom').factory('jsExecutor', ['Abecedary', function(Abecedary) {
   var iframeTemplate = [
     '<!DOCTYPE html>',
     '<html>',
@@ -55997,6 +56002,16 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
   }
 
   return state;
+}]);
+
+angular.module('javascriptcom').factory('jsChallengeState', ['_', function(_) {
+
+  return {
+    state: {},
+    update: function(newState) {
+      this.state = _.merge(this.state, newState)
+    }
+  };
 }]);
 
 angular.module('javascriptcom').factory('Abecedary', ['$window',
@@ -56062,11 +56077,10 @@ angular.module('javascriptcom').factory('jsHintCommand', ['$q', function($q) {
   return runHintCommand;
 }]);
 
-angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsCommandReport', function($, $q, jsExecutor, jsCommandReport) {
+angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsChallengeState', 'jsCommandReport', function($, $q, jsExecutor, jsChallengeState, jsCommandReport) {
   function generateResponse(content, className) {
     return { content: $("<div class='console-msg "+(className ? 'console-msg--'+className : '')+"'>"+content+"</div>")[0] };
   }
-
 
   function runJavaScriptCommand(challenge, line) {
     var deferred = $q.defer();
@@ -56075,6 +56089,8 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
       var response = [],
           result = new jsCommandReport(challenge, results),
           output = result.output();
+
+      jsChallengeState.update(result.state());
 
       response.push(generateResponse(output));
 

@@ -1,4 +1,4 @@
-angular.module('javascriptcom').factory('jsExecutor', ['Abecedary', function(_) {
+angular.module('javascriptcom').factory('jsExecutor', ['Abecedary', function(Abecedary) {
   var iframeTemplate = [
     '<!DOCTYPE html>',
     '<html>',

@@ -22,7 +22,7 @@ describe('set_a_var', function(){
 
   details(function() {
     return {
-      output: message,
+      output: message
     };
   });
 
@@ -47,6 +47,12 @@ describe('set_a_var', function(){
 
   it('passed all tests', function() {
     js.state.username = js.evaluate('name');
+  });
+
+  details('state', function() {
+    return {
+      username: JSON.stringify(js.state.username)
+    };
   });
 });
 `

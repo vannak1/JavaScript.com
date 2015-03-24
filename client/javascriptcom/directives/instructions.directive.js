@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsInstructions', function() {
+angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked', 'jsChallengeState', function($compile, marked, jsChallengeState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/instructions.html',
     replace: true,
@@ -7,6 +7,8 @@ angular.module('javascriptcom').directive('jsInstructions', function() {
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function() {}
+    controller: function() {
+
+    }
   };
-});
+}]);

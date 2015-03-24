@@ -1,8 +1,7 @@
-angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsCommandReport', function($, $q, jsExecutor, jsCommandReport) {
+angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsChallengeState', 'jsCommandReport', function($, $q, jsExecutor, jsChallengeState, jsCommandReport) {
   function generateResponse(content, className) {
     return { content: $("<div class='console-msg "+(className ? 'console-msg--'+className : '')+"'>"+content+"</div>")[0] };
   }
-
 
   function runJavaScriptCommand(challenge, line) {
     var deferred = $q.defer();
@@ -11,6 +10,8 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
       var response = [],
           result = new jsCommandReport(challenge, results),
           output = result.output();
+
+      jsChallengeState.update(result.state());
 
       response.push(generateResponse(output));
 

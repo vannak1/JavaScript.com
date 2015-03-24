@@ -1,13 +1,16 @@
 // Represents a Mocha report object with a better interface
 
 angular.module('javascriptcom').factory('jsCommandReport', ['_', function(_) {
-
   function jsCommandReport(challenge, report) {
     this.challenge = challenge;
     this.report = report;
 
     this.isSuccess = function() {
       return this.report.failures.length == 0;
+    }
+
+    this.state = function() {
+      return this.report.details.state;
     }
 
     this.successMessage = function() {

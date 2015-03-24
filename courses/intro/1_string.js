@@ -13,10 +13,11 @@ describe('set_name', function() {
   });
 
   details(function() {
-    if(message) { js.state.username = message; }
     return {
       output: message,
-      username: message
+      state: {
+        username: JSON.stringify(message)
+      }
     };
   });
 
@@ -32,6 +33,13 @@ describe('set_name', function() {
 
   it('f_empty_string', function() {
     js.assert(message.length > 0);
+  });
+
+  details('state', function() {
+    js.state.username = message;
+    return {
+      username: JSON.stringify(message)
+    };
   });
 });
 `
