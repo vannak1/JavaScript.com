@@ -5,7 +5,8 @@
       <h2>Challenges</h2>
       <ul>
         <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }">
-          {{ ::challenge.title }}
+          <a href='#' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)'>{{ ::challenge.title }}</a>
+          <span ng-if='!challenge.started'>{{ ::challenge.title }}</span>
         </li>
       </ul>
     </div>

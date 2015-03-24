@@ -55788,6 +55788,10 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
     controller: function jsChallengeResourceController(jsCourseChallengeResource) {
       this.challenges = jsCourseChallengeResource.query({ course: this.course });
       jsChallengeProgress.setChallenges(this.challenges);
+
+      this.activateChallenge = function(challenge) {
+        jsChallengeProgress.activate(challenge)
+      }
     }
   };
 }]);
