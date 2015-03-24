@@ -1602,3 +1602,18 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   display: none; }
 .home .js-course .js-course--challenges .js-challenge.is-active {
   display: block !important; }
+
+.js-course--toc {
+  width: 35%;
+  float: left; }
+  .js-course--toc ul li.is-active {
+    color: red;
+    font-weight: bold; }
+  .js-course--toc ul li.is-completed {
+    color: green; }
+
+.js-course--challenges {
+  width: 60%;
+  float: left;
+  height: 600px;
+  overflow: scroll; }

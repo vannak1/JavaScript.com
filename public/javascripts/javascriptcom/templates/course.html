@@ -4,7 +4,7 @@
     <div class='js-course--toc'>
       <h2>Challenges</h2>
       <ul>
-        <li ng-repeat='challenge in ctrl.challenges'>
+        <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }">
           {{ ::challenge.title }}
         </li>
       </ul>
