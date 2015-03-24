@@ -706,7 +706,7 @@ img, svg {
   padding: 0; }
 
 .list--divided > .list-item {
-  border-bottom: 4px solid #efefef;
+  border-bottom: 2px solid #efefef;
   padding-bottom: 1.25em; }
   .list--divided > .list-item:last-child {
     border-bottom: 0;
@@ -869,6 +869,9 @@ img, svg {
 
 .bdrb {
   border-bottom: 2px solid #efefef; }
+
+.bdrbl {
+  border-bottom: 4px solid #efefef; }
 
 .db {
   display: block; }
