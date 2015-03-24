@@ -846,7 +846,8 @@ img, svg {
   color: #6d7c79;
   display: block;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-bottom: 0; }
 
 .label--highlight {
   color: #e5bb31; }
