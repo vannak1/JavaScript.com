@@ -1,29 +1,86 @@
 extends /views/layouts/layout
 
 block content
+
+  //
     h1= flow.title
     p= flow.body
-    p(class="read-more")
-        a(href=flow.url) Read More
-    p(class="github-user")
-        | From #[a(href="#") GitHub User]
+
+    p(class='read-more')
+      a(href=flow.url) Read More
+
+    p(class='github-user').
+      From #[a(href='#') GitHub User]
 
     if user.authenticated
-        form(action="/flow/"+flow.id+"/comment" method="POST")
-            p
-                textarea(name="body" rows=5 cols=80)
-            p
-                input(type="hidden" name="_csrf" value=token)
-                input(type="submit" value="Submit")
+      form(action='/flow/'+flow.id+'/comment' method='POST')
+        fieldset.form-field
+          textarea(name='body' rows='5' cols='80')
+        fieldset.form-field
+          input(type='hidden' name='_csrf' value=token)
+          input(type='submit' value='Submit')
     else
-        p
-            a(href="/flow/auth/github") Sign In with GitHub
-
+      p
+        a(href='/flow/auth/github') Sign In with GitHub
 
     - for comment in comments
-        section.comment
-            p= comment.body
-            p(class="github-user")
-                | From #[a(href="#") GitHub User]
+      section.comment
+        p= comment.body
+        p(class='github-user').
+          From
+          a(href='#'') GitHub User
 
+  section.row
+    .cell.cell--s.well.well--xl
 
+      article.bdrbl.pbxl.mbxl
+
+        p.label.mbxs March 4, 2015
+        h1 This is an Article's Title in Title Case
+
+        .bucket.bucket--flag.mbm
+          .bucket-media
+            img.thumb(src='http://placehold.it/40')
+          .bucket-content.h3
+            ul.list.list--inline.list--inline--divided.tfh
+              li.list-item Given Surname
+              li.list-item
+                a(href='#') 2 Comments
+
+        p.mbf.tsl.
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus
+          vitae risus vitae lorem iaculis placerat. Aliquam sit amet felis.
+          Etiam congue. Donec risus risus, pretium ac, tincidunt eu, tempor eu,
+          quam. Morbi blandit mollis magna. Suspendisse eu tortor. Donec vitae
+          felis nec ligula blandit rhoncus. Ut a pede ac neque mattis
+          facilisis. Nulla nunc ipsum, sodales vitae, hendrerit non, imperdiet
+          ac, ante. Morbi sit amet mi. Ut magna. Curabitur id est. Nulla velit.
+          Sed consectetuer sodales justo. Aliquam dictum gravida libero. Sed eu
+          turpis.
+
+      h2.h3.tcs.mbm 2 Comments
+
+      ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
+        - index = 3; while(index--)
+          li.list-item
+            .bucket
+              .bucket-media
+                img.thumb(src='http://placehold.it/40')
+              .bucket-content
+                p.tfh
+                  span.mrs.twb Given Surname
+                  span.tcs.tsi 5 minutes ago
+                p.mbf.
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  Vivamus vitae risus vitae lorem iaculis placerat. Aliquam sit
+                  amet felis. Etiam congue. Donec risus risus, pretium...
+
+      h2.h3.tcs.mbm Post a New Comment
+
+      form.form
+
+        fieldset.form-field
+          p.form-instruction.tar Some HTML is ok.
+          textarea.form-input.form-textarea
+
+        a.btn.btn--a.form-btn(href='/flow/sign_in') Authenticate with GitHub
