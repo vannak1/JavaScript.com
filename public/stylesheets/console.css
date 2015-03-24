@@ -1,0 +1,42 @@
+.console {
+  background: #585a5b;
+  box-sizing: border-box;
+  min-height: 100%;
+  overflow: auto;
+  padding: em(20px);
+  width: 100%; }
+  .console li {
+    color: #fff; }
+  .console .CodeMirror {
+    background: #585a5b;
+    color: #fff; }
+    .console .CodeMirror div.CodeMirror-cursor {
+      border-color: #fff;
+      border-size: 6px; }
+
+.console--single {
+  border-radius: 3px;
+  overflow: auto; }
+  .console--single .cs-console-height {
+    max-height: 300px;
+    min-height: 50px; }
+
+.console-hint {
+  margin-top: em(10px); }
+
+.console-msg {
+  color: #828582;
+  margin-top: em(10px); }
+
+.console-msg--error {
+  color: #b24626; }
+
+.console-msg--help {
+  color: #f2c342; }
+
+.console-msg--success {
+  color: #31a480; }
+
+.console-msg-title {
+  color: #fff;
+  margin-top: em(10px); }

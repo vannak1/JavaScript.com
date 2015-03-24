@@ -1,0 +1,9 @@
+<div class='js-course'>
+  <div ng-if='ctrl.challenges.length'>
+    <js-challenge ng-repeat='challenge in ctrl.challenges' challenge='challenge'></js-challenge>
+  </div>
+
+  <div ng-if='!ctrl.challenges.length'>
+    <p>Loading challenges...
+  </div>
+</div>
