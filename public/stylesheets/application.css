@@ -505,11 +505,11 @@ img, svg {
 .cell {
   margin-left: auto;
   margin-right: auto;
-  max-width: 64em;
+  max-width: 75em;
   position: relative; }
 
 .cell--s {
-  max-width: 43.75em; }
+  max-width: 48.75em; }
 
 .form--condensed .form-field {
   margin-bottom: 0.625em; }
@@ -580,11 +580,22 @@ img, svg {
     .form-input--dark:focus::placeholder {
       color: #3c899d; }
 
+.form-instruction {
+  color: #6d7c79;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-style: italic;
+  margin-bottom: 0.625em; }
+
 .form-label {
+  color: #6d7c79;
   display: block;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 87.5%;
   font-weight: bold;
   margin-bottom: 0.3125em; }
+
+.form-textarea {
+  resize: vertical; }
 
 .g {
   display: block;
@@ -715,6 +726,9 @@ img, svg {
 .list--divided--f > .list-item {
   padding-bottom: 0; }
 
+.list--divided--l > .list-item {
+  padding-bottom: 2.5em; }
+
 .list--inline > .list-item {
   display: inline;
   margin-right: 1.25em; }
@@ -748,6 +762,10 @@ img, svg {
 .row--b {
   background: #6d7c79; }
 
+.thumb {
+  border-radius: 50%;
+  display: block; }
+
 .sector {
   position: relative; }
   .sector::before {
@@ -770,6 +788,31 @@ img, svg {
 
 .has-sector {
   overflow: hidden; }
+
+.split {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.split--divided .split-item:not(:last-child) {
+  border-bottom: 2px solid #efefef;
+  padding-bottom: 1.25em; }
+.split--divided .split-item:not(:first-child) {
+  padding-top: 1.25em; }
+
+.split--middle .split-cell {
+  vertical-align: middle; }
+
+.split-cell {
+  display: table-cell; }
+  .split-cell:first-child {
+    width: 10000px; }
+  .split-cell:last-child {
+    white-space: nowrap; }
+
+.split-item {
+  display: table;
+  width: 100%; }
 
 .well {
   margin-bottom: 1.25em;
@@ -817,7 +860,8 @@ img, svg {
   color: #6d7c79;
   display: block;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-bottom: 0; }
 
 .label--highlight {
   color: #e5bb31; }
@@ -838,7 +882,10 @@ img, svg {
   background: #9cd4df; }
 
 .bdrb {
-  border-bottom: 1px solid #efefef; }
+  border-bottom: 2px solid #efefef; }
+
+.bdrbl {
+  border-bottom: 4px solid #efefef; }
 
 .db {
   display: block; }
@@ -1047,6 +1094,9 @@ img, svg {
 
 .tac {
   text-align: center; }
+
+.tar {
+  text-align: right; }
 
 .tch {
   color: #e5bb31; }
