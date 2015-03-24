@@ -5997,7 +5997,7 @@ module.exports={
   },
   "_id": "estraverse@3.1.0",
   "_shasum": "15e28a446b8b82bc700ccc8b96c78af4da0d6cba",
-  "_from": "estraverse@*",
+  "_from": "estraverse@>=3.1.0 <4.0.0",
   "_npmVersion": "2.0.0-alpha-5",
   "_npmUser": {
     "name": "constellation",
@@ -6008,7 +6008,8 @@ module.exports={
     "tarball": "http://registry.npmjs.org/estraverse/-/estraverse-3.1.0.tgz"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/estraverse/-/estraverse-3.1.0.tgz"
+  "_resolved": "https://registry.npmjs.org/estraverse/-/estraverse-3.1.0.tgz",
+  "readme": "ERROR: No README data found!"
 }
 
 },{}],"/courses/helper/index.js":[function(require,module,exports){

@@ -16,9 +16,6 @@ var rename       = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify       = require('gulp-uglify');
 var concat       = require('gulp-concat');
-var gutil        = require('gulp-util');
-var browserify   = require('browserify');
-var transform    = require('vinyl-transform');
 var shell        = require('gulp-shell');
 var _            = require('lodash');
 
@@ -137,7 +134,6 @@ gulp.task('browserify', function() {
   }).join(' ');
 
   var output = options.browserify.destDir + '/' + options.browserify.destFile;
-
 
   return gulp.task('browserify', shell.task(['node_modules/browserify/bin/cmd.js '+files+' -o ' + output]));
 });
