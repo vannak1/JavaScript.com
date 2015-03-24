@@ -1,4 +1,4 @@
-angular.module('javascriptcom').factory('jsHelpCommand', ['$', function($) {
+angular.module('javascriptcom').factory('jsHelpCommand', ['$', '$q', function($, $q) {
   var helpMessage = [
     '<div class="console-msg console-msg--help">',
     '  <p class="console-msg-title">The following commands are available:</p>',
@@ -9,8 +9,12 @@ angular.module('javascriptcom').factory('jsHelpCommand', ['$', function($) {
     '</div>'
   ].join('\n');
 
-  function runHelpCommand(challenge, report) {
-    report({ content: $(helpMessage)[0] });
+  function runHelpCommand(challenge) {
+    var message = $(helpMessage)[0];
+
+    var deferred = $q.defer();
+    deferred.reject(message);
+    return deferred.promise;
   }
 
   return runHelpCommand;

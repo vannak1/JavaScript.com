@@ -10,6 +10,10 @@ angular.module('javascriptcom').factory('jsCommandReport', [function() {
       return this.report.failures.length == 0;
     }
 
+    this.successMessage = function() {
+      return "Correct!";
+    }
+
     this.failureMessage = function() {
       return this.failure().message;
     }

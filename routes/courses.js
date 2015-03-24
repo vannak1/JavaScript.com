@@ -15,6 +15,16 @@ router
     } else {
       res.json(course);
     }
+  })
+  .get('/:id/challenges.json', function(req, res) {
+    var course = Course.find(req.params.id);
+
+    if (course.error) {
+      res.status(404).json(course);
+    } else {
+      course.challenges[0].active = true;
+      res.json(course.challenges);
+    }
   });
 
 module.exports = router;

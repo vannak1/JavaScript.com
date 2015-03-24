@@ -1,7 +1,7 @@
 tests = `
 var assert       = require('chai').assert,
     Sandbox      = require('javascript-sandbox'),
-    CS           = require('./cs.js'),
+    Helper       = require('/courses/helper/index.js'),
     consoleInput = code,
     message;
 if(typeof(sandbox) == 'undefined') {
@@ -13,16 +13,19 @@ try {
 } catch(e) {
   message = e.message
 }
+
 describe('alert example', function() {
+
+  details(function() {
+    return {
+      'result': message
+    };
+  });
+
   it('f_no_alert', function() {
     var alertWasCalled = sandbox.evaluate('_alertCalled');
     assert(alertWasCalled);
   });
-});
-details("output", function() {
-  return {
-    'result': message
-  };
 });
 `
 

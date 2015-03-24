@@ -1,7 +1,7 @@
 tests = `
 var assert       = require('chai').assert,
     Sandbox      = require('javascript-sandbox'),
-    Helper     = require('/courses/helper/index.js'),
+    Helper       = require('/courses/helper/index.js'),
     consoleInput = code,
     userName;
 

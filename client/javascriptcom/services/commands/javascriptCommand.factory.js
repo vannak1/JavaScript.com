@@ -1,4 +1,4 @@
-angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', 'Abecedary', 'jsCommandReport', function($, Abecedary, jsCommandReport) {
+angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'Abecedary', 'jsCommandReport', function($, $q, Abecedary, jsCommandReport) {
 
   var iframeTemplate = [
     '<!DOCTYPE html>',
@@ -16,8 +16,9 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', 'Abecedary'
     return { content: $("<div class='console-msg console-msg--"+(className ? className : '')+"'>"+content+"</div>")[0] };
   }
 
-  function runJavaScriptCommand(challenge, report, line) {
-    var sandbox = new Abecedary('/iframe.html', iframeTemplate);
+  function runJavaScriptCommand(challenge, line) {
+    var deferred = $q.defer(),
+        sandbox = new Abecedary('/iframe.html', iframeTemplate);
 
     sandbox.on('complete', function(results) {
       var response = [],
@@ -28,14 +29,16 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', 'Abecedary'
 
       if(result.isSuccess()) {
         response.push(generateResponse('Correct!', 'success'));
+        deferred.resolve(response);
       } else {
         response.push(generateResponse(result.failureMessage(), 'error'));
+        deferred.reject(response);
       }
-
-      report(response);
     });
 
-    sandbox.run(line, challenge.tests)
+    sandbox.run(line, challenge.tests);
+
+    return deferred.promise;
   }
 
   return runJavaScriptCommand;

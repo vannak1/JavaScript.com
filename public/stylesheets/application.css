@@ -1526,3 +1526,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .console-msg-title {
   color: #fff;
   margin-top: 0.625em; }
+
+.js-challenge {
+  display: none; }
+  .js-challenge.is-active {
+    display: block; }

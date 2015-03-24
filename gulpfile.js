@@ -40,9 +40,11 @@ var options = {
   },
 
   js: {
-    files: ['bower_components/angular/angular.js',
-            'bower_components/jquery/dist/jquery.js',
+    files: ['bower_components/jquery/dist/jquery.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-resource/angular-resource.js',
             'bower_components/lodash/lodash.js',
+            'bower_components/marked/marked.min.js',
             'bower_components/codemirror/lib/codemirror.js',
             'bower_components/cs_console/compiled/cs_console.js',
             'bower_components/abecedary/dist/abecedary.js',

@@ -7,7 +7,10 @@ var Course = {
   },
   find(id) {
     if (this.all().indexOf(id) > -1) {
-      return require(path.join(__dirname, '..', 'courses', id, 'index.js'))
+      return {
+        name: id,
+        challenges: require(path.join(__dirname, '..', 'courses', id, 'index.js'))
+      };
     } else {
       return { error: `invalid course ${id}` };
     }
