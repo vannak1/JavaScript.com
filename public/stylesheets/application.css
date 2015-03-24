@@ -580,11 +580,20 @@ img, svg {
     .form-input--dark:focus::placeholder {
       color: #3c899d; }
 
+.form-instruction {
+  color: #6d7c79;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-style: italic;
+  margin-bottom: 0.625em; }
+
 .form-label {
   display: block;
   font-size: 87.5%;
   font-weight: bold;
   margin-bottom: 0.3125em; }
+
+.form-textarea {
+  resize: vertical; }
 
 .g {
   display: block;

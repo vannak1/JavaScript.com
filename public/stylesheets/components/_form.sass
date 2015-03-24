@@ -10,8 +10,10 @@
 // %form.form[condensed]
 //
 //   %fieldset.form-field[inline]
+//     .form-instruction
 //     %label.form-label
 //     %input.form-input[dark]
+//     %textarea.form-instruction
 //
 // *************************************
 
@@ -92,6 +94,14 @@
     &::placeholder
       color: $form-input--dark--focus-color
 
+// ----- Instruction ----- //
+
+.form-instruction
+  color: $c-subdue
+  font-family: $b-fontFamily-heading
+  font-style: italic
+  margin-bottom: $b-space-s
+
 // ----- Label ----- //
 
 .form-label
@@ -99,3 +109,8 @@
   font-size: $b-fontSize-s
   font-weight: bold
   margin-bottom: $b-space-xs
+
+// ----- Textarea ----- //
+
+.form-textarea
+  resize: vertical
