@@ -1,6 +1,7 @@
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
   return function jsCommand(challenge, successCallback, errorCallback) {
-    this.challenge = challenge;
+    var vm = this;
+    vm.challenge = challenge;
 
     function jsReportAdapter(content) {
       if(_.isArray(content)) { return content; }
@@ -8,10 +9,10 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
       return [{ content: content }];
     }
 
-    this.handler = function parseCommand(line, report) {
-      var handler = jsCommandFactory(line);
+    vm.handler = function parseCommand(line, report) {
+      var command = jsCommandFactory(line);
 
-      handler(challenge, line).then(function(content) {
+      command(vm.challenge, line).then(function(content) {
         report(jsReportAdapter(content));
         successCallback();
       }, function(content) {
@@ -20,7 +21,7 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
       });
     }
 
-    this.validate = function validate(line) {
+    vm.validate = function validate(line) {
       return line.length > 0
     };
   };

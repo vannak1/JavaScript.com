@@ -1,6 +1,6 @@
 // Represents a Mocha report object with a better interface
 
-angular.module('javascriptcom').factory('jsCommandReport', [function() {
+angular.module('javascriptcom').factory('jsCommandReport', ['_', function(_) {
 
   function jsCommandReport(challenge, report) {
     this.challenge = challenge;
@@ -15,7 +15,7 @@ angular.module('javascriptcom').factory('jsCommandReport', [function() {
     }
 
     this.failureMessage = function() {
-      return this.failure().message;
+      return _.compact([this.failure().message, this.errorMessage()]).join(': ');
     }
 
     this.output = function() {
@@ -28,6 +28,18 @@ angular.module('javascriptcom').factory('jsCommandReport', [function() {
 
     this.failureName = function() {
       return this.report.failures[0].title;
+    }
+
+    this.errorMessage = function() {
+      if(this.isSuccess()) { return null; }
+
+      var message = (this.report.failures[0]['err']) ? this.report.failures[0]['err'].message : null;
+
+      if(message && message.match(/Unspecified AssertionError/)) {
+        return null;
+      } else {
+        return message;
+      }
     }
   }
 

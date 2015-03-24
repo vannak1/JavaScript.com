@@ -1,45 +1,43 @@
 tests = `
-var assert = require('chai').assert,
-  Sandbox = require('javascript-sandbox'),
-  sandbox = new Sandbox(),
-  CS = require('./cs.js'),
-  varFound,
-  isString,
-  message,
-  input = code;
+var js = require('/courses/helper/index.js');
 
-  var userName = code[0].clientStore.userName;
+describe('set_a_var', function(){
+  var message, errorMessage;
 
-  before(function(){
-
-    var exec = "var "+ code[0].clientStore.variable + " = '" + code[0].clientStore.userName + "' \\n " + input;
+  before(function() {
     try {
-      message = sandbox.evaluate(exec)
+      message = js.evaluate(code);
     } catch(e) {
-      message = e.message
+      errorMessage = e.message;
     }
   });
-describe('set_a_var', function(){
+
+  details(function() {
+    return {
+      output: message
+    };
+  });
+
+  it('f_error', function() {
+    if(errorMessage) {
+      js.assert(false, errorMessage);
+    }
+  });
 
   it('f_null', function(){
-    assert(message != null);
+    js.assert(message != null);
   });
 
   it('f_not_username', function(){
-    assert(message == userName);
+    js.assert(message == js.state.username);
   });
-
-});
-
-details("output", function() {
-
-  return {
-    'result': message
-  };
 });
 `
 
 failures = {
+  "f_error": {
+    "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
+  },
   'f_null': {
     'message': 'Nope. This variable does not have any value assigned to it.',
     'hint': ''
@@ -52,10 +50,7 @@ failures = {
 
 module.exports = {
   'title': 'Variable Value',
-  'instructions': 'Now we have a variable called firstName that has a string stored inside of it.',
-  'hints': [
-    "You can remove the `if` statement altogether. You'll be able to replace it with a ternary that returns the result."
-  ],
+  'instructions': 'Now we have a variable called `name` that has a string stored inside of it. Output it to see what it looks like.',
   'tests': tests,
   'failures': failures,
   'answer': "test;"

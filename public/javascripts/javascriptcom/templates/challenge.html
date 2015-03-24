@@ -1,4 +1,7 @@
-<div class='js-challenge' ng-class="{ 'is-active': ctrl.isActive() }">
-  <js-instructions challenge='ctrl.challenge'></js-instructions>
-  <js-console challenge='ctrl.challenge'></js-console>
+<div class='js-challenge' ng-class="{ 'is-active': ctrl.isActive(), 'is-started': ctrl.hasStarted() }">
+
+  <div ng-if='ctrl.hasStarted()'>
+    <js-instructions challenge='ctrl.challenge'></js-instructions>
+    <js-console challenge='ctrl.challenge'></js-console>
+  </div>
 </div>

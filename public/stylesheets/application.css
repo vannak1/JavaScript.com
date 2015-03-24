@@ -1539,7 +1539,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   box-sizing: border-box;
   min-height: 100%;
   overflow: auto;
-  padding: 1.25em;
+  padding: 10px 20px;
   width: 100%; }
   .console li {
     color: #fff; }
@@ -1554,7 +1554,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   border-radius: 6px;
   overflow: auto; }
   .console--single .cs-console-height {
-    max-height: 300px;
+    max-height: 130px;
     min-height: 50px; }
 
 .console-hint {
@@ -1578,6 +1578,27 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   margin-top: 0.625em; }
 
 .js-challenge {
-  display: none; }
+  display: none;
+  opacity: 0.4; }
   .js-challenge.is-active {
+    display: block;
+    opacity: 1; }
+  .js-challenge.is-started {
     display: block; }
+
+.console-msg p {
+  line-height: 25px; }
+.console-msg code {
+  background-color: #fff;
+  color: #333;
+  border-radius: 4px;
+  padding: 4px; }
+
+.home .js-course .js-course--toc {
+  display: none; }
+.home .js-course .js-course--challenges h2 {
+  display: none; }
+.home .js-course .js-course--challenges .js-challenge.is-started {
+  display: none; }
+.home .js-course .js-course--challenges .js-challenge.is-active {
+  display: block !important; }

@@ -1,59 +1,47 @@
 tests = `
-var assert       = require('chai').assert,
-    Sandbox      = require('javascript-sandbox'),
-    Helper       = require('/courses/helper/index.js'),
-    consoleInput = code,
-    userName;
-
-if(typeof(sandbox) == 'undefined') {
-  var sandbox = new Sandbox();
-}
+var js = require('/courses/helper/index.js');
 
 describe('set_name', function() {
+  var message, errorMessage;
+
+  before(function() {
+    try {
+      message = js.evaluate(code);
+    } catch(e) {
+      errorMessage = e.message;
+    }
+  });
 
   details(function() {
-    var message;
-    try {
-      message = sandbox.evaluate(consoleInput)
-    } catch(e) {
-      message = e.message
-    }
+    if(message) { js.state.username = message; }
     return {
       output: message,
-      clientStore: {
-        userName: userName
-      }
+      username: message
     };
   });
 
-  it('f_no_name', function() {
-    var nameUsed;
-    Helper.traverse(consoleInput, function(node) {
-      if (node.type == "Program" && node.body[0].type == "ExpressionStatement") {
-        nameUsed = typeof eval(node.body[0].expression.raw) == "string";
-      }
-    });
-    if(nameUsed) {
-      userName = sandbox.evaluate(consoleInput)
+  it('f_error', function() {
+    if(errorMessage) {
+      js.assert(false, errorMessage);
     }
-    assert(nameUsed);
+  });
+
+  it('f_no_name', function() {
+    js.assert(typeof(message) === 'string');
   });
 
   it('f_empty_string', function() {
-    var isNotEmptyString;
-    Helper.traverse(consoleInput, function(node) {
-      if (node.type == "Program" && node.body[0].type == "ExpressionStatement") {
-        isNotEmptyString = eval(node.body[0].expression.raw) != "";
-      }
-    });
-    assert(isNotEmptyString);
+    js.assert(message.length > 0);
   });
 });
 `
 
 failures = {
+  "f_error": {
+    "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
+  },
   "f_no_name": {
-    "message": "Uh oh, it looks like you didn\'t create a string with your first name!",
+    "message": "Uh oh, it looks like you didn\'t create a string with your first name.",
     "hint": "Here's an example that you can type in: `\"Gregg\";`"
   },
   "f_empty_string": {

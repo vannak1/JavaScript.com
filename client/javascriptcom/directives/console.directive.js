@@ -7,24 +7,32 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    link: function(scope, element) {
+    link: function(scope, element, attrs, ctrl) {
       function onConsoleSuccess() {
-        scope.challenge.completed = true;
+        ctrl.challenge.completed = true;
         jsChallengeProgress.next();
       }
       function onConsoleError() { }
 
       var el = $(element).find('.console-ui')[0];
-      var command = new jsCommand(scope.challenge, onConsoleSuccess, onConsoleError);
+      var command = new jsCommand(ctrl.challenge, onConsoleSuccess, onConsoleError);
 
-      var console = new CSConsole(el, {
+      ctrl.csConsole = new CSConsole(el, {
         prompt: '> ',
         syntax: 'javascript',
         autoFocus: true,
-        welcomeMessage: 'Type `help` to see the help menu',
+        welcomeMessage: $('<p>Type <code>help</code> to see the help menu</p>')[0],
         commandValidate: command.validate,
         commandHandle: command.handler
       });
+
+
+      $(element).on('click', function(e) {
+        e.preventDefault();
+        jsChallengeProgress.activate(ctrl.challenge);
+      })
+    },
+    controller: function jsConsoleController() {
     }
   };
 }]);

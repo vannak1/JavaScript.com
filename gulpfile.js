@@ -54,8 +54,7 @@ var options = {
   browserify: {
     files: ['chai',
             'javascript-sandbox',
-            'esprima',
-            'estraverse',
+            'jshint',
             './courses/helper/index.js'],
     destFile: 'vendor.js',
     destDir:  'bower_components/abecedary/dist'

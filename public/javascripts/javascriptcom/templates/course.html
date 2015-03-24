@@ -1,6 +1,19 @@
 <div class='js-course'>
+
   <div ng-if='ctrl.challenges.length'>
-    <js-challenge ng-repeat='challenge in ctrl.challenges' challenge='challenge'></js-challenge>
+    <div class='js-course--toc'>
+      <h2>Challenges</h2>
+      <ul>
+        <li ng-repeat='challenge in ctrl.challenges'>
+          {{ ::challenge.title }}
+        </li>
+      </ul>
+    </div>
+
+    <div class='js-course--challenges'>
+      <h2>{{::course}} Tutorial</h2>
+      <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge'></js-challenge>
+    </div>
   </div>
 
   <div ng-if='!ctrl.challenges.length'>
