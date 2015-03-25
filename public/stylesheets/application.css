@@ -1620,12 +1620,14 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 
 .home .js-course .js-course--toc {
   display: none; }
-.home .js-course .js-course--challenges h2 {
-  display: none; }
-.home .js-course .js-course--challenges .js-challenge.is-started {
-  display: none; }
-.home .js-course .js-course--challenges .js-challenge.is-active {
-  display: block !important; }
+.home .js-course .js-course--challenges {
+  height: auto; }
+  .home .js-course .js-course--challenges h2 {
+    display: none; }
+  .home .js-course .js-course--challenges .js-challenge.is-started {
+    display: none !important; }
+  .home .js-course .js-course--challenges .js-challenge.is-active {
+    display: block !important; }
 
 .js-course--toc {
   width: 35%;
