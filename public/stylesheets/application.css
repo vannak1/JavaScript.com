@@ -322,23 +322,10 @@ td, th {
   content: '';
   display: table; }
 
-.debug {
-  background-color: pink !important; }
-
 .ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
-
-.ir {
-  background-color: transparent;
-  border: 0;
-  overflow: hidden; }
-  .ir::before {
-    content: '';
-    display: block;
-    height: 150%;
-    width: 0; }
 
 .lr, .console ul {
   list-style-type: none;
@@ -410,38 +397,19 @@ li {
   margin-bottom: 0.625em;
   margin-top: 0; }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+h1, h2, h3, h4, .h {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: 700;
-  letter-spacing: -1px;
   line-height: 1.2;
   margin-bottom: 0.3125em;
   margin-top: 0; }
 
-h1, .h1 {
-  font-size: 225%;
-  word-spacing: -1px; }
-
-h2, .h2 {
-  font-size: 175%;
-  word-spacing: 0; }
-
-h3, .h3 {
-  font-size: 137.5%;
-  letter-spacing: 0;
-  word-spacing: 0; }
-
-h4, .h4 {
-  font-size: 112.5%;
-  letter-spacing: 0;
-  word-spacing: 0; }
-
-a {
+a, .link {
   color: #e5bb31;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease-in-out; }
-  a:active, a:focus, a:hover {
+  a:active, a:focus, a:hover, .link:active, .link:focus, .link:hover {
     color: #caa019; }
 
 img, svg {
@@ -837,6 +805,7 @@ img, svg {
 
 .split-item {
   display: table;
+  margin-bottom: 0;
   width: 100%; }
 
 .well {
@@ -878,6 +847,21 @@ img, svg {
   .header-nav-item--btn:active, .header-nav-item--btn:focus, .header-nav-item--btn:hover {
     border: 0; }
 
+.h--1 {
+  font-size: 225%;
+  letter-spacing: -1px;
+  word-spacing: -1px; }
+
+.h--2 {
+  font-size: 175%;
+  letter-spacing: -1px; }
+
+.h--3 {
+  font-size: 137.5%; }
+
+.h--4 {
+  font-size: 112.5%; }
+
 .icon {
   fill: currentColor; }
 
@@ -890,6 +874,14 @@ img, svg {
 
 .label--highlight {
   color: #e5bb31; }
+
+.link--bordered {
+  border-bottom: 2px solid currentColor; }
+
+.link--inverted {
+  color: #fff; }
+  .link--inverted:active, .link--inverted:focus, .link--inverted:hover {
+    color: rgba(255, 255, 255, 0.5); }
 
 .bch {
   background: #e5bb31; }
