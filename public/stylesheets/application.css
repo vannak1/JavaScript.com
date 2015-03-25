@@ -410,7 +410,7 @@ li {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.3125em;
   margin-top: 0; }
@@ -429,6 +429,7 @@ h4, .h4 {
 
 a {
   color: #e5bb31;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease-in-out; }
   a:active, a:focus, a:hover {
@@ -488,6 +489,7 @@ img, svg {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 100%;
+  font-weight: 600;
   line-height: 3;
   padding: 0 2.5em;
   transition: all 0.3s ease-in-out; }
@@ -605,7 +607,7 @@ img, svg {
   display: block;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 87.5%;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 0.3125em; }
 
 .form-textarea {
@@ -874,7 +876,7 @@ img, svg {
   color: #6d7c79;
   display: block;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 0; }
 
 .label--highlight {
@@ -1149,10 +1151,13 @@ img, svg {
   text-transform: uppercase; }
 
 .twn {
-  font-weight: normal; }
+  font-weight: 400; }
+
+.twsb {
+  font-weight: 600; }
 
 .twb {
-  font-weight: bold; }
+  font-weight: 700; }
 
 /* BASICS */
 .CodeMirror {
