@@ -206,3 +206,37 @@ block content
               .well.well--xl
 
                 p Sector
+
+    li.list-item
+      .row
+        .cell.cell--s.well.well--l
+
+          h2.h.h--2.mbm#split Split
+
+          h3.h.h--3 Base
+
+          .split.mbl
+            .split-item
+              .split-cell
+                p.tsxxl.mbf Lorem ipsum dolor sit amet
+              .split-cell
+                p.mbf January 21, 2015
+
+          h3.h.h--3 Divided
+
+          ul.split.split--divided.mbl
+            - index = 3; while(index--)
+              li.split-item
+                .split-cell
+                  p.mbf Lorem ipsum dolor sit amet
+                .split-cell
+                  p.mbf January 21, 2015
+
+          h3.h.h--3 Middle
+
+          .split.split--middle
+            .split-item
+              .split-cell
+                p.tsxxl.mbf Lorem ipsum dolor sit amet
+              .split-cell
+                p.mbf January 21, 2015
