@@ -394,6 +394,8 @@ html {
   background: #fff;
   color: #37443d;
   font-family: Georgia, Times, 'Times New Roman', serif;
+  -webkit-font-feature-settings: 'kern';
+  font-feature-settings: 'kern';
   font-size: 16px;
   line-height: 1.5; }
 
@@ -411,6 +413,7 @@ li {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: 700;
+  letter-spacing: -1px;
   line-height: 1.2;
   margin-bottom: 0.3125em;
   margin-top: 0; }
@@ -422,10 +425,12 @@ h2, .h2 {
   font-size: 175%; }
 
 h3, .h3 {
-  font-size: 137.5%; }
+  font-size: 137.5%;
+  letter-spacing: 0; }
 
 h4, .h4 {
-  font-size: 112.5%; }
+  font-size: 112.5%;
+  letter-spacing: 0; }
 
 a {
   color: #e5bb31;
