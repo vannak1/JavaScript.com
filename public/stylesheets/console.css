@@ -3,7 +3,7 @@
   box-sizing: border-box;
   min-height: 100%;
   overflow: auto;
-  padding: em(20px);
+  padding: 10px 20px;
   width: 100%; }
   .console li {
     color: #fff; }
@@ -18,7 +18,7 @@
   border-radius: 3px;
   overflow: auto; }
   .console--single .cs-console-height {
-    max-height: 300px;
+    max-height: 130px;
     min-height: 50px; }
 
 .console-hint {

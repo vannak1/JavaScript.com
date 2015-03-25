@@ -11,6 +11,9 @@ angular.module('javascriptcom').directive('jsChallenge', [function() {
       this.isActive = function() {
         return this.challenge.active;
       }
+      this.hasStarted = function() {
+       return this.challenge.started;
+      }
     }
   };
 }]);

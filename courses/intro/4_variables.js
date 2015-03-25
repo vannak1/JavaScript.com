@@ -1,70 +1,66 @@
 tests = `
-var assert = require('chai').assert,
-  Sandbox = require('javascript-sandbox'),
-  sandbox = new Sandbox(),
-  CS = require('./cs.js'),
-  varFound,
-  isString,
-  variable,
-  userName = 'Tyler',
-  input = code;
+var js = require('/courses/helper/index.js');
 
 describe('set_a_var', function(){
+  var message, errorMessage;
+
+  before(function() {
+    var setup = "";
+    js.evaluate(setup);
+
+    try {
+      message = js.evaluate(code);
+    } catch(e) {
+      errorMessage = e.message;
+    }
+  });
+
+  after(function() {
+    js.evaluate("alert = _alert");
+  });
+
+
+  details(function() {
+    return {
+      output: message
+    };
+  });
+
+  it('f_error', function() {
+    if(errorMessage) {
+      js.assert(false, errorMessage);
+    }
+  });
 
   it('f_no_var_keyword', function(){
-    CS.traverse(input, function(node) {
-      if(node.type == 'Program' &&
-         node.body[0].kind == 'var'){
-        varFound = true;
-        variable = node.body[0].declarations[0].id.name
-      }
-    });
-    assert(varFound);
+    js.assert(code.match(/var/));
   });
 
   it('f_name_blank', function(){
-    var blank;
-    CS.traverse(input, function(node) {
-      if(node.type == 'Literal' &&
-         typeof node.value != 'null'){
-        blank = true;
-      }
-    });
-    assert(blank);
+    js.assert(js.evaluate('name'));
   });
 
   it('f_name_not_string', function(){
-    CS.traverse(input, function(node) {
-      if(node.type == 'Literal' &&
-         typeof node.value == 'string'){
-        isString = true;
-      }
-    });
-    assert(isString);
+    var name = js.evaluate('name');
+    js.assert(typeof(name) === 'string');
   });
 
-});
+  it('passed all tests', function() {
+    js.state.username = js.evaluate('name');
+  });
 
-details("output", function() {
-  var message;
-
-  try {
-    message = sandbox.evaluate(input)
-  } catch(e) {
-    message = e.message
-  }
-
-  return {
-    'result': message,
-    'clientStore': {
-      variable: variable,
-      userName: userName
-    }
-  };
+  details('state', function() {
+    return {
+      username: JSON.stringify(js.state.username)
+    };
+  });
 });
 `
 
 failures = {
+  "f_error": {
+    "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
+  },
   'f_no_var_keyword': {
     'message': 'Whoops. We did not use the `var` keyword when setting our variable.',
     'hint': ""
@@ -81,10 +77,7 @@ failures = {
 
 module.exports = {
   'title': 'Variables',
-  'instructions': 'TODO this can not be right -> Sweet! You now know how to create annoying text boxes!',
-  'hints': [
-    'You can remove the `if` statement altogether. You\'ll be able to replace it with a ternary that returns the result.'
-  ],
+  'instructions': 'Set a variable named `name` to your name. Use the `var` scope.',
   'tests': tests,
   'failures': failures,
   'answer': "var test = 'dan';"

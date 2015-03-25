@@ -23,6 +23,7 @@ router
       res.status(404).json(course);
     } else {
       course.challenges[0].active = true;
+      course.challenges[0].started = true;
       res.json(course.challenges);
     }
   });

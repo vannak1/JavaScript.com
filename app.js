@@ -9,6 +9,7 @@ var news = require('./routes/news');
 var flow = require('./routes/flow');
 var styleguide = require('./routes/styleguide');
 var courses = require('./routes/courses');
+var learn = require('./routes/learn');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.use('/', routes);
+app.use('/learn', learn)
 app.use('/users', users);
 app.use('/news', news);
 app.use('/flow', flow);
