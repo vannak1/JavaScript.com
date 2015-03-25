@@ -423,12 +423,12 @@ h4, .h4 {
   letter-spacing: 0;
   word-spacing: 0; }
 
-a {
+a, .link {
   color: #e5bb31;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease-in-out; }
-  a:active, a:focus, a:hover {
+  a:active, a:focus, a:hover, .link:active, .link:focus, .link:hover {
     color: #caa019; }
 
 img, svg {
@@ -877,6 +877,14 @@ img, svg {
 
 .label--highlight {
   color: #e5bb31; }
+
+.link--bordered {
+  border-bottom: 2px solid currentColor; }
+
+.link--inverted {
+  color: #fff; }
+  .link--inverted:active, .link--inverted:focus, .link--inverted:hover {
+    color: rgba(255, 255, 255, 0.5); }
 
 .bch {
   background: #e5bb31; }
