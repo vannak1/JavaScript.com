@@ -13,7 +13,8 @@
 
     <div class='js-course--challenges'>
       <h2>{{::course}} Tutorial</h2>
-      <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge'></js-challenge>
+      <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge' ng-if='challenge.started' class='animate--fade'>
+      </js-challenge>
     </div>
   </div>
 

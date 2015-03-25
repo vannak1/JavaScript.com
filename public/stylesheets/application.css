@@ -1598,13 +1598,9 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   margin-top: 0.625em; }
 
 .js-challenge {
-  display: none;
   opacity: 0.4; }
   .js-challenge.is-active {
-    display: block;
     opacity: 1; }
-  .js-challenge.is-started {
-    display: block; }
 
 .console-msg p {
   line-height: 25px; }
@@ -1616,12 +1612,14 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 
 .home .js-course .js-course--toc {
   display: none; }
-.home .js-course .js-course--challenges h2 {
-  display: none; }
-.home .js-course .js-course--challenges .js-challenge.is-started {
-  display: none; }
-.home .js-course .js-course--challenges .js-challenge.is-active {
-  display: block !important; }
+.home .js-course .js-course--challenges {
+  height: auto; }
+  .home .js-course .js-course--challenges h2 {
+    display: none; }
+  .home .js-course .js-course--challenges .js-challenge.is-started {
+    display: none !important; }
+  .home .js-course .js-course--challenges .js-challenge.is-active {
+    display: block !important; }
 
 .js-course--toc {
   width: 35%;
@@ -1637,3 +1635,12 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   float: left;
   height: 600px;
   overflow: scroll; }
+
+.animate--fade.ng-enter, .animate--fade.ng-leave {
+  transition: 1s linear all; }
+
+.animate--fade.ng-enter, .animate--fade.ng-leave.ng-leave-active {
+  opacity: 0; }
+
+.animate--fade.ng-leave, .animate--fade.ng-enter.ng-enter-active {
+  opacity: 1; }

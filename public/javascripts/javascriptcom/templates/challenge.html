@@ -1,8 +1,5 @@
-<div class='js-challenge' ng-class="{ 'is-active': ctrl.isActive(), 'is-started': ctrl.hasStarted() }">
-
-  <div ng-if='ctrl.hasStarted()'>
-    <h3>{{::ctrl.challenge.title}}</h3>
-    <js-instructions challenge='ctrl.challenge'></js-instructions>
-    <js-console challenge='ctrl.challenge'></js-console>
-  </div>
+<div class='js-challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
+  <h3>{{::ctrl.challenge.title}}</h3>
+  <js-instructions challenge='ctrl.challenge'></js-instructions>
+  <js-console challenge='ctrl.challenge'></js-console>
 </div>
