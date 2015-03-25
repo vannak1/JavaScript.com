@@ -3,7 +3,7 @@ extends /views/layouts/layout
 block content
 
   //
-    h1= flow.title
+    h1.h.h--1= flow.title
     p= flow.body
 
     p(class='read-more')
@@ -36,12 +36,12 @@ block content
       article.bdrbl.pbxl.mbxl
 
         p.label.mbxs March 4, 2015
-        h1 This is an Article's Title in Title Case
+        h1.h.h--1 This is an Article's Title in Title Case
 
         .bucket.bucket--flag.mbm
           .bucket-media
             img.thumb(src='http://placehold.it/40')
-          .bucket-content.h3
+          .bucket-content.h.h--3
             ul.list.list--inline.list--inline--divided.tfh
               li.list-item Given Surname
               li.list-item
@@ -58,7 +58,7 @@ block content
           Sed consectetuer sodales justo. Aliquam dictum gravida libero. Sed eu
           turpis.
 
-      h2.h3.tcs.mbm 2 Comments
+      h2.h.h--3.tcs.mbm 2 Comments
 
       ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
         - index = 3; while(index--)
@@ -75,7 +75,7 @@ block content
                   Vivamus vitae risus vitae lorem iaculis placerat. Aliquam sit
                   amet felis. Etiam congue. Donec risus risus, pretium...
 
-      h2.h3.tcs.mbm Post a New Comment
+      h2.h.h--3.tcs.mbm Post a New Comment
 
       form.form
 

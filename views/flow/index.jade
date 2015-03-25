@@ -3,7 +3,7 @@ extends /views/layouts/layout
 block content
 
   //
-    h1 Latest News
+    h1.h.h--1 Latest News
     p= `Today ${new Date()}`
 
     p
@@ -11,7 +11,7 @@ block content
 
     - for flow_item in flow_collection
       section.article
-        h3
+        h3.h.h--3
           a(href="/flow/"+flow_item.id)= flow_item.title
         = flow_item.body
         p(class="read-more")
@@ -26,7 +26,7 @@ block content
         .split
           .split-item
             .split-cell
-              h1.h2.tcs Top News
+              h1.h.h--2.tcs Top News
             .split-cell
               a.btn.btn--a.btn--a--bordered(href='/flow/new') New Post
 
@@ -38,7 +38,7 @@ block content
               .bucket-media
                 img.thumb(src='http://placehold.it/40')
               .bucket-content
-                h2.h3
+                h2.h.h--3
                   a.tct(href='#') This is an Article's Title in Title Case
                 p.tcs.tfh Given Surname | 3 hours ago
                 p.mbf.
