@@ -581,29 +581,29 @@ img, svg {
     outline: none; }
 
 .form-input--dark {
-  background: #327283;
+  background: #297383;
   border-color: transparent;
   color: #fff; }
   .form-input--dark::-webkit-input-placeholder {
-    color: #4399af; }
+    color: #379aaf; }
   .form-input--dark::-moz-placeholder {
-    color: #4399af; }
+    color: #379aaf; }
   .form-input--dark:-ms-input-placeholder {
-    color: #4399af; }
+    color: #379aaf; }
   .form-input--dark::placeholder {
-    color: #4399af; }
+    color: #379aaf; }
   .form-input--dark:focus {
-    background-color: #2e6b7a;
+    background-color: #266b7a;
     border-color: transparent;
     color: #fff; }
     .form-input--dark:focus::-webkit-input-placeholder {
-      color: #3c899d; }
+      color: #318a9d; }
     .form-input--dark:focus::-moz-placeholder {
-      color: #3c899d; }
+      color: #318a9d; }
     .form-input--dark:focus:-ms-input-placeholder {
-      color: #3c899d; }
+      color: #318a9d; }
     .form-input--dark:focus::placeholder {
-      color: #3c899d; }
+      color: #318a9d; }
 
 .form-instruction {
   color: #6d7c79;
@@ -901,7 +901,7 @@ img, svg {
   background: #6d7c79; }
 
 .bc-bostonBlue {
-  background: #4399af; }
+  background: #379aaf; }
 
 .bc-regent {
   background: #9cd4df; }
