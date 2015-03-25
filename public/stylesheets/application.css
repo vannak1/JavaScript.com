@@ -805,6 +805,7 @@ img, svg {
 
 .split-item {
   display: table;
+  margin-bottom: 0;
   width: 100%; }
 
 .well {
