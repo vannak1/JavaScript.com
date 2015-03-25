@@ -58,17 +58,14 @@
 @import 'codemirror'
 @import 'codemirror-theme'
 @import 'console'
+@import 'ng-animate'
 
 // The active challenge will be in focus
 // Challenges they've started will show up on the page rather than being hidden
 .js-challenge
-  display: none
   opacity: 0.4
   &.is-active
-    display: block
     opacity: 1
-  &.is-started
-    display: block
 
 // We use <code> blocks to indicate weight in the console
 .console-msg
@@ -96,6 +93,8 @@
           display: block !important
 
 
+// On the /learn page, position the table of contents on the left
+// and the challenges on the right side of the page.
 .js-course--toc
   width: 35%
   float: left
@@ -111,3 +110,18 @@
   float: left
   height: 600px
   overflow: scroll
+
+// Animations are handled using Angulars ng-animate which adds and
+// removes classes during various phases. If this doesn't work we can
+// do something different, but ng-animate is pretty crazy flexible in the timing
+// in code of where these happen if we need to tweak things.
+.animate--fade.ng-enter,
+.animate--fade.ng-leave
+  -webkit-transition: 1s linear all
+  transition: 1s linear all
+.animate--fade.ng-enter,
+.animate--fade.ng-leave.ng-leave-active
+  opacity: 0
+.animate--fade.ng-leave,
+.animate--fade.ng-enter.ng-enter-active
+  opacity: 1
