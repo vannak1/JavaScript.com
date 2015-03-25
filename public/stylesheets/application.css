@@ -419,18 +419,22 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   margin-top: 0; }
 
 h1, .h1 {
-  font-size: 225%; }
+  font-size: 225%;
+  word-spacing: -1px; }
 
 h2, .h2 {
-  font-size: 175%; }
+  font-size: 175%;
+  word-spacing: 0; }
 
 h3, .h3 {
   font-size: 137.5%;
-  letter-spacing: 0; }
+  letter-spacing: 0;
+  word-spacing: 0; }
 
 h4, .h4 {
   font-size: 112.5%;
-  letter-spacing: 0; }
+  letter-spacing: 0;
+  word-spacing: 0; }
 
 a {
   color: #e5bb31;
