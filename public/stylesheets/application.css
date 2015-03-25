@@ -356,30 +356,46 @@ td, th {
   width: 1px; }
 
 @font-face {
-  font-family: 'OpenSans';
+  font-family: 'Open Sans';
   font-style: normal;
-  font-weight: normal;
-  src: url('fonts/OpenSans.eot');
-  src: url('fonts/OpenSans.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSans.woff') format('woff'), url('fonts/OpenSans.ttf') format('truetype'), url('fonts/OpenSans.svg#OpenSans') format('svg'); }
+  font-weight: 400;
+  src: url('/fonts/OpenSansRegular.eot');
+  src: url('/fonts/OpenSansRegular.eot?#iefix') format('embedded-opentype'), url('/fonts/OpenSansRegular.woff') format('woff'), url('/fonts/OpenSansRegular.ttf') format('truetype'), url('/fonts/OpenSansRegular.svg#Open Sans') format('svg'); }
 
 @font-face {
-  font-family: 'OpenSans';
-  font-style: normal;
-  font-weight: bold;
-  src: url('fonts/OpenSansBold.eot');
-  src: url('fonts/OpenSansBold.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSansBold.woff') format('woff'), url('fonts/OpenSansBold.ttf') format('truetype'), url('fonts/OpenSansBold.svg#OpenSans') format('svg'); }
-
-@font-face {
-  font-family: 'OpenSans';
+  font-family: 'Open Sans';
   font-style: italic;
-  font-weight: normal;
-  src: url('fonts/OpenSansItalic.eot');
-  src: url('fonts/OpenSansItalic.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSansItalic.woff') format('woff'), url('fonts/OpenSansItalic.ttf') format('truetype'), url('fonts/OpenSansItalic.svg#OpenSans') format('svg'); }
+  font-weight: 400;
+  src: url('/fonts/OpenSansItalic.eot');
+  src: url('/fonts/OpenSansItalic.eot?#iefix') format('embedded-opentype'), url('/fonts/OpenSansItalic.woff') format('woff'), url('/fonts/OpenSansItalic.ttf') format('truetype'), url('/fonts/OpenSansItalic.svg#Open Sans') format('svg'); }
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/OpenSansSemibold.eot');
+  src: url('/fonts/OpenSansSemibold.eot?#iefix') format('embedded-opentype'), url('/fonts/OpenSansSemibold.woff') format('woff'), url('/fonts/OpenSansSemibold.ttf') format('truetype'), url('/fonts/OpenSansSemibold.svg#Open Sans') format('svg'); }
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url('/fonts/OpenSansSemiboldItalic.eot');
+  src: url('/fonts/OpenSansSemiboldItalic.eot?#iefix') format('embedded-opentype'), url('/fonts/OpenSansSemiboldItalic.woff') format('woff'), url('/fonts/OpenSansSemiboldItalic.ttf') format('truetype'), url('/fonts/OpenSansSemiboldItalic.svg#Open Sans') format('svg'); }
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/OpenSansBold.eot');
+  src: url('/fonts/OpenSansBold.eot?#iefix') format('embedded-opentype'), url('/fonts/OpenSansBold.woff') format('woff'), url('/fonts/OpenSansBold.ttf') format('truetype'), url('/fonts/OpenSansBold.svg#Open Sans') format('svg'); }
 
 html {
   background: #fff;
   color: #37443d;
   font-family: Georgia, Times, 'Times New Roman', serif;
+  -webkit-font-feature-settings: 'kern';
+  font-feature-settings: 'kern';
   font-size: 16px;
   line-height: 1.5; }
 
@@ -396,25 +412,33 @@ li {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: -1px;
   line-height: 1.2;
   margin-bottom: 0.3125em;
   margin-top: 0; }
 
 h1, .h1 {
-  font-size: 225%; }
+  font-size: 225%;
+  word-spacing: -1px; }
 
 h2, .h2 {
-  font-size: 175%; }
+  font-size: 175%;
+  word-spacing: 0; }
 
 h3, .h3 {
-  font-size: 137.5%; }
+  font-size: 137.5%;
+  letter-spacing: 0;
+  word-spacing: 0; }
 
 h4, .h4 {
-  font-size: 112.5%; }
+  font-size: 112.5%;
+  letter-spacing: 0;
+  word-spacing: 0; }
 
 a {
   color: #e5bb31;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease-in-out; }
   a:active, a:focus, a:hover {
@@ -474,6 +498,7 @@ img, svg {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 100%;
+  font-weight: 600;
   line-height: 3;
   padding: 0 2.5em;
   transition: all 0.3s ease-in-out; }
@@ -591,7 +616,7 @@ img, svg {
   display: block;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 87.5%;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 0.3125em; }
 
 .form-textarea {
@@ -860,7 +885,7 @@ img, svg {
   color: #6d7c79;
   display: block;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 0; }
 
 .label--highlight {
@@ -1135,10 +1160,13 @@ img, svg {
   text-transform: uppercase; }
 
 .twn {
-  font-weight: normal; }
+  font-weight: 400; }
+
+.twsb {
+  font-weight: 600; }
 
 .twb {
-  font-weight: bold; }
+  font-weight: 700; }
 
 /* BASICS */
 .CodeMirror {

@@ -9,6 +9,7 @@ html
   background: $c-background
   color: $c-text
   font-family: $b-fontFamily
+  font-feature-settings: 'kern'
   font-size: $b-fontSize
   line-height: $b-lineHeight
 
@@ -34,22 +35,29 @@ h2, .h2,
 h3, .h3,
 h4, .h4
   font-family: $b-fontFamily-heading
-  font-weight: bold
+  font-weight: 700
+  letter-spacing: -1px
   line-height: 1.2
   margin-bottom: $b-space-xs
   margin-top: 0
 
 h1, .h1
   font-size: $b-fontSize-h1
+  word-spacing: -1px
 
 h2, .h2
   font-size: $b-fontSize-h2
+  word-spacing: 0
 
 h3, .h3
   font-size: $b-fontSize-h3
+  letter-spacing: 0
+  word-spacing: 0
 
 h4, .h4
   font-size: $b-fontSize-h4
+  letter-spacing: 0
+  word-spacing: 0
 
 // -------------------------------------
 //   Inline Content
@@ -59,6 +67,7 @@ h4, .h4
 
 a
   color: $c-highlight
+  font-weight: 600
   text-decoration: none
   transition: $b-transition
 
