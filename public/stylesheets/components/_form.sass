@@ -13,7 +13,7 @@
 //     .form-instruction
 //     %label.form-label
 //     %input.form-input[dark]
-//     %textarea.form-instruction
+//     %textarea.form-textarea
 //
 // *************************************
 
@@ -116,3 +116,7 @@
 
 .form-textarea
   resize: vertical
+  max-height: 40vh // FIXME: Magic number!
+
+  +respond-to($g-m)
+    max-height: none

@@ -588,7 +588,11 @@ img, svg {
   margin-bottom: 0.3125em; }
 
 .form-textarea {
-  resize: vertical; }
+  resize: vertical;
+  max-height: 40vh; }
+  @media screen and (min-width: 50em) {
+    .form-textarea {
+      max-height: none; } }
 
 .g {
   display: block;
