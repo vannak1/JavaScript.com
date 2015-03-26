@@ -815,6 +815,14 @@ img, svg {
   margin-bottom: 1.25em;
   margin-top: 1.25em; }
 
+.well--s {
+  margin-bottom: 0.625em;
+  margin-top: 0.625em; }
+
+.well--m--m {
+  margin-bottom: 1.25em;
+  margin-top: 1.25em; }
+
 .well--l {
   margin-bottom: 2.5em;
   margin-top: 2.5em; }
