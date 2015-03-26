@@ -919,6 +919,12 @@ img, svg {
 .dn {
   display: none; }
 
+@media screen and (min-width: 50em) {
+  .db--m {
+    display: block; }
+  .dn--m {
+    display: none; } }
+
 .maxs {
   margin: 0.3125em; }
 
@@ -985,6 +991,10 @@ img, svg {
 
 .mrl {
   margin-right: 2.5em; }
+
+@media screen and (min-width: 50em) {
+  .mrl--m {
+    margin-right: 2.5em; } }
 
 .mtf {
   margin-top: 0; }
