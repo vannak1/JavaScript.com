@@ -747,7 +747,10 @@ img, svg {
 
 .row {
   overflow: hidden;
-  padding: 0 1.25em; }
+  padding: 0 0.625em; }
+  @media screen and (min-width: 30em) {
+    .row {
+      padding: 0 1.25em; } }
 
 .row--a {
   background: #e5bb31; }

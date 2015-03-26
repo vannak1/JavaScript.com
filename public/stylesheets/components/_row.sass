@@ -14,7 +14,10 @@
 
 .row
   overflow: hidden
-  padding: 0 $b-space
+  padding: 0 $b-space-s
+
+  +respond-to($g-s)
+    padding: 0 $b-space
 
 // -------------------------------------
 //   Modifiers
