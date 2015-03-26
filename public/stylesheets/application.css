@@ -951,6 +951,10 @@ img, svg {
 .mbxl {
   margin-bottom: 5em; }
 
+@media screen and (min-width: 50em) {
+  .mbf--m {
+    margin-bottom: 0; } }
+
 .mhc {
   margin-left: auto;
   margin-right: auto; }
