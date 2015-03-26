@@ -22,6 +22,20 @@
 
 // ----- Sizes ----- //
 
+// Small
+
+.well--s
+  margin-bottom: $b-space-s
+  margin-top: $b-space-s
+
+// Medium: Responsive
+
++respond-to($g-m)
+
+  .well--m--m
+    margin-bottom: $b-space
+    margin-top: $b-space
+
 // Large
 
 .well--l
@@ -33,3 +47,11 @@
 .well--xl
   margin-bottom: $b-space-xl
   margin-top: $b-space-xl
+
+// Extra Large: Responsive
+
++respond-to($g-m)
+
+  .well--m--xl
+    margin-bottom: $b-space-xl
+    margin-top: $b-space-xl
