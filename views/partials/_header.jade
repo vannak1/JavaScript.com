@@ -1,14 +1,12 @@
 header.row.header(class=(headerPartial.bleed ? 'bc-regent' : '' ))
-  .cell.well
-    .g
-      .g-b.g-b--m--1of2
+  .cell.well.well--s.well--m--m
 
-        .header-logo
-          a.header-logo-item(href='/')
-            img.header-logo-item(src='/images/logo.svg' alt='JavaScript.com')
-
-      .g-b.g-b--m--1of2
-
-        nav.header-nav
-          a.header-nav-item(href='/news') News
-          a.header-nav-item(href='/flow') Community
+    .split.split--middle
+      .split-item
+        .split-cell
+          a.dib(href='/')
+            img.dn--m(src='/images/logo-mark.svg' alt='JavaScript.com')
+            img.dn.db--m(src='/images/logo.svg' alt='JavaScript.com')
+        nav.split-cell
+          a.header-link.mrm.mrl--m(href='/news') News
+          a.header-link(href='/flow') Community
