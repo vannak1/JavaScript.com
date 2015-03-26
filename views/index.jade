@@ -2,31 +2,31 @@ extends /views/layouts/layout-bleed
 
 block content
 
-  div.row.bc-regent
-    div.cell.well
-      div.g
-        div.g-b.g-b--1of2
+  .row.bc-regent
+    .cell.well
+      .g
+        .g-b.g-b--1of2
           p Video goes here.
-        div.g-b.g-b--1of2(ng-app='javascriptcom' class='home')
+        .g-b.g-b--1of2(ng-app='javascriptcom' class='home')
           js-course(course='intro')
 
-  div.row.bc-bostonBlue.tci
-    div.cell.well
-      div.g
-        div.g-b.g-b--m--1of2
+  .row.bc-bostonBlue.tci
+    .cell.well
+      .g
+        .g-b.g-b--m--1of2
           p.mtm.pts.tfh
             strong Want the latest JavaScript news delivered right to your inbox?
-        div.g-b.g-b--m--1of2
+        .g-b.g-b--m--1of2
           form.form.mtm(action='/subscribe' method='post')
             fieldset.form-field.form-field--inline
-              div.g
-                div.g-b.g-b--m--3of5
+              .g
+                .g-b.g-b--m--3of5
                   input.form-input.form-input--dark.form-input--inline(type='email' name='email' placeholder='Email Address')
-                div.g-b.g-b--m--2of5
+                .g-b.g-b--m--2of5
                   input.btn.btn--b.form-btn(type='submit' value='Sign Up')
 
-  div.row
-    div.cell.cell--s.well.well--xl
+  .row
+    .cell.cell--s.well.well--xl
       each item in news
         h2.h.h--2= item.title
         p!= item.body
