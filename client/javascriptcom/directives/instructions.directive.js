@@ -2,13 +2,9 @@ angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked
   return {
     templateUrl: 'javascripts/javascriptcom/templates/instructions.html',
     replace: true,
-    scope: {
-      challenge: '='
-    },
+    scope: true,
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function() {
-
-    }
+    require: '^jsChallenge'
   };
 }]);

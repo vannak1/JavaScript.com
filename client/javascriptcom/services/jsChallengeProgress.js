@@ -20,9 +20,11 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
     },
 
     activate: function(challenge) {
-      this.deactivateAll();
-      challenge.active = true;
-      challenge.started = true;
+      if(!challenge.active) {
+        this.deactivateAll();
+        challenge.active = true;
+        challenge.started = true;
+      }
     },
 
     deactivateAll: function() {

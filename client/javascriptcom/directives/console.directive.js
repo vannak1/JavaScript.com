@@ -1,21 +1,14 @@
-angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', function(CSConsole, jsCommand, jsChallengeProgress) {
+angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', function(CSConsole, jsCommand) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/console.html',
     replace: true,
-    scope: {
-      challenge: '='
-    },
+    scope: true,
     bindToController: true,
     controllerAs: 'ctrl',
+    require: '^jsChallenge',
     link: function(scope, element, attrs, ctrl) {
-      function onConsoleSuccess() {
-        ctrl.challenge.completed = true;
-        jsChallengeProgress.next();
-      }
-      function onConsoleError() { }
-
       var el = $(element).find('.console-ui')[0];
-      var command = new jsCommand(ctrl.challenge, onConsoleSuccess, onConsoleError);
+      var command = new jsCommand(ctrl.challenge, ctrl.onSuccess, ctrl.onFailure);
 
       ctrl.csConsole = new CSConsole(el, {
         prompt: '> ',
@@ -25,14 +18,6 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
         commandValidate: command.validate,
         commandHandle: command.handler
       });
-
-
-      $(element).on('click', function(e) {
-        e.preventDefault();
-        jsChallengeProgress.activate(ctrl.challenge);
-      })
-    },
-    controller: function jsConsoleController() {
     }
   };
 }]);

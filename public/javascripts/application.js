@@ -58944,7 +58944,7 @@ angular.module('javascriptcom', ['ngResource', 'ngAnimate'])
     $httpProvider.defaults.cache = true;
   }]);
 
-angular.module('javascriptcom').directive('jsChallenge', [function() {
+angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', function(jsChallengeProgress) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/challenge.html',
     replace: true,
@@ -58953,35 +58953,34 @@ angular.module('javascriptcom').directive('jsChallenge', [function() {
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeController() {
-      this.isActive = function() {
-        return this.challenge.active;
+    controller: function jsChallengeController(jsChallengeProgress) {
+      this.onSuccess = function onSuccess(challenge) {
+        challenge.completed = true;
+        jsChallengeProgress.next();
       }
-      this.hasStarted = function() {
-       return this.challenge.started;
+
+      this.onFailure = function onFailure(challenge) {
+        console.log('challenge failure');
+      }
+
+      this.activate = function(challenge) {
+        jsChallengeProgress.activate(challenge);
       }
     }
   };
 }]);
 
-angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', function(CSConsole, jsCommand, jsChallengeProgress) {
+angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', function(CSConsole, jsCommand) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/console.html',
     replace: true,
-    scope: {
-      challenge: '='
-    },
+    scope: true,
     bindToController: true,
     controllerAs: 'ctrl',
+    require: '^jsChallenge',
     link: function(scope, element, attrs, ctrl) {
-      function onConsoleSuccess() {
-        ctrl.challenge.completed = true;
-        jsChallengeProgress.next();
-      }
-      function onConsoleError() { }
-
       var el = $(element).find('.console-ui')[0];
-      var command = new jsCommand(ctrl.challenge, onConsoleSuccess, onConsoleError);
+      var command = new jsCommand(ctrl.challenge, ctrl.onSuccess, ctrl.onFailure);
 
       ctrl.csConsole = new CSConsole(el, {
         prompt: '> ',
@@ -58991,14 +58990,6 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
         commandValidate: command.validate,
         commandHandle: command.handler
       });
-
-
-      $(element).on('click', function(e) {
-        e.preventDefault();
-        jsChallengeProgress.activate(ctrl.challenge);
-      })
-    },
-    controller: function jsConsoleController() {
     }
   };
 }]);
@@ -59027,14 +59018,10 @@ angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked
   return {
     templateUrl: 'javascripts/javascriptcom/templates/instructions.html',
     replace: true,
-    scope: {
-      challenge: '='
-    },
+    scope: true,
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function() {
-
-    }
+    require: '^jsChallenge'
   };
 }]);
 
@@ -59057,14 +59044,6 @@ angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function SafeHt
   };
 }]);
 
-angular.module('javascriptcom')
-  .filter('markdown', ['marked', function Markdown(marked) {
-    return function(text) {
-      return marked(text);
-    };
-  }]
-);
-
 angular.module('javascriptcom').factory('jsCourseChallengeResource', function($resource) {
   return $resource('/courses/:course/challenges.json', {}, {});
 });
@@ -59072,6 +59051,14 @@ angular.module('javascriptcom').factory('jsCourseChallengeResource', function($r
 angular.module('javascriptcom').factory('jsCourseResource', function($resource) {
   return $resource('/courses/:course.json', {}, {});
 });
+
+angular.module('javascriptcom')
+  .filter('markdown', ['marked', function Markdown(marked) {
+    return function(text) {
+      return marked(text);
+    };
+  }]
+);
 
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
   return function jsCommand(challenge, successCallback, errorCallback) {
@@ -59089,10 +59076,10 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
 
       command(vm.challenge, line).then(function(content) {
         report(jsReportAdapter(content));
-        successCallback();
+        successCallback(vm.challenge);
       }, function(content) {
         report(jsReportAdapter(content));
-        errorCallback();
+        errorCallback(vm.challenge);
       });
     }
 
@@ -59220,9 +59207,11 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
     },
 
     activate: function(challenge) {
-      this.deactivateAll();
-      challenge.active = true;
-      challenge.started = true;
+      if(!challenge.active) {
+        this.deactivateAll();
+        challenge.active = true;
+        challenge.started = true;
+      }
     },
 
     deactivateAll: function() {

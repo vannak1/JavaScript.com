@@ -14,10 +14,10 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
 
       command(vm.challenge, line).then(function(content) {
         report(jsReportAdapter(content));
-        successCallback();
+        successCallback(vm.challenge);
       }, function(content) {
         report(jsReportAdapter(content));
-        errorCallback();
+        errorCallback(vm.challenge);
       });
     }
 

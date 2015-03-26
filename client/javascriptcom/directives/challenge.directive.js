@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsChallenge', [function() {
+angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', function(jsChallengeProgress) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/challenge.html',
     replace: true,
@@ -7,12 +7,18 @@ angular.module('javascriptcom').directive('jsChallenge', [function() {
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeController() {
-      this.isActive = function() {
-        return this.challenge.active;
+    controller: function jsChallengeController(jsChallengeProgress) {
+      this.onSuccess = function onSuccess(challenge) {
+        challenge.completed = true;
+        jsChallengeProgress.next();
       }
-      this.hasStarted = function() {
-       return this.challenge.started;
+
+      this.onFailure = function onFailure(challenge) {
+        console.log('challenge failure');
+      }
+
+      this.activate = function(challenge) {
+        jsChallengeProgress.activate(challenge);
       }
     }
   };
