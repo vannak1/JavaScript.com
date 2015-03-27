@@ -21,6 +21,14 @@
   @else
     @return ($target / $context) * 1em
 
+// ----- Font Size ----- //
+// -> Calculates a font size percentage
+//
+// $target - value of desired font size in pixels
+
+@function font-size($target, $context: $b-fontSize)
+  @return percentage($target / $context)
+
 // ----- Shade ----- //
 // -> Slightly darken a color
 //    via: http://sass-guidelin.es/#lightening-and-darkening-colors (modified)
@@ -45,6 +53,18 @@
 //   Mixins
 // -------------------------------------
 
+// ----- Action ----- //
+// -> Sets clickable element defaults
+
+=action
+  border: 1px solid transparent
+  cursor: pointer
+  display: inline-block
+  text-align: center
+  text-decoration: none
+  user-select: none
+  white-space: nowrap
+
 // ----- Font Face ----- //
 // -> https://github.com/thoughtbot/bourbon/edit/master/app/assets/stylesheets/css3/_font-face.scss#
 //
@@ -65,6 +85,14 @@
     @else
       src: url('#{$path}.eot')
       src: url('#{$path}.eot?#iefix') format('embedded-opentype'), url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype'), url('#{$path}.svg##{$family}') format('svg')
+
+// ----- List Reset ----- //
+// -> Removes default list styles
+
+=list-reset
+  list-style-type: none
+  margin: 0
+  padding: 0
 
 // ----- Respond-to ----- //
 // -> Generates a media query
@@ -102,11 +130,6 @@
   content: ''
   display: table
 
-// ----- Debug ----- //
-
-.debug
-  background-color: pink !important
-
 // ----- Ellipsis ----- //
 
 .ellipsis
@@ -114,22 +137,25 @@
   text-overflow: ellipsis
   white-space: nowrap
 
-// ----- Image Replacement ----- //
+// ----- List Reset ----- //
 
-.ir
-  background-color: transparent
+.lr
+  +list-reset
+
+// ----- Semantic Hide ----- //
+
+.srt
   border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
   overflow: hidden
-
-  &::before
-    content: ''
-    display: block
-    height: 150%
-    width: 0
+  padding: 0
+  position: absolute
+  width: 1px
 
 // -------------------------------------
 //   Animations
 // -------------------------------------
 
 // ...
-

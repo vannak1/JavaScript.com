@@ -1,21 +1,40 @@
-extend ../layout
+extends /views/layouts/layout
 
 block content
-  h1 New Story
-  p
-    img(src=avatar width=100)
-    br
-    a(href="/flow/signout") Sign Out
 
-  form(action="/flow" method="POST")
-    p
-      | Title: &nbsp;
-      input(type="text" name="title")
-    p
-      textarea(name="body" rows=10 cols=80)
-    p
-      | Link: &nbsp;
-      input(type="text" name="url")
-    p
-      input(type="hidden" name="_csrf" value=token)
-      input(type="submit" value="Submit")
+  section.row
+    .cell.cell--s.well.well--l.well--m--xl
+
+      .split.split--middle.mbl
+
+        .split-cell
+          .bucket.bucket--flag
+            .bucket-media.tac
+              img.thumb(src=avatar width=60)
+            .bucket-content
+              h1.h.h--2.mbf New Story
+
+        .split-cell
+          a.tfh(href='/flow/signout') Sign Out
+
+
+      form.form(action='/flow' method='POST')
+
+        fieldset.form-field
+          label
+            span.form-label Title
+            input.form-input(type='text' name='title')
+
+        fieldset.form-field
+          label
+            span.form-label Link
+          input.form-input(type='text' name='url')
+
+        fieldset.form-field
+          label
+            span.form-label Content
+          textarea.form-input.form-textarea(name='body' rows=8)
+
+        .mtl
+          input(type='hidden' name='_csrf' value=token)
+          input.btn.btn--a.form-btn(type='submit' value='Submit')

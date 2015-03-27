@@ -9,6 +9,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var news = require('./routes/news');
 var flow = require('./routes/flow');
+var styleguide = require('./routes/styleguide');
+var courses = require('./routes/courses');
+var learn = require('./routes/learn');
 
 var app = express();
 
@@ -28,10 +31,15 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// routes
 app.use('/', routes);
+app.use('/learn', learn)
 app.use('/users', users);
 app.use('/news', news);
 app.use('/flow', flow);
+app.use('/styleguide', styleguide);
+app.use('/courses.json', courses);
+app.use('/courses', courses)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -64,5 +72,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
 module.exports = app;
+
+// Set absolute paths for partials
+app.locals.basedir = path.join(__dirname, '');

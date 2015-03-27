@@ -1,0 +1,93 @@
+// *************************************
+//
+//   List
+//   -> Enumeration of items
+//      CodePen: http://codepen.io/drewbarontini/pen/ouqil
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// %ul.list[divided inline|object styled|styled--numbered]
+//   %li.list-item List Item
+//   %li.list-item List Item
+//
+// *************************************
+
+.list
+  +list-reset
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Divided ----- //
+
+.list--divided
+
+  > .list-item
+    border-bottom: $b-border
+    padding-bottom: $b-space
+
+    &:last-child
+      border-bottom: 0
+      padding-bottom: 0
+
+// Sizes
+
+.list--divided--f
+
+  > .list-item
+    padding-bottom: 0
+
+.list--divided--l
+
+  > .list-item
+    padding-bottom: $b-space-l
+
+// ----- Inline ----- //
+
+.list--inline
+
+  > .list-item
+    display: inline
+    margin-right: $b-space
+
+    &:last-child
+      margin-right: 0
+
+// Divided
+
+.list--inline--divided
+
+  > .list-item
+
+    &:not(:first-child)::before
+      content: '|'
+      margin-left: -1ch
+      margin-right: $b-space-s
+
+// ----- Sizes ----- //
+
+.list--f
+
+  > .list-item
+    margin-bottom: 0
+
+.list--l
+
+  > .list-item
+    margin-bottom: $b-space-l
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Item ----- //
+
+.list-item
+  display: block
+  margin-bottom: $b-space
+
+  &:last-child
+    margin-bottom: 0

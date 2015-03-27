@@ -11,9 +11,11 @@
 
 // ----- Open Sans ----- //
 
-+font-face('OpenSans', 'fonts/OpenSans', normal, normal, false)
-+font-face('OpenSans', 'fonts/OpenSansBold', bold, normal, false)
-+font-face('OpenSans', 'fonts/OpenSansItalic', normal, italic, false)
++font-face('Open Sans', '/fonts/OpenSansRegular', 400, normal, false)
++font-face('Open Sans', '/fonts/OpenSansItalic', 400, italic, false)
++font-face('Open Sans', '/fonts/OpenSansSemibold', 600, normal, false)
++font-face('Open Sans', '/fonts/OpenSansSemiboldItalic', 600, italic, false)
++font-face('Open Sans', '/fonts/OpenSansBold', 700, normal, false)
 
 // -------------------------------------
 //   Colors
@@ -25,13 +27,14 @@
 
 $black: #000
 $slate: #37443d
+$auroMetalSaurus: #6d7c79
 $concrete: #efefef
 $snow: #f9f9f7
 $white: #fff
 
 // Blue
 
-$bostonBlue: #4399af
+$bostonBlue: #379aaf
 $regent: #9cd4df
 
 // Red
@@ -45,11 +48,11 @@ $goldenDream: #f1d332
 
 // ----- Base ----- //
 
-$c-background-invert: $black
 $c-background: $white
+$c-background-invert: $black
 $c-border: $concrete
 $c-highlight: $tulip
-$c-subdue: darken($concrete, 20%)
+$c-subdue: $auroMetalSaurus
 $c-text-invert: $white
 $c-text: $slate
 
@@ -57,10 +60,12 @@ $c-text: $slate
 
 // Button
 
-$btn--a-background: $sienna
-$btn--a-color: $c-text-invert
+$btn-background: $sienna
+$btn-borderColor: $sienna
+$btn-color: $c-text-invert
+
 $btn--b-background: $goldenDream
-$btn--b-color: $c-text-invert
+$btn--b-borderColor: transparent
 
 // Form
 
@@ -70,11 +75,23 @@ $form-input--dark--focus-color: shade($form-input--dark-color, 10%)
 $form-input--dark-background: shade($form-input--dark-color, 25%)
 $form-input--dark--focus-background: shade($form-input--dark-color, 30%)
 
+// ----- Sector ----- //
+
+$sector--white-background: $white
+$sector--snow-background: $snow
+
 // ----- Structures ----- //
 
 // Header
 
-$header-background: $regent
+$header-background: $tulip
+
+// Link
+
+$link-color: $c-highlight
+$link--state-color: darken($link-color, 15%)
+$link--inverted-color: $c-text-invert
+$link--inverted--state-color: rgba($link--inverted-color, 0.5)
 
 // -------------------------------------
 //   Base
@@ -84,8 +101,8 @@ $header-background: $regent
 
 $b-borderRadius: 6px
 $b-borderStyle: solid
-$b-borderWidth: 1px
-$b-borderWidth-l: 2px
+$b-borderWidth: 2px
+$b-borderWidth-l: 4px
 $b-border: $b-borderWidth $b-borderStyle $c-border
 $b-border-l: $b-borderWidth-l $b-borderStyle $c-border
 $b-boxShadow: 0 2px 0 rgba($c-text, 0.25)
@@ -95,14 +112,14 @@ $b-boxShadow: 0 2px 0 rgba($c-text, 0.25)
 $b-fontFamily-heading: 'Open Sans', Arial, Helvetica, sans-serif
 $b-fontFamily: Georgia, Times, 'Times New Roman', serif
 $b-fontSize: 16px
-$b-fontSize-xs: 75%
-$b-fontSize-s: 90%
-$b-fontSize-l: 115%
-$b-fontSize-xl: 150%
-$b-fontSize-h1: 200%
-$b-fontSize-h2: 150%
-$b-fontSize-h3: 125%
-$b-fontSize-h4: 110%
+$b-fontSize-s: font-size(14px)
+$b-fontSize-l: font-size(18px)
+$b-fontSize-xl: font-size(20px)
+$b-fontSize-xxl: font-size(22px)
+$b-fontSize-h1: font-size(36px)
+$b-fontSize-h2: font-size(28px)
+$b-fontSize-h3: font-size(22px)
+$b-fontSize-h4: font-size(18px)
 $b-lineHeight: 1.5
 
 // ----- Settings ----- //
@@ -111,8 +128,8 @@ $b-transition: all 0.3s ease-in-out
 
 // ----- Sizing ----- //
 
-$b-maxWidth: em(1024px)
-$b-maxWidth-s: em(700px)
+$b-maxWidth: em(1200px)
+$b-maxWidth-s: em(780px)
 $b-space: em(20px)
 $b-space-xs: $b-space * 0.25
 $b-space-s: $b-space * 0.5
@@ -128,9 +145,18 @@ $tool-background-vars: $bostonBlue, $regent
 //   Components
 // -------------------------------------
 
+// ----- Button ----- //
+
+// Borders
+
+$btn-borderWidth: 1px
+$btn-borderRadius: 4px
+$btn-borderStyle: solid
+$btn-border: $btn-borderWidth $btn-borderStyle $btn-borderColor
+
 // ----- Form ----- //
 
-$form-shared-borderWidth: $b-borderWidth-l
+$form-shared-borderWidth: $b-borderWidth
 $form-shared-lineHeight: 3
 
 // ----- Grid ----- //
@@ -156,6 +182,8 @@ $g-selector: if($g-silent, unquote("%"), unquote("."))
 //   Structures
 // -------------------------------------
 
-// ----- Header ----- //
+// ----- Link ----- //
 
-$header-height: 500px
+$link-borderWidth: 2px
+$link-borderStyle: solid
+$link-border: $link-borderWidth $link-borderStyle

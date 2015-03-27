@@ -9,6 +9,7 @@ html
   background: $c-background
   color: $c-text
   font-family: $b-fontFamily
+  font-feature-settings: 'kern'
   font-size: $b-fontSize
   line-height: $b-lineHeight
 
@@ -29,27 +30,12 @@ li
 
 // ----- Headings ----- //
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4
+h1, h2, h3, h4, %h
   font-family: $b-fontFamily-heading
-  font-weight: bold
+  font-weight: 700
   line-height: 1.2
   margin-bottom: $b-space-xs
   margin-top: 0
-
-h1, .h1
-  font-size: $b-fontSize-h1
-
-h2, .h2
-  font-size: $b-fontSize-h2
-
-h3, .h3
-  font-size: $b-fontSize-h3
-
-h4, .h4
-  font-size: $b-fontSize-h4
 
 // -------------------------------------
 //   Inline Content
@@ -57,8 +43,9 @@ h4, .h4
 
 // ----- Links ----- //
 
-a
+a, %a
   color: $c-highlight
+  font-weight: 600
   text-decoration: none
   transition: $b-transition
 
@@ -67,6 +54,7 @@ a
 
 // ----- Images ----- //
 
-img
+img, svg
   height: auto
   max-width: 100%
+  vertical-align: middle

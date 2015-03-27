@@ -1,0 +1,24 @@
+<div class='js-course'>
+
+  <div ng-if='ctrl.challenges.length'>
+    <div class='js-course--toc'>
+      <h2>Challenges</h2>
+      <ul>
+        <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }">
+          <a href='#' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)'>{{ ::challenge.title }}</a>
+          <span ng-if='!challenge.started'>{{ ::challenge.title }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class='js-course--challenges'>
+      <h2>{{::course}} Tutorial</h2>
+      <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge' ng-if='challenge.started' class='animate--fade'>
+      </js-challenge>
+    </div>
+  </div>
+
+  <div ng-if='!ctrl.challenges.length'>
+    <p>Loading challenges...
+  </div>
+</div>

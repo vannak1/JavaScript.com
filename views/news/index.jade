@@ -1,9 +1,10 @@
-extends ../layout
+extends /views/layouts/layout
 
 block content
 
-  div.row
-    div.cell.cell--s.well.well--xl
+  section.row
+    .cell.cell--s.well.well--l.well--m--xl
+
       each item in news
-        h2= item.title
+        h2.h.h--2= item.title
         p!= item.body

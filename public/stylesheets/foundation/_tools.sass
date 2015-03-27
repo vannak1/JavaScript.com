@@ -31,6 +31,8 @@
 
 .bdrb
   border-bottom: $b-border
+.bdrbl
+  border-bottom: $b-border-l
 
 // -------------------------------------
 //   Display
@@ -44,6 +46,15 @@
   display: inline-block
 .dn
   display: none
+
+// Responsive
+
++respond-to($g-m)
+
+  .db--m
+    display: block
+  .dn--m
+    display: none
 
 // -------------------------------------
 //   Margins
@@ -77,6 +88,13 @@
 .mbxl
   margin-bottom: $b-space-xl
 
+// Responsive
+
++respond-to($g-m)
+
+  .mbf--m
+    margin-bottom: 0
+
 // ----- Horizontal ----- //
 
 .mhc
@@ -108,6 +126,13 @@
   margin-right: $b-space
 .mrl
   margin-right: $b-space-l
+
+// Responsive
+
++respond-to($g-m)
+
+  .mrl--m
+    margin-right: $b-space-l
 
 // ----- Top ----- //
 
@@ -234,6 +259,8 @@
 
 .tac
   text-align: center
+.tar
+  text-align: right
 
 // ----- Color ----- //
 
@@ -255,14 +282,14 @@
 
 // ----- Size ----- //
 
-.tsxs
-  font-size: $b-fontSize-xs
 .tss
   font-size: $b-fontSize-s
 .tsl
   font-size: $b-fontSize-l
 .tsxl
   font-size: $b-fontSize-xl
+.tsxxl
+  font-size: $b-fontSize-xxl
 
 // ----- Style ----- //
 
@@ -277,6 +304,8 @@
 // ----- Weight ----- //
 
 .twn
-  font-weight: normal
+  font-weight: 400
+.twsb
+  font-weight: 600
 .twb
-  font-weight: bold
+  font-weight: 700
