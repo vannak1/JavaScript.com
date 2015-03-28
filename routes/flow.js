@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser')();
 var bodyParser = require('body-parser');
 var Flow = require('../services/flow');
 var Comments = require('../services/comments');
+var Akismetor = require('../services/akismetor');
 
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
@@ -89,7 +90,7 @@ router.
     var newComment = req.body;
     newComment["article_id"] = req.params.id
 
-    Comments.create(newComment, function() {
+    Comments.create(newComment, req, function() {
       res.redirect('/flow');
     });
   }).
@@ -115,6 +116,7 @@ router.
     Flow.create(newFlow, function() {
       res.redirect('/flow');
     });
+
   });
 
 module.exports = router;
