@@ -22,8 +22,6 @@ function createAfterSpamCheck(isSpam, comment, cb){
       [comment.article_id, isSpam, comment.email, comment.username, comment.avatar_url, comment.body],
       cb
     )
-    // If isSpam, send some sort of notice that says you're a fucking terrible
-    // human being and should go sit in a pile of dirty glass
 }
 
 module.exports = Comments;

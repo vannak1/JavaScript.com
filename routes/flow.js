@@ -91,6 +91,7 @@ router.
     newComment["article_id"] = req.params.id
 
     Comments.create(newComment, req, function() {
+      // TODO:  Notify user if comment will need to be approved by an admin
       res.redirect('/flow');
     });
   }).
