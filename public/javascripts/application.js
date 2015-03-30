@@ -58944,7 +58944,7 @@ angular.module('javascriptcom', ['ngResource', 'ngAnimate'])
     $httpProvider.defaults.cache = true;
   }]);
 
-angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsChallengeState', function(jsChallengeProgress, jsChallengeState) {
+angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsCourseState', function(jsChallengeProgress, jsCourseState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/challenge.html',
     replace: true,
@@ -58953,8 +58953,8 @@ angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress',
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeController(jsChallengeProgress, jsChallengeState) {
-      this.state = jsChallengeState.state;
+    controller: function jsChallengeController(jsChallengeProgress, jsCourseState) {
+      this.state = jsCourseState.state;
 
       this.onSuccess = function onSuccess(challenge) {
         challenge.completed = true;
@@ -59016,7 +59016,7 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
   };
 }]);
 
-angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked', 'jsChallengeState', function($compile, marked, jsChallengeState) {
+angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked', 'jsCourseState', function($compile, marked, jsCourseState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/instructions.html',
     replace: true,
@@ -59055,7 +59055,7 @@ angular.module('javascriptcom')
 );
 
 angular.module('javascriptcom')
-  .filter('stateify', ['jsChallengeState', '$interpolate', function Stateify(jsChallengeState, $interpolate) {
+  .filter('stateify', ['jsCourseState', '$interpolate', function Stateify(jsCourseState, $interpolate) {
     return function(text, scope) {
       return $interpolate(text)(scope);
     };
@@ -59234,7 +59234,7 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
   return state;
 }]);
 
-angular.module('javascriptcom').factory('jsChallengeState', ['_', function(_) {
+angular.module('javascriptcom').factory('jsCourseState', ['_', function(_) {
 
   return {
     state: {},
@@ -59307,7 +59307,7 @@ angular.module('javascriptcom').factory('jsHintCommand', ['$q', function($q) {
   return runHintCommand;
 }]);
 
-angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsChallengeState', 'jsCommandReport', function($, $q, jsExecutor, jsChallengeState, jsCommandReport) {
+angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsCourseState', 'jsCommandReport', function($, $q, jsExecutor, jsCourseState, jsCommandReport) {
   function generateResponse(content, className) {
     return { content: $("<div class='console-msg "+(className ? 'console-msg--'+className : '')+"'>"+content+"</div>")[0] };
   }
@@ -59320,7 +59320,7 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
           result = new jsCommandReport(challenge, results),
           output = result.output();
 
-      jsChallengeState.update(result.state());
+      jsCourseState.update(result.state());
 
       response.push(generateResponse(output));
 

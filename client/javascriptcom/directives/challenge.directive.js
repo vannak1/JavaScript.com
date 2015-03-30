@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsChallengeState', function(jsChallengeProgress, jsChallengeState) {
+angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsCourseState', function(jsChallengeProgress, jsCourseState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/challenge.html',
     replace: true,
@@ -7,8 +7,8 @@ angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress',
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeController(jsChallengeProgress, jsChallengeState) {
-      this.state = jsChallengeState.state;
+    controller: function jsChallengeController(jsChallengeProgress, jsCourseState) {
+      this.state = jsCourseState.state;
 
       this.onSuccess = function onSuccess(challenge) {
         challenge.completed = true;
