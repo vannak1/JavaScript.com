@@ -16,7 +16,7 @@ describe('set_name', function() {
     return {
       output: message,
       state: {
-        username: JSON.stringify(message)
+        username: message
       }
     };
   });
@@ -38,7 +38,7 @@ describe('set_name', function() {
   details('state', function() {
     js.state.username = message;
     return {
-      username: JSON.stringify(message)
+      username: message
     };
   });
 });

@@ -58944,7 +58944,7 @@ angular.module('javascriptcom', ['ngResource', 'ngAnimate'])
     $httpProvider.defaults.cache = true;
   }]);
 
-angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', function(jsChallengeProgress) {
+angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsChallengeState', function(jsChallengeProgress, jsChallengeState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/challenge.html',
     replace: true,
@@ -58953,7 +58953,9 @@ angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress',
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeController(jsChallengeProgress) {
+    controller: function jsChallengeController(jsChallengeProgress, jsChallengeState) {
+      this.state = jsChallengeState.state;
+
       this.onSuccess = function onSuccess(challenge) {
         challenge.completed = true;
         jsChallengeProgress.next();
@@ -59044,14 +59046,6 @@ angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function SafeHt
   };
 }]);
 
-angular.module('javascriptcom').factory('jsCourseChallengeResource', function($resource) {
-  return $resource('/courses/:course/challenges.json', {}, {});
-});
-
-angular.module('javascriptcom').factory('jsCourseResource', function($resource) {
-  return $resource('/courses/:course.json', {}, {});
-});
-
 angular.module('javascriptcom')
   .filter('markdown', ['marked', function Markdown(marked) {
     return function(text) {
@@ -59059,6 +59053,22 @@ angular.module('javascriptcom')
     };
   }]
 );
+
+angular.module('javascriptcom')
+  .filter('stateify', ['jsChallengeState', '$interpolate', function Stateify(jsChallengeState, $interpolate) {
+    return function(text, scope) {
+      return $interpolate(text)(scope);
+    };
+  }]
+);
+
+angular.module('javascriptcom').factory('jsCourseChallengeResource', function($resource) {
+  return $resource('/courses/:course/challenges.json', {}, {});
+});
+
+angular.module('javascriptcom').factory('jsCourseResource', function($resource) {
+  return $resource('/courses/:course.json', {}, {});
+});
 
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
   return function jsCommand(challenge, successCallback, errorCallback) {

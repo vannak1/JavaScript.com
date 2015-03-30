@@ -51,7 +51,7 @@ describe('set_a_var', function(){
 
   details('state', function() {
     return {
-      username: JSON.stringify(js.state.username)
+      username: js.state.username
     };
   });
 });
