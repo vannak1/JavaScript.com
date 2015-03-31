@@ -93,8 +93,8 @@ gulp.task('default', function() {
     gulp.start('javascript');
   });
 
-  watch(options.svg.files, function(files) {
-    gulp.start('svg');
+  watch(options.icons.files, function(files) {
+    gulp.start('icons');
   });
 
   watch(options.browserify.files, function(files) {
