@@ -86,12 +86,34 @@ router.
     });
   }).
 
-  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
-    var newComment = req.body;
-    newComment["article_id"] = req.params.id
 
-    Comments.create(newComment, req, function() {
-      // TODO:  Notify user if comment will need to be approved by an admin
+  function buildComment(request, response, next){
+
+    var newComment = request.body;
+    newComment.article_id = request.params.id;
+
+    request.newComment = newComment;
+
+    Akismetor.checkSpam(request, comment, isSpam, function() {
+      next();
+    });
+
+    function isSpam(){
+      request.newComment.isSpam = true;
+    }
+  }
+
+  // TODO: move this to another file
+  // var buildComment = require('../comment-builder');
+
+  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
+
+    var newComment = req.newComment;
+
+    Comments.create(newComment, function() {
+      if(newComment.isSpam){
+        //TODO: set the flash notifying user of pending comment
+      }
       res.redirect('/flow');
     });
   }).

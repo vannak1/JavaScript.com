@@ -30,12 +30,21 @@ var Akismetor = {
     });
   },
 
-  checkSpam(req, comment, dbcallback, cb) {
-    client.checkSpam( createAkismetHash(req, comment), function(err, spam) {
-      dbCallback(spam, comment, cb);
-    });
-  },
+  checkSpam(req, comment, isSpam, done) {
+    var akismetHash = createAkismetHash(req, comment);
 
+    client.checkSpam(akismetHash, function(err, _isSpam) {
+      if(err) throw err;
+
+      if(_isSpam){
+        isSpam();
+      }
+
+      done();
+    });
+  }
+
+/*,
   // If Akismet reports something as not-spam, but it turns out to be spam anyways,
   // we can report this to Akismet via this API call
   submitSpam(req, comment, dbcallback, cb) {
@@ -51,6 +60,8 @@ var Akismetor = {
       // dbCallback(spam, comment, cb);
     });
   }
+*/
+
 };
 
 module.exports = Akismetor;
