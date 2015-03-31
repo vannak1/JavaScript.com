@@ -30,3 +30,5 @@ node_modules
 .service-credentials
 
 bower_components
+
+public/stylesheets/

@@ -28,13 +28,15 @@ var _            = require('lodash');
 var options = {
 
   css: {
-    files: 'public/stylesheets',
     file: 'public/stylesheets/application.css',
     destination: 'public/stylesheets'
   },
 
   sass: {
-    files: ['public/stylesheets/*.sass', 'public/stylesheets/**/*.sass'],
+    files: [
+      'client/stylesheets/*.sass',
+      'client/stylesheets/**/*.sass'
+    ],
     destination: 'public/stylesheets'
   },
 
@@ -113,8 +115,6 @@ gulp.task('default', function() {
 gulp.task('minify-css', function () {
   gulp.src(options.css.file)
       .pipe(minifycss({ advanced: false }))
-      .on('error', function(error) { console.log(error.message); })
-      .pipe(rename({ suffix: '.min' }))
       .on('error', function(error) { console.log(error.message); })
       .pipe(gulp.dest(options.css.destination));
 });
