@@ -17,6 +17,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var uglify       = require('gulp-uglify');
 var concat       = require('gulp-concat');
 var shell        = require('gulp-shell');
+var svgmin       = require('gulp-svgmin');
+var svgstore     = require('gulp-svgstore');
 var _            = require('lodash');
 
 // -------------------------------------
@@ -71,6 +73,11 @@ var options = {
     destDir:  'public/javascripts'
   },
 
+  icons: {
+    files: 'public/images/icons/icon-*.svg',
+    destDir: 'public/images/icons'
+  }
+
 };
 
 // -------------------------------------
@@ -80,11 +87,14 @@ var options = {
 gulp.task('default', function() {
   watch(options.sass.files, function(files) {
     gulp.start('sass');
-    gulp.start('minify-css');
   });
 
   watch(options.js.files, function(files) {
     gulp.start('javascript');
+  });
+
+  watch(options.svg.files, function(files) {
+    gulp.start('svg');
   });
 
   watch(options.browserify.files, function(files) {
@@ -138,8 +148,6 @@ gulp.task('browserify', function() {
   return gulp.task('browserify', shell.task(['node_modules/browserify/bin/cmd.js '+files+' -o ' + output]));
 });
 
-
-
 // -------------------------------------
 //   Task: Abecedary
 // -------------------------------------
@@ -161,4 +169,15 @@ gulp.task('javascript', function() {
     // .pipe(uglify({ mangle: false }))
     .pipe(concat(options.js.destFile))
     .pipe(gulp.dest(options.js.destDir));
+});
+
+// -------------------------------------
+//   Task: Icons
+// -------------------------------------
+
+gulp.task('icons', function() {
+  gulp.src(options.icons.files)
+    .pipe(svgmin())
+    .pipe(svgstore({ inlineSvg: true }))
+    .pipe(gulp.dest(options.icons.destDir));
 });
