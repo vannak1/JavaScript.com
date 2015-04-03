@@ -26,11 +26,7 @@ describe('set_a_var', function(){
     };
   });
 
-  it('f_error', function() {
-    if(errorMessage) {
-      js.assert(false, errorMessage);
-    }
-  });
+  js.verify(code);
 
   it('f_no_var_keyword', function(){
     js.assert(code.match(/var/));

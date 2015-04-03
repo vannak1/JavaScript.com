@@ -59148,7 +59148,9 @@ angular.module('javascriptcom').factory('jsCommandReport', ['_', function(_) {
     }
 
     this.failureMessage = function() {
-      return _.compact([this.failure().message, this.errorMessage()]).join(': ');
+      return this.failure() ?
+        _.compact([this.failure().message, this.errorMessage()]).join(': ') :
+        this.errorMessage();
     }
 
     this.output = function() {

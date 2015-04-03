@@ -21,11 +21,7 @@ describe('set_name', function() {
     };
   });
 
-  it('f_error', function() {
-    if(errorMessage) {
-      js.assert(false, errorMessage);
-    }
-  });
+  js.verify(code);
 
   it('f_no_name', function() {
     js.assert(typeof(message) === 'string');

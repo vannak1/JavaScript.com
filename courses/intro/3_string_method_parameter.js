@@ -19,11 +19,7 @@ describe('console.log example', function() {
     js.evaluate("alert = _alert");
   });
 
-  it('f_error', function() {
-    if(errorMessage) {
-      js.assert(false, errorMessage);
-    }
-  });
+  js.verify(code);
 
   it('f_no_alert', function() {
     var alertWasCalled = js.evaluate('_alertCalled');
