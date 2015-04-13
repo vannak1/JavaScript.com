@@ -58934,15 +58934,44 @@ module.exports = function(code, tests) {
 },{}]},{},[1])
 (1)
 });
-$(function() {
-  // Hide sponsor links
-  $('tr[style="background-color: #faf9dc;"]').hide();
-});
-
 angular.module('javascriptcom', ['ngResource', 'ngAnimate'])
   .config(['$httpProvider', function config($httpProvider) {
     $httpProvider.defaults.cache = true;
   }]);
+
+// *************************************
+//
+//   Application
+//   -> Global scripts
+//
+// *************************************
+
+// -------------------------------------
+//   Namespace
+// -------------------------------------
+
+JS = {}
+
+// -------------------------------------
+//   Document Ready
+// -------------------------------------
+
+jQuery(function($) {
+
+  // Put your component calls here...
+
+});
+
+// -------------------------------------
+//   Inbox
+// -------------------------------------
+
+jQuery(function($) {
+
+  // Hide sponsor links
+  $('tr[style="background-color: #faf9dc;"]').hide();
+
+});
 
 angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsCourseState', function(jsChallengeProgress, jsCourseState) {
   return {
