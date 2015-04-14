@@ -9,7 +9,8 @@
 //   Namespace
 // -------------------------------------
 
-JS = {}
+JS         = {};
+JS.Modules = {};
 
 // -------------------------------------
 //   Document Ready
@@ -17,7 +18,7 @@ JS = {}
 
 jQuery(function($) {
 
-  // Put your component calls here...
+  JS.Modules.Video.init();
 
 });
 
