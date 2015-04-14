@@ -9,7 +9,14 @@
 //   Namespace
 // -------------------------------------
 
-JS = {}
+var JS = {};
+
+JS.Globals  = {},
+JS.Classes  = {},
+JS.Helpers  = {},
+JS.Modules  = {},
+JS.Services = {},
+JS.Inbox    = {};
 
 // -------------------------------------
 //   Document Ready
@@ -17,7 +24,11 @@ JS = {}
 
 jQuery(function($) {
 
-  // Put your component calls here...
+  // ----- Components ----- //
+
+  // Modules
+
+  JS.Modules.Layout.init();
 
 });
 
