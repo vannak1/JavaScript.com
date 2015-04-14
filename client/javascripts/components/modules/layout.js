@@ -26,7 +26,8 @@ JS.Modules.Layout = (function() {
 
   init = function(options) {
     _settings = $.extend({
-      $element         : $('.js-element'),
+      $element         : $('.js-layout'),
+      $form         : $('.js-layout-form'),
       headerFixedClass : 'is-layout-header-fixed'
     }, options);
 
@@ -38,7 +39,7 @@ JS.Modules.Layout = (function() {
   // -------------------------------------
 
   _setEventHandlers = function() {
-    _$html.on('click', function(event) {
+    _$form.on('submit', function(event) {
         event.preventDefault();
 
         repositionHeader();
