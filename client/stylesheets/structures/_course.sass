@@ -1,0 +1,70 @@
+// *************************************
+//
+//   Course
+//   -> Challenge interface
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .course[mini]
+//   .course-scaffolding
+//
+// *************************************
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Mini ----- //
+
+.course--mini
+  padding: 0
+
+  // Container
+
+  .course-container
+    margin: 0
+    max-width: none
+
+  // Challenge
+
+  .course-challenge
+
+    &.is-started
+      display: none !important
+
+    &.is-active
+      display: block !important
+
+  .course-challenge-label
+    display: none
+
+  .course-challenge-instructions
+    font-size: inherit
+
+  .course-challenge-title
+    display: none
+
+  // Table of Contents
+
+  .course-toc
+    display: none
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Challenge ----- //
+
+.course-challenge
+  opacity: 0.4
+
+  &.is-active
+    opacity: 1
+
+// Instructions
+
+.course-challenge-instructions
+  font-family: $b-fontFamily-heading
+  font-size: $b-fontSize-xl

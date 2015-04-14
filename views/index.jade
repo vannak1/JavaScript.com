@@ -4,15 +4,18 @@ block content
 
   .layout-primary
     .row.bc-regent
-      .cell.well
+      .cell.well.well--xl
         .g
           .g-b.g-b--1of2
 
             p Video goes here.
 
-          .g-b.g-b--1of2(ng-app='javascriptcom' class='home')
+          .g-b.g-b--1of2
 
-            js-course(course='intro')
+            p.h.h--1 Ready to learn JavaScript?
+
+            div(ng-app='javascriptcom')
+              js-course(course='intro' class='course--mini')
 
   .layout-secondary
     .row.bc-bostonBlue.tci
