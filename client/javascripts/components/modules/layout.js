@@ -39,7 +39,7 @@ JS.Modules.Layout = (function() {
   // -------------------------------------
 
   _setEventHandlers = function() {
-    _$form.on('submit', function(event) {
+    _settings.$form.on('submit', function(event) {
         event.preventDefault();
 
         repositionHeader();
