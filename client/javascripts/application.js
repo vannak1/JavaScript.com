@@ -10,7 +10,6 @@
 // -------------------------------------
 
 var JS = {};
-
 JS.Globals  = {},
 JS.Classes  = {},
 JS.Helpers  = {},
@@ -29,6 +28,7 @@ jQuery(function($) {
   // Modules
 
   JS.Modules.Layout.init();
+  JS.Modules.Video.init();
 
 });
 
