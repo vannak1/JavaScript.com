@@ -4,6 +4,17 @@
 //   -> Homepage video modal
 //
 // *************************************
+//
+// @param $element    { jQuery object }
+// @param $trigger    { jQuery object }
+// @param $video      { jQuery object }
+// @param $close      { jQuery object }
+// @param $overlay    { jQuery object }
+// @param overlayNode { string (selector) }
+// @param closeNode   { string (selector) }
+// @param activeClass { string }
+//
+// *************************************
 
 JS.Modules.Video = (function() {
 
@@ -24,9 +35,9 @@ JS.Modules.Video = (function() {
       $trigger    : $('.js-video-trigger'),
       $video      : $('.js-video-element'),
       $close      : $('<a href="#" class="video-close js-video-close">&times;</a>'),
+      $overlay    : $('<div class="video-overlay js-video-overlay"></div>'),
       overlayNode : '.js-video-overlay',
       closeNode   : '.js-video-close',
-      $overlay    : $('<div class="video-overlay js-video-overlay"></div>'),
       activeClass : 'is-video-playing'
     }, options);
 
