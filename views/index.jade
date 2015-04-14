@@ -6,7 +6,9 @@ block content
     .cell.well
       .g
         .g-b.g-b--1of2
-          p Video goes here.
+          a.btn.js-video-trigger(href='#') Watch Video
+          video.video.js-video-element(controls)
+            source(src='/videos/steaks.mp4' type='video/mp4')
         .g-b.g-b--1of2(ng-app='javascriptcom' class='home')
           js-course(course='intro')
 

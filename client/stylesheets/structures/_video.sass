@@ -1,0 +1,82 @@
+// *************************************
+//
+//   Video
+//   -> Video modal
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .video
+//
+// *************************************
+
+.video
+  @extend .fauxHide
+  border-radius: $b-borderRadius * 2
+  left: 50%
+  max-width: 960px
+  position: fixed
+  top: 50%
+  transform: translate(-50%, -40%)
+  transition: all 0.3s ease-in-out
+  z-index: 100
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+// ----- Playing ----- //
+
+.is-video-playing
+  position: relative
+  overflow: hidden
+
+  .video,
+  .video-close,
+  .video-overlay
+    @extend .fauxShow
+
+  .video
+    transform: translate(-50%, -50%)
+    transition: all 0.3s 0.5s ease-in-out
+
+  .video-close
+    transform: scale(1)
+    transition: all 0.5s 0.7s ease-in-out
+
+  .video-overlay
+    opacity: 0.9
+    transition: all 0.5s ease-in-out
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Close ----- //
+
+.video-close
+  @extend .fauxHide
+  color: $c-text-invert
+  display: block
+  font-size: $b-fontSize-h1
+  position: fixed
+  right: $b-space-s
+  top: 0
+  transform: scale(0.5)
+  transition: all 0.3s ease-in-out
+
+// ----- Overlay ----- //
+
+.video-overlay
+  @extend .fauxHide
+  background: $c-highlight
+  bottom: 0
+  height: 100%
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+  transition: all 0.3s 0.5s ease-in-out
+  width: 100%
+  z-index: 99
