@@ -27,7 +27,7 @@ JS.Modules.Layout = (function() {
   init = function(options) {
     _settings = $.extend({
       $element         : $('.js-layout'),
-      $form         : $('.js-layout-form'),
+      $form            : $('.js-layout-form'),
       headerFixedClass : 'is-layout-header-fixed'
     }, options);
 
