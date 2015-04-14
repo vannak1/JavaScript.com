@@ -58312,7 +58312,7 @@ JS.Modules.Video = (function() {
   // -------------------------------------
 
   var _settings =  {};
-  var video     = null;
+  var _video     = null;
 
   // -------------------------------------
   //   Initialize
@@ -58330,7 +58330,7 @@ JS.Modules.Video = (function() {
       activeClass : 'is-video-playing'
     }, options);
 
-    video = _settings.$video[0];
+    _video = _settings.$video[0];
 
     _setEventHandlers();
   };
@@ -58392,14 +58392,14 @@ JS.Modules.Video = (function() {
         }, 200);
 
         setTimeout(function() {
-          play();
+          _play();
         }, 1000);
 
         break;
 
       case 'close':
         _settings.$element.removeClass(_settings.activeClass);
-        pause();
+        _pause();
 
         break;
     }
@@ -58409,24 +58409,24 @@ JS.Modules.Video = (function() {
   //   Play
   // -------------------------------------
 
-  var play = function() {
-    video.play();
+  var _play = function() {
+    _video.play();
   };
 
   // -------------------------------------
   //   Pause
   // -------------------------------------
 
-  var pause = function() {
-    video.pause();
+  var _pause = function() {
+    _video.pause();
   };
 
   // -------------------------------------
   //   Stop
   // -------------------------------------
 
-  var stop = function() {
-    video.stop();
+  var _stop = function() {
+    _video.stop();
   };
 
   // -------------------------------------
