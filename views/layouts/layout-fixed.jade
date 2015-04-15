@@ -1,0 +1,15 @@
+doctype html
+html.layout.js-layout.is-layout-header-fixed(lang='en')
+
+  include /views/layouts/_head
+
+  body
+    .dn
+      include /public/images/icons/icons.svg
+
+    include /views/partials/_header
+
+    main
+      block content
+
+    script(src='/javascripts/application.js')
