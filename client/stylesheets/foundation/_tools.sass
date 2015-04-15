@@ -226,10 +226,14 @@
 //   Positioning
 // -------------------------------------
 
+// ----- Float ----- //
+
 .fl
   float: left
 .fr
   float: right
+
+// ----- Position ----- //
 
 .poa
   position: absolute
@@ -239,6 +243,20 @@
   position: relative
 .pos
   position: static
+
+// ----- Left ----- //
+
+// Responsive
+
++respond-to($g-m)
+
+  .pol-1of4--m
+    left: percentage(1/4)
+
++respond-to($g-l)
+
+  .pol-1of6--l
+    left: percentage(1/6)
 
 // -------------------------------------
 //   Rounding

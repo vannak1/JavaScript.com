@@ -1,6 +1,15 @@
-<div class='course-challenge js-challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
-  <p class='label label--highlight course-challenge-label'>Challenge 1</p>
-  <h2 class='course-challenge-title h h--1 mbs'>{{::ctrl.challenge.title}}</h2>
-  <js-instructions></js-instructions>
-  <js-console></js-console>
+<div class='row challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
+  <div class='cell well well--l'>
+    <div class='g'>
+      <div class='g-b g-b--m--3of4 g-b--l--4of6 pol-1of4--m pol-1of6--l'>
+
+        <p class='label label--highlight course-challenge-label'>Challenge 1</p>
+        <h2 class='course-challenge-title h h--1 mbs'>{{::ctrl.challenge.title}}</h2>
+
+        <js-instructions></js-instructions>
+        <js-console></js-console>
+
+      </div>
+    </div>
+  </div>
 </div>

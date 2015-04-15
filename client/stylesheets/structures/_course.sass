@@ -68,3 +68,19 @@
 .course-challenge-instructions
   font-family: $b-fontFamily-heading
   font-size: $b-fontSize-xl
+
+// ----- Table of Contents ----- //
+
+.course-toc
+
+  +respond-to($g-m)
+    position: fixed
+    top: $site-header-height
+    width: calc(#{100vw / 4} - #{$b-space * 2}) // 1of4 column at medium breakpoint
+    z-index: 1000
+
+  +respond-to($g-l)
+    width: calc(#{100vw / 6} - #{$b-space * 2}) // 1of6 column at large breakpoint
+
+  +respond-to($b-maxWidth)
+    width: calc(#{$b-maxWidth / 6} - #{$b-space * 2}) // 1of6 column at cell width
