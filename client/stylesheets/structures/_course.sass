@@ -58,10 +58,25 @@
 // ----- Challenge ----- //
 
 .course-challenge
-  opacity: 0.4
+  background: $snow
+  transition: 0.2s ease-in-out
 
-  &.is-active
+  > *
+    opacity: 0.4
+
+  .CodeMirror-scroll
+    overflow-y: hidden
+
+// Active
+
+.course-challenge.is-active
+  background: transparent
+
+  > *
     opacity: 1
+
+  .CodeMirror-scroll
+    overflow-y: auto
 
 // Instructions
 
