@@ -30,13 +30,15 @@
 // ----- Header Fixed ----- //
 
 .layout.is-layout-header-fixed
-  padding-top: $site-header-height
 
-  .layout-header
-    left: 0
-    position: fixed
-    right: 0
-    top: 0
+  +respond-to($g-m)
+    padding-top: $site-header-height-l
+
+    .layout-header
+      left: 0
+      position: fixed
+      right: 0
+      top: 0
 
 .layout.is-layout-primary-active
 
