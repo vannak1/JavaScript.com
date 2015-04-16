@@ -3,6 +3,8 @@
 //   Console
 //   -> Terminal window
 //
+//  Dependencies: .CodeMirror .cm-*
+//
 // -------------------------------------
 //   Template (Haml)
 // -------------------------------------
@@ -24,22 +26,23 @@
   min-height: 100%
   overflow: auto
   padding: $b-space
+  position: relative
   width: 100%
+  z-index: zi('console')
 
   ul
-    @extend .lr
+    +list-reset
 
   li
     color: $console-color
 
-  .CodeMirror,
-  .cm-s-vibrant-ink.CodeMirror,
+  .CodeMirror
     background: $console-background
     color: $console-color
 
-    div.CodeMirror-cursor
+    .CodeMirror-cursor
       border-color: $console-color
-      border-size: $console-cursor-size
+      border-width: $console-cursor-size
 
 // -------------------------------------
 //   Modifiers
@@ -68,7 +71,16 @@
 
 .console-msg
   color: $c-subdue
+  line-height: 1.5
   margin-top: $b-space-s
+
+  code
+    background-color: $console-color
+    border-radius: $b-borderRadius
+    color: $console-background
+    display: inline-block
+    padding-left: 0.5ch
+    padding-right: 0.5ch
 
 // Error
 

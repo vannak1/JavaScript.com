@@ -9,8 +9,13 @@
 //   Namespace
 // -------------------------------------
 
-JS         = {};
-JS.Modules = {};
+var JS = {};
+JS.Globals  = {},
+JS.Classes  = {},
+JS.Helpers  = {},
+JS.Modules  = {},
+JS.Services = {},
+JS.Inbox    = {};
 
 // -------------------------------------
 //   Document Ready
@@ -18,6 +23,11 @@ JS.Modules = {};
 
 jQuery(function($) {
 
+  // ----- Components ----- //
+
+  // Modules
+
+  JS.Modules.Layout.init();
   JS.Modules.Video.init();
 
 });

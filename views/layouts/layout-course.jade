@@ -1,5 +1,5 @@
 doctype html
-html.layout.js-layout(lang='en')
+html.layout.js-layout.is-layout-header-fixed(lang='en')
 
   include /views/layouts/_head
 
@@ -7,11 +7,10 @@ html.layout.js-layout(lang='en')
     .dn
       include /public/images/icons/icons.svg
 
+    - headerPartial = { bleed: true }
     include /views/partials/_header
 
     main
       block content
-
-    include /views/partials/_footer
 
     script(src='/javascripts/application.js')
