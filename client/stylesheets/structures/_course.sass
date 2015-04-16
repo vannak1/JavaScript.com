@@ -109,7 +109,7 @@
     position: fixed
     top: $site-header-height-l
     width: calc(#{100vw / 4} - #{$b-space * 2}) // 1of4 column at medium breakpoint
-    z-index: 1000
+    z-index: zi('course-toc', $zi-course)
 
   +respond-to($g-l)
     width: calc(#{100vw / 6} - #{$b-space * 2}) // 1of6 column at large breakpoint
