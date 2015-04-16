@@ -77,7 +77,6 @@ JS.Modules.Video = (function() {
     // ----- Keydown: Escape ----- //
 
     $(document).on('keydown', function(event) {
-      console.log(event.which);
       switch (event.which) {
         case 27:
           _toggle('close');
