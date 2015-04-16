@@ -18,30 +18,12 @@
 //
 // *************************************
 
-$console-cursor-size: 6px !default
-$console-maxHeight: 130px !default
-$console-minHeight: 50px !default
-$c-error: #b24626 !default
-$c-text: #585a5b !default
-$c-warning: #f2c342 !default
-$c-success: #31a480 !default
-
-$c-text-invert: #fff !default
-$console-background: $c-text !default
-$console-color: $c-text-invert !default
-
-$b-space: em(20px) !default
-$b-borderRadius: 3px !default
-$b-space-s: em(10px) !default
-$c-subdue: #828582 !default
-
-
 .console
   background: $console-background
   box-sizing: border-box
   min-height: 100%
   overflow: auto
-  padding: 10px 20px
+  padding: $b-space
   width: 100%
 
   ul
@@ -50,7 +32,8 @@ $c-subdue: #828582 !default
   li
     color: $console-color
 
-  .CodeMirror
+  .CodeMirror,
+  .cm-s-vibrant-ink.CodeMirror,
     background: $console-background
     color: $console-color
 
@@ -90,17 +73,17 @@ $c-subdue: #828582 !default
 // Error
 
 .console-msg--error
-  color: $c-error
+  color: red
 
 // Help
 
 .console-msg--help
-  color: $c-warning
+  color: yellow
 
 // Success
 
 .console-msg--success
-  color: $c-success
+  color: green
 
 // Title
 

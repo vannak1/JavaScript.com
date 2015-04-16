@@ -2,21 +2,26 @@ extends /views/layouts/layout-bleed
 
 block content
 
-  .row.bc-regent
-    .cell.well
+  .row.hero.bc-regent
+    .cell.well.well--l
+      .mbxl.tac
+        h2 Not sure where JavaScript came from?
+        p.tfh Watch our animated short.
+
+        a.btn.js-video-trigger(href='#') Watch Video
+
+        video.video.js-video-element(controls)
+          source(src='/videos/steaks.mp4' type='video/mp4')
+
       .g
-        .g-b.g-b--1of2
+        .g-b.g-b--l--1of2.fr
 
-          a.btn.js-video-trigger(href='#') Watch Video
-          video.video.js-video-element(controls)
-            source(src='/videos/steaks.mp4' type='video/mp4')
+          h3.h.h--3.mbs Ready to try JavaScript?
 
-        .g-b.g-b--1of2
+          div(ng-app='javascriptcom' class='course--mini')
+            js-course.hero-challenge(course='intro')
 
-          p.h.h--1 Ready to learn JavaScript?
-
-          div(ng-app='javascriptcom')
-            js-course(course='intro' class='course--mini')
+    include /views/partials/_hero_img
 
   .layout-secondary
     .row.bc-bostonBlue.tci
