@@ -9,32 +9,19 @@
 //
 // .hero
 //
+//   .hero-challenge
+//
 // *************************************
 
 .hero
   min-height: $hero-minHeight
-
-// -------------------------------------
-//   Modifiers
-// -------------------------------------
-
-// .hero--modifier
-
-// -------------------------------------
-//   States
-// -------------------------------------
-
-// .hero.is-state
-
-// -------------------------------------
-//   Context
-// -------------------------------------
-
-// .has-hero
+  position: relative
 
 // -------------------------------------
 //   Scaffolding
 // -------------------------------------
+
+// ----- Challenge ----- //
 
 .hero-challenge
 
@@ -43,3 +30,14 @@
 
   p
     font-family: $b-fontFamily-heading
+
+// ----- Image ----- //
+
+.hero-img
+  bottom: -$b-space-l
+  display: none
+  left: -7.5em // FIXME: Magic number!
+  position: absolute
+
+  +respond-to($g-l)
+    display: block
