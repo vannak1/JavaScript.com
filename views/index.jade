@@ -10,8 +10,9 @@ block content
 
         a.btn.js-video-trigger(href='#') Watch Video
 
-        video.video.js-video-element(controls)
-          source(src='/videos/steaks.mp4' type='video/mp4')
+        .video
+          video.video-element.js-video-element(controls preload="none")
+            source(src='/videos/sky.mp4' type='video/mp4')
 
       .g
         .g-b.g-b--l--1of2.fr
