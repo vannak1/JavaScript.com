@@ -34,10 +34,28 @@
 // ----- Image ----- //
 
 .hero-img
-  bottom: -$b-space-l
+  bottom: 0
   display: none
   left: -7.5em // FIXME: Magic number!
   position: absolute
 
   +respond-to($g-l)
     display: block
+
+// Image: Fan
+
+.hero-img-fan
+  animation: hero-spin 7s linear infinite
+  transform-origin: center
+
+// -------------------------------------
+//   Animations
+// -------------------------------------
+
+// ----- Spin ----- //
+
+@keyframes hero-spin
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
