@@ -52,6 +52,12 @@ JS.Modules.Video = (function() {
 
   var _setEventHandlers = function() {
 
+    // ----- Click: Hover ----- //
+
+    _settings.$trigger.on('mouseover', function(event) {
+      _settings.$video.attr('preload', 'true');
+    });
+
     // ----- Click: Trigger ----- //
 
     _settings.$trigger.on('click', function(event) {
