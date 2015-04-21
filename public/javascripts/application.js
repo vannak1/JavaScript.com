@@ -58006,6 +58006,14 @@ angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function SafeHt
   };
 }]);
 
+angular.module('javascriptcom').factory('jsCourseChallengeResource', function($resource) {
+  return $resource('/courses/:course/challenges.json', {}, {});
+});
+
+angular.module('javascriptcom').factory('jsCourseResource', function($resource) {
+  return $resource('/courses/:course.json', {}, {});
+});
+
 angular.module('javascriptcom')
   .filter('markdown', ['marked', function Markdown(marked) {
     return function(text) {
@@ -58021,14 +58029,6 @@ angular.module('javascriptcom')
     };
   }]
 );
-
-angular.module('javascriptcom').factory('jsCourseChallengeResource', function($resource) {
-  return $resource('/courses/:course/challenges.json', {}, {});
-});
-
-angular.module('javascriptcom').factory('jsCourseResource', function($resource) {
-  return $resource('/courses/:course.json', {}, {});
-});
 
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
   return function jsCommand(challenge, successCallback, errorCallback) {
@@ -58332,6 +58332,8 @@ JS.Modules.Console = (function() {
       correctClass   : 'is-correct',
       incorrectClass : 'is-incorrect'
     }, options );
+
+    _settings.$input.focus();
 
     _setEventHandlers();
   };

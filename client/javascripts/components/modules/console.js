@@ -25,6 +25,8 @@ JS.Modules.Console = (function() {
       incorrectClass : 'is-incorrect'
     }, options );
 
+    _settings.$input.focus();
+
     _setEventHandlers();
   };
 
