@@ -42,7 +42,7 @@ JS.Modules.Console = (function() {
       var $element = $(this);
       var value = _settings.$input.val();
 
-      if (value == JS.Globals.homepageChallengeAnswer) {
+      if (value.match(JS.Globals.homepageChallengeAnswer)) {
         $element.removeClass(_settings.incorrectClass);
         $element.addClass(_settings.correctClass);
       } else {
