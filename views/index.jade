@@ -35,10 +35,15 @@ block content
       .cell.well
         .g
           .g-b.g-b--m--1of2
-
-            p.mtm.tfh
-              span.db Want the latest JavaScript news delivered right to your inbox?
-              strong Subscribe to our mailing list.
+            .g.g--s
+              .g-b.g-b--1of5
+                .fr.mtm.pts.oph
+                  - iconPartial = { name: 'mail', size: 28 }
+                  include /views/partials/_icon
+              .g-b.g-b--4of5
+                p.mtm.tfh
+                  span.db Want the latest JavaScript news delivered right to your inbox?
+                  strong Subscribe to our mailing list.
 
           .g-b.g-b--m--1of2
 
