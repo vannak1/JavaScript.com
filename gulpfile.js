@@ -41,19 +41,24 @@ var options = {
   },
 
   js: {
-    files: ['bower_components/jquery/dist/jquery.js',
-            'bower_components/angular/angular.js',
-            'bower_components/angular-resource/angular-resource.js',
-            'bower_components/angular-animate/angular-animate.js',
-            'bower_components/lodash/lodash.js',
-            'bower_components/marked/marked.min.js',
-            'bower_components/codemirror/lib/codemirror.js',
-            'bower_components/cs_console/compiled/cs_console.js',
-            'bower_components/abecedary/dist/abecedary.js',
-            'client/**/*.js'],
-
+    files: ['client/javascripts/application.js', 'client/javascripts/**/*.js'],
+    vendorFiles: ['bower_components/jquery/dist/jquery.js'],
+    vendorCourseFiles: [
+      'bower_components/angular/angular.js',
+      'bower_components/angular-resource/angular-resource.js',
+      'bower_components/angular-animate/angular-animate.js',
+      'bower_components/lodash/lodash.js',
+      'bower_components/marked/marked.min.js',
+      'bower_components/codemirror/lib/codemirror.js',
+      'bower_components/cs_console/compiled/cs_console.js',
+      'bower_components/abecedary/dist/abecedary.js',
+    ],
+    courseFiles: ['client/javascriptcom/**/*.js',],
     destFile: 'application.js',
-    destDir:  'public/javascripts'
+    destVendorFile: 'vendor.js',
+    destVendorCourseFile: 'vendor-course.js',
+    destCourseFile: 'course.js',
+    destDir: 'public/javascripts'
   },
 
   browserify: {
@@ -165,9 +170,28 @@ gulp.task('abecedary', function() {
 // -------------------------------------
 
 gulp.task('javascript', function() {
+  // application.js
   gulp.src(options.js.files)
     // .pipe(uglify({ mangle: false }))
     .pipe(concat(options.js.destFile))
+    .pipe(gulp.dest(options.js.destDir));
+
+  // vendor.js
+  gulp.src(options.js.vendorFiles)
+    // .pipe(uglify({ mangle: false }))
+    .pipe(concat(options.js.destVendorFile))
+    .pipe(gulp.dest(options.js.destDir));
+
+  // vendor-course.js
+  gulp.src(options.js.vendorCourseFiles)
+    // .pipe(uglify({ mangle: false }))
+    .pipe(concat(options.js.destVendorCourseFile))
+    .pipe(gulp.dest(options.js.destDir));
+
+  // course.js
+  gulp.src(options.js.courseFiles)
+    // .pipe(uglify({ mangle: false }))
+    .pipe(concat(options.js.destCourseFile))
     .pipe(gulp.dest(options.js.destDir));
 });
 
