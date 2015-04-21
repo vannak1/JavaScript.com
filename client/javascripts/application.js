@@ -18,6 +18,14 @@ JS.Services = {},
 JS.Inbox    = {};
 
 // -------------------------------------
+//   Globals
+// -------------------------------------
+
+JS.Globals = {
+  homepageChallengeAnswer : '"Gregg";'
+};
+
+// -------------------------------------
 //   Document Ready
 // -------------------------------------
 
@@ -27,6 +35,7 @@ jQuery(function($) {
 
   // Modules
 
+  JS.Modules.Console.init()
   JS.Modules.Layout.init();
   JS.Modules.Video.init();
 
