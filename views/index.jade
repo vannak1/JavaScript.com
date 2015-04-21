@@ -8,7 +8,10 @@ block content
         h2 Not sure where JavaScript came from?
         p.tfh Watch our animated short.
 
-        a.btn.js-video-trigger(href='#') Watch Video
+        a.btn.btn--sticker.js-video-trigger(href='#')
+          b.srt Watch Video
+          - iconPartial = { name: 'play', size: 24 }
+          include /views/partials/_icon
 
         .video
           video.video-element.js-video-element(controls preload="none")
