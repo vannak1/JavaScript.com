@@ -17,7 +17,7 @@ block content
             source(src='/videos/sky.mp4' type='video/mp4')
 
       .g
-        .g-b.g-b--l--1of2.fr
+        .g-b.g-b--l--1of2.fr.mtl
 
           h3.h.h--3.mbs Ready to try JavaScript?
           p.tfh Start learning JavaScript with us by typing in your first name surrounded by quotation marks, and ending with a semicolon. For example, I would type my name like this: "Gregg";
@@ -29,33 +29,22 @@ block content
 
     include /views/partials/_hero_img
 
-  .layout-secondary
-    .row.bc-bostonBlue.tci
-      .cell.well
-        .g
-          .g-b.g-b--m--1of2
-            .g.g--s
-              .g-b.g-b--1of5
-                .fr.mtm.pts.oph
-                  - iconPartial = { name: 'mail', size: 28 }
-                  include /views/partials/_icon
-              .g-b.g-b--4of5
-                p.mtm.tfh
-                  span.db Want the latest JavaScript news delivered right to your inbox?
-                  strong Subscribe to our mailing list.
+  .row
+    .cell.cell--s.well.well--xl
+      .bucket.bucket--flag.bucket--l
+        .bucket-media.dn.db--m
+          img(src='/images/img-newsletter.svg' alt='')
+        .bucket-content
+          h4.h.h--3.mts Want the latest JavaScript news?
+          p.tfh.tss
+            | Head over to our 
+            a(href='/news') news feed
+            |  or subscribe below to receive email updates.
 
-          .g-b.g-b--m--1of2
-
-            form.form.mtm(action='/subscribe' method='post')
-              fieldset.form-field.form-field--inline
-                .g.g--xs
-                  .g-b.g-b--s--3of5
-                    input.form-input.form-input--dark.form-input--inline.mbs.mbf--m(type='email' name='email' placeholder='Email Address')
-                  .g-b.g-b--s--2of5
-                    input.btn.btn--b.form-btn(type='submit' value='Sign Up')
-
-    .row
-      .cell.cell--s.well.well--xl
-        each item in news
-          h2.h.h--2= item.title
-          p!= item.body
+          form.form.mtm(action='/subscribe' method='post')
+            fieldset.form-field.form-field--inline.mbf
+              .g.g--xs
+                .g-b.g-b--s--3of5
+                  input.form-input.form-input--inline.mbs.mbf--m(type='email' name='email' placeholder='Email Address')
+                .g-b.g-b--s--2of5
+                  input.btn.btn--b.form-btn(type='submit' value='Sign Up')
