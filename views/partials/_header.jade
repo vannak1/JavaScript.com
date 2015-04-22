@@ -16,6 +16,6 @@ header.row.header.layout-header(class=(headerPartial.bleed ? 'bc-regent' : '' ))
         nav.split-cell
           each url, title in menu
             if current_page == title
-              a.header-link.is-active(href=url)= title
+              a.header-link.highlight.highlight--bordered.is-active(href=url class=(headerPartial.bleed ? 'highlight--bordered--alt' : '' ))= title
             else
-              a.header-link(href=url)= title
+              a.highlight.highlight--bordered.header-link(href=url class=(headerPartial.bleed ? 'highlight--bordered--alt' : '' ))= title
