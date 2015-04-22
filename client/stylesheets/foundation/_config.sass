@@ -79,15 +79,15 @@ $form-input--dark--focus-color: shade($form-input--dark-color, 10%)
 $form-input--dark-background: shade($form-input--dark-color, 25%)
 $form-input--dark--focus-background: shade($form-input--dark-color, 30%)
 
-// Highlight
+// Underline
 
-$highlight-background: $c-highlight
-$highlight--bordered--alt-cover-background: $regent
-$highlight--bordered-borderColor: $c-background
-$highlight--bordered-cover-background: $c-highlight
-$highlight--bordered--inverted-cover-background: $c-background
-$highlight--bordered--inverted-borderColor: $highlight-background
-$highlight-color: $c-text
+$underline-borderColor: $c-background
+$underline--alt-borderColor: currentColor
+$underline--alt-cover-background: $regent
+$underline-color: black
+$underline-cover-background: $c-highlight
+$underline--inverted-borderColor: $c-highlight
+$underline--inverted-cover-background: $c-background
 
 // ----- Sector ----- //
 
@@ -225,16 +225,17 @@ $g-silent: false
 
 $g-selector: if($g-silent, unquote("%"), unquote("."))
 
-// ----- Highlight ----- //
+// ----- Underline ----- //
 
 // Borders
 
-$highlight-border: 0
-$highlight--bordered-borderWidth: $b-borderWidth
+$underline-borderStyle: solid
+$underline-borderWidth: $b-borderWidth
+$underline-border: $underline-borderWidth $underline-borderStyle $underline-borderColor
 
-// Text
+// Settings
 
-$highlight-textDecoration: none
+$underline-color-transition-speed: 0.3s
 
 // -------------------------------------
 //   Structures
