@@ -30,7 +30,14 @@
   border-bottom: $b-borderWidth $b-borderStyle transparent
   color: $c-text-invert
   font-family: $b-fontFamily-heading
+  margin-right: $b-space
 
-  +state
+  +respond-to($g-m)
+    margin-right: $b-space-l
+
+  +state('is-active')
     border-bottom-color: $c-text-invert
     color: $c-text-invert
+
+  &:last-child
+    margin-right: 0

@@ -1,5 +1,8 @@
 - headerPartial = headerPartial || {}
 - headerPartial.bleed = headerPartial.bleed || false
+- menu = { 'News' : '/news', 'Community' : '/flow', 'Resources' : '/resources' }
+
+block current_nav
 
 header.row.header.layout-header(class=(headerPartial.bleed ? 'bc-regent' : '' ))
   .cell.well.well--s.well--m--m
@@ -11,6 +14,8 @@ header.row.header.layout-header(class=(headerPartial.bleed ? 'bc-regent' : '' ))
             img.dn--m(src='/images/logo-mark.svg' alt='JavaScript.com')
             img.dn.db--m(src='/images/logo.svg' alt='JavaScript.com')
         nav.split-cell
-          a.header-link.mrm.mrl--m(href='/news') News
-          a.header-link.mrm.mrl--m(href='/flow') Community
-          a.header-link(href='/resources') Resources
+          each url, title in menu
+            if current_page == title
+              a.header-link.is-active(href=url)= title
+            else
+              a.header-link(href=url)= title
