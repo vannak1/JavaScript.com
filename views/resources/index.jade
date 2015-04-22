@@ -8,4 +8,20 @@ block content
   section.row
     .cell.cell--s.well.well--l.well--m--xl
 
-      h1 Free Resources
+      h1.mbm Free Resources
+
+      ul.list.list--l.list--divided.list--divided--l
+
+        - index = 6; while(index--)
+          li.list-item
+            article.bucket.bucket--flag.bucket--l
+              .bucket-media
+                img.thumb.thumb--m(src='http://placehold.it/220x120')
+              .bucket-content
+                h2.h.h--3
+                  a.underline.underline--inverted.tct.tc-ht.twb(href='#') Resource Title
+                p.mbf.
+                  lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  vivamus vitae risus vitae lorem iaculis placerat. aliquam sit
+                  amet felis. etiam congue. donec risus risus, pretium...
+
