@@ -79,6 +79,11 @@ $form-input--dark--focus-color: shade($form-input--dark-color, 10%)
 $form-input--dark-background: shade($form-input--dark-color, 25%)
 $form-input--dark--focus-background: shade($form-input--dark-color, 30%)
 
+// Highlight
+
+$highlight-background: $c-highlight
+$highlight-color: $c-text
+
 // Underline
 
 $underline-borderColor: $c-background
@@ -224,6 +229,20 @@ $g-silent: false
 // Selector
 
 $g-selector: if($g-silent, unquote("%"), unquote("."))
+
+// ----- Highlight ----- //
+
+// Borders
+
+$highlight-border: 0
+
+// Settings
+
+$highlight-color-transition-speed: 0.3s
+
+// Text
+
+$highlight-textDecoration: none
 
 // ----- Underline ----- //
 
