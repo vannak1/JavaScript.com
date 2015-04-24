@@ -44,6 +44,23 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/flow/new')
 }
 /* End GitHub Auth */
+function buildComment(request, response, next){
+
+  var newComment = request.body;
+  newComment.article_id = request.params.id;
+  newComment.isSpam = false;
+
+  request.newComment = newComment;
+
+  Akismetor.checkSpam(request, newComment, isSpam, function() {
+    next();
+  });
+
+  function isSpam(){
+    request.newComment.isSpam = true;
+  }
+}
+
 
 router.
 
@@ -86,22 +103,6 @@ router.
     });
   }).
 
-
-  function buildComment(request, response, next){
-
-    var newComment = request.body;
-    newComment.article_id = request.params.id;
-
-    request.newComment = newComment;
-
-    Akismetor.checkSpam(request, comment, isSpam, function() {
-      next();
-    });
-
-    function isSpam(){
-      request.newComment.isSpam = true;
-    }
-  }
 
   // TODO: move this to another file
   // var buildComment = require('../comment-builder');

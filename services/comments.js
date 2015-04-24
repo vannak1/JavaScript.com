@@ -7,12 +7,13 @@ var Comments = {
     db.query('SELECT * FROM comments WHERE article_id = $1', [ flowID ], cb)
   },
   // Creates a new comment
-  create(newComment, isSpam, cb) {
-    var approved = isSpam;
+  create(newComment, cb) {
+    var approved = newComment.isSpam;
+
 
     db.query(
       "INSERT INTO comments (article_id, approved, email, username, avatar_url, body) VALUES ($1, $2, $3, $4, $5, $6);",
-      [comment.article_id, approved, comment.email, comment.username, comment.avatar_url, comment.body],
+      [newComment.article_id, approved, newComment.email, newComment.username, newComment.avatar_url, newComment.body],
       cb
     );
   }
