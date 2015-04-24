@@ -1,0 +1,84 @@
+// *************************************
+//
+//   JavaScript.com - MVCSS v4.0.10
+//   -> Manifest
+//
+// *************************************
+
+// -------------------------------------
+//   Foundation
+// -------------------------------------
+
+@import 'foundation/reset'
+@import 'foundation/helpers'
+@import 'foundation/config'
+@import 'foundation/base'
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+
+@import 'components/bucket'
+@import 'components/bucket'
+@import 'components/button'
+@import 'components/card'
+@import 'components/cell'
+@import 'components/form'
+@import 'components/grid'
+@import 'components/highlight'
+@import 'components/list'
+@import 'components/row'
+@import 'components/sector'
+@import 'components/split'
+@import 'components/thumb'
+@import 'components/underline'
+@import 'components/well'
+
+// -------------------------------------
+//   Structures
+// -------------------------------------
+
+@import 'structures/checklist'
+@import 'structures/console'
+@import 'structures/course'
+@import 'structures/footer'
+@import 'structures/header'
+@import 'structures/heading'
+@import 'structures/hero'
+@import 'structures/icon'
+@import 'structures/inlineConsole'
+@import 'structures/label'
+@import 'structures/layout'
+@import 'structures/link'
+@import 'structures/video'
+
+// -------------------------------------
+//   Vendor
+// -------------------------------------
+
+@import 'vendor/codemirror'
+@import 'vendor/codemirror-theme'
+
+// -------------------------------------
+//   Foundation - Tools
+// -------------------------------------
+
+@import 'foundation/tools'
+
+// -------------------------------------
+//   Inbox
+// -------------------------------------
+
+// Animations are handled using Angulars ng-animate which adds and
+// removes classes during various phases. If this doesn't work we can
+// do something different, but ng-animate is pretty crazy flexible in the timing
+// in code of where these happen if we need to tweak things.
+.animate--fade.ng-enter,
+.animate--fade.ng-leave
+  transition: 1s linear all
+.animate--fade.ng-enter,
+.animate--fade.ng-leave.ng-leave-active
+  opacity: 0
+.animate--fade.ng-leave,
+.animate--fade.ng-enter.ng-enter-active
+  opacity: 1

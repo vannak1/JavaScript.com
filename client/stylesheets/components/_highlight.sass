@@ -1,0 +1,29 @@
+// *************************************
+//
+//   Highlight
+//   -> Highly stylized link background
+//      Credit: http://www.webdesignerdepot.com/
+//      CodePen: http://codepen.io/drewbarontini/pen/vOYgwE
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// %a.highlight
+//
+// *************************************
+
+.highlight
+  background-image: linear-gradient(to right, rgba(white, 0) 50%, $highlight-background 50%)
+  background-position: 0 0
+  background-size: 200% auto
+  border-bottom: $highlight-border
+  color: $highlight-color
+  text-decoration: $highlight-textDecoration
+  transition: background-position $highlight-color-transition-speed ease-in-out
+
+  &:active,
+  &:focus,
+  &:hover
+    background-position: -100% 0
+    color: $highlight-color

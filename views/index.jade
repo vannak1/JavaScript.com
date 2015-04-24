@@ -2,31 +2,50 @@ extends /views/layouts/layout-bleed
 
 block content
 
-  .row.bc-regent
-    .cell.well
-      .g
-        .g-b.g-b--1of2
-          p Video goes here.
-        .g-b.g-b--1of2(ng-app='javascriptcom' class='home')
-          js-course(course='intro')
+  .row.hero.bc-regent
+    .cell.well.well--l
+      .mbxl.tac
+        h2 Not sure where JavaScript came from?
+        p.tfh Watch our animated short.
 
-  .row.bc-bostonBlue.tci
-    .cell.well
+        a.btn.btn--sticker.js-video-trigger(href='#')
+          - iconPartial = { name: 'play', size: 24 }
+          include /views/partials/_icon
+
+        .video
+          video.video-element.js-video-element(controls preload="none")
+            source(src='/videos/sky.mp4' type='video/mp4')
+
       .g
-        .g-b.g-b--m--1of2
-          p.mtm.pts.tfh
-            strong Want the latest JavaScript news delivered right to your inbox?
-        .g-b.g-b--m--1of2
-          form.form.mtm(action='/subscribe' method='post')
-            fieldset.form-field.form-field--inline
-              .g
-                .g-b.g-b--m--3of5
-                  input.form-input.form-input--dark.form-input--inline.mbs.mbf--m(type='email' name='email' placeholder='Email Address')
-                .g-b.g-b--m--2of5
-                  input.btn.btn--b.form-btn(type='submit' value='Sign Up')
+        .g-b.g-b--l--1of2.fr
+
+          .card
+            h3.h.h--3.mbs Ready to try JavaScript?
+            p.tfh.tss Start learning JavaScript with us by typing in your first name surrounded by quotation marks, and ending with a semicolon. For example, I would type my name like this: "Gregg";
+
+            form.inlineConsole.js-console(action="")
+              span.inlineConsole-icon
+              input.form-input.inlineConsole-input.js-console-input(type='text')
+              a.btn.inlineConsole-btn(href="/learn") Continue Learning
+
+    include /views/partials/_hero_img
 
   .row
     .cell.cell--s.well.well--xl
-      each item in news
-        h2.h.h--2= item.title
-        p!= item.body
+      .bucket.bucket--flag.bucket--l
+        .bucket-media.dn.db--m
+          img(src='/images/img-newsletter.svg' alt='')
+        .bucket-content
+          h4.h.h--3.mts Want the latest JavaScript news?
+          p.tfh.tss
+            | Head over to our 
+            a(href='/news') news feed
+            |  or subscribe below to receive email updates.
+
+          form.form.mtm(action='/subscribe' method='post')
+            fieldset.form-field.form-field--inline.mbf
+              .g.g--xs
+                .g-b.g-b--s--3of5
+                  input.form-input.form-input--inline.mbs.mbf--m(type='email' name='email' placeholder='Email Address')
+                .g-b.g-b--s--2of5
+                  input.btn.btn--b.form-btn(type='submit' value='Sign Up')

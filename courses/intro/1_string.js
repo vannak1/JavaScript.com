@@ -16,16 +16,12 @@ describe('set_name', function() {
     return {
       output: message,
       state: {
-        username: JSON.stringify(message)
+        username: message
       }
     };
   });
 
-  it('f_error', function() {
-    if(errorMessage) {
-      js.assert(false, errorMessage);
-    }
-  });
+  js.verify(code);
 
   it('f_no_name', function() {
     js.assert(typeof(message) === 'string');
@@ -38,7 +34,7 @@ describe('set_name', function() {
   details('state', function() {
     js.state.username = message;
     return {
-      username: JSON.stringify(message)
+      username: message
     };
   });
 });

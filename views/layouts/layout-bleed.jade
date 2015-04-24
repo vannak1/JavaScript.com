@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html.layout.js-layout(lang='en')
 
   include /views/layouts/_head
 
@@ -10,7 +10,10 @@ html(lang='en')
     - headerPartial = { bleed: true }
     include /views/partials/_header
 
-    main.content
+    main
       block content
 
+    include /views/partials/_footer
+
+    script(src='/javascripts/vendor.js')
     script(src='/javascripts/application.js')

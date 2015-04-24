@@ -1,0 +1,97 @@
+// *************************************
+//
+//   Inline Console
+//   -> Single-line console input
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .inlineConsole(correct|incorrect)
+//
+//   .inlineConsole-icon
+//   .inlineConsole-input
+//
+// *************************************
+
+.inlineConsole
+  position: relative
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+// ----- Correct ----- //
+
+.inlineConsole.is-correct
+
+  .inlineConsole-btn
+    opacity: 1
+    transform: translateX(0)
+    visibility: visible
+
+  .inlineConsole-icon
+    opacity: 1
+    transform: translateY(-50%)
+    visibility: visible
+
+  .inlineConsole-input
+    background: $inlineConsole-correct-background
+    padding-left: $b-space-l
+
+// ----- Incorrect ----- //
+
+.inlineConsole.is-incorrect
+
+  .inlineConsole-input
+    background: $inlineConsole-incorrect-background
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Button ----- //
+
+.inlineConsole-btn
+  line-height: 2.5
+  opacity: 0
+  padding: 0 $b-space
+  position: absolute
+  right: 5px // FIXME: Magic number!
+  top: 5px // FIXME: Magic number!
+  transform: translateX(-20%)
+  transition: $inlineConsole-transitionSpeed ($inlineConsole-transitionSpeed - 0.3) ease-in-out
+  visibility: hidden
+
+// ----- Icon ----- //
+
+.inlineConsole-icon
+  color: $c-text-invert
+  display: inline-block
+  font-weight: bold
+  left: $b-space
+  opacity: 0
+  position: absolute
+  top: 50%
+  transform: translateY(0)
+  transition: $inlineConsole-transitionSpeed ($inlineConsole-transitionSpeed - 0.3) ease-in-out
+  vertical-align: middle
+  visibility: hidden
+  z-index: 1
+
+  &::before
+    content: '✓'
+
+// ----- Input ----- //
+
+.inlineConsole-input
+  background: $inlineConsole-input-background
+  border-color: transparent
+  color: $c-text-invert
+  font-family: $b-fontFamily-mono
+  transition: $inlineConsole-transition
+
+  &:focus
+    background-color: $inlineConsole-input-background
+    border-color: transparent
+    color: $c-text-invert

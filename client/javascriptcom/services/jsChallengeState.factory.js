@@ -1,4 +1,4 @@
-angular.module('javascriptcom').factory('jsChallengeState', ['_', function(_) {
+angular.module('javascriptcom').factory('jsCourseState', ['_', function(_) {
 
   return {
     state: {},

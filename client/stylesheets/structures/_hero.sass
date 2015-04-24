@@ -1,0 +1,61 @@
+// *************************************
+//
+//   Hero
+//   -> Principle row
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .hero
+//
+//   .hero-challenge
+//
+// *************************************
+
+.hero
+  min-height: $hero-minHeight
+  position: relative
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Challenge ----- //
+
+.hero-challenge
+
+  h3
+    display: none
+
+  p
+    font-family: $b-fontFamily-heading
+
+// ----- Image ----- //
+
+.hero-img
+  bottom: 0
+  display: none
+  left: -7.5em // FIXME: Magic number!
+  position: absolute
+
+  +respond-to($g-l)
+    display: block
+
+// Image: Fan
+
+.hero-img-fan
+  animation: hero-spin 7s linear infinite
+  transform-origin: center
+
+// -------------------------------------
+//   Animations
+// -------------------------------------
+
+// ----- Spin ----- //
+
+@keyframes hero-spin
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)

@@ -1,0 +1,286 @@
+// *************************************
+//
+//   Config
+//   -> Fonts, Variables
+//
+// *************************************
+
+// -------------------------------------
+//   @font-face
+// -------------------------------------
+
+// ----- Open Sans ----- //
+
++font-face('Open Sans', '/fonts/OpenSansRegular', 400, normal, false)
++font-face('Open Sans', '/fonts/OpenSansItalic', 400, italic, false)
++font-face('Open Sans', '/fonts/OpenSansSemibold', 600, normal, false)
++font-face('Open Sans', '/fonts/OpenSansSemiboldItalic', 600, italic, false)
++font-face('Open Sans', '/fonts/OpenSansBold', 700, normal, false)
+
+// -------------------------------------
+//   Colors
+// -------------------------------------
+
+// ----- Palette ----- //
+
+// Grayscale
+
+$black: #000
+$slate: #37443d
+$auroMetalSaurus: #6d7c79
+$concrete: #efefef
+$snow: #f9f9f7
+$white: #fff
+
+// Blue
+
+$bostonBlue: #379aaf
+$regent: #9cd4df
+
+// Red
+
+$sienna: #e55c52
+
+// Yellow
+
+$tulip: #e5bb31
+$goldenDream: #f1d332
+
+// ----- Base ----- //
+
+$c-background: $white
+$c-background-invert: $black
+$c-border: $concrete
+$c-highlight: $tulip
+$c-subdue: $auroMetalSaurus
+$c-text-invert: $white
+$c-text: $slate
+
+// ----- Components ----- //
+
+// Button
+
+$btn-background: $sienna
+$btn-borderColor: $sienna
+$btn-color: $c-text-invert
+
+$btn--b-background: $goldenDream
+$btn--b-borderColor: transparent
+
+// Card
+
+$card-background: $c-background
+
+// Form
+
+$form-input-background: #fbfbfb
+$form-input--dark-color: $bostonBlue
+$form-input--dark--focus-color: shade($form-input--dark-color, 10%)
+$form-input--dark-background: shade($form-input--dark-color, 25%)
+$form-input--dark--focus-background: shade($form-input--dark-color, 30%)
+
+// Highlight
+
+$highlight-background: $c-highlight
+$highlight-color: $c-text
+
+// Underline
+
+$underline-borderColor: $c-background
+$underline--alt-borderColor: currentColor
+$underline--alt-cover-background: $regent
+$underline-color: black
+$underline-cover-background: $c-highlight
+$underline--inverted-borderColor: $c-highlight
+$underline--inverted-cover-background: $c-background
+
+// ----- Sector ----- //
+
+$sector--white-background: $white
+$sector--snow-background: $snow
+
+// ----- Structures ----- //
+
+// Console
+
+$console-background: $c-text
+$console-color: $c-text-invert
+
+// Footer
+
+$footer-background: $slate
+
+// Header
+
+$header-background: $tulip
+
+// Inline Console
+
+$inlineConsole-input-background: $c-text
+$inlineConsole-correct-background: #7fab67
+$inlineConsole-incorrect-background: $sienna
+
+// Link
+
+$link-color: $c-highlight
+$link--state-color: darken($link-color, 15%)
+$link--inverted-color: $c-text-invert
+$link--inverted--state-color: rgba($link--inverted-color, 0.5)
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+// ----- Borders & Box Shadow ----- //
+
+$b-borderRadius: 6px
+$b-borderRadius-l: $b-borderRadius * 2
+$b-borderStyle: solid
+$b-borderWidth: 2px
+$b-borderWidth-l: 4px
+$b-border: $b-borderWidth $b-borderStyle $c-border
+$b-border-l: $b-borderWidth-l $b-borderStyle $c-border
+$b-boxShadow: 0 2px 0 rgba($c-text, 0.25)
+
+// ----- Typography ----- //
+
+$b-fontFamily-heading: 'Open Sans', Arial, Helvetica, sans-serif
+$b-fontFamily-mono: monaco, Consolas, 'Lucida Console', monospace
+$b-fontFamily: Georgia, Times, 'Times New Roman', serif
+$b-fontSize: 16px
+$b-fontSize-s: font-size(14px)
+$b-fontSize-l: font-size(18px)
+$b-fontSize-xl: font-size(20px)
+$b-fontSize-xxl: font-size(22px)
+$b-fontSize-h1: font-size(36px)
+$b-fontSize-h2: font-size(28px)
+$b-fontSize-h3: font-size(22px)
+$b-fontSize-h4: font-size(18px)
+$b-lineHeight: 1.5
+
+// ----- Settings ----- //
+
+$b-transition: 0.3s ease-in-out
+
+// ----- Sizing ----- //
+
+$b-maxWidth: em(1200px)
+$b-maxWidth-s: em(780px)
+$b-space: em(20px)
+$b-space-xs: $b-space * 0.25
+$b-space-s: $b-space * 0.5
+$b-space-l: $b-space * 2
+$b-space-xl: $b-space * 4
+
+// ----- Tools ----- //
+
+$tool-background-names: 'bostonBlue', 'regent'
+$tool-background-vars: $bostonBlue, $regent
+
+// ----- Z-index ----- //
+
+$zi-course: 'course-toc'
+$zi-global: 'console', 'layout-curtain', 'layout-header', 'video-overlay', 'video'
+
+// -------------------------------------
+//   Global
+// -------------------------------------
+
+// ----- Header ----- //
+
+$site-header-height: 70px
+$site-header-height-l: 126px
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+
+// ----- Button ----- //
+
+// Borders
+
+$btn-borderWidth: 1px
+$btn-borderRadius: 4px
+$btn-borderStyle: solid
+$btn-border: $btn-borderWidth $btn-borderStyle $btn-borderColor
+
+// ----- Form ----- //
+
+$form-shared-borderWidth: $b-borderWidth
+$form-shared-lineHeight: 3
+
+// ----- Grid ----- //
+
+// Breakpoints
+
+$g-s: em(480px)
+$g-m: em(800px)
+$g-l: em(1024px)
+
+// Settings
+
+$g-columns: 6
+$g-defaults: 's' $g-s, 'm' $g-m, 'l' $g-l
+$g-gutter: em(40px)
+$g-gutter-s: em(20px)
+$g-gutter-xs: em(10px)
+$g-silent: false
+
+// Selector
+
+$g-selector: if($g-silent, unquote("%"), unquote("."))
+
+// ----- Highlight ----- //
+
+// Borders
+
+$highlight-border: 0
+
+// Settings
+
+$highlight-color-transition-speed: 0.3s
+
+// Text
+
+$highlight-textDecoration: none
+
+// ----- Underline ----- //
+
+// Borders
+
+$underline-borderStyle: solid
+$underline-borderWidth: $b-borderWidth
+$underline-border: $underline-borderWidth $underline-borderStyle $underline-borderColor
+
+// Settings
+
+$underline-color-transition-speed: 0.3s
+
+// -------------------------------------
+//   Structures
+// -------------------------------------
+
+// ----- Console ----- //
+
+$console-cursor-size: 6px
+$console-maxHeight: 80px
+$console-minHeight: 50px
+
+// ----- Footer ----- //
+
+$footer-height: em(170px)
+
+// ----- Hero ----- //
+
+$hero-minHeight: 500px
+
+// ----- Inline Console ----- //
+
+$inlineConsole-transitionSpeed: 0.6s
+$inlineConsole-transition: $inlineConsole-transitionSpeed ease-in-out
+
+// ----- Link ----- //
+
+$link-borderWidth: 2px
+$link-borderStyle: solid
+$link-border: $link-borderWidth $link-borderStyle

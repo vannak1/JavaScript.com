@@ -1,3 +1,6 @@
+block current_nav
+  - current_page = 'Community'
+
 extends /views/layouts/layout
 
 block content
@@ -27,7 +30,7 @@ block content
 
           .split-item
             .split-cell
-              h1.h.h--2.tcs.mbf Top News
+              h1.h.h--2.mbf Top News
 
             .split-cell
               a.btn.btn--a.btn--a--bordered(href='/flow/new') New Post
@@ -36,14 +39,14 @@ block content
 
         - index = 6; while(index--)
           li.list-item
-            .bucket
+            article.bucket
               .bucket-media
                 img.thumb(src='http://placehold.it/40')
               .bucket-content
                 h2.h.h--3
-                  a.tct(href='#') This is an Article's Title in Title Case
+                  a.highlight.tct.twb(href='/flow/1') This is an Article's Title in Title Case
                 p.tcs.tfh Given Surname | 3 hours ago
                 p.mbf.
                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                  Vivamus vitae risus vitae lorem iaculis placerat. Aliquam sit
-                  amet felis. Etiam congue. Donec risus risus, pretium...
+                  vivamus vitae risus vitae lorem iaculis placerat. aliquam sit
+                  amet felis. etiam congue. donec risus risus, pretium...

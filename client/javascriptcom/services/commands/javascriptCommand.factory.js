@@ -1,4 +1,4 @@
-angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsChallengeState', 'jsCommandReport', function($, $q, jsExecutor, jsChallengeState, jsCommandReport) {
+angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsCourseState', 'jsCommandReport', function($, $q, jsExecutor, jsCourseState, jsCommandReport) {
   function generateResponse(content, className) {
     return { content: $("<div class='console-msg "+(className ? 'console-msg--'+className : '')+"'>"+content+"</div>")[0] };
   }
@@ -11,7 +11,7 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
           result = new jsCommandReport(challenge, results),
           output = result.output();
 
-      jsChallengeState.update(result.state());
+      jsCourseState.update(result.state());
 
       response.push(generateResponse(output));
 

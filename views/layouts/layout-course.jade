@@ -1,0 +1,19 @@
+doctype html
+html.layout.js-layout.is-layout-header-fixed(lang='en')
+
+  include /views/layouts/_head
+
+  body
+    .dn
+      include /public/images/icons/icons.svg
+
+    - headerPartial = { bleed: true }
+    include /views/partials/_header
+
+    main
+      block content
+
+    script(src='/javascripts/vendor.js')
+    script(src='/javascripts/vendor-course.js')
+    script(src='/javascripts/course.js')
+    script(src='/javascripts/application.js')

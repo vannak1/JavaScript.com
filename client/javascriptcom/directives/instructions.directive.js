@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked', 'jsChallengeState', function($compile, marked, jsChallengeState) {
+angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked', 'jsCourseState', function($compile, marked, jsCourseState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/instructions.html',
     replace: true,

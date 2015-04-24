@@ -1,0 +1,54 @@
+// *************************************
+//
+//   Checklist
+//   -> Enumeration of checked items
+//
+//   Dependencies: .list
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .checklist
+//   .checklist-item(active completed)
+//
+// *************************************
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Item ----- //
+
+.checklist-item
+  color: rgba($c-subdue, 0.5)
+  padding-left: $b-space
+  position: relative
+
+  &::before
+    left: 0
+    position: absolute
+    top: 0
+
+// Active
+
+.checklist-item.is-active
+  color: $c-subdue
+  font-weight: 600
+
+  &::before
+    content: '▸'
+
+// Completed
+
+.checklist-item.is-completed
+
+  &::before
+    content: '✓'
+
+// Link
+
+.checklist-item-link
+  color: inherit
+  font-weight: inherit
+  transition: color $b-transition

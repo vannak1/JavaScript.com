@@ -19,11 +19,7 @@ describe('alert example', function() {
     js.evaluate("alert = _alert");
   });
 
-  it('f_error', function() {
-    if(errorMessage) {
-      js.assert(false, errorMessage);
-    }
-  });
+  js.verify(code);
 
   it('f_no_alert', function() {
     var alertWasCalled = js.evaluate('_alertCalled');
@@ -52,11 +48,11 @@ failures = {
 
 module.exports = {
   'title': 'Methods',
-  "instructions": `Great job, {{state.username}}! In JavaScript, when we surround a word with quotes it's called a *string*, and when we're done with a line of code we finish it with a semicolon.
+  "instructions": `Great job, {{username}}! In JavaScript, when we surround a word with quotes it's called a *string*, and when we're done with a line of code we finish it with a semicolon.
 
 JavaScript also has built-in features, called *methods*. In order to call a method, we simply write its name (this time without quotes) and end it with a set of parentheses. Try calling the \`alert\` method as you see below.
 
-Don't be afraid when a box pops up, that's your code working, {{state.username}}!
+Don't be afraid when a box pops up, that's your code working, {{username}}!
 
 > \`alert();\``,
   'hints': [

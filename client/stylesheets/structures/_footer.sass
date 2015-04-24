@@ -1,0 +1,70 @@
+// *************************************
+//
+//   Footer
+//   -> Page end
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .footer
+//
+//   .footer-logo[cs|js]
+//   .footer-copyright
+//
+// *************************************
+
+.footer
+  background: $footer-background
+
+  +respond-to($g-l)
+    bottom: 0
+    box-sizing: border-box
+    left: 0
+    height: $footer-height
+    position: absolute
+    right: 0
+    width: 100%
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Copyright ----- //
+
+.footer-copyright
+  color: rgba($c-text-invert, 0.5)
+  font-family: $b-fontFamily-heading
+  font-size: $b-fontSize-s
+  margin-bottom: $b-space-l
+  margin-top: $b-space-s
+  text-align: center
+
+// ----- Logo ----- //
+
+.footer-logo
+  display: block
+  margin-left: auto
+  margin-right: auto
+  transition: $b-transition
+
+  +state
+    opacity: 1
+
+  +respond-to($g-l)
+    margin-left: 0
+    margin-right: 0
+
+// Logo: CS
+
+.footer-logo--cs
+  opacity: 0.7
+
+// Logo: JS
+
+.footer-logo--js
+  margin-bottom: $b-space
+  opacity: 0.5
+
+  +respond-to($g-l)
+    float: right

@@ -1,3 +1,6 @@
+block current_nav
+  - current_page = 'News'
+
 extends /views/layouts/layout
 
 block content
@@ -5,6 +8,4 @@ block content
   section.row
     .cell.cell--s.well.well--l.well--m--xl
 
-      each item in news
-        h2.h.h--2= item.title
-        p!= item.body
+      h1 Official News
