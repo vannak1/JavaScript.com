@@ -7,7 +7,7 @@
 //   Template (Haml)
 // -------------------------------------
 //
-// .h[1|2|3|4]
+// .h[1|2|3|4 l]
 //
 // *************************************
 
@@ -27,18 +27,39 @@
   letter-spacing: -1px
   word-spacing: -1px
 
+  +respond-to($g-m)
+    font-size: $b-fontSize-h1-l
+
 // Second-level
 
 .h--2
   font-size: $b-fontSize-h2
   letter-spacing: -1px
 
+  +respond-to($g-m)
+    font-size: $b-fontSize-h2-l
+
 // Third-level
 
 .h--3
   font-size: $b-fontSize-h3
 
+  +respond-to($g-m)
+    font-size: $b-fontSize-h3-l
+
 // Fourth-level
 
 .h--4
   font-size: $b-fontSize-h4
+
+  +respond-to($g-m)
+    font-size: $b-fontSize-h4-l
+
+// ----- Weight ----- //
+
+// Light
+
+.h--l
+  font-weight: $b-fontWeight-light
+  letter-spacing: 0
+  word-spacing: 0
