@@ -167,7 +167,9 @@ $b-lineHeight: 1.5
 
 // ----- Settings ----- //
 
-$b-transition: 0.3s ease-in-out
+$b-transition-duration: 0.3s
+$b-transition-timingFunction: ease-in-out
+$b-transition: $b-transition-duration $b-transition-timingFunction
 
 // ----- Sizing ----- //
 
@@ -247,7 +249,7 @@ $underline-border: $underline-borderWidth $underline-borderStyle $underline-bord
 
 // Settings
 
-$underline-color-transition-speed: 0.3s
+$underline-color-transition-duration: 0.3s
 
 // -------------------------------------
 //   Structures
@@ -269,8 +271,8 @@ $hero-minHeight: 500px
 
 // ----- Inline Console ----- //
 
-$inlineConsole-transitionSpeed: 0.6s
-$inlineConsole-transition: $inlineConsole-transitionSpeed ease-in-out
+$inlineConsole-transition-duration: 0.6s
+$inlineConsole-transition: $inlineConsole-transition-duration ease-in-out
 
 // ----- Link ----- //
 
