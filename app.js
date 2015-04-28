@@ -11,6 +11,7 @@ var styleguide = require('./routes/styleguide');
 var courses = require('./routes/courses');
 var learn = require('./routes/learn');
 var resources = require('./routes/resources');
+var brand = require('./routes/brand');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/styleguide', styleguide);
 app.use('/courses.json', courses);
 app.use('/courses', courses)
 app.use('/resources', resources)
+app.use('/brand', brand);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
