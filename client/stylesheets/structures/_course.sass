@@ -63,8 +63,10 @@
 // ----- Table of Contents ----- //
 
 .course-toc
+  display: none
 
   +respond-to($g-m)
+    display: block
     position: fixed
     top: $site-header-height-l
     width: calc(#{100vw / 4} - #{$b-space * 2}) // 1of4 column at medium breakpoint
