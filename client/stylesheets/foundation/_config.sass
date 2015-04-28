@@ -161,10 +161,17 @@ $b-fontSize-s: font-size(14px)
 $b-fontSize-l: font-size(18px)
 $b-fontSize-xl: font-size(20px)
 $b-fontSize-xxl: font-size(22px)
-$b-fontSize-h1: font-size(36px)
-$b-fontSize-h2: font-size(28px)
-$b-fontSize-h3: font-size(22px)
-$b-fontSize-h4: font-size(18px)
+
+// Size: Headings
+
+$b-fontSize-h1: font-size(28px)
+$b-fontSize-h1-l: font-size(36px)
+$b-fontSize-h2: font-size(22px)
+$b-fontSize-h2-l: font-size(28px)
+$b-fontSize-h3: font-size(18px)
+$b-fontSize-h3-l: font-size(22px)
+$b-fontSize-h4: font-size(16px)
+$b-fontSize-h4-l: font-size(18px)
 
 // Weight
 
@@ -179,7 +186,9 @@ $b-lineHeight: 1.5
 
 // ----- Settings ----- //
 
-$b-transition: 0.3s ease-in-out
+$b-transition-duration: 0.3s
+$b-transition-timingFunction: ease-in-out
+$b-transition: $b-transition-duration $b-transition-timingFunction
 
 // ----- Sizing ----- //
 
@@ -259,7 +268,7 @@ $underline-border: $underline-borderWidth $underline-borderStyle $underline-bord
 
 // Settings
 
-$underline-color-transition-speed: 0.3s
+$underline-color-transition-duration: 0.3s
 
 // -------------------------------------
 //   Structures
@@ -281,8 +290,8 @@ $hero-minHeight: 500px
 
 // ----- Inline Console ----- //
 
-$inlineConsole-transitionSpeed: 0.6s
-$inlineConsole-transition: $inlineConsole-transitionSpeed ease-in-out
+$inlineConsole-transition-duration: 0.6s
+$inlineConsole-transition: $inlineConsole-transition-duration ease-in-out
 
 // ----- Link ----- //
 
