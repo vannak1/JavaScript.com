@@ -7,49 +7,10 @@
 //   Template (Haml)
 // -------------------------------------
 //
-// .course[mini]
-//   .course-scaffolding
+// .course
+//   [...]
 //
 // *************************************
-
-// -------------------------------------
-//   Modifiers
-// -------------------------------------
-
-// ----- Mini ----- //
-
-.course--mini
-  padding: 0
-
-  // Container
-
-  .course-container
-    margin: 0
-    max-width: none
-
-  // Challenge
-
-  .course-challenge
-
-    &.is-started
-      display: none !important
-
-    &.is-active
-      display: block !important
-
-  .course-challenge-label
-    display: none
-
-  .course-challenge-instructions
-    font-size: inherit
-
-  .course-challenge-title
-    display: none
-
-  // Table of Contents
-
-  .course-toc
-    display: none
 
 // -------------------------------------
 //   Scaffolding
@@ -81,7 +42,6 @@
 // Instructions
 
 .course-challenge-instructions
-  font-family: $b-fontFamily-heading
 
   code
     border-radius: 4px
