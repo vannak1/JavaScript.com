@@ -7,7 +7,7 @@
 //   Template (Haml)
 // -------------------------------------
 //
-// .card
+// .card[l]
 //   / ...
 //
 // *************************************
@@ -15,5 +15,14 @@
 .card
   background: $card-background
   border-radius: $b-borderRadius-l
-  padding: $b-space-l
+  padding: $b-space
   position: relative
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Sizes ----- //
+
+.card--l
+  padding: $b-space-l
