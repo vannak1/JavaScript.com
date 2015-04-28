@@ -5,8 +5,8 @@ block content
   .row.hero.bc-regent
     .cell.well.well--l
       .mbxl.tac
-        h2.h.h--l Not sure where JavaScript came from?
-        p.tfh Watch our animated short.
+        h2.h.h--1.h--l Not sure what JavaScript is?
+        p.tfh Watch to learn more.
 
         a.btn.btn--sticker.js-video-trigger(href='#')
           - iconPartial = { name: 'play', size: 24 }
@@ -20,13 +20,16 @@ block content
         .g-b.g-b--l--1of2.fr
 
           .card
-            h3.h.h--3.h--l.mbs Ready to try JavaScript?
-            p.tfh.tss Start learning JavaScript with us by typing in your first name surrounded by quotation marks, and ending with a semicolon. For example, I would type my name like this: "Gregg";
+            h3.h.h--2.h--l Ready to try JavaScript?
+            p.tfh.tss.
+              Begin learning here by typing in your first name surrounded by
+              quotation marks, and ending with a semicolon. For example, I'd
+              type my name "Gregg"; and then hit enter.
 
             form.inlineConsole.js-console(action="")
               span.inlineConsole-icon
               input.form-input.inlineConsole-input.js-console-input(type='text')
-              a.btn.inlineConsole-btn(href="/learn") Continue Learning
+              a.btn.inlineConsole-btn(href="/try") Continue Learning
 
     include /views/partials/_hero_img
 
@@ -36,7 +39,7 @@ block content
         .bucket-media.dn.db--m
           img(src='/images/img-newsletter.svg' alt='')
         .bucket-content
-          h4.h.h--3.h--l.mts Want the latest JavaScript news?
+          h4.h.h--2.h--l.mts Want the latest JavaScript news?
           p.tfh.tss
             | Head over to our 
             a(href='/news') news feed
