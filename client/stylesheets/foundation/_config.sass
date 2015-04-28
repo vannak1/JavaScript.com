@@ -11,11 +11,7 @@
 
 // ----- Open Sans ----- //
 
-+font-face('Open Sans', '/fonts/OpenSansRegular', 400, normal, false)
-+font-face('Open Sans', '/fonts/OpenSansItalic', 400, italic, false)
-+font-face('Open Sans', '/fonts/OpenSansSemibold', 600, normal, false)
-+font-face('Open Sans', '/fonts/OpenSansSemiboldItalic', 600, italic, false)
-+font-face('Open Sans', '/fonts/OpenSansBold', 700, normal, false)
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700')
 
 // -------------------------------------
 //   Colors
@@ -144,9 +140,14 @@ $b-boxShadow: 0 2px 0 rgba($c-text, 0.25)
 
 // ----- Typography ----- //
 
+// Family
+
 $b-fontFamily-heading: 'Open Sans', Arial, Helvetica, sans-serif
 $b-fontFamily-mono: monaco, Consolas, 'Lucida Console', monospace
-$b-fontFamily: Georgia, Times, 'Times New Roman', serif
+$b-fontFamily: 'Open Sans', Arial, Helvetica, sans-serif
+
+// Size
+
 $b-fontSize: 16px
 $b-fontSize-s: font-size(14px)
 $b-fontSize-l: font-size(18px)
@@ -156,6 +157,16 @@ $b-fontSize-h1: font-size(36px)
 $b-fontSize-h2: font-size(28px)
 $b-fontSize-h3: font-size(22px)
 $b-fontSize-h4: font-size(18px)
+
+// Weight
+
+$b-fontWeight: 400
+$b-fontWeight-bold: 700
+$b-fontWeight-light: 300
+$b-fontWeight-semibold: 600
+
+// Line Height
+
 $b-lineHeight: 1.5
 
 // ----- Settings ----- //
