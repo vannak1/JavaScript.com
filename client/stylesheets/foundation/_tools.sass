@@ -99,6 +99,8 @@
 
   .mbf--m
     margin-bottom: 0
+  .mbm--m
+    margin-bottom: $b-space
 
 // ----- Horizontal ----- //
 
@@ -154,12 +156,12 @@
 .mtxl
   margin-top: $b-space-xl
 
-// -------------------------------------
-//   Opacity
-// -------------------------------------
+// Responsive
 
-.oph
-  opacity: 0.5
++respond-to($g-m)
+
+  .mtl--m
+    margin-top: $b-space-l
 
 // -------------------------------------
 //   Padding
