@@ -36,11 +36,17 @@
 .hero-img
   bottom: 0
   display: none
-  left: -7.5em // FIXME: Magic number!
+  left: -8.5em // FIXME: Magic number!
   position: absolute
 
   +respond-to($g-l)
     display: block
+
+// Image: Clouds
+
+.hero-img--clouds
+  left: $b-space
+  top: $b-space-xl
 
 // Image: Fan
 
