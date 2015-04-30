@@ -22,25 +22,34 @@
 // Grayscale
 
 $black: #000
-$slate: #37443d
-$auroMetalSaurus: #6d7c79
+$slate: #313d38
+$auroMetalSaurus: #6d7d79
 $concrete: #efefef
 $snow: #f9f9f7
 $white: #fff
 
 // Blue
 
-$bostonBlue: #379aaf
+$aqua: #9cd4de
+$bostonBlue: #309ab1
 $regent: #9cd4df
+
+// Cream
+
+$cream: #f8f4e3
+
+// Green
+
+$cucumber: #7eab67
 
 // Red
 
-$sienna: #e55c52
+$sienna: #e55c53
 
 // Yellow
 
 $tulip: #e5bb31
-$goldenDream: #f1d332
+$goldenDream: #f2d50a
 
 // ----- Base ----- //
 
@@ -125,11 +134,14 @@ $link--inverted--state-color: rgba($link--inverted-color, 0.5)
 // ----- Borders & Box Shadow ----- //
 
 $b-borderRadius: 6px
+$b-borderRadius-s: $b-borderRadius / 2
 $b-borderRadius-l: $b-borderRadius * 2
 $b-borderStyle: solid
 $b-borderWidth: 2px
+$b-borderWidth-s: 1px
 $b-borderWidth-l: 4px
 $b-border: $b-borderWidth $b-borderStyle $c-border
+$b-border-s: $b-borderWidth-s $b-borderStyle $c-border
 $b-border-l: $b-borderWidth-l $b-borderStyle $c-border
 $b-boxShadow: 0 2px 0 rgba($c-text, 0.25)
 
@@ -190,8 +202,8 @@ $b-space-xl: $b-space * 4
 
 // ----- Tools ----- //
 
-$tool-background-names: 'bostonBlue', 'regent'
-$tool-background-vars: $bostonBlue, $regent
+$tool-background-names: 'bostonBlue', 'regent', 'gold', 'slate', 'sienna', 'metal', 'cucumber', 'aqua', 'cream'
+$tool-background-vars: $bostonBlue, $regent, $goldenDream, $slate, $sienna, $auroMetalSaurus, $cucumber, $aqua, $cream
 
 // ----- Z-index ----- //
 

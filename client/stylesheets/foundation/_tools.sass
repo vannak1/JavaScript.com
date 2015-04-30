@@ -27,8 +27,12 @@
 //   Border
 // -------------------------------------
 
+// ----- All ----- //
+
 .bdr
   border: $b-border
+.bdrs
+  border: $b-border-s
 
 // ----- Sides ----- //
 
@@ -97,6 +101,8 @@
 
   .mbf--m
     margin-bottom: 0
+  .mbm--m
+    margin-bottom: $b-space
 
 // ----- Horizontal ----- //
 
@@ -152,12 +158,12 @@
 .mtxl
   margin-top: $b-space-xl
 
-// -------------------------------------
-//   Opacity
-// -------------------------------------
+// Responsive
 
-.oph
-  opacity: 0.5
++respond-to($g-m)
+
+  .mtl--m
+    margin-top: $b-space-l
 
 // -------------------------------------
 //   Padding
@@ -278,6 +284,8 @@
   border-radius: $b-borderRadius
 .ran
   border-radius: 0
+.ras
+  border-radius: $b-borderRadius-s
 
 // -------------------------------------
 //   Text
@@ -341,3 +349,10 @@
   font-weight: $b-fontWeight
 .twsb
   font-weight: $b-fontWeight-semibold
+
+// -------------------------------------
+//   Width
+// -------------------------------------
+
+.w-1of1
+  width: 100%
