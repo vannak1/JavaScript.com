@@ -15,7 +15,7 @@
   @extend .fauxHide
   box-sizing: border-box
   left: 50%
-  max-width: 1400px
+  max-width: 960px
   padding: $b-space-l
   position: fixed
   top: 50%
@@ -23,6 +23,9 @@
   transition: all 0.3s ease-in-out
   width: 100%
   z-index: zi('video')
+
+  +respond-to(em(800px), min-height)
+    max-width: 1400px
 
 // -------------------------------------
 //   States

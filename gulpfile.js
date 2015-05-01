@@ -34,8 +34,8 @@ var options = {
 
   sass: {
     files: [
-      'client/stylesheets/*.sass',
-      'client/stylesheets/**/*.sass'
+      'client/stylesheets/*.{sass,scss}',
+      'client/stylesheets/**/*.{sass,scss}'
     ],
     destination: 'public/stylesheets'
   },
