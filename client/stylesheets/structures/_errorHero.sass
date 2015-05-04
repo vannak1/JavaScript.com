@@ -1,0 +1,60 @@
+// *************************************
+//
+//   Error Hero
+//   -> 404 page illustration row
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .errorHero
+//   .errorHero-img
+//
+// *************************************
+
+.errorHero
+  background: $regent
+  box-sizing: border-box
+  padding-bottom: $b-space-xl
+  position: relative
+
+  +respond-to($g-s)
+    padding-bottom: $b-space-xxl
+
+  +respond-to($g-l)
+    min-height: calc(100vh - #{$site-header-height-l} - #{$site-footer-height})
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Image ----- //
+
+.errorHero-img
+  bottom: 0
+  height: calc(100vh - #{$site-header-height-l} - #{$site-footer-height})
+  left: 4vw // FIXME: Magic number!
+  max-width: none
+  position: absolute
+  width: 90vw
+
+// Boat
+
+.errorHero-img-boat
+  animation: errorHero-bob 1.25s ease-in-out infinite alternate
+  transform-origin: center
+
+// Ocean
+
+.errorHero-img-ocean
+  animation: slideLeft1of6 2.5s linear infinite
+
+// -------------------------------------
+//   Animations
+// -------------------------------------
+
+@keyframes errorHero-bob
+  from
+    transform: translateY(-$errorHero-bob-offset) rotate(-2deg)
+  to
+    transform: translateY($errorHero-bob-offset) rotate(1deg)
