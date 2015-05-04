@@ -30,7 +30,11 @@
     transform: translateX(0)
     visibility: visible
 
-  .inlineConsole-icon
+  .inlineConsole-icon--caret
+    opacity: 0
+    visibility: hidden
+
+  .inlineConsole-icon--check
     opacity: 1
     transform: translateY(-50%)
     visibility: visible
@@ -70,14 +74,26 @@
   display: inline-block
   font-weight: bold
   left: $b-space
-  opacity: 0
   position: absolute
   top: 50%
-  transform: translateY(0)
   transition: $inlineConsole-transition-duration ($inlineConsole-transition-duration - 0.3) ease-in-out
   vertical-align: middle
-  visibility: hidden
   z-index: 1
+
+// Icon: Caret
+
+.inlineConsole-icon--caret
+  transform: translateY(-50%)
+
+  &::before
+    content: '>'
+
+// Icon: Check
+
+.inlineConsole-icon--check
+  opacity: 0
+  transform: translateY(0)
+  visibility: hidden
 
   &::before
     content: '✓'
@@ -89,6 +105,7 @@
   border-color: transparent
   color: $c-text-invert
   font-family: $b-fontFamily-mono
+  padding-left: $b-space-l
   transition: $inlineConsole-transition
 
   &:focus
