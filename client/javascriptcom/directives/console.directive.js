@@ -14,7 +14,6 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
         prompt: '> ',
         syntax: 'javascript',
         autoFocus: true,
-        welcomeMessage: $('<p>Type <code>help</code> to see the help menu</p>')[0],
         commandValidate: command.validate,
         commandHandle: command.handler
       });
