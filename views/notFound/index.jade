@@ -5,11 +5,14 @@ extends /views/layouts/layout
 
 block content
 
-  section.row.bc-regent
-    .cell.well.well--xl.tac.tci
+  section.row.errorHero
+
+    include /public/images/img-404-hero.svg
+
+    .cell.well.well--l.well--m--xl.tac.tci
 
       h1.h.h--l Oh, hey there.
 
-      p.tsxl.mbl Looks like the page you're looking for isn't here. Why not enjoy the view?
+      p.tsxl Looks like the page you're looking for isn't here. Why not enjoy the view?
 
       a.btn.btn--a--bordered.btn--l(href='/') Go Back Home
