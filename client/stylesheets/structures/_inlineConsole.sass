@@ -57,15 +57,28 @@
 // ----- Button ----- //
 
 .inlineConsole-btn
+  left: 0
   line-height: 2.5
   opacity: 0
   padding: 0 $b-space
   position: absolute
-  right: 5px // FIXME: Magic number!
-  top: 5px // FIXME: Magic number!
+  top: 110%
   transform: translateX(-20%)
   transition: $inlineConsole-transition-duration ($inlineConsole-transition-duration - 0.3) ease-in-out, background 0.3s ease-in-out
   visibility: hidden
+
+  +respond-to($g-s)
+    left: auto
+    right: 5px // FIXME: Magic number!
+    top: 5px // FIXME: Magic number!
+
+// ----- Card ----- //
+
+.inlineConsole-card
+  padding-bottom: $b-space-l + 2em // FIXME: Magic number!
+
+  +respond-to($g-s)
+    padding-bottom: $b-space
 
 // ----- Icon ----- //
 
