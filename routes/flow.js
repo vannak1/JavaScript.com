@@ -113,7 +113,7 @@ router.
 
     Comments.create(newComment, function() {
       if(newComment.isSpam){
-        //TODO: set the flash notifying user of pending comment
+        req.flash('info', 'Whoops! Your comment will need to be moderated.')
       }
       res.redirect('/flow');
     });

@@ -35,6 +35,9 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Flash messages
+app.use(require('flash')());
+
 // routes
 app.use('/', routes);
 app.use('/404', notFound)
