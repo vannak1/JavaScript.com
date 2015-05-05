@@ -42,9 +42,8 @@ var Akismetor = {
 
       done();
     });
-  }
+  },
 
-/*,
   // If Akismet reports something as not-spam, but it turns out to be spam anyways,
   // we can report this to Akismet via this API call
   submitSpam(req, comment, dbcallback, cb) {
@@ -60,7 +59,6 @@ var Akismetor = {
       // dbCallback(spam, comment, cb);
     });
   }
-*/
 
 };
 
