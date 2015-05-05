@@ -33,3 +33,14 @@ For debugging all the things, run `DEBUG=* npm start`.
 If you add any runtime dependencies, you must run `npm shrinkwrap` and
 commit changes to `npm-shrinkwrap.json`.
 
+### Building Assets
+
+To build assets locally, you'll need to install Bower dependencies and run these Gulp tasks:
+
+```bash
+$ bower install
+$ gulp sass
+$ gulp javascript
+```
+
+Remeber to re-run these tasks after pulling or changing branches.
