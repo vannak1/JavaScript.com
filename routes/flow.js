@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser')();
 var bodyParser = require('body-parser');
 var Flow = require('../services/flow');
 var Comments = require('../services/comments');
+var Akismetor = require('../services/akismetor');
 
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
@@ -43,6 +44,23 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/flow/new')
 }
 /* End GitHub Auth */
+function buildComment(request, response, next){
+
+  var newComment = request.body;
+  newComment.article_id = request.params.id;
+  newComment.isSpam = false;
+
+  request.newComment = newComment;
+
+  Akismetor.checkSpam(request, newComment, isSpam, function() {
+    next();
+  });
+
+  function isSpam(){
+    request.newComment.isSpam = true;
+  }
+}
+
 
 router.
 
@@ -85,11 +103,18 @@ router.
     });
   }).
 
-  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
-    var newComment = req.body;
-    newComment["article_id"] = req.params.id
+
+  // TODO: move this to another file
+  // var buildComment = require('../comment-builder');
+
+  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
+
+    var newComment = req.newComment;
 
     Comments.create(newComment, function() {
+      if(newComment.isSpam){
+        //TODO: set the flash notifying user of pending comment
+      }
       res.redirect('/flow');
     });
   }).
@@ -115,6 +140,7 @@ router.
     Flow.create(newFlow, function() {
       res.redirect('/flow');
     });
+
   });
 
 module.exports = router;

@@ -22,6 +22,7 @@ CREATE TABLE users (
 -- DROP TABLE comments
 CREATE TABLE comments (
   id          SERIAL PRIMARY KEY,
+  approved    BOOLEAN NOT NULL DEFAULT FALSE,
   article_id  INTEGER REFERENCES articles(id) NOT NULL,
   email       TEXT,
   username    TEXT,

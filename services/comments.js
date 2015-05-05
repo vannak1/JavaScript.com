@@ -1,4 +1,5 @@
 var db = require('./db');
+var Akismetor = require('../services/akismetor');
 
 var Comments = {
   // Returns all comments by article
@@ -7,11 +8,14 @@ var Comments = {
   },
   // Creates a new comment
   create(newComment, cb) {
+
+    var approved = newComment.isSpam ? false : true;
+
     db.query(
-      "INSERT INTO comments (article_id, email, username, avatar_url, body) VALUES ($1, $2, $3, $4, $5);",
-      [newComment.article_id, newComment.email, newComment.username, newComment.avatar_url, newComment.body],
+      "INSERT INTO comments (article_id, approved, email, username, avatar_url, body) VALUES ($1, $2, $3, $4, $5, $6);",
+      [newComment.article_id, approved, newComment.email, newComment.username, newComment.avatar_url, newComment.body],
       cb
-    )
+    );
   }
 }
 
