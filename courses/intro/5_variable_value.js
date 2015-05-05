@@ -45,6 +45,7 @@ failures = {
 };
 
 module.exports = {
+  'id': 5,
   'title': 'Variable Value',
   'instructions': 'Now we have a variable called `name` that has a string stored inside of it. Output it to see what it looks like.',
   'tests': tests,

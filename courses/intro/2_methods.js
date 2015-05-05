@@ -47,8 +47,9 @@ failures = {
 };
 
 module.exports = {
+  'id': 2,
   'title': 'Methods',
-  "instructions": `Great job, {{username}}! In JavaScript, when we surround a word with quotes it's called a *string*, and when we're done with a line of code we finish it with a semicolon.
+  'instructions': `Great job, {{username}}! In JavaScript, when we surround a word with quotes it's called a *string*, and when we're done with a line of code we finish it with a semicolon.
 
 JavaScript also has built-in features, called *methods*. In order to call a method, we simply write its name (this time without quotes) and end it with a set of parentheses. Try calling the \`alert\` method as you see below.
 

@@ -1,16 +1,12 @@
 // Maps a specific command to a specific handler.
 // If none are found, runs as JavaScript.
 
-angular.module('javascriptcom').factory('jsCommandFactory', ['_', 'jsHelpCommand', 'jsHintCommand', 'jsJavaScriptCommand', function(_, jsHelpCommand, jsHintCommand, jsJavaScriptCommand) {
+angular.module('javascriptcom').factory('jsCommandFactory', ['_', 'jsHelpCommand', 'jsAnswerCommand', 'jsJavaScriptCommand', function(_, jsHelpCommand, jsAnswerCommand, jsJavaScriptCommand) {
 
   var matchers = [
     {
-      pattern: /^help\s*/,
-      handler: jsHelpCommand
-    },
-    {
-      pattern: /^hint\s*/,
-      handler: jsHintCommand
+      pattern: /^answer\s*/,
+      handler: jsAnswerCommand
     },
     {
       pattern: /[.|\s]*/,

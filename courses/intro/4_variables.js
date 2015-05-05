@@ -72,6 +72,7 @@ failures = {
 };
 
 module.exports = {
+  'id': 4,
   'title': 'Variables',
   'instructions': 'Set a variable named `name` to your name. Use the `var` scope.',
   'tests': tests,

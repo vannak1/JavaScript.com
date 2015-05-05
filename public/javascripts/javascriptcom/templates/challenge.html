@@ -3,12 +3,15 @@
     <div class='g'>
       <div class='g-b g-b--m--3of4 g-b--l--4of6 pol-1of4--m pol-1of6--l por'>
 
-        <p class='label label--highlight course-challenge-label'>Challenge 1</p>
+        <p class='label label--highlight course-challenge-label'>
+          Challenge {{::ctrl.challenge.id}}
+        </p>
+
         <h2 class='course-challenge-title h h--1 mbs'>{{::ctrl.challenge.title}}</h2>
 
         <js-instructions></js-instructions>
 
-        <p class='tar tcs tss'>Type <code class='bdr paxs'>help</code> to show the help menu</p>
+        <p class='tar tcs tss'>Type <code class='bdr paxs'>answer</code> to reveal the answer</p>
 
         <js-console></js-console>
 
