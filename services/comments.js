@@ -8,8 +8,8 @@ var Comments = {
   },
   // Creates a new comment
   create(newComment, cb) {
-    var approved = newComment.isSpam;
 
+    var approved = newComment.isSpam ? false : true;
 
     db.query(
       "INSERT INTO comments (article_id, approved, email, username, avatar_url, body) VALUES ($1, $2, $3, $4, $5, $6);",
