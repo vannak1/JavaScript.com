@@ -595,6 +595,11 @@
         }
       }
     },
+    "flash": {
+      "version": "1.1.0",
+      "from": "flash@*",
+      "resolved": "https://registry.npmjs.org/flash/-/flash-1.1.0.tgz"
+    },
     "jade": {
       "version": "1.9.2",
       "from": "jade@>=1.9.1 <1.10.0",
