@@ -1,0 +1,14 @@
+- item = item || {}
+- item.title = item.title || 'Placeholder Title'
+- item.url = item.url || '#'
+- item.media = item.media || 'http://placehold.it/220x120'
+- item.description = item.description || ''
+
+li.list-item
+  article.bucket.bucket--flag.bucket--l
+    .bucket-media
+      img.thumb.thumb--m(src="#{item.media}")
+    .bucket-content
+      h2.h.h--3
+        a.tct.twb(href="#{item.url}")= item.title
+      p.mbf= item.description
