@@ -5,6 +5,9 @@ extends /views/layouts/layout
 
 block content
 
+  for message in flash
+    a.alert(class='alert-' + message.type)
+      p= message.message
   //
     h1.h.h--1 Latest News
     p= `Today ${new Date()}`
