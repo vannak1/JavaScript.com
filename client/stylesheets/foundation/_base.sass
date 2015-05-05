@@ -27,6 +27,8 @@ body
 //   Block Content
 // -------------------------------------
 
+// ----- Lists, Paragraphs ----- //
+
 ol, ul, p
   margin-bottom: $b-space
   margin-top: 0
@@ -44,9 +46,32 @@ h1, h2, h3, h4, %h
   margin-bottom: $b-space-xs
   margin-top: 0
 
+// ----- Preformatted Text ----- //
+
+pre
+  font-family: $b-fontFamily-mono
+
 // -------------------------------------
 //   Inline Content
 // -------------------------------------
+
+// ----- Images ----- //
+
+img, svg
+  height: auto
+  max-width: 100%
+  vertical-align: middle
+
+// ----- Inputs ----- //
+
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='text'],
+textarea
+  -webkit-appearance: none
+  box-sizing: border-box
 
 // ----- Links ----- //
 
@@ -59,9 +84,18 @@ a, %a
   +state
     color: darken($c-highlight, 10%)
 
-// ----- Images ----- //
+// ----- Selection ----- //
 
-img, svg
-  height: auto
-  max-width: 100%
-  vertical-align: middle
+::selection
+  background: $c-selection
+
+// ----- Text ----- //
+
+strong, b
+  font-weight: $b-fontWeight-bold
+
+em, i
+  font-style: italic
+
+code
+  font-family: $b-fontFamily-mono
