@@ -9,7 +9,9 @@
 //
 // .hero
 //
-//   .hero-challenge
+//   .hero-img--clouds
+//   .hero-img
+//     .hero-img-fan
 //
 // *************************************
 
@@ -20,16 +22,6 @@
 // -------------------------------------
 //   Scaffolding
 // -------------------------------------
-
-// ----- Challenge ----- //
-
-.hero-challenge
-
-  h3
-    display: none
-
-  p
-    font-family: $b-fontFamily-heading
 
 // ----- Image ----- //
 
@@ -51,17 +43,5 @@
 // Image: Fan
 
 .hero-img-fan
-  animation: hero-spin 7s linear infinite
+  animation: rotate 7s linear infinite
   transform-origin: center
-
-// -------------------------------------
-//   Animations
-// -------------------------------------
-
-// ----- Spin ----- //
-
-@keyframes hero-spin
-  from
-    transform: rotate(0deg)
-  to
-    transform: rotate(360deg)

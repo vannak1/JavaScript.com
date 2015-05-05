@@ -30,7 +30,11 @@
     transform: translateX(0)
     visibility: visible
 
-  .inlineConsole-icon
+  .inlineConsole-icon--caret
+    opacity: 0
+    visibility: hidden
+
+  .inlineConsole-icon--check
     opacity: 1
     transform: translateY(-50%)
     visibility: visible
@@ -53,15 +57,28 @@
 // ----- Button ----- //
 
 .inlineConsole-btn
+  left: 0
   line-height: 2.5
   opacity: 0
   padding: 0 $b-space
   position: absolute
-  right: 5px // FIXME: Magic number!
-  top: 5px // FIXME: Magic number!
+  top: 110%
   transform: translateX(-20%)
   transition: $inlineConsole-transition-duration ($inlineConsole-transition-duration - 0.3) ease-in-out, background 0.3s ease-in-out
   visibility: hidden
+
+  +respond-to($g-s)
+    left: auto
+    right: 5px // FIXME: Magic number!
+    top: 5px // FIXME: Magic number!
+
+// ----- Card ----- //
+
+.inlineConsole-card
+  padding-bottom: $b-space-l + 2em // FIXME: Magic number!
+
+  +respond-to($g-s)
+    padding-bottom: $b-space
 
 // ----- Icon ----- //
 
@@ -70,14 +87,27 @@
   display: inline-block
   font-weight: bold
   left: $b-space
-  opacity: 0
   position: absolute
   top: 50%
-  transform: translateY(0)
   transition: $inlineConsole-transition-duration ($inlineConsole-transition-duration - 0.3) ease-in-out
   vertical-align: middle
-  visibility: hidden
   z-index: 1
+
+// Icon: Caret
+
+.inlineConsole-icon--caret
+  color: $c-subdue
+  transform: translateY(-50%)
+
+  &::before
+    content: '>'
+
+// Icon: Check
+
+.inlineConsole-icon--check
+  opacity: 0
+  transform: translateY(0)
+  visibility: hidden
 
   &::before
     content: '✓'
@@ -89,6 +119,7 @@
   border-color: transparent
   color: $c-text-invert
   font-family: $b-fontFamily-mono
+  padding-left: $b-space-l
   transition: $inlineConsole-transition
 
   &:focus

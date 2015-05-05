@@ -7,7 +7,7 @@
 //   Template (Haml)
 // -------------------------------------
 //
-// .h[1|2|3|4 l]
+// .h[1|2|3|4 light]
 //
 // *************************************
 
@@ -55,11 +55,21 @@
   +respond-to($g-m)
     font-size: $b-fontSize-h4-l
 
+// ----- Sizes ----- //
+
+// Large
+
+.h--l
+  font-size: $b-fontSize-hl
+
+  +respond-to($g-m)
+    font-size: $b-fontSize-hl-l
+
 // ----- Weight ----- //
 
 // Light
 
-.h--l
+.h--light
   font-weight: $b-fontWeight-light
   letter-spacing: 0
   word-spacing: 0
