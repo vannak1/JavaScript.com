@@ -16,7 +16,7 @@ block content
       From #[a(href='#') GitHub User]
 
     if user.authenticated
-      form(action='/flow/'+flow.id+'/comment' method='POST')
+      form(action='/news/'+flow.id+'/comment' method='POST')
         fieldset.form-field
           textarea(name='body' rows='5' cols='80')
         fieldset.form-field

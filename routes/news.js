@@ -30,7 +30,7 @@ passport.use(new GitHubStrategy({
   clientID: process.env.GH_CLIENT_ID,
   clientSecret: process.env.GH_CLIENT_SECRET,
   callbackURL: (process.env.NODE_ENV === 'production' ?
-      "http://javascriptcom.herokuapp.com/flow/auth/github/callback" : "http://localhost:3000/flow/auth/github/callback")
+      "http://javascriptcom.herokuapp.com/news/auth/github/callback" : "http://localhost:3000/news/auth/github/callback")
 },
 function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
@@ -47,7 +47,7 @@ function(accessToken, refreshToken, profile, done) {
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/flow/new')
+  res.redirect('/news/new')
 }
 /* End GitHub Auth */
 function buildComment(request, response, next){
@@ -73,15 +73,15 @@ router.
     // The request will be redirected to GitHub for authentication, so this
     // function will not be called.
   }).
-  get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/flow/new' }), function(req, res) {
+  get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/news/new' }), function(req, res) {
     // TODO: Fetch image and save it to S3
     // req.user['_json']['avatar_url']
     // req.user['_json']['login']
-    res.redirect('/flow');
+    res.redirect('/news');
    }).
   get('/signout', function(req, res){
     req.logout();
-    res.redirect('/flow');
+    res.redirect('/news');
   }).
 
   get('/', function(req, res) {
@@ -99,12 +99,11 @@ router.
 
     res.render('news/index', {flow_collection: locales.flow_collection, news: locales.news, today: new Date()});
   }).
-  get('/:update', function(req, res) {
+  get('/update', function(req, res) {
     debug('Updating news items from rss');
 
     // Not implemented yet
 
-    res.redirect('/');
   }).
 
   get('/:id([1-9]+)', cookieParser, csrfProtection, function(req, res) {
@@ -120,7 +119,7 @@ router.
     Flow.byID(req.params.id, function(flow) {
       Comments.byFlow(req.params.id, function(comments) {
         console.log(comments)
-          res.render('flow/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken() });
+          res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken() });
       });
     });
   }).
@@ -133,30 +132,30 @@ router.
       if(newComment.isSpam){
         req.flash('info', 'Whoops! Your comment will need to be moderated.')
       }
-      res.redirect('/flow');
+      res.redirect('/news');
     });
   }).
 
   get('/sign_in', function(req, res) {
-    res.render('flow/sign_in');
+    res.render('news/sign_in');
   }).
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
     if(!req.isAuthenticated()){
-      res.redirect('/flow/sign_in');
+      res.redirect('/news/sign_in');
     }else{
       var csrfToken = req.csrfToken();
       var login = req.user['_json']['login'];
       var avatar = req.user['_json']['avatar_url'];
 
-      res.render('flow/new', { login: login, avatar: avatar, token: csrfToken });
+      res.render('news/new', { login: login, avatar: avatar, token: csrfToken });
     }
   }).
 
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
     Flow.create(newFlow, function() {
-      res.redirect('/flow');
+      res.redirect('/news');
     });
   });
 
