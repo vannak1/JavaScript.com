@@ -160,16 +160,12 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
 // Maps a specific command to a specific handler.
 // If none are found, runs as JavaScript.
 
-angular.module('javascriptcom').factory('jsCommandFactory', ['_', 'jsHelpCommand', 'jsHintCommand', 'jsJavaScriptCommand', function(_, jsHelpCommand, jsHintCommand, jsJavaScriptCommand) {
+angular.module('javascriptcom').factory('jsCommandFactory', ['_', 'jsHelpCommand', 'jsAnswerCommand', 'jsJavaScriptCommand', function(_, jsHelpCommand, jsAnswerCommand, jsJavaScriptCommand) {
 
   var matchers = [
     {
-      pattern: /^help\s*/,
-      handler: jsHelpCommand
-    },
-    {
-      pattern: /^hint\s*/,
-      handler: jsHintCommand
+      pattern: /^answer\s*/,
+      handler: jsAnswerCommand
     },
     {
       pattern: /[.|\s]*/,
@@ -334,6 +330,17 @@ angular.module('javascriptcom').factory('marked', ['$window',
   }
 ]);
 
+angular.module('javascriptcom').factory('jsAnswerCommand', ['$q', function($q) {
+
+  function runAnswerCommand(challenge) {
+    var deferred = $q.defer();
+    deferred.reject(challenge.answer);
+    return deferred.promise;
+  }
+
+  return runAnswerCommand;
+}]);
+
 angular.module('javascriptcom').factory('jsHelpCommand', ['$', '$q', function($, $q) {
   var helpMessage = [
     '<div class="console-msg console-msg--help">',
@@ -354,17 +361,6 @@ angular.module('javascriptcom').factory('jsHelpCommand', ['$', '$q', function($,
   }
 
   return runHelpCommand;
-}]);
-
-angular.module('javascriptcom').factory('jsHintCommand', ['$q', function($q) {
-
-  function runHintCommand(challenge) {
-    var deferred = $q.defer();
-    deferred.reject('hint called');
-    return deferred.promise;
-  }
-
-  return runHintCommand;
 }]);
 
 angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsExecutor', 'jsCourseState', 'jsCommandReport', function($, $q, jsExecutor, jsCourseState, jsCommandReport) {

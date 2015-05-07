@@ -55,6 +55,7 @@ failures = {
 };
 
 module.exports = {
+  'id': 3,
   'title': 'String Method Parameter',
   'instructions': `Nice pop-up box, {{username}}, but there wasn't much in it. How can we get that box to show your name?
 
