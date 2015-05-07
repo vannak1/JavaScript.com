@@ -5,7 +5,58 @@ extends /views/layouts/layout
 
 block content
 
-  section.row
-    .cell.cell--s.well.well--l.well--m--xl
+  section.row.has-sector
+    .cell
 
-      h1 Official News
+      .g
+        .g-b.g-b--m--3of5.sector.sector--a
+          .well.well--l.well--m--xl
+
+            .bdrbl.mbl.pbl
+              h1.h.h--2 News from the Community
+              p.mbf.tcs
+                | A curated list of news and stories submitted from the JS.com community. 
+                | To learn more about how you can contribute, visit our 
+                a(href="#") Contribution Guidelines
+                | .
+
+
+            ul.list.list--l.list--divided.list--divided--l
+
+              - index = 6; while(index--)
+                li.list-item
+                  article.bucket
+                    .bucket-media
+                      img.thumb(src='http://placehold.it/40')
+                    .bucket-content
+                      h2.h.h--3
+                        a.tct.twb(href='/flow/1') This is an Article's Title in Title Case
+                      p.tcs.tfh Given Surname | 3 hours ago
+                      p.mbf.
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        vivamus vitae risus vitae lorem iaculis placerat. aliquam sit
+                        amet felis. etiam congue. donec risus risus, pretium...
+
+        .g-b.g-b--m--2of5.sector.sector--b
+          .well.well--l.well--m--xl
+            .sector-content
+
+              .bdrbl.mbl.pbl
+                h2.h.h--3.mbs JavaScript.com News
+                p.mbf.tcs News from the 5 Minutes of JavaScript podcast.
+                p.mbf.tcs
+                  | Updated weekly. 
+                  a(href="#") Subscribe here
+                  | .
+
+              ul.list.list--xl
+
+                - index = 5; while(index--)
+                  li.list-item
+                    article
+                      h2.h.h--3
+                        a.tct.twb(href='/flow/1') This is an Article's Title in Title Case
+                      p.mbf.
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        vivamus vitae risus vitae lorem iaculis placerat. aliquam sit
+                        amet felis. etiam congue. donec risus risus, pretium...

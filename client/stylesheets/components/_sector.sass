@@ -2,7 +2,6 @@
 //
 //   Sector
 //   -> Adjacent bleed divisions
-//      CodePen: http://codepen.io/johndjameson/pen/IzdAe
 //
 // -------------------------------------
 //   Template (Haml)
@@ -27,6 +26,9 @@
     width: 9999px
     z-index: -1
 
+    +respond-to($g-m)
+      left: $g-gutter
+
   &:first-child::before
     left: auto
     right: 0
@@ -37,11 +39,11 @@
 
 // ----- Hierarchy----- //
 
-.sector--white::before
-  background: $sector--white-background
+.sector--a::before
+  background: $sector--a-background
 
-.sector--snow::before
-  background: $sector--snow-background
+.sector--b::before
+  background: $sector--b-background
 
 // -------------------------------------
 //   Context
@@ -49,3 +51,14 @@
 
 .has-sector
   overflow: hidden
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Content ----- //
+
+.sector-content
+
+  +respond-to($g-m)
+    padding-left: $b-space-l
