@@ -10,5 +10,9 @@ li.list-item
       img.thumb.thumb--m(src="#{item.media}" width="220" alt="#{item.title}")
     .bucket-content
       h2.h.h--3
-        a.tct.twb(href="#{item.url}")= item.title
+        a.tct.tc-ht.twb.js-toggle(href="#{item.url}")
+          = item.title
+          span.mlxs.op1of2.por.pot2n.tcs.is-hidden
+            - iconPartial = { name: 'external', size: 16 }
+            include /views/partials/_icon
       p.mbf= item.description

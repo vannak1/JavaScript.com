@@ -49,3 +49,12 @@ block content
         - item = { title: 'Try jQuery', url: 'http://try.jquery.com/', media: '/images/resources/img-try-jquery.jpg' }
         - item.description = 'If you’re primarily interested in JavaScript to make interactive webpages you might want to jump straight into jQuery, the most popular JavaScript library on the Internet.'
         include /views/resources/_resource
+
+block inline_javascript
+  script.
+    jQuery(function($) {
+      JS.Modules.Toggle.init({
+        proximity    : '> span',
+        event        : 'hover'
+      });
+    });
