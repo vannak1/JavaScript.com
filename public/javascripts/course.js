@@ -3,22 +3,6 @@ angular.module('javascriptcom', ['ngResource', 'ngAnimate'])
     $httpProvider.defaults.cache = true;
   }]);
 
-angular.module('javascriptcom')
-  .filter('markdown', ['marked', function Markdown(marked) {
-    return function(text) {
-      return marked(text);
-    };
-  }]
-);
-
-angular.module('javascriptcom')
-  .filter('stateify', ['jsCourseState', '$interpolate', function Stateify(jsCourseState, $interpolate) {
-    return function(text, scope) {
-      return $interpolate(text)(scope);
-    };
-  }]
-);
-
 angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsCourseState', function(jsChallengeProgress, jsCourseState) {
   return {
     templateUrl: 'javascripts/javascriptcom/templates/challenge.html',
@@ -119,6 +103,22 @@ angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function SafeHt
     }
   };
 }]);
+
+angular.module('javascriptcom')
+  .filter('markdown', ['marked', function Markdown(marked) {
+    return function(text) {
+      return marked(text);
+    };
+  }]
+);
+
+angular.module('javascriptcom')
+  .filter('stateify', ['jsCourseState', '$interpolate', function Stateify(jsCourseState, $interpolate) {
+    return function(text, scope) {
+      return $interpolate(text)(scope);
+    };
+  }]
+);
 
 angular.module('javascriptcom').factory('jsCourseChallengeResource', function($resource) {
   return $resource('/courses/:course/challenges.json', {}, {});

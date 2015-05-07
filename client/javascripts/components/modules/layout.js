@@ -16,15 +16,15 @@ JS.Modules.Layout = (function() {
   //   Private Variables
   // -------------------------------------
 
-  _$html    = $('html');
-  _$body    = $('body');
-  _settings = {};
+  var _$html    = $('html');
+  var _$body    = $('body');
+  var _settings = {};
 
   // -------------------------------------
   //   Initialize
   // -------------------------------------
 
-  init = function(options) {
+  var init = function(options) {
     _settings = $.extend({
       $element         : $('.js-layout'),
       $form            : $('.js-layout-form'),
@@ -38,7 +38,7 @@ JS.Modules.Layout = (function() {
   //   Set Event Handlers
   // -------------------------------------
 
-  _setEventHandlers = function() {
+  var _setEventHandlers = function() {
     _settings.$form.on('submit', function(event) {
         event.preventDefault();
 
@@ -50,9 +50,9 @@ JS.Modules.Layout = (function() {
   //   Reposition Header
   // -------------------------------------
 
-  repositionHeader = function() {
-    scrolledDistance      = $(window).scrollTop();
-    scrollAnimationLength = Math.min(scrolledDistance * 2, 400);
+  var repositionHeader = function() {
+    var scrolledDistance      = $(window).scrollTop();
+    var scrollAnimationLength = Math.min(scrolledDistance * 2, 400);
 
     _$html.animate({
       scrollTop: 0
@@ -72,7 +72,7 @@ JS.Modules.Layout = (function() {
   return {
     init             : init,
     repositionHeader : repositionHeader
-  }
+  };
 
 })();
 
