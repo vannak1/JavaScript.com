@@ -123,9 +123,15 @@ JS.Modules.Toggle = (function() {
   var _handleHoverStateEvent = function($element, state) {
     switch (state) {
       case 'on':
+        if (_settings.onMouseover != null) {
+          _settings.onMouseover(_settings);
+        }
         $element.addClass(_settings.activeClass);
         break;
       case 'off':
+        if (_settings.onMouseout != null) {
+          _settings.onMouseout(_settings);
+        }
         $element.removeClass(_settings.activeClass);
     }
 
@@ -175,4 +181,12 @@ JS.Modules.Toggle = (function() {
   return {
     init: init
   };
+
 })();
+
+// -------------------------------------
+//   Usage
+// -------------------------------------
+//
+// JS.Modules.Toggle.init();
+//
