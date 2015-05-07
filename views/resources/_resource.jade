@@ -6,8 +6,8 @@
 
 li.list-item
   article.bucket.bucket--flag.bucket--l
-    .bucket-media
-      img.thumb.thumb--m(src="#{item.media}")
+    a.bucket-media(href="#{item.url}")
+      img.thumb.thumb--m(src="#{item.media}" width="220" alt="#{item.title}")
     .bucket-content
       h2.h.h--3
         a.tct.twb(href="#{item.url}")= item.title
