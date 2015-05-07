@@ -9,7 +9,6 @@ var routes = require('./routes/index');
 
 var brand = require('./routes/brand');
 var courses = require('./routes/courses');
-var flow = require('./routes/flow');
 var learn = require('./routes/learn');
 var news = require('./routes/news');
 var notFound = require('./routes/notFound');
@@ -44,7 +43,6 @@ app.use('/404', notFound)
 app.use('/brand', brand);
 app.use('/courses', courses)
 app.use('/courses.json', courses);
-app.use('/flow', flow);
 app.use('/news', news);
 app.use('/resources', resources)
 app.use('/styleguide', styleguide);
