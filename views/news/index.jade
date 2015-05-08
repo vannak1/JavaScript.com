@@ -7,10 +7,11 @@ block content
 
   section.row.has-sector
     .cell
-
       .g
         .g-b.g-b--m--3of5.sector.sector--a
           .well.well--l.well--m--xl
+
+            include /views/partials/_flash
 
             .bdrbl.mbl.pbl
               h1.h.h--2 News from the Community
@@ -68,3 +69,12 @@ block content
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                         vivamus vitae risus vitae lorem iaculis placerat. aliquam sit
                         amet felis. etiam congue. donec risus risus, pretium...
+
+block inline_javascript
+  script.
+    jQuery(function($) {
+      JS.Services.expel({
+        $toggle     : $('.js-alert-close'),
+        elementNode : '.js-alert'
+      });
+    });

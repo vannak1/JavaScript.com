@@ -1,0 +1,55 @@
+// *************************************
+//
+//   Alert
+//   -> Warning message
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .alert[error|success|warning]
+//
+//   .alert-msg
+//
+//     .alert-msg-close
+//
+// *************************************
+
+.alert
+  margin-bottom: $b-space
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Types ----- //
+
+.alert--error,
+.alert--error .alert-msg-close
+  color: $c-error
+
+.alert--success,
+.alert--success .alert-msg-close
+  color: $c-success
+
+.alert--warning,
+.alert--warning .alert-msg-close
+  color: $c-warning
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Message ----- //
+
+.alert-msg
+  margin-bottom: 0
+
+// Close
+
+.alert-msg-close
+  border-bottom: $b-border
+  font-weight: bold
+
+  +state
+    color: $c-text
