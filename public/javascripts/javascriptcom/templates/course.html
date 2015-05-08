@@ -7,7 +7,7 @@
         <div class='well well--m--xl course-toc-inner'>
           <ol class='list list--s list--divided list--divided--s checklist tfh js-course--toc'>
             <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }" class='list-item checklist-item'>
-            <a ng-href='#{{challenge.title.toLowerCase()}}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='checklist-item-link'>{{ ::challenge.title }}</a>
+            <a ng-href='#{{challenge.id}}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='checklist-item-link'>{{ ::challenge.title }}</a>
               <span ng-if='!challenge.started'>{{ ::challenge.title }}</span>
             </li>
           </ol>
