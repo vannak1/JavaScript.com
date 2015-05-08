@@ -24,7 +24,6 @@ Run the application with `$ npm start`. You can also set the environment variabl
 ```bash
 $ GH_CLIENT_ID=myid GH_CLIENT_SECRET=mysecret npm start
 ```
-Compile and watch Sass with `$ gulp`.
 
 For debugging all the things, run `DEBUG=* npm start`.
 
@@ -43,4 +42,4 @@ $ gulp sass
 $ gulp javascript
 ```
 
-Remeber to re-run these tasks after pulling or changing branches.
+Remember to re-run these tasks after pulling or changing branches.
