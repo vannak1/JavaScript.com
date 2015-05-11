@@ -21,4 +21,8 @@
     <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge' ng-if='challenge.started' class='animate--fade'>
     </js-challenge>
   </div>
+
+  <div ng-if='ctrl.challengeProgress.courseCompleted' class='animate--fade'>
+    Course Completed!
+  </div>
 </div>

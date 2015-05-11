@@ -13,7 +13,7 @@ angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress',
     bindToController: true,
     controllerAs: 'ctrl',
     controller: function jsChallengeController(jsChallengeProgress, jsCourseState) {
-      this.state = jsCourseState.state;
+      this.state    = jsCourseState.state;
       this.messages = [];
 
       this.onSuccess = function onSuccess(challenge) {
@@ -64,12 +64,14 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeResourceController(jsCourseChallengeResource) {
-      this.challenges = jsCourseChallengeResource.query({ course: this.course });
-      jsChallengeProgress.setChallenges(this.challenges);
+    controller: function jsChallengeResourceController(jsCourseChallengeResource, jsChallengeProgress) {
+      this.challengeProgress = jsChallengeProgress;
+      this.challenges        = jsCourseChallengeResource.query({ course: this.course });
+
+      this.challengeProgress.setChallenges(this.challenges);
 
       this.activateChallenge = function(challenge) {
-        jsChallengeProgress.activate(challenge)
+        this.challengeProgress.activate(challenge)
       }
     }
   };
@@ -266,6 +268,7 @@ angular.module('javascriptcom').factory('jsExecutor', ['Abecedary', function(Abe
 angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_) {
 
   var state = {
+    courseCompleted: false,
     challenges: [],
     setChallenges: function setChallenge(challenges) {
       this.challenges = challenges;
@@ -273,8 +276,8 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
     next: function() {
       var challengeIndex = _.findIndex(this.challenges, { active: true });
 
-      if(this.isComplete()) {
-        alert('You have finished the course!');
+      if(challengeIndex+1 == this.challenges.length) {
+        this.courseCompleted = true;
         return true;
       }
 

@@ -1,6 +1,7 @@
 angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_) {
 
   var state = {
+    courseCompleted: false,
     challenges: [],
     setChallenges: function setChallenge(challenges) {
       this.challenges = challenges;
@@ -8,8 +9,8 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
     next: function() {
       var challengeIndex = _.findIndex(this.challenges, { active: true });
 
-      if(this.isComplete()) {
-        alert('You have finished the course!');
+      if(challengeIndex+1 == this.challenges.length) {
+        this.courseCompleted = true;
         return true;
       }
 
