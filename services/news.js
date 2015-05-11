@@ -21,6 +21,19 @@ var News = {
       [title, body, url],
       cb
     )
+  },
+
+  // Creates stories from a JSON object sent form FiveJS
+  createFromEpisode(episodes, cb) {
+    for(var i in episodes) {
+      var story = episodes[i];
+      db.query(
+        "INSERT INTO articles (title, body, url, news) VALUES ($1, $2, $3, true);",
+        [story.title, story.summary, story.url],
+        function(){} // Is there anything to be done here?
+      )
+    }
+    cb();
   }
 }
 
