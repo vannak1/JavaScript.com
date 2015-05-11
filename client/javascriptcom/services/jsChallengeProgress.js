@@ -10,7 +10,9 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
       var challengeIndex = _.findIndex(this.challenges, { active: true });
 
       if(challengeIndex+1 == this.challenges.length) {
-        this.courseCompleted = true;
+        this.courseCompleted                   = true;
+        this.challenges[challengeIndex].active = false;
+
         return true;
       }
 
