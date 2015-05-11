@@ -12809,6 +12809,7 @@ function verify(code) {
     }
 
     if (error.message.match(/Missing semicolon/)) return;
+    if (error.message.match(/Expected an assignment or function call and instead saw an expression/)) return;
 
     it('f_jshint_error', function() {
       assert(false, error.message);

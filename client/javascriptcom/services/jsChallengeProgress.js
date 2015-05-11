@@ -8,7 +8,7 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
     next: function() {
       var challengeIndex = _.findIndex(this.challenges, { active: true });
 
-      if(challengeIndex+1 == this.challenges.length) {
+      if(this.isComplete()) {
         alert('You have finished the course!');
         return true;
       }
@@ -31,6 +31,12 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
       _.each(this.challenges, function(challenge) {
         challenge.active = false;
       })
+    },
+
+    isComplete: function() {
+      var challengeIndex = _.findIndex(this.challenges, { active: true });
+
+      return challengeIndex+1 == this.challenges.length;
     }
   }
 

@@ -14,6 +14,7 @@ angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress',
     controllerAs: 'ctrl',
     controller: function jsChallengeController(jsChallengeProgress, jsCourseState) {
       this.state = jsCourseState.state;
+      this.messages = [];
 
       this.onSuccess = function onSuccess(challenge) {
         challenge.completed = true;
@@ -41,7 +42,7 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
     require: '^jsChallenge',
     link: function(scope, element, attrs, ctrl) {
       var el = $(element).find('.console-ui')[0];
-      var command = new jsCommand(ctrl.challenge, ctrl.onSuccess, ctrl.onFailure);
+      var command = new jsCommand(ctrl.challenge, ctrl.onSuccess, ctrl.onFailure, ctrl.messages);
 
       ctrl.csConsole = new CSConsole(el, {
         prompt: '> ',
@@ -84,6 +85,17 @@ angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked
     require: '^jsChallenge'
   };
 }]);
+
+angular.module('javascriptcom').directive('jsMessages', function() {
+  return {
+    scope: true,
+    templateUrl: 'javascripts/javascriptcom/templates/messages.html',
+    replace: true,
+    require: '^jsChallenge',
+    controllerAs: 'ctrl',
+    bindToController: true
+  };
+});
 
 angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function SafeHtmlDirective($sce) {
   return {
@@ -129,24 +141,24 @@ angular.module('javascriptcom').factory('jsCourseResource', function($resource) 
 });
 
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
-  return function jsCommand(challenge, successCallback, errorCallback) {
+  return function jsCommand(challenge, successCallback, errorCallback, messages) {
     var vm = this;
     vm.challenge = challenge;
+    vm.messages  = messages;
 
-    function jsReportAdapter(content) {
-      if(_.isArray(content)) { return content; }
-      if(_.isObject(content) && content['content']) { return [content]; }
-      return [{ content: content }];
+    function formatResponse(content, vm, report, type) {
+      vm.messages.push({ value: _.isArray(content) ? content[1].content.textContent : content, type: 'success' })
+      report({ content: _.isArray(content) ? content[0].content : '' });
     }
 
     vm.handler = function parseCommand(line, report) {
       var command = jsCommandFactory(line);
 
       command(vm.challenge, line).then(function(content) {
-        report(jsReportAdapter(content));
+        formatResponse(content, vm, report, 'success')
         successCallback(vm.challenge);
       }, function(content) {
-        report(jsReportAdapter(content));
+        formatResponse(content, vm, report, 'error')
         errorCallback(vm.challenge);
       });
     }
@@ -261,7 +273,7 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
     next: function() {
       var challengeIndex = _.findIndex(this.challenges, { active: true });
 
-      if(challengeIndex+1 == this.challenges.length) {
+      if(this.isComplete()) {
         alert('You have finished the course!');
         return true;
       }
@@ -284,6 +296,12 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
       _.each(this.challenges, function(challenge) {
         challenge.active = false;
       })
+    },
+
+    isComplete: function() {
+      var challengeIndex = _.findIndex(this.challenges, { active: true });
+
+      return challengeIndex+1 == this.challenges.length;
     }
   }
 
@@ -334,7 +352,7 @@ angular.module('javascriptcom').factory('jsAnswerCommand', ['$q', function($q) {
 
   function runAnswerCommand(challenge) {
     var deferred = $q.defer();
-    deferred.reject(challenge.answer);
+    deferred.reject('The answer would look something like this: ' + challenge.answer);
     return deferred.promise;
   }
 
