@@ -4,7 +4,7 @@
 
 block current_nav
 
-header.row.header.layout-header(class=(headerPartial.bleed ? 'bc-regent' : '' ))
+header.row.header.layout-header(class=(headerPartial.bleed ? 'bc-regent' : '' ) role='banner')
   .cell.well.well--s.well--m--m
 
     .split.split--middle
@@ -13,7 +13,7 @@ header.row.header.layout-header(class=(headerPartial.bleed ? 'bc-regent' : '' ))
           a.dib(href='/')
             img.dn--m(src='/images/logo-mark.svg' alt='JavaScript.com')
             img.dn.db--m(src='/images/logo.svg' alt='JavaScript.com')
-        nav.split-cell
+        nav.split-cell(role='navigation')
           each url, title in menu
             if current_page == title
               a.underline.header-link.is-active(href=url class=(headerPartial.bleed ? 'underline--alt' : '' ))= title
