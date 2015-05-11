@@ -4,12 +4,14 @@ var csrf = require('csurf');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')();
 var Flow = require('../services/flow');
+var News = require('../services/news');
 var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
 
 
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
+var parseJson = bodyParser.json();
 
 var path   = require('path');
 var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
@@ -50,6 +52,30 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/news/new')
 }
 /* End GitHub Auth */
+
+/* Basic Auth*/
+var BasicStrategy = require('passport-http').BasicStrategy;
+// Use the BasicStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, a username and password), and invoke a callback
+//   with a user object.
+passport.use(new BasicStrategy({
+  },
+  function(username, password, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+
+      // Check for username. If there is no username given or the password is
+      // incorrect, set the user to 'false' to indicate failure. Otherwise,
+      // return the authenticated 'user'.
+      if (!username || username != process.env.BASICAUTH_USERNAME ) { return done(null, false); }
+      if (password != process.env.BASICAUTH_PASSWORD) { return done(null, false); }
+      return done(null, username);
+    });
+  }
+));
+/* End Basic Auth*/
+
 function buildComment(request, response, next){
 
   var newComment = request.body;
@@ -89,7 +115,6 @@ router.
     var locales = {};
 
     Flow.all(function(flow_collection) {
-      console.log("in fc " + flow_collection);
      locales.flow_collection = flow_collection;
     });
 
@@ -150,6 +175,12 @@ router.
 
       res.render('news/new', { login: login, avatar: avatar, token: csrfToken });
     }
+  }).
+  post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
+    var newEpisode = req.body;
+    News.createFromEpisode(newEpisode, function() {
+      res.json({ message: "Episode successfully sent" });
+    });
   }).
 
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
