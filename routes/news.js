@@ -112,7 +112,6 @@ router.
 
   get('/', function(req, res) {
     debug('Fetching and listing news');
-    console.log(req.sesssion)
     var locales = {};
 
     Flow.all(function(flow_collection) {

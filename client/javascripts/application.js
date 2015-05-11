@@ -22,7 +22,7 @@ JS.Inbox    = {};
 // -------------------------------------
 
 JS.Globals = {
-  homepageChallengeAnswer : /"[a-zA-Z]*";/
+  homepageChallengeAnswer : /^['"][A-z]*['"];/
 };
 
 // -------------------------------------

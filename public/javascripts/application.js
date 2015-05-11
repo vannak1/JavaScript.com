@@ -22,7 +22,7 @@ JS.Inbox    = {};
 // -------------------------------------
 
 JS.Globals = {
-  homepageChallengeAnswer : /"[a-zA-Z]*";/
+  homepageChallengeAnswer : /^['"][A-z]*['"];/
 };
 
 // -------------------------------------
@@ -51,37 +51,6 @@ jQuery(function($) {
   $('tr[style="background-color: #faf9dc;"]').hide();
 
 });
-
-// *************************************
-//
-//   Expel
-//   -> Pest control
-//
-// *************************************
-//
-// @param $toggle     { jQuery object }
-// @param elementNode { string }
-//
-// *************************************
-
-JS.Services.expel = function(options) {
-  var settings = $.extend({
-    $toggle     : $('.js-expel-toggle'),
-    elementNode : '.js-expel',
-  }, options);
-
-  settings.$toggle.on('click', function(event) {
-    event.preventDefault();
-    $(this).closest(settings.elementNode).remove();
-  });
-};
-
-// -------------------------------------
-//   Usage
-// -------------------------------------
-//
-// JS.Services.expel();
-//
 
 // *************************************
 //
@@ -461,7 +430,7 @@ JS.Modules.Video = (function() {
   //   Private Variables
   // -------------------------------------
 
-  var _settings =  {};
+  var _settings  = {};
   var _video     = null;
 
   // -------------------------------------
@@ -593,3 +562,34 @@ JS.Modules.Video = (function() {
   };
 
 })();
+
+// *************************************
+//
+//   Expel
+//   -> Pest control
+//
+// *************************************
+//
+// @param $toggle     { jQuery object }
+// @param elementNode { string }
+//
+// *************************************
+
+JS.Services.expel = function(options) {
+  var settings = $.extend({
+    $toggle     : $('.js-expel-toggle'),
+    elementNode : '.js-expel',
+  }, options);
+
+  settings.$toggle.on('click', function(event) {
+    event.preventDefault();
+    $(this).closest(settings.elementNode).remove();
+  });
+};
+
+// -------------------------------------
+//   Usage
+// -------------------------------------
+//
+// JS.Services.expel();
+//
