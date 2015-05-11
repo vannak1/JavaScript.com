@@ -22,7 +22,7 @@ JS.Modules.Video = (function() {
   //   Private Variables
   // -------------------------------------
 
-  var _settings =  {};
+  var _settings  = {};
   var _video     = null;
 
   // -------------------------------------
