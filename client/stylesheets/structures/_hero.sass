@@ -16,8 +16,10 @@
 // *************************************
 
 .hero
-  min-height: $hero-minHeight
   position: relative
+
+  +respond-to($g-m)
+    min-height: $hero-minHeight
 
 // -------------------------------------
 //   Scaffolding

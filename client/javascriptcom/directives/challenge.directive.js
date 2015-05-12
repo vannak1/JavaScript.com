@@ -8,7 +8,8 @@ angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress',
     bindToController: true,
     controllerAs: 'ctrl',
     controller: function jsChallengeController(jsChallengeProgress, jsCourseState) {
-      this.state = jsCourseState.state;
+      this.state    = jsCourseState.state;
+      this.messages = [];
 
       this.onSuccess = function onSuccess(challenge) {
         challenge.completed = true;

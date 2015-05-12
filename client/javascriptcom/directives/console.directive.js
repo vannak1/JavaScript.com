@@ -8,7 +8,7 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
     require: '^jsChallenge',
     link: function(scope, element, attrs, ctrl) {
       var el = $(element).find('.console-ui')[0];
-      var command = new jsCommand(ctrl.challenge, ctrl.onSuccess, ctrl.onFailure);
+      var command = new jsCommand(ctrl.challenge, ctrl.onSuccess, ctrl.onFailure, ctrl.messages);
 
       ctrl.csConsole = new CSConsole(el, {
         prompt: '> ',

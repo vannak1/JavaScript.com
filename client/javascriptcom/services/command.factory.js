@@ -1,22 +1,22 @@
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
-  return function jsCommand(challenge, successCallback, errorCallback) {
+  return function jsCommand(challenge, successCallback, errorCallback, messages) {
     var vm = this;
     vm.challenge = challenge;
+    vm.messages  = messages;
 
-    function jsReportAdapter(content) {
-      if(_.isArray(content)) { return content; }
-      if(_.isObject(content) && content['content']) { return [content]; }
-      return [{ content: content }];
+    function formatResponse(content, vm, report, type) {
+      vm.messages.push({ value: _.isArray(content) ? content[1].content.textContent : content, type: 'success' })
+      report({ content: _.isArray(content) ? content[0].content : '' });
     }
 
     vm.handler = function parseCommand(line, report) {
       var command = jsCommandFactory(line);
 
       command(vm.challenge, line).then(function(content) {
-        report(jsReportAdapter(content));
+        formatResponse(content, vm, report, 'success')
         successCallback(vm.challenge);
       }, function(content) {
-        report(jsReportAdapter(content));
+        formatResponse(content, vm, report, 'error')
         errorCallback(vm.challenge);
       });
     }

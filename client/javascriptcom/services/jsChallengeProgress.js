@@ -1,6 +1,7 @@
 angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_) {
 
   var state = {
+    courseCompleted: false,
     challenges: [],
     setChallenges: function setChallenge(challenges) {
       this.challenges = challenges;
@@ -9,7 +10,9 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
       var challengeIndex = _.findIndex(this.challenges, { active: true });
 
       if(challengeIndex+1 == this.challenges.length) {
-        alert('You have finished the course!');
+        this.courseCompleted                   = true;
+        this.challenges[challengeIndex].active = false;
+
         return true;
       }
 
@@ -31,6 +34,12 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
       _.each(this.challenges, function(challenge) {
         challenge.active = false;
       })
+    },
+
+    isComplete: function() {
+      var challengeIndex = _.findIndex(this.challenges, { active: true });
+
+      return challengeIndex+1 == this.challenges.length;
     }
   }
 

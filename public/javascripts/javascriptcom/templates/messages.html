@@ -1,0 +1,6 @@
+<div>
+  <div ng-repeat="message in ctrl.messages"
+    ng-class="{ 'error': message.type === 'error', 'success': message.type === 'success', 'message': message.type === 'message' }">
+    <p>{{ message.value }}</p>
+  </div>
+</div>
