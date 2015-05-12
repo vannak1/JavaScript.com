@@ -50,7 +50,7 @@ var options = {
       'bower_components/lodash/lodash.js',
       'bower_components/marked/marked.min.js',
       'bower_components/codemirror/lib/codemirror.js',
-      'bower_components/cs_console/compiled/cs_console.js',
+      'bower_components/cs_console/dist/cs_console.js',
       'bower_components/abecedary/dist/abecedary.js',
     ],
     courseFiles: ['client/javascriptcom/**/*.js',],
