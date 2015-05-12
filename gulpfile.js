@@ -164,7 +164,7 @@ gulp.task('browserify', function() {
 
   var output = options.browserify.destDir + '/' + options.browserify.destFile;
 
-  return shell.task(['node_modules/browserify/bin/cmd.js '+files+' -o ' + output]);
+  return gulp.task('browserify', shell.task(['node_modules/browserify/bin/cmd.js '+files+' -o ' + output]));
 });
 
 // -------------------------------------
