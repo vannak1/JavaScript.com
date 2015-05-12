@@ -18,15 +18,16 @@ block content
 
               .g
                 .g-b.g-b--l--3of4
+
                   p.mbf--l.ptxs--l.tcs.tss
                     | A curated list of news and stories submitted from the JS.com community.
                     | To learn more about how you can contribute, visit our
-                    a(href="/guidelines") Contribution Guidelines
+                    a(href='/guidelines') Contribution Guidelines
                     | .
 
                 .g-b.g-b--l--1of4
-                  a.btn.btn--a.btn--a--bordered.fr--l(href='/news/new') New Post
 
+                  a.btn.btn--a.btn--a--bordered.fr--l(href='/news/new') New Post
 
             ul.list.list--l.list--divided.list--divided--l
 
@@ -41,18 +42,19 @@ block content
                       p.tcs.tfh #{flow.name} | #{moment(flow.created_at).format('dddd')}
                       p.mbf.
                        #{flow.body}
+
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
             .sector-content
 
               .bdrbl.mbl.pbl
-                img.db.mbl.mhc(src="/images/img-news.svg" alt="" width="250")
+                img.db.mbl.mhc(src='/images/img-news.svg' alt='' width='250')
 
                 h2.h.h--3 JavaScript.com News
                 p.mbf.tcs.tss News from the 5 Minutes of JavaScript podcast.
                 p.mbf.tcs.tss
                   | Updated weekly.
-                  a(href="#") Subscribe here
+                  a(href='#') Subscribe here
                   | .
 
               ul.list.list--l.list--divided.list--divided--l
@@ -64,6 +66,7 @@ block content
                         a.tct.twb(href=story.url)= story.title
                       p.mbf.tss.
                         #{story.body}
+
 block inline_javascript
   script.
     jQuery(function($) {
