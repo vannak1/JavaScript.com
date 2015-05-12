@@ -17,7 +17,7 @@ CREATE TABLE articles (
   body       TEXT,
   url        TEXT,
   news       BOOLEAN NOT NULL DEFAULT FALSE,
-  user_id    INTEGER REFERENCES users(id) NOT NULL,
+  user_id    INTEGER,
   flagged    BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT statement_timestamp()
 );
