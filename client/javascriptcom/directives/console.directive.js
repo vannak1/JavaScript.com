@@ -1,6 +1,6 @@
 angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', function(CSConsole, jsCommand) {
   return {
-    templateUrl: 'javascripts/javascriptcom/templates/console.html',
+    templateUrl: 'templates/console.html',
     replace: true,
     scope: true,
     bindToController: true,

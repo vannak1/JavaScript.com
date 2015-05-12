@@ -87,6 +87,18 @@ var options = {
 
 };
 
+
+// -------------------------------------
+//   Task: Compile
+// -------------------------------------
+
+gulp.task('compile', function() {
+  gulp.start('sass');
+  gulp.start('browserify');
+  gulp.start('abecedary');
+  gulp.start('javascript');
+});
+
 // -------------------------------------
 //   Task: Default
 // -------------------------------------
