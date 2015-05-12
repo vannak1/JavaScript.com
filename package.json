@@ -28,6 +28,7 @@
     "passport-github": "^0.1.5",
     "passport-http": "^0.2.2",
     "pg": "^4.2.0",
+    "redis": "^0.12.1",
     "request": "^2.53.0",
     "serve-favicon": "~2.2.0"
   },

@@ -933,6 +933,11 @@
         }
       }
     },
+    "redis": {
+      "version": "0.12.1",
+      "from": "redis@*",
+      "resolved": "https://registry.npmjs.org/redis/-/redis-0.12.1.tgz"
+    },
     "request": {
       "version": "2.55.0",
       "from": "https://registry.npmjs.org/request/-/request-2.55.0.tgz",

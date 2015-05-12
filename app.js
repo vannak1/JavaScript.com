@@ -23,9 +23,10 @@ var app = express();
 var passport = require('passport');
 var expressSession = require('express-session');
 var RedisStore = require('connect-redis')(expressSession);
-var client = redis.createClient()
+var redis = require('redis');
+var client = redis.createClient();
 app.use(expressSession({
-  store: new RedisStore(),
+  store: new RedisStore({client: client}),
   secret: 'replace-me-with-secret-key'
 }));
 app.use(passport.initialize());
