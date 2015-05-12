@@ -20,12 +20,17 @@ var shell        = require('gulp-shell');
 var svgmin       = require('gulp-svgmin');
 var svgstore     = require('gulp-svgstore');
 var _            = require('lodash');
+var run          = require('run-sequence');
 
 // -------------------------------------
 //   Variables
 // -------------------------------------
 
 var options = {
+
+  build: {
+    tasks: ['sass', 'browserify', 'abecedary', 'javascript']
+  },
 
   css: {
     file: 'public/stylesheets/application.css',
@@ -89,14 +94,11 @@ var options = {
 
 
 // -------------------------------------
-//   Task: Compile
+//   Task: build
 // -------------------------------------
 
-gulp.task('compile', function() {
-  gulp.start('sass');
-  gulp.start('browserify');
-  gulp.start('abecedary');
-  gulp.start('javascript');
+gulp.task('build', function() {
+  run(options.build.tasks);
 });
 
 // -------------------------------------
@@ -162,7 +164,7 @@ gulp.task('browserify', function() {
 
   var output = options.browserify.destDir + '/' + options.browserify.destFile;
 
-  return gulp.task('browserify', shell.task(['node_modules/browserify/bin/cmd.js '+files+' -o ' + output]));
+  return shell.task(['node_modules/browserify/bin/cmd.js '+files+' -o ' + output]);
 });
 
 // -------------------------------------

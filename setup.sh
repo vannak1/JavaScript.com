@@ -13,4 +13,4 @@ echo "installing bower assets"
 npm run bower install
 
 echo "compiling assets"
-npm run gulp compile
+npm run gulp build

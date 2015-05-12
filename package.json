@@ -52,6 +52,7 @@
     "javascript-sandbox": "https://github.com/codeschool/javascript-sandbox/tarball/master",
     "jshint": "^2.6.3",
     "lodash": "^3.5.0",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "run-sequence": "^1.1.0"
   }
 }
