@@ -5,13 +5,16 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')();
 var Flow = require('../services/flow');
 var News = require('../services/news');
+var Users = require('../services/users');
 var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
+var moment = require('moment');
 
 
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
 var parseJson = bodyParser.json();
+var request = require('request');
 
 var path   = require('path');
 var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
@@ -37,15 +40,40 @@ passport.use(new GitHubStrategy({
 function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
-
-    // To keep the example simple, the user's GitHub profile is returned to
-    // represent the logged-in user.  In a typical application, you would want
-    // to associate the GitHub account with a user record in your database,
-    // and return that user instead.
-    return done(null, profile);
+    Users.findOrCreate(profile.id, function (err, user) {
+      if (user){
+        return done(null, profile);
+      }else{
+        // TODO: make sure we save those emails
+        Users.create(profile, function(profile){return done(null, profile)});
+      }
+    });
   });
 }
 ));
+
+// TODO: Handle this async
+function fetchEmail(user, token){
+  var options = {
+    headers: {
+      'User-Agent':    baseURL,
+      'Authorization': 'token ' + token
+    },
+    json:    true,
+    url:     'https://api.github.com/user/emails'
+  };
+
+  // get emails using oauth token
+  request(options, function(error, response, body) {
+
+    var emails = body.filter(function(email) {
+      return (email.verified && email.primary);
+      return email.verified;
+    });
+
+    return emails[0].email
+  });
+}
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
@@ -112,17 +140,18 @@ router.
 
   get('/', function(req, res) {
     debug('Fetching and listing news');
-    var locales = {};
-
-    Flow.all(function(flow_collection) {
-     locales.flow_collection = flow_collection;
+    News.allWithUsers( function(all) {
+      var flow = [], news = [];
+      all.map(function(item){
+        if (item.news){
+          news.push(item);
+        }else{
+          flow.push(item);
+        }
+      });
+      res.render('news/index', {flow_collection: flow, news_collection: news, moment: moment});
     });
 
-    Fivejs.get( function(news) {
-     locales.news = news;
-    });
-
-    res.render('news/index', {flow_collection: locales.flow_collection, news: locales.news, today: new Date()});
   }).
   get('/update', function(req, res) {
     debug('Updating news items from rss');
@@ -143,7 +172,6 @@ router.
 
     Flow.byID(req.params.id, function(flow) {
       Comments.byFlow(req.params.id, function(comments) {
-        console.log(comments)
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken() });
       });
     });
@@ -153,14 +181,16 @@ router.
 
     var newComment = req.newComment;
 
-    Comments.create(newComment, function() {
-      if(newComment.isSpam){
-        req.flash('info', 'Whoops! Your comment will need to be moderated.')
-      }
-      res.redirect('/news');
+    Users.byGithubId(req.user.id, function(result){
+      newComment.user_id = result[0].id;
+      Comments.create(newComment, function() {
+        if(newComment.isSpam){
+          req.flash('info', 'Whoops! Your comment will need to be moderated.')
+        }
+        res.redirect('/news');
+      });
     });
   }).
-
   get('/sign_in', function(req, res) {
     res.render('news/sign_in');
   }).
@@ -185,8 +215,11 @@ router.
 
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
-    Flow.create(newFlow, function() {
-      res.redirect('/news');
+    Users.byGithubId(req.user.id, function(result){
+      newFlow.user_id = result[0].id;
+      Flow.create(newFlow, function() {
+        res.redirect('/news');
+      });
     });
   });
 
