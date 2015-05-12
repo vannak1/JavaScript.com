@@ -21,13 +21,13 @@ block content
 
                   p.mbf--l.ptxs--l.tcs.tss
                     | A curated list of news and stories submitted from the JS.com community.
-                    | To learn more about how you can contribute, visit our
+                    | To learn more about how you can contribute, visit our 
                     a(href='/guidelines') Contribution Guidelines
                     | .
 
                 .g-b.g-b--l--1of4
 
-                  a.btn.btn--a.btn--a--bordered.fr--l(href='/news/new') New Post
+                  a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
             ul.list.list--l.list--divided.list--divided--l
 
@@ -50,12 +50,12 @@ block content
               .bdrbl.mbl.pbl
                 img.db.mbl.mhc(src='/images/img-news.svg' alt='' width='250')
 
-                h2.h.h--3 JavaScript.com News
-                p.mbf.tcs.tss News from the 5 Minutes of JavaScript podcast.
-                p.mbf.tcs.tss
-                  | Updated weekly.
-                  a(href='#') Subscribe here
-                  | .
+                h2.h.h--3 5 Minutes of JavaScript
+
+                p.tcs.tss News from the 5 Minutes of JavaScript podcast.
+
+                a.btn.btn--a--bordered.db.dib--s.mbs.mrs--s(href='https://itunes.apple.com/us/podcast/5-minutes-of-javascript/id775261328') Listen Now
+                a.btn.btn--a--bordered.db.dib--s(href='https://fivejs.codeschool.com/') Visit Site
 
               ul.list.list--l.list--divided.list--divided--l
 
@@ -66,6 +66,11 @@ block content
                         a.tct.twb(href=story.url)= story.title
                       p.mbf.tss.
                         #{story.body}
+
+              p.tcs.tss
+                | Updated weekly. 
+                a(href='https://fivejs.codeschool.com/') Subscribe here
+                | .
 
 block inline_javascript
   script.
