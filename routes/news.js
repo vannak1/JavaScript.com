@@ -35,7 +35,7 @@ passport.use(new GitHubStrategy({
   clientID: process.env.GH_CLIENT_ID,
   clientSecret: process.env.GH_CLIENT_SECRET,
   callbackURL: (process.env.NODE_ENV === 'production' ?
-      "http://javascriptcom.herokuapp.com/news/auth/github/callback" : "http://localhost:3000/news/auth/github/callback")
+      "http://173.255.212.131:3000/news/auth/github/callback" : "http://localhost:3000/news/auth/github/callback")
 },
 function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
