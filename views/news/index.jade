@@ -19,8 +19,8 @@ block content
               .g
                 .g-b.g-b--l--3of4
                   p.mbf--l.ptxs--l.tcs.tss
-                    | A curated list of news and stories submitted from the JS.com community. 
-                    | To learn more about how you can contribute, visit our 
+                    | A curated list of news and stories submitted from the JS.com community.
+                    | To learn more about how you can contribute, visit our
                     a(href="/guidelines") Contribution Guidelines
                     | .
 
@@ -30,20 +30,17 @@ block content
 
             ul.list.list--l.list--divided.list--divided--l
 
-              - index = 6; while(index--)
+              - for flow in flow_collection
                 li.list-item
                   article.bucket
                     .bucket-media
-                      img.thumb(src='http://placehold.it/50/37433e/37433e')
+                      img.thumb(src=flow.avatar_url width=50)
                     .bucket-content
                       h2.h.h--3
-                        a.tct.twb(href='/news/1') This is an Article's Title in Title Case
-                      p.tcs.tfh Given Surname | 3 hours ago
+                        a.tct.twb(href='/news/' + flow.id)= flow.title
+                      p.tcs.tfh #{flow.name} | #{moment(flow.created_at).format('dddd')}
                       p.mbf.
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        vivamus vitae risus vitae lorem iaculis placerat. aliquam sit
-                        amet felis. etiam congue. donec risus risus, pretium...
-
+                       #{flow.body}
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
             .sector-content
@@ -54,22 +51,19 @@ block content
                 h2.h.h--3 JavaScript.com News
                 p.mbf.tcs.tss News from the 5 Minutes of JavaScript podcast.
                 p.mbf.tcs.tss
-                  | Updated weekly. 
+                  | Updated weekly.
                   a(href="#") Subscribe here
                   | .
 
               ul.list.list--l.list--divided.list--divided--l
 
-                - index = 5; while(index--)
+                - for story in news_collection
                   li.list-item
                     article
                       h2.h.h--4
-                        a.tct.twb(href='#') This is an Article's Title in Title Case
+                        a.tct.twb(href=story.url)= story.title
                       p.mbf.tss.
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        vivamus vitae risus vitae lorem iaculis placerat. aliquam sit
-                        amet felis. etiam congue. donec risus risus, pretium...
-
+                        #{story.body}
 block inline_javascript
   script.
     jQuery(function($) {
