@@ -15,7 +15,7 @@ var News = {
   },
 
   allWithUsers(cb){
-    db.query('SELECT articles.title, articles.id, articles.body, users.name, users.avatar_url FROM articles JOIN users ON articles.user_id = users.id', [], cb)
+    db.query('SELECT articles.news, articles.title, articles.id, articles.body, users.name, users.avatar_url FROM articles LEFT JOIN users ON articles.user_id = users.id', [], cb)
   },
 
   // Creates a new news item
