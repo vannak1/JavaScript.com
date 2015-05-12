@@ -1,7 +1,7 @@
 angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeResource', 'jsChallengeProgress', function(_, jsCourseChallengeResource, jsChallengeProgress) {
   return {
     replace: true,
-    templateUrl: 'javascripts/javascriptcom/templates/course.html',
+    templateUrl: 'templates/course.html',
     scope: {
       course: '@'
     },

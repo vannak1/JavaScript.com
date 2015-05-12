@@ -7,7 +7,9 @@
   },
   "scripts": {
     "start": "node --harmony_object_literals ./bin/www",
-    "postinstall": "./setup.sh"
+    "postinstall": "./setup.sh",
+    "bower": "node_modules/.bin/bower",
+    "gulp": "node_modules/.bin/gulp"
   },
   "dependencies": {
     "akismet-api": "^1.1.5",
@@ -33,6 +35,7 @@
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
+    "bower": "^1.4.1",
     "browserify": "9.0.3",
     "chai": "~1.8.1",
     "gulp": "^3.8.11",
@@ -49,6 +52,7 @@
     "javascript-sandbox": "https://github.com/codeschool/javascript-sandbox/tarball/master",
     "jshint": "^2.6.3",
     "lodash": "^3.5.0",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "run-sequence": "^1.1.0"
   }
 }

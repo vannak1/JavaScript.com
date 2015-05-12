@@ -1,6 +1,6 @@
 angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsCourseState', function(jsChallengeProgress, jsCourseState) {
   return {
-    templateUrl: 'javascripts/javascriptcom/templates/challenge.html',
+    templateUrl: 'templates/challenge.html',
     replace: true,
     scope: {
       challenge: '='
