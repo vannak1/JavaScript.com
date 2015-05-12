@@ -41,11 +41,16 @@ function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
     Users.findOrCreate(profile.id, function (err, user) {
+      if(err) return err;
+
       if (user){
         return done(null, profile);
       }else{
         // TODO: make sure we save those emails
-        Users.create(profile, function(profile){return done(null, profile)});
+        Users.create(profile, function(err, user){
+          if(err) return err;
+          return done(err, user)
+        });
       }
     });
   });
@@ -196,6 +201,7 @@ router.
   }).
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
+    console.log(req);
     if(!req.isAuthenticated()){
       res.redirect('/news/sign_in');
     }else{
