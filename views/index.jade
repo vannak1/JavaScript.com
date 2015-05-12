@@ -3,6 +3,8 @@ extends /views/layouts/layout-bleed
 block content
 
   .row.hero.bc-regent
+    include /views/partials/_hero_img
+
     .cell.well.well--m--l
 
       .mbm.mbxl--m.tac
@@ -16,15 +18,13 @@ block content
 
         .video
           video.video-element.js-video-element(controls preload='none')
-            source(src='http://www.viddler.com/file/d/1646e040.mp4?vfid=7780025f4329d7d80d55c582a017125c' type='video/mp4')
-            source(src='http://www.viddler.com/file/d/1646e040.webm?vfid=7780025f4329d6d84204e7d1178b8493' type='video/webm')
+            source(src='http://www.viddler.com/file/d/1646e040.mp4' type='video/mp4')
+            source(src='http://www.viddler.com/file/d/1646e040.webm' type='video/webm')
 
       .g
         .g-b.g-b--l--1of2.fr
 
           include /views/partials/_hero_console
-
-    include /views/partials/_hero_img
 
   .row
     .cell.cell--s.well.well--l.well--m--xl
