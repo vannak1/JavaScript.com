@@ -20,6 +20,7 @@ var query = function (parameterizedString, args, cb) {
   pg.connect(settings, function (err, client, done) {
     client.query(parameterizedString, args, function (err, result) {
       if (err) throw err;
+      done();
       cb(result.rows);
     })
   });
