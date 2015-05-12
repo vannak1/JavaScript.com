@@ -142,6 +142,36 @@ angular.module('javascriptcom').factory('jsCourseResource', function($resource) 
   return $resource('/courses/:course.json', {}, {});
 });
 
+angular.module('javascriptcom').factory('Abecedary', ['$window',
+  function Abecedary($window) {
+    return $window.Abecedary;
+  }
+]);
+
+angular.module('javascriptcom').factory('CSConsole', ['$window',
+  function CSConsole($window) {
+    return $window.CSConsole;
+  }
+]);
+
+angular.module('javascriptcom').factory('$', ['$window',
+  function jQuery($window) {
+    return $window.$;
+  }
+]);
+
+angular.module('javascriptcom').factory('_', ['$window',
+  function lodash($window) {
+    return $window._;
+  }
+]);
+
+angular.module('javascriptcom').factory('marked', ['$window',
+  function marked($window) {
+    return $window.marked;
+  }
+]);
+
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
   return function jsCommand(challenge, successCallback, errorCallback, messages) {
     var vm = this;
@@ -322,36 +352,6 @@ angular.module('javascriptcom').factory('jsCourseState', ['_', function(_) {
     }
   };
 }]);
-
-angular.module('javascriptcom').factory('Abecedary', ['$window',
-  function Abecedary($window) {
-    return $window.Abecedary;
-  }
-]);
-
-angular.module('javascriptcom').factory('CSConsole', ['$window',
-  function CSConsole($window) {
-    return $window.CSConsole;
-  }
-]);
-
-angular.module('javascriptcom').factory('$', ['$window',
-  function jQuery($window) {
-    return $window.$;
-  }
-]);
-
-angular.module('javascriptcom').factory('_', ['$window',
-  function lodash($window) {
-    return $window._;
-  }
-]);
-
-angular.module('javascriptcom').factory('marked', ['$window',
-  function marked($window) {
-    return $window.marked;
-  }
-]);
 
 angular.module('javascriptcom').factory('jsAnswerCommand', ['$q', function($q) {
 
