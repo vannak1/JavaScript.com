@@ -9,7 +9,8 @@ else
   psql javascriptcom < db/schema.sql
 fi
 
-# download bower assets
-
 echo "installing bower assets"
-bower install
+npm run bower install
+
+echo "compiling assets"
+npm run gulp compile

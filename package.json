@@ -7,7 +7,9 @@
   },
   "scripts": {
     "start": "node --harmony_object_literals ./bin/www",
-    "postinstall": "./setup.sh"
+    "postinstall": "./setup.sh",
+    "bower": "node_modules/.bin/bower",
+    "gulp": "node_modules/.bin/gulp"
   },
   "dependencies": {
     "akismet-api": "^1.1.5",
