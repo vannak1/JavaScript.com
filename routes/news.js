@@ -158,12 +158,6 @@ router.
     });
 
   }).
-  get('/update', function(req, res) {
-    debug('Updating news items from rss');
-
-    // Not implemented yet
-
-  }).
 
   get('/:id([1-9]+)', cookieParser, csrfProtection, function(req, res) {
     var user = {
