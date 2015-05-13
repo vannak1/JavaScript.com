@@ -98,7 +98,7 @@
                 },
                 "string_decoder": {
                   "version": "0.10.31",
-                  "from": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz",
+                  "from": "string_decoder@>=0.10.0 <0.11.0",
                   "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz"
                 },
                 "inherits": {
@@ -182,25 +182,20 @@
     },
     "connect-redis": {
       "version": "2.3.0",
-      "from": "connect-redis@*",
+      "from": "https://registry.npmjs.org/connect-redis/-/connect-redis-2.3.0.tgz",
       "resolved": "https://registry.npmjs.org/connect-redis/-/connect-redis-2.3.0.tgz",
       "dependencies": {
         "debug": {
           "version": "1.0.4",
-          "from": "debug@>=1.0.4 <2.0.0",
+          "from": "https://registry.npmjs.org/debug/-/debug-1.0.4.tgz",
           "resolved": "https://registry.npmjs.org/debug/-/debug-1.0.4.tgz",
           "dependencies": {
             "ms": {
               "version": "0.6.2",
-              "from": "ms@0.6.2",
+              "from": "https://registry.npmjs.org/ms/-/ms-0.6.2.tgz",
               "resolved": "https://registry.npmjs.org/ms/-/ms-0.6.2.tgz"
             }
           }
-        },
-        "redis": {
-          "version": "0.12.1",
-          "from": "redis@>=0.12.1 <0.13.0",
-          "resolved": "https://registry.npmjs.org/redis/-/redis-0.12.1.tgz"
         }
       }
     },
@@ -933,9 +928,14 @@
         }
       }
     },
+    "pluralize": {
+      "version": "1.1.2",
+      "from": "pluralize@*",
+      "resolved": "https://registry.npmjs.org/pluralize/-/pluralize-1.1.2.tgz"
+    },
     "redis": {
       "version": "0.12.1",
-      "from": "redis@*",
+      "from": "https://registry.npmjs.org/redis/-/redis-0.12.1.tgz",
       "resolved": "https://registry.npmjs.org/redis/-/redis-0.12.1.tgz"
     },
     "request": {
