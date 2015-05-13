@@ -4,8 +4,14 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
     vm.challenge = challenge;
     vm.messages  = messages;
 
+    function setErrorMessageType(message, fallback) {
+      message = _.isArray(message) ? message[1].content.textContent : message;
+
+      return message.match(/syntax error/i) ? 'error' : 'default';
+    }
+
     function formatResponse(content, vm, report, type) {
-      vm.messages.push({ value: _.isArray(content) ? content[1].content.textContent : content, type: 'success' })
+      vm.messages.push({ value: _.isArray(content) ? content[1].content.textContent : content, type: !type ? setErrorMessageType(content) : type })
       report({ content: _.isArray(content) ? content[0].content : '' });
     }
 
@@ -16,7 +22,7 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
         formatResponse(content, vm, report, 'success')
         successCallback(vm.challenge);
       }, function(content) {
-        formatResponse(content, vm, report, 'error')
+        formatResponse(content, vm, report)
         errorCallback(vm.challenge);
       });
     }
