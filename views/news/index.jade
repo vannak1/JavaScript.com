@@ -48,7 +48,7 @@ block content
           .well.well--l.well--m--xl
             .sector-content
 
-              .bdrbl.mbl.pbl
+              .mbl
                 img.db.mbl.mhc(src='/images/img-news.svg' alt='' width='250')
 
                 h2.h.h--3 5 Minutes of JavaScript
@@ -58,15 +58,17 @@ block content
                 a.btn.btn--a--bordered.db.dib--s.mbs.mrs--s(href='https://itunes.apple.com/us/podcast/5-minutes-of-javascript/id775261328') Listen Now
                 a.btn.btn--a--bordered.db.dib--s(href='https://fivejs.codeschool.com/') Visit Site
 
-              ul.list.list--l.list--divided.list--divided--l
+              .pillar.pillar--l.pillar-thick.mbm
 
-                - for story in news_collection
-                  li.list-item
-                    article
-                      h2.h.h--4
-                        a.tct.twb(href=story.url)= story.title
-                      p.mbf.tss.
-                        #{story.body}
+                ul.list.list--l.list--divided.list--divided--l
+
+                  - for story in news_collection
+                    li.list-item
+                      article
+                        h2.h.h--4
+                          a.tct.twb(href=story.url)= story.title
+                        p.mbf.tss.
+                          #{story.body}
 
               p.tcs.tss
                 | Updated weekly. 
