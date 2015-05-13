@@ -56,11 +56,10 @@ block content
               input(type='hidden' name='_csrf' value=token)
               input.btn.btn--a.form-btn(type='submit' value='Submit')
         else
-          form.form
 
+          form.form
             fieldset.form-field
-            p.form-instruction.tar Some HTML is okay.
-            textarea.form-input.form-textarea
+              p.form-instruction.tar Some HTML is okay.
+              textarea.form-input.form-textarea
 
             a.btn.btn--a.form-btn(href='/news/sign_in') Authenticate with GitHub
-
