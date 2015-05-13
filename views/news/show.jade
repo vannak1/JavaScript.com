@@ -8,7 +8,7 @@ block content
   section.row
     .cell.cell--s.well.well--xl
 
-      article.bdrbl.pbxl.mbxl(role='article')
+      article.bdrbl.pbl.mbm(role='article')
 
         time.label.mbxs= moment(flow.created_at).format('ll')
         h1.h.h--1= flow.title
@@ -22,14 +22,14 @@ block content
                 span.twn via 
                 | #{flow.name}
               li.list-item
-                a.dib(href='#comments') #{comments.length} Comments
+                a.dib(href='#comments')= pluralize('Comment', comments.length, true)
 
-        p.well.well--l.tsl.
-          #{flow.body}
-       a.btn(href=flow.url) Visit Site
+        p.well.well--l.tsl= flow.body
+
+       a.btn.mbxl(href=flow.url) Visit Site
 
       aside#comments(role='complementary')
-        h2.h.h--3.tcs.mbm #{comments.length} Comments
+        h2.h.h--3.tcs.mbm= pluralize('Comment', comments.length, true)
 
         ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
           - for comment in comments

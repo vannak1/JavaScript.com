@@ -9,6 +9,7 @@ var Users = require('../services/users');
 var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
 var moment = require('moment');
+var pluralize = require('pluralize');
 
 
 var csrfProtection = csrf({ cookie: true });
@@ -177,7 +178,7 @@ router.
 
     Flow.byID(req.params.id, function(flow) {
       Comments.byFlow(req.params.id, function(comments) {
-          res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment });
+          res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
       });
     });
   }).
