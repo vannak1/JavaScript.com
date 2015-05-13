@@ -32,17 +32,22 @@ block content
 
             ul.list.list--l.list--divided.list--divided--l
 
-              - for flow in flow_collection
+              - for story in flow_collection
+                - storyDatetime = moment(story.created_at)
+
                 li.list-item
                   article.bucket
                     .bucket-media
-                      img.thumb(src=flow.avatar_url width=50)
+                      img.thumb(src=story.avatar_url width='50')
                     .bucket-content
                       h2.h.h--3
-                        a.tct.twb(href='/news/' + flow.id)= flow.title
-                      p.tcs.tfh #{flow.name} | #{moment(flow.created_at).format('dddd')}
-                      p.mbf.
-                       #{flow.body}
+                        a.tct.twb(href='/news/' + story.id)= story.title
+                      p.tcs.tfh
+                        | via 
+                        span.twsb= story.name
+                        |  | 
+                        time.tsi(datetime=storyDatetime.format())= storyDatetime.format('dddd')
+                      p.mbf= story.body
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
