@@ -177,7 +177,7 @@ router.
 
     Flow.byID(req.params.id, function(flow) {
       Comments.byFlow(req.params.id, function(comments) {
-          res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken() });
+          res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment });
       });
     });
   }).
