@@ -29,7 +29,7 @@ var run          = require('run-sequence');
 var options = {
 
   build: {
-    tasks: ['sass', 'browserify', 'abecedary', 'javascript']
+    tasks: ['sass', 'abecedary', 'javascript']
   },
 
   css: {
@@ -171,7 +171,7 @@ gulp.task('browserify', function() {
 //   Task: Abecedary
 // -------------------------------------
 
-gulp.task('abecedary', function() {
+gulp.task('abecedary', ['browserify'], function() {
   // Combine the non-browserified files and the browserified ones
   // to create the runner script, included in the test iframe.
   gulp.src(options.abecedary.files)
