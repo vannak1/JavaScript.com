@@ -14,8 +14,11 @@ var News = {
     db.query('SELECT * FROM articles', [], cb)
   },
 
-  allWithUsers(cb){
-    db.query('SELECT articles.news, articles.url, articles.title, articles.id, articles.body, users.name, users.avatar_url FROM articles LEFT JOIN users ON articles.user_id = users.id', [], cb)
+  paginated(offset, cb){
+        db.query('SELECT a.news, a.url, a.title, a.id, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u on a.user_id = u.id where a.id IN (select id from articles where news = true limit 10 offset $1) OR a.id IN (select id from articles where news = false limit 10 offset $1)',
+        [offset],
+        cb
+    )
   },
 
   // Creates a new news item

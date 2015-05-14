@@ -32,22 +32,17 @@ block content
 
             ul.list.list--l.list--divided.list--divided--l
 
-              - for story in flow_collection
-                - storyDatetime = moment(story.created_at)
-
+              - for flow in flow_collection
                 li.list-item
                   article.bucket
                     .bucket-media
-                      img.thumb(src=story.avatar_url width='50')
+                      img.thumb(src=flow.avatar_url width=50)
                     .bucket-content
                       h2.h.h--3
-                        a.tct.twb(href='/news/' + story.id)= story.title
-                      p.tcs.tfh
-                        | via 
-                        span.twsb= story.name
-                        |  | 
-                        time.tsi(datetime=storyDatetime.format())= storyDatetime.format('dddd')
-                      p.mbf= story.body
+                        a.tct.twb(href='/news/' + flow.id)= flow.title
+                      p.tcs.tfh #{flow.name} | #{moment(flow.created_at).format('dddd')}
+                      p.mbf.
+                       #{flow.body}
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
@@ -79,12 +74,23 @@ block content
                 | Updated weekly. 
                 a(href='https://fivejs.codeschool.com/') Subscribe here
                 | .
-
+  button#more Load More
 block inline_javascript
   script.
     jQuery(function($) {
       JS.Services.expel({
         $toggle     : $('.js-alert-close'),
         elementNode : '.js-alert'
+      });
+    });
+
+    jQuery(function($){
+      var offset;
+      $('button#more').click(function(){
+        offset=+10;
+
+        $.get("/news?page=" + offset, function(data){
+          console.log(data);
+          });
       });
     });

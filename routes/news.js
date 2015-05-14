@@ -144,9 +144,10 @@ router.
     res.redirect('/news');
   }).
 
-  get('/', function(req, res) {
+  get('/', parseForm, function(req, res) {
     debug('Fetching and listing news');
-    News.allWithUsers( function(all) {
+    var offset = req.query.page;
+    News.paginated(offset, function(all) {
       var flow = [], news = [];
       all.map(function(item){
         if (item.news){
@@ -155,7 +156,11 @@ router.
           flow.push(item);
         }
       });
-      res.render('news/index', {flow_collection: flow, news_collection: news, moment: moment});
+      if (offset) {
+        res.json({news: news, flow: flow});
+      }else{
+        res.render('news/index', {flow_collection: flow, news_collection: news, moment: moment});
+      }
     });
 
   }).
