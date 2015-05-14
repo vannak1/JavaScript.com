@@ -1262,6 +1262,11 @@
         }
       }
     },
+    "shortid": {
+      "version": "2.2.2",
+      "from": "shortid@*",
+      "resolved": "https://registry.npmjs.org/shortid/-/shortid-2.2.2.tgz"
+    },
     "slug": {
       "version": "0.9.1",
       "from": "slug@*",
