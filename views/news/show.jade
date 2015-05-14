@@ -8,26 +8,28 @@ block content
   section.row
     .cell.cell--s.well.well--xl
 
-      article.bdrbl.pbxl.mbxl(role='article')
+      article.bdrbl.pbl.mbm(role='article')
 
-        p.label.mbxs March 4, 2015
-        h1.h.h--1 #{flow.title} 
+        time.label.mbxs= moment(flow.created_at).format('ll')
+        h1.h.h--1= flow.title
 
         .bucket.bucket--flag.mbm
           .bucket-media
             img.thumb(src=flow.avatar_url width=50)
-          .bucket-content.h.h--3
+          .bucket-content.h.h--3.tcs
             ul.list.list--inline.list--inline--divided.tfh
-              li.list-item #{flow.name} 
               li.list-item
-                a(href='#') #{comments.length} Comments
+                span.twn via 
+                | #{flow.name}
+              li.list-item
+                a.dib(href='#comments')= pluralize('Comment', comments.length, true)
 
-        p.well.well--l.tsl.
-          #{flow.body}
-       a.btn(href=flow.url) Visit Site
+        p.well.well--l.tsl= flow.body
 
-      aside(role='complementary')
-        h2.h.h--3.tcs.mbm #{comments.length} Comments
+        a.btn.mbxl(href=flow.url) Visit Site
+
+      aside#comments(role='complementary')
+        h2.h.h--3.tcs.mbm= pluralize('Comment', comments.length, true)
 
         ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
           - for comment in comments
@@ -54,11 +56,10 @@ block content
               input(type='hidden' name='_csrf' value=token)
               input.btn.btn--a.form-btn(type='submit' value='Submit')
         else
-          form.form
 
+          form.form
             fieldset.form-field
-            p.form-instruction.tar Some HTML is okay.
-            textarea.form-input.form-textarea
+              p.form-instruction.tar Some HTML is okay.
+              textarea.form-input.form-textarea
 
             a.btn.btn--a.form-btn(href='/news/sign_in') Authenticate with GitHub
-
