@@ -13,7 +13,7 @@ block content
         p.mbf.tcs
           | Here are some places where you can start and continue learning 
           | JavaScript. Before diving in, though, 
-          a(href='#') take a quick Smarterer assessment 
+          a.smarterer_test_link(href='//smarterer.com/tests/javascript/run?wuid=mzuyndvhnj') take a quick Smarterer assessment 
           | to see where your JavaScript skills currently stand.
 
       ul.list.list--l.list--divided.list--divided--l
@@ -55,6 +55,8 @@ block content
         include /views/resources/_resource
 
 block inline_javascript
+  script(src='//smarterer.com/js/popup.js')
+
   script.
     jQuery(function($) {
       JS.Modules.Toggle.init({
