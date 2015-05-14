@@ -41,7 +41,7 @@ block content
                       img.thumb(src=story.avatar_url width='50')
                     .bucket-content
                       h2.h.h--3
-                        a.tct.twb(href='/news/' + story.id)= story.title
+                        a.tct.twb(href='/news/' + story.slug)= story.title
                       p.tcs.tfh
                         | via 
                         span.twsb= story.name

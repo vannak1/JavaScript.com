@@ -48,7 +48,7 @@ block content
 
         if user.authenticated
 
-          form.form(action='/news/'+flow.id+'/comment' method='POST')
+          form.form(action='/news/'+flow.slug+'/comment' method='POST')
             fieldset.form-field
               p.form-instruction.tar Some HTML is ok.
               textarea.form-input.form-textatrea(name='body')

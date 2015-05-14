@@ -13,6 +13,7 @@ CREATE TABLE users (
 -- DROP TABLE articles;
 CREATE TABLE articles (
   id         SERIAL PRIMARY KEY,
+  slug       TEXT NOT NULL,
   title      TEXT NOT NULL,
   body       TEXT,
   url        TEXT,
