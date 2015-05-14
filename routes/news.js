@@ -166,7 +166,20 @@ router.
 
   }).
 
-  get('/:id([1-9]+)', cookieParser, csrfProtection, function(req, res) {
+  get('/new', cookieParser, csrfProtection, function(req, res) {
+    console.log(req);
+    if(!req.isAuthenticated()){
+      res.redirect('/news/sign_in');
+    }else{
+      var csrfToken = req.csrfToken();
+      var login = req.user['_json']['login'];
+      var avatar = req.user['_json']['avatar_url'];
+
+      res.render('news/new', { login: login, avatar: avatar, token: csrfToken });
+    }
+  }).
+
+  get('/:slug([a-zA-Z0-9_.-]+)', cookieParser, csrfProtection, function(req, res) {
     var user = {
       "authenticated": req.isAuthenticated(),
     }
@@ -176,8 +189,8 @@ router.
       user.avatar_url = req.user['_json']['avatar_url'];
     }
 
-    Flow.byID(req.params.id, function(flow) {
-      Comments.byFlow(req.params.id, function(comments) {
+    Flow.bySlug(req.params.slug, function(flow) {
+      Comments.byFlow(flow.id, function(comments) {
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
       });
     });
@@ -201,18 +214,6 @@ router.
     res.render('news/sign_in');
   }).
 
-  get('/new', cookieParser, csrfProtection, function(req, res) {
-    console.log(req);
-    if(!req.isAuthenticated()){
-      res.redirect('/news/sign_in');
-    }else{
-      var csrfToken = req.csrfToken();
-      var login = req.user['_json']['login'];
-      var avatar = req.user['_json']['avatar_url'];
-
-      res.render('news/new', { login: login, avatar: avatar, token: csrfToken });
-    }
-  }).
   post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
     var newEpisode = req.body;
     News.createFromEpisode(newEpisode, function() {
