@@ -17,13 +17,13 @@ JS.Modules.Console = (function() {
   //   Initialize
   // -------------------------------------
 
-  var init = function( options ) {
+  var init = function(options) {
     _settings = $.extend({
       $element       : $('.js-console'),
       $input         : $('.js-console-input'),
       correctClass   : 'is-correct',
       incorrectClass : 'is-incorrect'
-    }, options );
+    }, options);
 
     _settings.$input.focus();
 
