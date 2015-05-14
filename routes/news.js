@@ -15,7 +15,6 @@ var pluralize = require('pluralize');
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
 var parseJson = bodyParser.json();
-var request = require('request');
 
 var path   = require('path');
 var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
@@ -48,7 +47,7 @@ function(accessToken, refreshToken, profile, done) {
         return done(null, profile);
       }else{
         // TODO: make sure we save those emails
-        Users.create(profile, function(err, user){
+        Users.createWithEmail(profile, accessToken, function(err, user){
           if(err) return err;
           return done(err, user)
         });
@@ -57,29 +56,6 @@ function(accessToken, refreshToken, profile, done) {
   });
 }
 ));
-
-// TODO: Handle this async
-function fetchEmail(user, token){
-  var options = {
-    headers: {
-      'User-Agent':    baseURL,
-      'Authorization': 'token ' + token
-    },
-    json:    true,
-    url:     'https://api.github.com/user/emails'
-  };
-
-  // get emails using oauth token
-  request(options, function(error, response, body) {
-
-    var emails = body.filter(function(email) {
-      return (email.verified && email.primary);
-      return email.verified;
-    });
-
-    return emails[0].email
-  });
-}
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
@@ -179,6 +155,10 @@ router.
     }
   }).
 
+  get('/sign_in', function(req, res) {
+    res.render('news/sign_in');
+  }).
+
   get('/:slug([a-zA-Z0-9_.-]+)', cookieParser, csrfProtection, function(req, res) {
     var user = {
       "authenticated": req.isAuthenticated(),
@@ -194,10 +174,6 @@ router.
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
       });
     });
-  }).
-
-  get('/sign_in', function(req, res) {
-    res.render('news/sign_in');
   }).
 
   post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {

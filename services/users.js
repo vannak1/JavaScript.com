@@ -1,4 +1,5 @@
 var db = require('./db');
+var request = require('request');
 
 var Users = {
   // Returns all Flow items, no pagination
@@ -17,7 +18,7 @@ var Users = {
   // Creates a new user
   create(newUser, cb) {
     var github_id = newUser.id;
-    var email = newUser.emails[0].value;
+    var email = newUser.email;
     var name = newUser.displayName || newUser.username;
     var avatar_url = newUser['_json'].avatar_url;
 
@@ -26,6 +27,13 @@ var Users = {
       [github_id, email, name, avatar_url],
       cb
     )
+  },
+
+  createWithEmail(profile, token, cb) {
+    Users.fetchEmail(profile, token, function(profile){
+      Users.create(profile, function(){})
+    });
+    cb(null, profile);
   },
 
   findOrCreate(user_id, cb){
@@ -37,10 +45,31 @@ var Users = {
       }
     });
 
-      
-    // }
-    // cb(null, user);
+  },
+
+  fetchEmail(profile, token, cb){
+    var options = {
+      headers: {
+        'User-Agent':    baseURL,
+        'Authorization': 'token ' + token
+      },
+      json:    true,
+      url:     'https://api.github.com/user/emails'
+    };
+
+    // get emails using oauth token
+    request(options, function(error, response, body) {
+
+      var emails = body.filter(function(email) {
+        return (email.verified && email.primary);
+        return email.verified;
+      });
+
+      profile.email = emails[0].email;
+      cb(profile);
+    });
   }
+
 }
 
 module.exports = Users;
