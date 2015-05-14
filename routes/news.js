@@ -196,6 +196,10 @@ router.
     });
   }).
 
+  get('/sign_in', function(req, res) {
+    res.render('news/sign_in');
+  }).
+
   post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
 
     var newComment = req.newComment;
@@ -210,11 +214,8 @@ router.
       });
     });
   }).
-  get('/sign_in', function(req, res) {
-    res.render('news/sign_in');
-  }).
 
-  post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
+   post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
     var newEpisode = req.body;
     News.createFromEpisode(newEpisode, function() {
       res.json({ message: "Episode successfully sent" });
