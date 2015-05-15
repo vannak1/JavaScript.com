@@ -46,7 +46,12 @@ var options = {
   },
 
   js: {
-    files: ['client/javascripts/application.js', 'client/javascripts/**/*.js'],
+    files: [
+      'client/javascripts/application.js', 
+      'client/javascripts/**/*.js', 
+      'client/javascriptcom/app.js',
+      'client/javascriptcom/**/*.js'
+    ],
     vendorFiles: ['bower_components/jquery/dist/jquery.js'],
     vendorCourseFiles: [
       'bower_components/angular/angular.js',

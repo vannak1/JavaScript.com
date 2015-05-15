@@ -1,11 +1,9 @@
 <section class='row course-challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
-
   <div id="{{ ctrl.challenge.id }}" class='course-challenge-anchor'></div>
 
   <div class='cell well well--l well--m--xl'>
     <div class='g'>
       <div class='g-b g-b--m--3of4 g-b--l--4of6 pol-1of4--m pol-1of6--l por'>
-
         <p class='label label--highlight course-challenge-label'>
           Challenge {{::ctrl.challenge.id}}
         </p>
@@ -14,11 +12,7 @@
 
         <js-instructions></js-instructions>
 
-        <p class='tar tcs tss'>Type <code class='bdr paxs'>answer</code> to reveal the answer</p>
-
         <js-messages></js-messages>
-        <js-console></js-console>
-
       </div>
     </div>
   </div>

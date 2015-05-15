@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked', 'jsCourseState', function($compile, marked, jsCourseState) {
+angular.module('javascriptcom').directive('jsInstructions', function jsInstructions(){
   return {
     templateUrl: 'templates/instructions.html',
     replace: true,
@@ -7,4 +7,4 @@ angular.module('javascriptcom').directive('jsInstructions', ['$compile', 'marked
     controllerAs: 'ctrl',
     require: '^jsChallenge'
   };
-}]);
+});

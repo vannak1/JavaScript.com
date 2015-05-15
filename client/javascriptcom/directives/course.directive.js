@@ -7,14 +7,21 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeResourceController(jsCourseChallengeResource, jsChallengeProgress) {
+    controller: function jsCourseDirective(jsCourseChallengeResource, jsChallengeProgress) {
       this.challengeProgress = jsChallengeProgress;
       this.challenges        = jsCourseChallengeResource.query({ course: this.course });
+      this.messages = [];
 
       this.challengeProgress.setChallenges(this.challenges);
 
-      this.activateChallenge = function(challenge) {
-        this.challengeProgress.activate(challenge)
+      this.activateChallenge = function activateChallenge(_challenge) {
+        this.challengeProgress.activate(_challenge)
+        this.challenge = _challenge;
+      }
+
+
+      this.onWrapupPage = function onWrapupPage() {
+        return jsChallengeProgress.activeChallenge() ? false : true;
       }
     }
   };

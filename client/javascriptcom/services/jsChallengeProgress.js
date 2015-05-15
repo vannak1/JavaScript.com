@@ -23,8 +23,12 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
     },
 
     activate: function(challenge) {
-      if(!challenge.active) {
-        this.deactivateAll();
+      if(this.activeChallenge() == challenge) {
+        return true;
+      }
+
+      this.deactivateAll();
+      if(challenge && !challenge.active) {
         challenge.active = true;
         challenge.started = true;
       }
@@ -40,6 +44,10 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
       var challengeIndex = _.findIndex(this.challenges, { active: true });
 
       return challengeIndex+1 == this.challenges.length;
+    },
+
+    activeChallenge: function() {
+      return _.find(this.challenges, { active: true });
     }
   }
 
