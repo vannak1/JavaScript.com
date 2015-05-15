@@ -179,6 +179,10 @@ router.
     }
   }).
 
+  get('/sign_in', function(req, res) {
+    res.render('news/sign_in');
+  }).
+
   get('/:slug([a-zA-Z0-9_.-]+)', cookieParser, csrfProtection, function(req, res) {
     var user = {
       "authenticated": req.isAuthenticated(),
@@ -191,13 +195,13 @@ router.
 
     Flow.bySlug(req.params.slug, function(flow) {
       Comments.byFlow(flow.id, function(comments) {
+        if (flow.length > 0){
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
+        }else{
+          res.render('404');
+        }
       });
     });
-  }).
-
-  get('/sign_in', function(req, res) {
-    res.render('news/sign_in');
   }).
 
   post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
