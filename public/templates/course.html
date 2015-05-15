@@ -23,6 +23,8 @@
     <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge' ng-if='challenge.active' class='animate--fade'>
     </js-challenge>
 
+    <js-messages></js-messages>
+
     <section ng-if='ctrl.onWrapupPage()' class='animate--fade'>
       <div class='row'>
         <div class='cell cell--s well well--l well--m--xl'>
