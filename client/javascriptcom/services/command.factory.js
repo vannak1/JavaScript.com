@@ -1,7 +1,6 @@
-angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', function(_, jsCommandFactory) {
-  return function jsCommand(challenge, successCallback, errorCallback, messages) {
+angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', 'jsChallengeProgress', function(_, jsCommandFactory, jsChallengeProgress) {
+  return function jsCommand(successCallback, errorCallback, messages) {
     var vm = this;
-    vm.challenge = challenge;
     vm.messages  = messages;
 
     function setErrorMessageType(message, fallback) {
@@ -18,12 +17,14 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', f
     vm.handler = function parseCommand(line, report) {
       var command = jsCommandFactory(line);
 
-      command(vm.challenge, line).then(function(content) {
+      var challenge = jsChallengeProgress.activeChallenge();
+
+      command(challenge, line).then(function(content) {
         formatResponse(content, vm, report, 'success')
-        successCallback(vm.challenge);
+        successCallback(challenge);
       }, function(content) {
         formatResponse(content, vm, report)
-        errorCallback(vm.challenge);
+        errorCallback(challenge);
       });
     }
 
