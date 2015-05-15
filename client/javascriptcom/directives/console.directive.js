@@ -22,7 +22,7 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
       // Todo: Figure out how to make this work as a one time init
       var command = new jsCommand(onSuccess, onFailure, ctrl.messages);
 
-      ctrl.csConsole = new CSConsole(el, {
+      jsChallengeProgress.console = new CSConsole(el, {
         prompt: '> ',
         syntax: 'javascript',
         autoFocus: true,

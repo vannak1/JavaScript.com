@@ -3,6 +3,7 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
   var state = {
     courseCompleted: false,
     challenges: [],
+    console: null,
     setChallenges: function setChallenge(challenges) {
       this.challenges = challenges;
     },
