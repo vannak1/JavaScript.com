@@ -171,7 +171,11 @@ router.
 
     Flow.bySlug(req.params.slug, function(flow) {
       Comments.byFlow(flow.id, function(comments) {
+        if (flow.length > 0){
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
+        }else{
+          res.render('404');
+        }
       });
     });
   }).
