@@ -41,14 +41,14 @@ function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
     Users.findOrCreate(profile.id, function (err, user) {
-      if(err) return err;
+      if(err) throw err;
 
       if (user){
         return done(null, profile);
       }else{
         // TODO: make sure we save those emails
         Users.createWithEmail(profile, accessToken, function(err, user){
-          if(err) return err;
+          if(err) throw err;
           return done(err, user)
         });
       }
