@@ -15,7 +15,6 @@ var pluralize = require('pluralize');
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
 var parseJson = bodyParser.json();
-var request = require('request');
 
 var path   = require('path');
 var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
@@ -42,14 +41,14 @@ function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
     Users.findOrCreate(profile.id, function (err, user) {
-      if(err) return err;
+      if(err) throw err;
 
       if (user){
         return done(null, profile);
       }else{
         // TODO: make sure we save those emails
-        Users.create(profile, function(err, user){
-          if(err) return err;
+        Users.createWithEmail(profile, accessToken, function(err, user){
+          if(err) throw err;
           return done(err, user)
         });
       }
@@ -57,29 +56,6 @@ function(accessToken, refreshToken, profile, done) {
   });
 }
 ));
-
-// TODO: Handle this async
-function fetchEmail(user, token){
-  var options = {
-    headers: {
-      'User-Agent':    baseURL,
-      'Authorization': 'token ' + token
-    },
-    json:    true,
-    url:     'https://api.github.com/user/emails'
-  };
-
-  // get emails using oauth token
-  request(options, function(error, response, body) {
-
-    var emails = body.filter(function(email) {
-      return (email.verified && email.primary);
-      return email.verified;
-    });
-
-    return emails[0].email
-  });
-}
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
