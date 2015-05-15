@@ -1,5 +1,5 @@
 var db = require('./db');
-var request = require('request');
+var GithubApi = require('./github-api');
 
 var Users = {
   // Returns all Flow items, no pagination
@@ -30,7 +30,7 @@ var Users = {
   },
 
   createWithEmail(profile, token, cb) {
-    Users.fetchEmail(profile, token, function(profile){
+    GithubApi.fetchEmail(profile, token, function(profile){
       Users.create(profile, function(){})
     });
     cb(null, profile);
@@ -44,32 +44,7 @@ var Users = {
         cb(null, null);
       }
     });
-
-  },
-
-  fetchEmail(profile, token, cb){
-    var options = {
-      headers: {
-        'User-Agent':    baseURL,
-        'Authorization': 'token ' + token
-      },
-      json:    true,
-      url:     'https://api.github.com/user/emails'
-    };
-
-    // get emails using oauth token
-    request(options, function(error, response, body) {
-
-      var emails = body.filter(function(email) {
-        return (email.verified && email.primary);
-        return email.verified;
-      });
-
-      profile.email = emails[0].email;
-      cb(profile);
-    });
   }
-
 }
 
 module.exports = Users;
