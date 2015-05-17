@@ -16,9 +16,6 @@ var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
 var parseJson = bodyParser.json();
 
-var path   = require('path');
-var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
-
 var debug = require('debug')('JavaScript.com:server');
 
 /* GitHub Auth */

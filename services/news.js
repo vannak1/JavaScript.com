@@ -9,6 +9,12 @@ var News = {
   recent(cb) {
     db.query('SELECT * FROM articles ORDER BY created_at DESC LIMIT 10', [], cb)
   },
+  
+  published(limit, cb) {
+    db.query('SELECT * FROM articles WHERE approved = false ORDER BY published_at DESC LIMIT $1',
+      [limit],
+      cb)
+  },
 
   // Returns all news items, no pagination
   all(cb) {
