@@ -86,7 +86,7 @@ passport.use(new BasicStrategy({
 function buildComment(request, response, next){
 
   var newComment = request.body;
-  newComment.article_id = request.params.id;
+  newComment.slug = request.params.slug;
   newComment.isSpam = false;
 
   request.newComment = newComment;
@@ -177,7 +177,7 @@ router.
     });
   }).
 
-  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
+  post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
 
     var newComment = req.newComment;
 
