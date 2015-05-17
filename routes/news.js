@@ -119,7 +119,7 @@ router.
 
   get('/', function(req, res) {
     debug('Fetching and listing news');
-    News.allWithUsers( function(all) {
+    News.publishedWithUsers( function(all) {
       var flow = [], news = [];
       all.map(function(item){
         if (item.news){

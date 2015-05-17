@@ -21,8 +21,8 @@ var News = {
     db.query('SELECT * FROM articles', [], cb)
   },
 
-  allWithUsers(cb){
-    db.query('SELECT articles.news, articles.url, articles.title, articles.slug, articles.body, users.name, users.avatar_url FROM articles LEFT JOIN users ON articles.user_id = users.id', [], cb)
+  publishedWithUsers(cb){
+    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
   },
 
   // Creates a new news item
@@ -40,7 +40,7 @@ var News = {
       var story = episodes[i];
       story.slug = slugGenerator.createSlug(story.title);
       db.query(
-        "INSERT INTO articles (title, slug, body, url, news) VALUES ($1, $2, $3, $4, true);",
+        "INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, current_timestamp, true, true);",
         [story.title, story.slug, story.summary, story.url],
         function(){} // Is there anything to be done here?
       )
