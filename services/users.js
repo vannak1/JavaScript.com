@@ -36,8 +36,8 @@ var Users = {
     cb(null, profile);
   },
 
-  findOrCreate(user_id, cb){
-    Users.byGithubId(user_id, function(result){
+  findOrCreate(userGithubId, cb){
+    Users.byGithubId(userGithubId, function(result){
       if (result){
         cb(null, result[0]);
       }else{

@@ -182,7 +182,7 @@ router.
     var newComment = req.newComment;
 
     Users.byGithubId(req.user.id, function(result){
-      newComment.user_id = result[0].id;
+      newComment.userId = result[0].id;
       Comments.create(newComment, function() {
         if(newComment.isSpam){
           req.flash('info', 'Whoops! Your comment will need to be moderated.')

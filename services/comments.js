@@ -13,7 +13,7 @@ var Comments = {
 
     db.query(
       "INSERT INTO comments (user_id, article_id, approved, body) VALUES ($1, $2, $3, $4);",
-      [newComment.user_id, newComment.article_id, approved, newComment.body],
+      [newComment.userId, newComment.articleId, approved, newComment.body],
       cb
     );
   }

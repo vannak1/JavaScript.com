@@ -20,14 +20,14 @@ var Flow = {
   // Creates a new Flow item
   create(newFlow, cb) {
     var title = newFlow.title;
-    var slug_title = slugGenerator.createSlug(title);
+    var slugTitle = slugGenerator.createSlug(title);
     var body = newFlow.body;
-    var user_id = newFlow.user_id;
+    var userId = newFlow.userId;
     var url = newFlow.url;
 
     db.query(
       "INSERT INTO articles (title, slug, body, url, user_id, news) VALUES ($1, $2, $3, $4, $5, false);",
-      [title, slug_title, body, url, user_id],
+      [title, slugTitle, body, url, userId],
       cb
     )
   }
