@@ -11,7 +11,7 @@ var News = {
   },
   
   published(limit, cb) {
-    db.query('SELECT * FROM articles WHERE approved = false ORDER BY published_at DESC LIMIT $1',
+    db.query('SELECT * FROM articles WHERE approved = true ORDER BY published_at DESC LIMIT $1',
       [limit],
       cb)
   },
