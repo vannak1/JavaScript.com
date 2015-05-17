@@ -13,6 +13,7 @@ CREATE TABLE users (
 -- DROP TABLE articles;
 CREATE TABLE articles (
   id         SERIAL PRIMARY KEY,
+  approved   BOOLEAN NOT NULL DEFAULT FALSE,
   slug       TEXT NOT NULL,
   title      TEXT NOT NULL,
   body       TEXT,
@@ -20,7 +21,8 @@ CREATE TABLE articles (
   news       BOOLEAN NOT NULL DEFAULT FALSE,
   user_id    INTEGER,
   flagged    BOOLEAN NOT NULL DEFAULT FALSE,
-  created_at TIMESTAMP DEFAULT statement_timestamp()
+  created_at TIMESTAMP DEFAULT statement_timestamp(),
+  published_at TIMESTAMP DEFAULT statement_timestamp()
 );
 -- DROP TABLE comments
 
