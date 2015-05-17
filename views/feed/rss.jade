@@ -1,0 +1,14 @@
+doctype xml
+rss(version='2.0')
+  channel
+    title= options.title
+    description= options.description
+    link= options.link
+    language= options.en
+    for item in news
+      item
+        title= item.title
+        pubDate= item.published_at
+        description= item.body
+        link= item.link
+
