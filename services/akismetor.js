@@ -1,4 +1,5 @@
 var akismet = require('akismet-api');
+var News = require('./news');
 
 var client = akismet.client({
   key  : process.env.AKISMET_API,                   // Required!
@@ -10,7 +11,7 @@ var createAkismetHash = function(req, comment) {
             user_ip : req.ip,                         // Required!
             user_agent : req.get('User-Agent'),       // Required!
             referrer : req.get('Referrer'),           // Required!
-            permalink : baseURL + 'flow/' + comment.article_id,
+            permalink : baseURL + 'news/' + comment.slug,
             comment_type : 'comment',
             comment_author : comment.author,
             comment_author_email : comment.email,

@@ -41,11 +41,14 @@ function(accessToken, refreshToken, profile, done) {
       if(err) throw err;
 
       if (user){
+        // Store internal ID along with passport user info
+        profile.userId = user.id;
         return done(null, profile);
       }else{
-        // TODO: make sure we save those emails
         Users.createWithEmail(profile, accessToken, function(err, user){
           if(err) throw err;
+          // Store internal ID along with passport user info
+          user.userId = user.id;
           return done(err, user)
         });
       }
@@ -86,7 +89,7 @@ passport.use(new BasicStrategy({
 function buildComment(request, response, next){
 
   var newComment = request.body;
-  newComment.article_id = request.params.id;
+  newComment.slug = request.params.slug;
   newComment.isSpam = false;
 
   request.newComment = newComment;
@@ -167,8 +170,9 @@ router.
     }
 
     Flow.bySlug(req.params.slug, function(flow) {
-      Comments.byFlow(flow.id, function(comments) {
+      Comments.byFlow(flow[0].id, function(comments) {
         if (flow.length > 0){
+          console.log(comments);
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
         }else{
           res.render('404');
@@ -177,18 +181,19 @@ router.
     });
   }).
 
-  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
+  post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
 
     var newComment = req.newComment;
 
-    Users.byGithubId(req.user.id, function(result){
-      newComment.userId = result[0].id;
-      Comments.create(newComment, function() {
-        if(newComment.isSpam){
-          req.flash('info', 'Whoops! Your comment will need to be moderated.')
-        }
-        res.redirect('/news');
-      });
+
+    newComment.userId = req.session.passport.user.userId;
+    Comments.create(newComment, function(comment) {
+      if(newComment.isSpam){
+        req.flash('info', 'Whoops! Your comment will need to be moderated.')
+        res.redirect('/news/' + newComment.slug );
+      }else{
+        res.redirect('/news/' + newComment.slug + '?comment=' + comment[0].id );
+      }
     });
   }).
 
@@ -201,11 +206,9 @@ router.
 
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
-    Users.byGithubId(req.user.id, function(result){
-      newFlow.user_id = result[0].id;
-      Flow.create(newFlow, function() {
-        res.redirect('/news');
-      });
+    newFlow.user_id = req.session.passport.user.userId;
+    Flow.create(newFlow, function() {
+      res.redirect('/news');
     });
   });
 
