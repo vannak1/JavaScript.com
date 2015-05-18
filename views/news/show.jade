@@ -8,13 +8,14 @@ block layout_variables
 extends /views/layouts/layout
 
 block content
+  include /views/partials/_flash
 
   section.row
     .cell.cell--s.well.well--xl
 
       article.bdrbl.pbl.mbm(role='article')
 
-        time.label.mbxs= moment(flow.created_at).format('ll')
+        time.label.mbxs= moment(flow.published_at).format('ll')
         h1.h.h--1= flow.title
 
         .bucket.bucket--flag.mbm
@@ -37,7 +38,7 @@ block content
 
         ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
           - for comment in comments
-            li.list-item
+            li.list-item(data-comment=comment.id)
               .bucket
                 .bucket-media
                   img.thumb(src=comment.avatar_url width=50)
@@ -67,3 +68,11 @@ block content
               textarea.form-input.form-textarea
 
             a.btn.btn--a.form-btn(href='/news/sign_in') Authenticate with GitHub
+block inline_javascript
+  script.
+    jQuery(function($) {
+      JS.Services.expel({
+        $toggle     : $('.js-alert-close'),
+        elementNode : '.js-alert'
+      });
+    });

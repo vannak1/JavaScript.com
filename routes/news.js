@@ -160,9 +160,19 @@ router.
   }).
 
   get('/:slug([a-zA-Z0-9_.-]+)', cookieParser, csrfProtection, function(req, res) {
+    var user = {
+      "authenticated": req.isAuthenticated(),
+    }
+
+    if (user.authenticated) {
+      user.login      = req.user['_json']['login'];
+      user.avatar_url = req.user['_json']['avatar_url'];
+    }
+
     Flow.bySlug(req.params.slug, function(flow) {
       Comments.byFlow(flow[0].id, function(comments) {
         if (flow.length > 0){
+          console.log(comments);
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
         }else{
           res.render('404');
@@ -175,12 +185,15 @@ router.
 
     var newComment = req.newComment;
 
+
     newComment.userId = req.session.passport.user.userId;
-    Comments.create(newComment, function() {
+    Comments.create(newComment, function(comment) {
       if(newComment.isSpam){
         req.flash('info', 'Whoops! Your comment will need to be moderated.')
+        res.redirect('/news/' + newComment.slug );
+      }else{
+        res.redirect('/news/' + newComment.slug + '?comment=' + comment[0].id );
       }
-      res.redirect('/news');
     });
   }).
 
