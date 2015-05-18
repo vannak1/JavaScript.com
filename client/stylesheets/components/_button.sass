@@ -37,8 +37,20 @@
 
 // ----- Behavior ----- //
 
+// Block
+
 .btn--block
+  box-sizing: border-box
   display: block
+  width: 100%
+
+// Inline
+
++respond-to($g-m)
+
+  .btn--m--inline
+    display: inline-block
+    width: auto
 
 // ----- Hierarchy ----- //
 
