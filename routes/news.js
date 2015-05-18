@@ -160,15 +160,6 @@ router.
   }).
 
   get('/:slug([a-zA-Z0-9_.-]+)', cookieParser, csrfProtection, function(req, res) {
-    var user = {
-      "authenticated": req.isAuthenticated(),
-    }
-
-    if (user.authenticated) {
-      user.login      = req.user['_json']['login'];
-      user.avatar_url = req.user['_json']['avatar_url'];
-    }
-
     Flow.bySlug(req.params.slug, function(flow) {
       Comments.byFlow(flow[0].id, function(comments) {
         if (flow.length > 0){
@@ -202,11 +193,9 @@ router.
 
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
-    Users.byGithubId(req.user.id, function(result){
-      newFlow.user_id = result[0].id;
-      Flow.create(newFlow, function() {
-        res.redirect('/news');
-      });
+    newFlow.user_id = req.session.passport.user.userId;
+    Flow.create(newFlow, function() {
+      res.redirect('/news');
     });
   });
 
