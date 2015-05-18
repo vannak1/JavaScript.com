@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgress', function jsInstructions(jsChallengeProgress){
+angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgress', 'jsCourseState', function jsInstructions(jsChallengeProgress, jsCourseState) {
   return {
     templateUrl: 'templates/instructions.html',
     replace: true,
@@ -7,7 +7,7 @@ angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgres
     controllerAs: 'ctrl',
     require: '^jsChallenge',
     link: function(scope, element, attrs, ctrl) {
-      jsChallengeProgress
+      ctrl.state = jsCourseState.state;
 
       $(element).on('click', 'code', function(e) {
         if(!jsChallengeProgress.console) { return true; }
