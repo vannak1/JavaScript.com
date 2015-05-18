@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress', 'jsCourseState', function(jsChallengeProgress, jsCourseState) {
+angular.module('javascriptcom').directive('jsChallenge', function() {
   return {
     templateUrl: 'templates/challenge.html',
     replace: true,
@@ -7,22 +7,7 @@ angular.module('javascriptcom').directive('jsChallenge', ['jsChallengeProgress',
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsChallengeController(jsChallengeProgress, jsCourseState) {
-      this.state    = jsCourseState.state;
-      this.messages = [];
-
-      this.onSuccess = function onSuccess(challenge) {
-        challenge.completed = true;
-        jsChallengeProgress.next();
-      }
-
-      this.onFailure = function onFailure(challenge) {
-        console.log('challenge failure');
-      }
-
-      this.activate = function(challenge) {
-        jsChallengeProgress.activate(challenge);
-      }
+    controller: function jsChallengeController() {
     }
   };
-}]);
+});

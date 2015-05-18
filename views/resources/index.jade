@@ -1,6 +1,10 @@
 block current_nav
   - current_page = 'Resources'
 
+block layout_variables
+  - pageTitle = 'Free Resources'
+  - metaDescription = 'A collection of free resources from the JavaScript community to for beginners to advanced JS developers.'
+
 extends /views/layouts/layout
 
 block content
@@ -11,10 +15,11 @@ block content
       .bdrbl.mbl.pbl
         h1 Free Resources
         p.mbf.tcs
-          | Here are some places where you can start and continue learning 
-          | JavaScript. Before diving in, though, 
-          a(href='#') take a quick Smarterer assessment 
-          | to see where your JavaScript skills currently stand.
+          | Here is a curated list of a few places you can start learning
+          | JavaScript for free. If you already know JavaScript and want to see
+          | how good you are, you might consider taking a quick 
+          a.smarterer_test_link(href='//smarterer.com/tests/javascript/run?wuid=mzuyndvhnj') Smarterer assessment
+          | .
 
       ul.list.list--l.list--divided.list--divided--l
 
@@ -22,7 +27,7 @@ block content
         - item.description = 'A short interactive tutorial to get you typing your first JavaScript code. Learning JavaScript is easier than you might think.'
         include /views/resources/_resource
 
-        - item = { title: "Code School's JavaScript RoadTrip", url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
+        - item = { title: "Code School's JavaScript Road Trip", url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
         - item.description = 'A learn-by-doing introduction to the basics of the JavaScript language with high-quality videos and interactive challenges. Build a foundation of JavaScript syntax and learn how to use values, variables, and files.'
         include /views/resources/_resource
 
@@ -55,6 +60,8 @@ block content
         include /views/resources/_resource
 
 block inline_javascript
+  script(src='//smarterer.com/js/popup.js')
+
   script.
     jQuery(function($) {
       JS.Modules.Toggle.init({

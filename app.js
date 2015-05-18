@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var brand = require('./routes/brand');
 var courses = require('./routes/courses');
 var learn = require('./routes/learn');
+var feed = require('./routes/feed');
 var guidelines = require('./routes/guidelines');
 var news = require('./routes/news');
 var notFound = require('./routes/notFound');
@@ -46,10 +47,10 @@ app.use(require('flash')());
 
 // routes
 app.use('/', routes);
-app.use('/404', notFound)
 app.use('/brand', brand);
 app.use('/courses', courses)
 app.use('/courses.json', courses);
+app.use('/feed', feed);
 app.use('/guidelines', guidelines)
 app.use('/news', news);
 app.use('/resources', resources)
@@ -82,10 +83,14 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+    if (err.status === 404) {
+        res.render('404');
+    }else{
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
+    }
 });
 
 module.exports = app;

@@ -1,4 +1,5 @@
 var db = require('./db');
+var GithubApi = require('./github-api');
 
 var Users = {
   // Returns all Flow items, no pagination
@@ -17,7 +18,7 @@ var Users = {
   // Creates a new user
   create(newUser, cb) {
     var github_id = newUser.id;
-    var email = newUser.emails[0].value;
+    var email = newUser.email;
     var name = newUser.displayName || newUser.username;
     var avatar_url = newUser['_json'].avatar_url;
 
@@ -28,18 +29,21 @@ var Users = {
     )
   },
 
-  findOrCreate(user_id, cb){
-    Users.byGithubId(user_id, function(result){
+  createWithEmail(profile, token, cb) {
+    GithubApi.fetchEmail(profile, token, function(profile){
+      Users.create(profile, function(){})
+    });
+    cb(null, profile);
+  },
+
+  findOrCreate(userGithubId, cb){
+    Users.byGithubId(userGithubId, function(result){
       if (result){
         cb(null, result[0]);
       }else{
         cb(null, null);
       }
     });
-
-      
-    // }
-    // cb(null, user);
   }
 }
 

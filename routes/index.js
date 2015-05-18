@@ -7,15 +7,9 @@ var mcapi = require('mailchimp-api');
 mc = new mcapi.Mailchimp(process.env.MAILCHIMP_API);
 var parseForm = bodyParser.urlencoded({ extended: false });
 
-
-var News = require('./../services/news');
-var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Fivejs.get( function(news) {
-    res.render('index', { news: news, title: 'Express' });
-  })
+  res.render('index');
 });
 
 /* POST subscribe an email to JS5 list. */

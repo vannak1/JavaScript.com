@@ -1,16 +1,21 @@
 block current_nav
   - current_page = 'News'
 
+block layout_variables
+  - pageTitle = 'News'
+  - metaDescription = 'The latest news from the JavaScript community and the fine folks at 5 Minutes of JavaScript.'
+
 extends /views/layouts/layout
 
 block content
-
   section.row
     .cell.cell--s.well.well--xl
 
+      include /views/partials/_flash
+
       article.bdrbl.pbl.mbm(role='article')
 
-        time.label.mbxs= moment(flow.created_at).format('ll')
+        time.label.mbxs= moment(flow.published_at).format('ll')
         h1.h.h--1= flow.title
 
         .bucket.bucket--flag.mbm
@@ -33,11 +38,11 @@ block content
 
         ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
           - for comment in comments
-            li.list-item
+            li.list-item(data-comment=comment.id)
               .bucket
                 .bucket-media
                   img.thumb(src=comment.avatar_url width=50)
-                .bucket-conten
+                .bucket-content
                   p.tfh
                     span.mrs.twb #{comment.name}
                     span.tcs.tsi #{comment.created_at}
@@ -48,7 +53,7 @@ block content
 
         if user.authenticated
 
-          form.form(action='/news/'+flow.id+'/comment' method='POST')
+          form.form(action='/news/'+flow.slug+'/comment' method='POST')
             fieldset.form-field
               p.form-instruction.tar Some HTML is ok.
               textarea.form-input.form-textatrea(name='body')
@@ -63,3 +68,11 @@ block content
               textarea.form-input.form-textarea
 
             a.btn.btn--a.form-btn(href='/news/sign_in') Authenticate with GitHub
+block inline_javascript
+  script.
+    jQuery(function($) {
+      JS.Services.expel({
+        $toggle     : $('.js-alert-close'),
+        elementNode : '.js-alert'
+      });
+    });

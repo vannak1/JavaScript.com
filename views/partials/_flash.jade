@@ -1,4 +1,4 @@
-for message in flash
+while message = flash.shift() 
   .alert.js-alert(class='alert--' + message.type)
     p.alert-msg
       span= message.message

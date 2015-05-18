@@ -19,10 +19,28 @@
   margin-bottom: 0
 
 // -------------------------------------
-//   Label
+//   Modifiers
 // -------------------------------------
 
 // ----- Highlight ----- //
 
 .label--highlight
   color: $c-highlight
+
+// -------------------------------------
+//   State
+// -------------------------------------
+
+// ----- Error ----- //
+
+.label.is-error
+  color: $c-error
+
+// ----- Success ----- //
+
+.label.is-success
+  color: $c-success
+
+  &::before
+    content: '✓'
+    padding-right: $b-space-xs

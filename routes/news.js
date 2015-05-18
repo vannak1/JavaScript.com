@@ -15,10 +15,6 @@ var pluralize = require('pluralize');
 var csrfProtection = csrf({ cookie: true });
 var parseForm = bodyParser.urlencoded({ extended: false });
 var parseJson = bodyParser.json();
-var request = require('request');
-
-var path   = require('path');
-var Fivejs = require(path.join(__dirname, '..', 'services', 'fivejs'))
 
 var debug = require('debug')('JavaScript.com:server');
 
@@ -42,14 +38,17 @@ function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
     Users.findOrCreate(profile.id, function (err, user) {
-      if(err) return err;
+      if(err) throw err;
 
       if (user){
+        // Store internal ID along with passport user info
+        profile.userId = user.id;
         return done(null, profile);
       }else{
-        // TODO: make sure we save those emails
-        Users.create(profile, function(err, user){
-          if(err) return err;
+        Users.createWithEmail(profile, accessToken, function(err, user){
+          if(err) throw err;
+          // Store internal ID along with passport user info
+          user.userId = user.id;
           return done(err, user)
         });
       }
@@ -57,29 +56,6 @@ function(accessToken, refreshToken, profile, done) {
   });
 }
 ));
-
-// TODO: Handle this async
-function fetchEmail(user, token){
-  var options = {
-    headers: {
-      'User-Agent':    baseURL,
-      'Authorization': 'token ' + token
-    },
-    json:    true,
-    url:     'https://api.github.com/user/emails'
-  };
-
-  // get emails using oauth token
-  request(options, function(error, response, body) {
-
-    var emails = body.filter(function(email) {
-      return (email.verified && email.primary);
-      return email.verified;
-    });
-
-    return emails[0].email
-  });
-}
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
@@ -113,7 +89,7 @@ passport.use(new BasicStrategy({
 function buildComment(request, response, next){
 
   var newComment = request.body;
-  newComment.article_id = request.params.id;
+  newComment.slug = request.params.slug;
   newComment.isSpam = false;
 
   request.newComment = newComment;
@@ -165,41 +141,6 @@ router.
 
   }).
 
-  get('/:id([1-9]+)', cookieParser, csrfProtection, function(req, res) {
-    var user = {
-      "authenticated": req.isAuthenticated(),
-    }
-
-    if (user.authenticated) {
-      user.login      = req.user['_json']['login'];
-      user.avatar_url = req.user['_json']['avatar_url'];
-    }
-
-    Flow.byID(req.params.id, function(flow) {
-      Comments.byFlow(req.params.id, function(comments) {
-          res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
-      });
-    });
-  }).
-
-  post('/:id([0-9]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
-
-    var newComment = req.newComment;
-
-    Users.byGithubId(req.user.id, function(result){
-      newComment.user_id = result[0].id;
-      Comments.create(newComment, function() {
-        if(newComment.isSpam){
-          req.flash('info', 'Whoops! Your comment will need to be moderated.')
-        }
-        res.redirect('/news');
-      });
-    });
-  }).
-  get('/sign_in', function(req, res) {
-    res.render('news/sign_in');
-  }).
-
   get('/new', cookieParser, csrfProtection, function(req, res) {
     console.log(req);
     if(!req.isAuthenticated()){
@@ -212,7 +153,50 @@ router.
       res.render('news/new', { login: login, avatar: avatar, token: csrfToken });
     }
   }).
-  post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
+
+  get('/sign_in', function(req, res) {
+    res.render('news/sign_in');
+  }).
+
+  get('/:slug([a-zA-Z0-9_.-]+)', cookieParser, csrfProtection, function(req, res) {
+    var user = {
+      "authenticated": req.isAuthenticated(),
+    }
+
+    if (user.authenticated) {
+      user.login      = req.user['_json']['login'];
+      user.avatar_url = req.user['_json']['avatar_url'];
+    }
+
+    Flow.bySlug(req.params.slug, function(flow) {
+      Comments.byFlow(flow[0].id, function(comments) {
+        if (flow.length > 0){
+          console.log(comments);
+          res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
+        }else{
+          res.render('404');
+        }
+      });
+    });
+  }).
+
+  post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
+
+    var newComment = req.newComment;
+
+
+    newComment.userId = req.session.passport.user.userId;
+    Comments.create(newComment, function(comment) {
+      if(newComment.isSpam){
+        req.flash('info', 'Whoops! Your comment will need to be moderated.')
+        res.redirect('/news/' + newComment.slug );
+      }else{
+        res.redirect('/news/' + newComment.slug + '?comment=' + comment[0].id );
+      }
+    });
+  }).
+
+   post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
     var newEpisode = req.body;
     News.createFromEpisode(newEpisode, function() {
       res.json({ message: "Episode successfully sent" });
@@ -221,11 +205,9 @@ router.
 
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
-    Users.byGithubId(req.user.id, function(result){
-      newFlow.user_id = result[0].id;
-      Flow.create(newFlow, function() {
-        res.redirect('/news');
-      });
+    newFlow.user_id = req.session.passport.user.userId;
+    Flow.create(newFlow, function() {
+      res.redirect('/news');
     });
   });
 

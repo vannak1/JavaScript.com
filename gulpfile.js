@@ -46,7 +46,10 @@ var options = {
   },
 
   js: {
-    files: ['client/javascripts/application.js', 'client/javascripts/**/*.js'],
+    files: [
+      'client/javascripts/application.js', 
+      'client/javascripts/**/*.js'
+    ],
     vendorFiles: ['bower_components/jquery/dist/jquery.js'],
     vendorCourseFiles: [
       'bower_components/angular/angular.js',
@@ -70,7 +73,8 @@ var options = {
     files: ['chai',
             'javascript-sandbox',
             'jshint',
-            './courses/helper/index.js'],
+            './courses/helper/index.js'
+    ],
     destFile: 'vendor.js',
     destDir:  'bower_components/abecedary/dist'
   },
@@ -111,6 +115,9 @@ gulp.task('default', function() {
   });
 
   watch(options.js.files, function(files) {
+    gulp.start('javascript');
+  });
+  watch(options.js.courseFiles, function(files) {
     gulp.start('javascript');
   });
 
