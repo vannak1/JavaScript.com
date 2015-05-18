@@ -41,11 +41,14 @@ function(accessToken, refreshToken, profile, done) {
       if(err) throw err;
 
       if (user){
+        // Store internal ID along with passport user info
+        profile.userId = user.id;
         return done(null, profile);
       }else{
-        // TODO: make sure we save those emails
         Users.createWithEmail(profile, accessToken, function(err, user){
           if(err) throw err;
+          // Store internal ID along with passport user info
+          user.userId = user.id;
           return done(err, user)
         });
       }
@@ -167,7 +170,7 @@ router.
     }
 
     Flow.bySlug(req.params.slug, function(flow) {
-      Comments.byFlow(flow.id, function(comments) {
+      Comments.byFlow(flow[0].id, function(comments) {
         if (flow.length > 0){
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
         }else{
@@ -181,14 +184,12 @@ router.
 
     var newComment = req.newComment;
 
-    Users.byGithubId(req.user.id, function(result){
-      newComment.userId = result[0].id;
-      Comments.create(newComment, function() {
-        if(newComment.isSpam){
-          req.flash('info', 'Whoops! Your comment will need to be moderated.')
-        }
-        res.redirect('/news');
-      });
+    newComment.userId = req.session.passport.user.userId;
+    Comments.create(newComment, function() {
+      if(newComment.isSpam){
+        req.flash('info', 'Whoops! Your comment will need to be moderated.')
+      }
+      res.redirect('/news');
     });
   }).
 

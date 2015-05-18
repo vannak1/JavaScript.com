@@ -46,7 +46,11 @@ var News = {
       )
     }
     cb();
-  }
+  },
+
+    findBySlug(slug, cb) {
+      db.query('SELECT id FROM articles WHERE slug = $1', [slug], cb)
+    }
 }
 
 module.exports = News;

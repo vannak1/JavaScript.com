@@ -13,8 +13,7 @@ var Flow = {
   },
 
   bySlug(slug, cb) {
-    console.log(slug);
-    db.query('SELECT articles.title, articles.slug, articles.body, articles.url, users.name, users.avatar_url FROM articles JOIN users ON users.id = articles.user_id WHERE news = false and articles.slug = $1', [slug], cb)
+    db.query('SELECT articles.id, articles.title, articles.slug, articles.body, articles.url, users.name, users.avatar_url FROM articles JOIN users ON users.id = articles.user_id WHERE news = false and articles.slug = $1', [slug], cb)
   },
 
   // Creates a new Flow item
