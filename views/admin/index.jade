@@ -1,0 +1,14 @@
+block current_nav
+- current_page = 'Admin'
+
+block layout_variables
+- pageTitle = 'Admin'
+- metaDescription = 'The latest news from the JavaScript community and the fine folks at 5 Minutes of JavaScript.'
+
+extends /views/layouts/layout
+
+block content
+  include /views/partials/_flash
+
+  h1 Hello Admin 
+

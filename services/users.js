@@ -7,7 +7,7 @@ var Users = {
     db.query('SELECT * FROM users', [], cb)
   },
 
-   byID(id, cb) {
+   byId(id, cb) {
     db.query('SELECT * FROM users WHERE id = $1', [id], cb)
    },
 
