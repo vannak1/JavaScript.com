@@ -19,8 +19,8 @@ JS.Modules.Console = (function() {
 
   var init = function(options) {
     _settings = $.extend({
-      $element       : $('.js-console'),
-      $input         : $('.js-console-input'),
+      $element       : $('.js-inlineConsole'),
+      $input         : $('.js-inlineConsole-input'),
       correctClass   : 'is-correct',
       incorrectClass : 'is-incorrect'
     }, options);
