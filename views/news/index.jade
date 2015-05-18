@@ -79,10 +79,15 @@ block content
                         p.mbf.tss.
                           #{story.body}
 
-              p.tcs.tss
-                | Updated weekly. 
-                a(href='https://fivejs.codeschool.com/') Subscribe here
-                | .
+              h3.h.h--4.mbs The Latest News in Your Inbox
+
+              p.tcs.tss Subscribe now to the 5 Minutes of JavaScript newsletter. Updated weekly.
+
+              form.form.form--inline.tar(action='/subscribe' method='post')
+                fieldset.form-field.mbs
+                  input.form-input(type='email' name='email' placeholder='Email Address')
+
+                input.btn.btn--b.btn--block.btn--m--inline.form-btn(type='submit' value='Subscribe')
 
 block inline_javascript
   script.
