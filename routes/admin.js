@@ -10,20 +10,20 @@ var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
 
 var csrfProtection = csrf({ cookie: true });
-var parseForm = bodyParser.urlencoded({ extended: false });
-var parseJson = bodyParser.json();
+var parsePost = bodyParser.urlencoded({ extended: false });
 
 var debug = require('debug')('JavaScript.com:server');
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/news/new')
+  req.flash('Please log in.');
+  res.redirect('/')
 }
 
 /* Admin role */
 function ensureAdmin(req, res, next) {
-  Users.byId(req.user.userID, function(user){
-    if (user.admin) {
+  Users.byId(req.user.userId, function(user){
+    if (user[0].admin) {
       return next();
     } else {
       res.status(403);
@@ -35,8 +35,25 @@ function ensureAdmin(req, res, next) {
 /* End Admin role */
 
 router.
-  get('/', ensureAdmin, function(req, res){
-    res.render('admin/index');
+  get('/', ensureAuthenticated, ensureAdmin, function(req, res){
+    News.pendingApproval(function(stories){
+      res.render('admin/index', {stories: stories});
+    });
+  }).
+
+  post('/moderate', ensureAuthenticated, ensureAdmin, parsePost, function(req, res){
+    var storyId = req.body.storyId;
+    var isApproved = req.body.approved;
+    console.log(req.body);
+    console.log(isApproved);
+    // TODO: send mailers and figure out what to do with denyed posts
+    if (isApproved === 'true') {
+      News.approve(storyId, function(){
+        res.send(true);
+      });
+    }else{
+      res.send(true);
+    }
   });
 
 module.exports = router;

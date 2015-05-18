@@ -10,5 +10,40 @@ extends /views/layouts/layout
 block content
   include /views/partials/_flash
 
-  h1 Hello Admin 
 
+  section.row.has-sector
+    .cell
+      .g
+        .g-b.g-b--m--3of5.sector.sector--a
+          .well.well--l.well--m--xl
+            h1 Unapproved Stories
+
+            - for story in stories
+              li.list-item(data-article=story.id)
+                article.bucket
+                  .bucket-content
+                    h2.h.h--3
+                      h3 #{story.title}
+                      a.tct.twb(href='/news/' + story.slug)=story.url
+                    p.mbf= story.body
+                    a.tct.twb.approve(href='#') approve
+                    ||
+                    a.tct.twb.deny(href='#') deny
+block inline_javascript
+  script.
+    jQuery(function($) {
+      $('a.approve').on('click', function(){
+        var storyId = $(this).closest('li').attr('data-article');
+        $.post('/admin/moderate', { storyId: storyId, approved: true }, function(data){
+          // response will be true upon success
+          console.log(data);
+        });
+      });
+      $('a.deny').on('click', function(){
+          var storyId = $(this).closest('li').attr('data-article');
+          $.post('/admin/moderate', { storyId: storyId, approved: false }, function(data){
+              // response will be true upon success
+              console.log(data);
+              });
+          });
+    });
