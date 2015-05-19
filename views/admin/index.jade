@@ -32,18 +32,32 @@ block content
 block inline_javascript
   script.
     jQuery(function($) {
+      function setHeader(xhr){
+        xhr.setRequestHeader('csrf-token', '#{token}');
+      };
+
       $('a.approve').on('click', function(){
         var storyId = $(this).closest('li').attr('data-article');
-        $.post('/admin/moderate', { storyId: storyId, approved: true }, function(data){
-          // response will be true upon success
-          console.log(data);
-        });
-      });
-      $('a.deny').on('click', function(){
-          var storyId = $(this).closest('li').attr('data-article');
-          $.post('/admin/moderate', { storyId: storyId, approved: false }, function(data){
-              // response will be true upon success
-              console.log(data);
-              });
+        $.ajax({
+          type: 'POST',
+          url: '/admin/news/' + storyId + '/approve',
+          beforeSend: setHeader
+        })
+          .done(function(response){
+            console.log(response);
           });
+      });
+
+      $('a.deny').on('click', function(){
+        var storyId = $(this).closest('li').attr('data-article');
+        $.ajax({
+          type: 'POST',
+          url: '/admin/news/' + storyId + '/deny',
+          beforeSend: setHeader
+        })
+          .done(function(response){
+            console.log(response);
+          });
+      });
+
     });

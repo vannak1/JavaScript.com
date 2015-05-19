@@ -12,7 +12,7 @@ var moment = require('moment');
 var pluralize = require('pluralize');
 
 
-var csrfProtection = csrf({ cookie: true });
+var csrfProtection = csrf();
 var parseForm = bodyParser.urlencoded({ extended: false });
 var parseJson = bodyParser.json();
 
@@ -45,10 +45,10 @@ function(accessToken, refreshToken, profile, done) {
         profile.userId = user.id;
         return done(null, profile);
       }else{
-        Users.createWithEmail(profile, accessToken, function(err, user){
+        Users.createWithEmail(profile, accessToken, function(err, user, id){
           if(err) throw err;
           // Store internal ID along with passport user info
-          user.userId = user.id;
+          user.userId = id[0].id;
           return done(err, user)
         });
       }

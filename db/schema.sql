@@ -14,7 +14,7 @@ CREATE TABLE users (
 -- DROP TABLE articles;
 CREATE TABLE articles (
   id           SERIAL PRIMARY KEY,
-  approved     BOOLEAN NOT NULL DEFAULT FALSE,
+  approved     BOOLEAN,
   slug         TEXT NOT NULL,
   title        TEXT NOT NULL,
   body         TEXT,

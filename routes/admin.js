@@ -9,7 +9,7 @@ var Users = require('../services/users');
 var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
 
-var csrfProtection = csrf({ cookie: true });
+var csrfProtection = csrf();
 var parsePost = bodyParser.urlencoded({ extended: false });
 
 var debug = require('debug')('JavaScript.com:server');
@@ -35,25 +35,21 @@ function ensureAdmin(req, res, next) {
 /* End Admin role */
 
 router.
-  get('/', ensureAuthenticated, ensureAdmin, function(req, res){
+  get('/', cookieParser, ensureAuthenticated, ensureAdmin, csrfProtection, function(req, res){
     News.pendingApproval(function(stories){
-      res.render('admin/index', {stories: stories});
+      res.render('admin/index', {stories: stories, token: req.csrfToken()});
     });
   }).
 
-  post('/moderate', ensureAuthenticated, ensureAdmin, parsePost, function(req, res){
-    var storyId = req.body.storyId;
-    var isApproved = req.body.approved;
-    console.log(req.body);
-    console.log(isApproved);
-    // TODO: send mailers and figure out what to do with denyed posts
-    if (isApproved === 'true') {
-      News.approve(storyId, function(){
-        res.send(true);
-      });
-    }else{
-      res.send(true);
-    }
+  post('/news/:id/approve', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, function(req, res) {
+    var storyId = req.params.id;
+    News.approve(storyId, function () { res.send(true); });
+  }).
+
+  post('/news/:id/deny', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, function(req, res) {
+    var storyId = req.params.id;
+    News.deny(storyId, function () { res.send(true); });
   });
+
 
 module.exports = router;
