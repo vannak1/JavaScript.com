@@ -6,7 +6,6 @@ then
   echo "javascriptcom database already loaded"
 else
   createdb javascriptcom
-  psql javascriptcom < db/schema.sql
 fi
 
 echo "installing bower assets"
