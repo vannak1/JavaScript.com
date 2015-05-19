@@ -22,7 +22,7 @@ var News = {
   },
 
   paginated(offset, cb){
-        db.query('SELECT a.news, a.url, a.title, a.id, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u on a.user_id = u.id where a.id IN (select id from articles where news = true limit 10 offset $1) OR a.id IN (select id from articles where news = false limit 10 offset $1)',
+        db.query('SELECT a.news, a.url, a.slug, a.title, a.id, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u on a.user_id = u.id where a.id IN (select id from articles where news = true limit 10 offset $1) OR a.id IN (select id from articles where news = false limit 10 offset $1)',
         [offset],
         cb
     )
