@@ -1,0 +1,63 @@
+block current_nav
+- current_page = 'Admin'
+
+block layout_variables
+- pageTitle = 'Admin'
+- metaDescription = 'The latest news from the JavaScript community and the fine folks at 5 Minutes of JavaScript.'
+
+extends /views/layouts/layout
+
+block content
+  include /views/partials/_flash
+
+
+  section.row.has-sector
+    .cell
+      .g
+        .g-b.g-b--m--3of5.sector.sector--a
+          .well.well--l.well--m--xl
+            h1 Unapproved Stories
+
+            - for story in stories
+              li.list-item(data-article=story.id)
+                article.bucket
+                  .bucket-content
+                    h2.h.h--3
+                      h3 #{story.title}
+                      a.tct.twb(href='/news/' + story.slug)=story.url
+                    p.mbf= story.body
+                    a.tct.twb.approve(href='#') approve
+                    ||
+                    a.tct.twb.deny(href='#') deny
+block inline_javascript
+  script.
+    jQuery(function($) {
+      function setHeader(xhr){
+        xhr.setRequestHeader('csrf-token', '#{token}');
+      };
+
+      $('a.approve').on('click', function(){
+        var storyId = $(this).closest('li').attr('data-article');
+        $.ajax({
+          type: 'POST',
+          url: '/admin/news/' + storyId + '/approve',
+          beforeSend: setHeader
+        })
+          .done(function(response){
+            console.log(response);
+          });
+      });
+
+      $('a.deny').on('click', function(){
+        var storyId = $(this).closest('li').attr('data-article');
+        $.ajax({
+          type: 'POST',
+          url: '/admin/news/' + storyId + '/deny',
+          beforeSend: setHeader
+        })
+          .done(function(response){
+            console.log(response);
+          });
+      });
+
+    });

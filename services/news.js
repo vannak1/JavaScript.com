@@ -9,13 +9,16 @@ var News = {
   recent(cb) {
     db.query('SELECT * FROM articles ORDER BY created_at DESC LIMIT 10', [], cb)
   },
-  
+
   published(limit, cb) {
     db.query('SELECT * FROM articles WHERE approved = true ORDER BY published_at DESC LIMIT $1',
       [limit],
       cb)
   },
 
+  pendingApproval(cb) {
+    db.query('SELECT * FROM articles where approved IS NULL ORDER BY created_at ASC', [], cb)
+  },
   // Returns all news items, no pagination
   all(cb) {
     db.query('SELECT * FROM articles', [], cb)
@@ -23,6 +26,14 @@ var News = {
 
   publishedWithUsers(cb){
     db.query('SELECT a.news, a.url, a.title, a.slug, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
+  },
+
+  approve(id, cb) {
+    db.query('UPDATE articles SET approved = true, published_at = current_timestamp WHERE id = $1;', [id], cb)
+  },
+
+  deny(id, cb) {
+    db.query('UPDATE articles SET approved = false WHERE id = $1;', [id], cb)
   },
 
   // Creates a new news item

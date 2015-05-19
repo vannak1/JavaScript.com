@@ -3,6 +3,7 @@ BEGIN;
 -- DROP TABLE users
 CREATE TABLE users (
   id         SERIAL PRIMARY KEY,
+  admin      BOOLEAN NOT NULL DEFAULT FALSE,
   github_id  INTEGER NOT NULL,
   name       TEXT NOT NULL,
   email      TEXT,
@@ -13,7 +14,7 @@ CREATE TABLE users (
 -- DROP TABLE articles;
 CREATE TABLE articles (
   id           SERIAL PRIMARY KEY,
-  approved     BOOLEAN NOT NULL DEFAULT FALSE,
+  approved     BOOLEAN,
   slug         TEXT NOT NULL,
   title        TEXT NOT NULL,
   body         TEXT,
