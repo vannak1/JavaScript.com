@@ -34,24 +34,28 @@ block content
 
                   a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
-            ul.list.list--l.list--divided.list--divided--l
+            .js-loadFeed
 
-              - for story in flow_collection
-                - storyDatetime = moment(story.created_at)
+              ul.list.list--l.list--divided.list--divided--l.mbl.js-loadFeed-list
 
-                li.list-item
-                  article.bucket
-                    .bucket-media
-                      img.thumb(src=story.avatar_url width=50)
-                    .bucket-content
-                      h2.h.h--3
-                        a.tct.twb(href='/news/' + story.slug)= story.title
-                      p.tcs.tfh
-                        | via
-                        span.twsb= story.name
-                        |  |
-                        time.tsi(datetime=storyDatetime.format())= storyDatetime.format('dddd')
-                      p.mbf= story.body
+                - for story in flow_collection
+                  - storyDatetime = moment(story.created_at)
+
+                  li.list-item
+                    article.bucket
+                      .bucket-media
+                        img.thumb(src=story.avatar_url width=50)
+                      .bucket-content
+                        h2.h.h--3
+                          a.tct.twb(href='/news/' + story.slug)= story.title
+                        p.tcs.tfh
+                          | via
+                          span.twsb= story.name
+                          |  |
+                          time.tsi(datetime=storyDatetime.format())= storyDatetime.format('dddd')
+                        p.mbf= story.body
+
+              button.btn.js-loadFeed-btn Load More
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
@@ -95,16 +99,5 @@ block inline_javascript
       JS.Services.expel({
         $toggle     : $('.js-alert-close'),
         elementNode : '.js-alert'
-      });
-    });
-
-    jQuery(function($){
-      var offset;
-      $('button#more').click(function(){
-        offset=+10;
-
-        $.get("/news?page=" + offset, function(data){
-          console.log(data);
-          });
       });
     });
