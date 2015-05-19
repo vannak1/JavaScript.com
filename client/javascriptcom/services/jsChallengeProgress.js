@@ -41,12 +41,6 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
       })
     },
 
-    isComplete: function() {
-      var challengeIndex = _.findIndex(this.challenges, { active: true });
-
-      return challengeIndex+1 == this.challenges.length;
-    },
-
     activeChallenge: function() {
       return _.find(this.challenges, { active: true });
     }
