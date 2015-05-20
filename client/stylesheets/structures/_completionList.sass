@@ -1,0 +1,72 @@
+// *************************************
+//
+//   Completion List
+//   -> Linear checklist
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// %ul.completionList
+//   %li.completionList-item
+//     %a.completionList-item-link
+//
+// *************************************
+
+$completionList-item-size: 22px
+$completionList-item-gutter: 30px
+$completionList-item-borderWidth: 4px
+
+.completionList
+  +list-reset()
+  @extend .group
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Item ----- //
+
+.completionList-item
+  background-color: $c-background
+  border-radius: 50%
+  border: $completionList-item-borderWidth solid $c-border
+  box-sizing: border-box
+  display: inline-block
+  float: left
+  height: $completionList-item-size
+  margin-bottom: 0
+  margin-right: $completionList-item-gutter
+  position: relative
+  width: $completionList-item-size
+
+  &::before
+    background-color: $c-border
+    content: ''
+    height: $completionList-item-borderWidth
+    position: absolute
+    right: calc(100% + #{$completionList-item-borderWidth})
+    top: calc(50% - #{$completionList-item-borderWidth / 2})
+    width: $completionList-item-gutter
+    z-index: -1
+
+  &:first-child
+
+    &::before
+      content: none
+
+  &:last-child
+    margin-right: 0
+
+.completionList-item.is-active
+  border-color: $c-highlight
+
+  &::before
+    background-color: $c-highlight
+
+.completionList-item.is-completed
+  background-color: $c-success
+  border-color: $c-success
+
+  &::before
+    background-color: $c-success
