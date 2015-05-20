@@ -58,11 +58,17 @@ $completionList-item-borderWidth: 4px
   &:last-child
     margin-right: 0
 
+// States
+
+// States: Active
+
 .completionList-item.is-active
   border-color: $c-highlight
 
   &::before
     background-color: $c-highlight
+
+// States: Completed
 
 .completionList-item.is-completed
   background-color: $c-success
@@ -70,3 +76,17 @@ $completionList-item-borderWidth: 4px
 
   &::before
     background-color: $c-success
+
+  .completionList-item-icon
+    display: block
+
+// Scaffolding
+
+// Scaffolding: Icon
+
+.completionList-item-icon
+  display: none
+  left: 50%
+  position: absolute
+  top: 50%
+  transform: translate(-50%, -50%)

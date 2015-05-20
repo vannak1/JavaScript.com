@@ -11,6 +11,9 @@
                 <a ng-href='#{{challenge.id}}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='completionList-item-link'>{{ ::challenge.title }}</a>
                 <span ng-if='!challenge.started'>{{ ::challenge.title }}</span>
                 -->
+                <svg class='icon completionList-item-icon' width='10' height='8'>
+                  <use xlink:href='#icon-check'/>
+                </svg>
               </li>
 
               <li ng-class="{ 'is-active': ctrl.onWrapupPage(), 'is-completed': ctrl.challengeProgress.courseCompleted }" class='completionList-item'>
