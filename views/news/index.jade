@@ -19,14 +19,17 @@ block content
 
             .bdrbl.mbl.pbl
               h1.h.h--2 News From the Community
+                a.mlxs.tch(href="/feed/rss")
+                  - iconPartial = { name: 'rss', size: 20 }
+                  include /views/partials/_icon
 
               .g
                 .g-b.g-b--l--3of4
 
                   p.mbf--l.ptxs--l.tcs.tss
-                    | A curated list of news and stories submitted from the 
-                    | JavaScript.com community. To learn more about how you 
-                    | can contribute, visit our 
+                    | A curated list of news and stories submitted from the
+                    | JavaScript.com community. To learn more about how you
+                    | can contribute, visit our
                     a(href='/guidelines') Contribution Guidelines
                     | .
 
@@ -47,9 +50,9 @@ block content
                       h2.h.h--3
                         a.tct.twb(href='/news/' + story.slug)= story.title
                       p.tcs.tfh
-                        | via 
+                        | via
                         span.twsb= story.name
-                        |  | 
+                        |  |
                         time.tsi(datetime=storyDatetime.format())= storyDatetime.format('dddd')
                       p.mbf= story.body
 
