@@ -61,7 +61,7 @@ module.exports = {
 
 Well, many methods (like the \`alert\` method) can take instructions, which we call *parameters*. By sending a string into the \`alert\` method, we can put text on the pop-up box. Try it!
 
-> \`alert("{{username}}");\``,
+\`alert("{{username}}");\``,
   'hints': [
     "Type in your first name surrounded by double quotes inside the alert method: `alert(\"{{username}}\");`"
   ],
