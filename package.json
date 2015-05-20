@@ -6,6 +6,7 @@
     "iojs": "1.2.0"
   },
   "scripts": {
+    "prestart": "./node_modules/node-pg-migrate/bin/pg-migrate up",
     "start": "node --harmony_object_literals ./bin/www",
     "postinstall": "./setup.sh",
     "bower": "node_modules/.bin/bower",
@@ -56,6 +57,7 @@
     "jshint": "^2.6.3",
     "lodash": "^3.5.0",
     "mocha": "^2.2.1",
+    "node-pg-migrate": "0.0.9",
     "run-sequence": "^1.1.0"
   }
 }

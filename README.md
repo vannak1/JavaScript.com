@@ -27,6 +27,12 @@ $ GH_CLIENT_ID=myid GH_CLIENT_SECRET=mysecret npm start
 
 For debugging all the things, run `DEBUG=* npm start`.
 
+## Database
+NPM will run new migrations whenever you `npm start`. In order for it to work,
+you'll need to set the `DATABASE_URL` ENV to pg://localhost:5432/javascriptcom
+
+To create new migrations see the node-pg-migraton
+[documentation](https://github.com/theoephraim/node-pg-migrate).
 ## Development
 
 If you add any runtime dependencies, you must run `npm shrinkwrap` and
