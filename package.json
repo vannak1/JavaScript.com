@@ -27,6 +27,7 @@
     "mailchimp-api": "^2.0.7",
     "moment": "^2.10.2",
     "morgan": "~1.5.1",
+    "node-mandrill": "^1.0.1",
     "passport": "^0.2.1",
     "passport-github": "^0.1.5",
     "passport-http": "^0.2.2",
