@@ -6,6 +6,7 @@
     "iojs": "1.2.0"
   },
   "scripts": {
+    "prestart": "./node_modules/node-pg-migrate/bin/pg-migrate up",
     "start": "node --harmony_object_literals ./bin/www",
     "postinstall": "./setup.sh",
     "bower": "node_modules/.bin/bower",
