@@ -1,9 +1,5 @@
-<section class='row course-challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
-  <div id="{{ ctrl.challenge.id }}" class='course-challenge-anchor'></div>
-
-  <p class='label label--highlight course-challenge-label'>
-    Challenge {{::ctrl.challenge.id}}
-  </p>
+<section class='course-challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
+  <p class='label label--highlight course-challenge-label'>Challenge {{::ctrl.challenge.id}}</p>
 
   <h2 class='course-challenge-title h h--1 mbs'>{{::ctrl.challenge.title}}</h2>
 
