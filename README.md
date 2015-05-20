@@ -33,6 +33,8 @@ you'll need to set the `DATABASE_URL` ENV to pg://localhost:5432/javascriptcom
 
 To create new migrations see the node-pg-migraton
 [documentation](https://github.com/theoephraim/node-pg-migrate).
+
+After setting your database up run `gulp seeds` to seed your database
 ## Development
 
 If you add any runtime dependencies, you must run `npm shrinkwrap` and
