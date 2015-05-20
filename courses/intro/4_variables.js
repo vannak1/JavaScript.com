@@ -33,16 +33,16 @@ describe('set_a_var', function(){
   });
 
   it('f_name_blank', function(){
-    js.assert(js.evaluate('name'));
+    js.assert(js.evaluate('firstName'));
   });
 
   it('f_name_not_string', function(){
-    var name = js.evaluate('name');
-    js.assert(typeof(name) === 'string');
+    var name = js.evaluate('firstName');
+    js.assert(typeof(firstName) === 'string');
   });
 
   it('passed all tests', function() {
-    js.state.username = js.evaluate('name');
+    js.state.username = js.evaluate('firstName');
   });
 
   details('state', function() {
@@ -74,7 +74,9 @@ failures = {
 module.exports = {
   'id': 4,
   'title': 'Variables',
-  'instructions': 'Set a variable named `name` to your name. Use the `var` scope.',
+  'instructions': `Often when programming we want to store values in containers so we can use them later; these are called variables. Let’s store your name in a variable, or ‘var’ for short, by typing the following:
+
+<code>var firstName = "{{username}}";</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "var test = 'dan';"

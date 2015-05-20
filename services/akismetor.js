@@ -1,5 +1,4 @@
 var akismet = require('akismet-api');
-var News = require('./news');
 
 var client = akismet.client({
   key  : process.env.AKISMET_API,                   // Required!

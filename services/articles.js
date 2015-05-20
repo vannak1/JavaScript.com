@@ -1,0 +1,67 @@
+var db = require('./db');
+var slugGenerator = require('./slug-generator');
+
+/* Articles fall into two seperate categories, Flow and News. Flow stories are user
+ * submitted. News is a curated section that is mostly fivejs at the moment.  News
+ * articles aren't moderated and automatically get approved.
+ */
+var Articles = {
+
+  // Returns Flow stories that haven't been moderated.
+  pending(cb) {
+    db.query('SELECT * FROM articles where approved IS NULL ORDER BY created_at ASC', [], cb)
+  },
+
+  // Returns 10 Flow and 10 News articles that are published along with user information
+  // in DESC published_date order.
+  paginated(offset, cb){
+    db.query(
+      'SELECT a.news, a.url, a.slug, a.title, a.id, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u on a.user_id = u.id where a.id IN (select id from articles where news = true limit 10 offset $1) OR a.id IN (select id from articles where news = false limit 10 offset $1)',
+      [offset],
+      cb
+    )
+  },
+
+  // Returns article based on slug
+  findBySlug(slug, cb) {
+    db.query('SELECT a.title, a.id, a.slug, a.body, a.url, u.avatar_url, u.name FROM articles a JOIN users u on a.user_id = u.id WHERE a.slug = $1', [slug], cb)
+  },
+
+  // Approve a Flow story.
+  approve(id, cb) {
+    db.query('UPDATE articles SET approved = true, published_at = current_timestamp WHERE id = $1;', [id], cb)
+  },
+
+  // Denies a Flow story.
+  deny(id, cb) {
+    db.query('UPDATE articles SET approved = false WHERE id = $1;', [id], cb)
+  },
+
+  // Creates a new News story pre-approved.
+  createNews(newStory, cb) {
+    var slug = slugGenerator.createSlug(newStory.title);
+
+    db.query(
+      "INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, current_timestamp, true, true);",
+      [newStory.title, slug, newStory.summary, newStory.url],
+      cb
+    )
+  },
+
+  // Creates a new Flow article
+  createFlow(newFlow, cb) {
+    var title = newFlow.title;
+    var slugTitle = slugGenerator.createSlug(title);
+    var body = newFlow.body;
+    var userId = newFlow.userId;
+    var url = newFlow.url;
+
+    db.query(
+      "INSERT INTO articles (title, slug, body, url, user_id, news) VALUES ($1, $2, $3, $4, $5, false);",
+      [title, slugTitle, body, url, userId],
+      cb
+    )
+  }
+}
+
+module.exports = Articles;

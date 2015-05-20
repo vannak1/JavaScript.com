@@ -3,8 +3,7 @@ var router = express.Router();
 var csrf = require('csurf');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')();
-var Flow = require('../services/flow');
-var News = require('../services/news');
+var Articles = require('../services/articles');
 var Users = require('../services/users');
 var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
@@ -12,7 +11,7 @@ var moment = require('moment');
 var pluralize = require('pluralize');
 
 
-var csrfProtection = csrf({ cookie: true });
+var csrfProtection = csrf();
 var parseForm = bodyParser.urlencoded({ extended: false });
 var parseJson = bodyParser.json();
 
@@ -45,10 +44,10 @@ function(accessToken, refreshToken, profile, done) {
         profile.userId = user.id;
         return done(null, profile);
       }else{
-        Users.createWithEmail(profile, accessToken, function(err, user){
+        Users.createWithEmail(profile, accessToken, function(err, user, id){
           if(err) throw err;
           // Store internal ID along with passport user info
-          user.userId = user.id;
+          user.userId = id[0].id;
           return done(err, user)
         });
       }
@@ -123,7 +122,7 @@ router.
   get('/', parseForm, function(req, res) {
     debug('Fetching and listing news');
     var offset = req.query.page;
-    News.paginated(offset, function(all) {
+    Articles.paginated( offset, function(all) {
       var flow = [], news = [];
       all.map(function(item){
         if (item.news){
@@ -142,7 +141,6 @@ router.
   }).
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
-    console.log(req);
     if(!req.isAuthenticated()){
       res.redirect('/news/sign_in');
     }else{
@@ -168,10 +166,9 @@ router.
       user.avatar_url = req.user['_json']['avatar_url'];
     }
 
-    Flow.bySlug(req.params.slug, function(flow) {
-      Comments.byFlow(flow[0].id, function(comments) {
+    Articles.findBySlug(req.params.slug, function(flow) {
+      Comments.findByArticleId(flow[0].id, function(comments) {
         if (flow.length > 0){
-          console.log(comments);
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
         }else{
           res.render('404');
@@ -181,9 +178,7 @@ router.
   }).
 
   post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
-
     var newComment = req.newComment;
-
 
     newComment.userId = req.session.passport.user.userId;
     Comments.create(newComment, function(comment) {
@@ -197,16 +192,22 @@ router.
   }).
 
    post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
-    var newEpisode = req.body;
-    News.createFromEpisode(newEpisode, function() {
-      res.json({ message: "Episode successfully sent" });
-    });
+    var stories = req.body;
+    for (i=0; i < stories.length; i++) {
+      var story = stories[i];
+      // I'm sure there's a better way to do this.
+      if(i === stories.length-1){
+        Articles.createNews(story, function(){res.sendStatus(201);});
+      }else{
+        Articles.createNews(story, function(){});
+      }
+    }
   }).
 
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
-    newFlow.user_id = req.session.passport.user.userId;
-    Flow.create(newFlow, function() {
+    newFlow.userId = req.session.passport.user.userId;
+    Articles.createFlow(newFlow, function() {
       res.redirect('/news');
     });
   });

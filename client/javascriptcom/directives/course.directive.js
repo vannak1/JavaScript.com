@@ -19,7 +19,6 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
         this.challenge = _challenge;
       }
 
-
       this.onWrapupPage = function onWrapupPage() {
         return jsChallengeProgress.activeChallenge() ? false : true;
       }

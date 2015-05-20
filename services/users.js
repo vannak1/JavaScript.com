@@ -7,7 +7,7 @@ var Users = {
     db.query('SELECT * FROM users', [], cb)
   },
 
-   byID(id, cb) {
+   byId(id, cb) {
     db.query('SELECT * FROM users WHERE id = $1', [id], cb)
    },
 
@@ -23,7 +23,7 @@ var Users = {
     var avatar_url = newUser['_json'].avatar_url;
 
     db.query(
-      "INSERT INTO users (github_id, email, name, avatar_url) VALUES ($1, $2, $3, $4);",
+      "INSERT INTO users (github_id, email, name, avatar_url) VALUES ($1, $2, $3, $4) RETURNING id;",
       [github_id, email, name, avatar_url],
       cb
     )
@@ -31,9 +31,8 @@ var Users = {
 
   createWithEmail(profile, token, cb) {
     GithubApi.fetchEmail(profile, token, function(profile){
-      Users.create(profile, function(){})
+      Users.create(profile, function(userId){ cb(null, profile, userId);})
     });
-    cb(null, profile);
   },
 
   findOrCreate(userGithubId, cb){
