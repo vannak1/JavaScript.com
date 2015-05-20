@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 var path    = require('path');
 
-var News = require('./../services/news');
+var Articles = require('./../services/articles');
 
 
 router.get('/rss', function(req, res, next) {
@@ -12,7 +12,7 @@ router.get('/rss', function(req, res, next) {
       link: 'http://example.org/rss.xml',
       language: 'en'
   };
-  News.published(25, function(news) {
+  Articles.published(25, function(news) {
     news.map(function(story){
       if (story.new){
         story.link = story.url
