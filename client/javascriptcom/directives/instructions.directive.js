@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsInstructions', ['_', 'jsChallengeProgress', 'jsCourseState', function jsInstructions(_, jsChallengeProgress, jsCourseState) {
+angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgress', 'jsCourseState', function jsInstructions(jsChallengeProgress, jsCourseState) {
   return {
     templateUrl: 'templates/instructions.html',
     replace: true,
@@ -14,15 +14,27 @@ angular.module('javascriptcom').directive('jsInstructions', ['_', 'jsChallengePr
 
         // Todo: incrementally add these in
         var csConsole = jsChallengeProgress.console,
-            text = $(this).text().split('');
+            text      = $(this).text().split(''),
+            timer     = (text.length > 15 ? 70 / 2 : 70),
+            count     = 0,
+            ticker;
 
         csConsole.setValue('');
 
-        _.each(text, function(character, index) {
-          setTimeout(function() {
-            csConsole.setValue(csConsole.getValue() + character);
-          }, 50 * index);
-        });
+        if (!ticker) {
+          ticker = setInterval(function() {
+            var letter = text[count];
+
+            count += 1;
+
+            if (letter) {
+              csConsole.appendToInput(letter);
+            } else {
+              clearInterval(ticker);
+              ticker = false;
+            }
+          }, timer);
+        }
 
         csConsole.focus();
       });
