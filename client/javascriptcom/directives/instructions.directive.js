@@ -21,7 +21,7 @@ angular.module('javascriptcom').directive('jsInstructions', ['_', 'jsChallengePr
         _.each(text, function(character, index) {
           setTimeout(function() {
             csConsole.setValue(csConsole.getValue() + character);
-          }, 100 * index);
+          }, 50 * index);
         });
 
         csConsole.focus();
