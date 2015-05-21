@@ -6,6 +6,7 @@ then
   echo "javascriptcom database already loaded"
 else
   createdb javascriptcom
+  ./node_modules/node-pg-migrate/bin/pg-migrate up
 fi
 
 echo "installing bower assets"
