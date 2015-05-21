@@ -17,10 +17,9 @@ angular.module('javascriptcom').factory('jsChallengeProgress', ['_', function(_)
         return true;
       }
 
-      this.challenges[challengeIndex].active = false;
-      this.challenges[challengeIndex+1].active = true;
-
-      this.challenges[challengeIndex+1].started = true;
+      this.challenges[challengeIndex].active      = false;
+      this.challenges[challengeIndex + 1].active  = true;
+      this.challenges[challengeIndex + 1].started = true;
     },
 
     activate: function(challenge) {
