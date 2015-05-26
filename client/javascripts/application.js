@@ -65,4 +65,10 @@ jQuery(function($) {
   // Hide sponsor links
   $('tr[style="background-color: #faf9dc;"]').hide();
 
+
+  $('a:contains("Next Challenge")').on('click', function() {
+    var name = $('.js-inlineConsole-input').val().replace(/['";]/g, '');
+
+    document.cookie = 'try_name=' + name;
+  });
 });

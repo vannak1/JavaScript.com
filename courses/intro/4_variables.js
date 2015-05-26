@@ -38,7 +38,7 @@ describe('set_a_var', function(){
 
   it('f_name_not_string', function(){
     var name = js.evaluate('firstName');
-    js.assert(typeof(firstName) === 'string');
+    js.assert(typeof(name) === 'string');
   });
 
   it('passed all tests', function() {
@@ -76,7 +76,7 @@ module.exports = {
   'title': 'Variables',
   'instructions': `Often when programming we want to store values in containers so we can use them later; these are called variables. Let’s store your name in a variable, or ‘var’ for short, by typing the following:
 
-<code>var firstName = "{{username}}";</code>`,
+\`var firstName = "{{username}}";\``,
   'tests': tests,
   'failures': failures,
   'answer': "var test = 'dan';"

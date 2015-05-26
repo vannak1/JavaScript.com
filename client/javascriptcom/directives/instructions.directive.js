@@ -13,8 +13,30 @@ angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgres
         if(!jsChallengeProgress.console) { return true; }
 
         // Todo: incrementally add these in
-        jsChallengeProgress.console.setValue($(this).text());
-        jsChallengeProgress.console.focus();
+        var csConsole = jsChallengeProgress.console,
+            text      = $(this).text().split(''),
+            timer     = (text.length > 15 ? 70 / 2 : 70),
+            count     = 0,
+            ticker;
+
+        csConsole.setValue('');
+
+        if (!ticker) {
+          ticker = setInterval(function() {
+            var letter = text[count];
+
+            count += 1;
+
+            if (letter) {
+              csConsole.appendToInput(letter);
+            } else {
+              clearInterval(ticker);
+              ticker = false;
+            }
+          }, timer);
+        }
+
+        csConsole.focus();
       });
     }
   };

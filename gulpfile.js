@@ -49,7 +49,7 @@ var options = {
 
   js: {
     files: [
-      'client/javascripts/application.js', 
+      'client/javascripts/application.js',
       'client/javascripts/**/*.js'
     ],
     vendorFiles: ['bower_components/jquery/dist/jquery.js'],
@@ -57,6 +57,7 @@ var options = {
       'bower_components/angular/angular.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-animate/angular-animate.js',
+      'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/lodash/lodash.js',
       'bower_components/marked/marked.min.js',
       'bower_components/codemirror/lib/codemirror.js',

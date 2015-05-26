@@ -15,7 +15,7 @@ var Articles = {
   // Returns all stories that have been approved along with user information
   // in DESC published_date order.
   published(cb){
-    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
+    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a,published_at, u.name, u.avatar_url, (SELECT count(*) from comments where article_id = a.id) as comment_count FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
   },
 
   // Returns article based on slug
@@ -25,7 +25,7 @@ var Articles = {
 
   // Approve a Flow story.
   approve(id, cb) {
-    db.query('UPDATE articles SET approved = true, published_at = current_timestamp WHERE id = $1;', [id], cb)
+    db.query("UPDATE articles SET approved = true, published_at = NOW() WHERE id = $1;", [id], cb)
   },
 
   // Denies a Flow story.
@@ -38,7 +38,7 @@ var Articles = {
     var slug = slugGenerator.createSlug(newStory.title);
 
     db.query(
-      "INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, current_timestamp, true, true);",
+      "INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, now(), true, true);",
       [newStory.title, slug, newStory.summary, newStory.url],
       cb
     )
