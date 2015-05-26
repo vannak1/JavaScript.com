@@ -20,23 +20,18 @@
   +respond-to($g-m)
     min-height: $hero-minHeight
 
-// -------------------------------------
-//   Scaffolding
-// -------------------------------------
+  &::before
+    background: url('/images/img-hero.svg') center bottom no-repeat
+    background-size: contain
+    bottom: 0
+    content: ''
+    display: none
+    height: $hero-minHeight - 100
+    left: 0
+    opacity: 0.1
+    position: absolute
+    width: 100%
+    z-index: 0
 
-// ----- Image ----- //
-
-.hero-img
-  bottom: 0
-  display: none
-  left: -8.5em // FIXME: Magic number!
-  position: absolute
-
-  +respond-to($g-l)
-    display: block
-
-// Image: Clouds
-
-.hero-img--clouds
-  left: $b-space-l
-  top: $b-space-xl
+    +respond-to($g-m)
+      display: block
