@@ -22,16 +22,16 @@
 
   &::before
     background: url('/images/img-hero.svg') center bottom no-repeat
-    background-size: contain
+    background-size: cover
     bottom: 0
     content: ''
     display: none
-    height: $hero-minHeight - 100
+    height: $hero-minHeight
     left: 0
     opacity: 0.1
     position: absolute
     width: 100%
     z-index: 0
 
-    +respond-to($g-m)
+    +respond-to($g-l)
       display: block
