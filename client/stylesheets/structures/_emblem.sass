@@ -14,11 +14,18 @@
 
 .emblem
   position: relative
-  padding-top: $b-space-l + 1 // FIXME: Magic number!
 
 // -------------------------------------
 //   Scaffolding
 // -------------------------------------
+
+// ----- Content ----- //
+
+.emblem-content
+  padding-top: $b-space-l
+
+  +respond-to($g-m)
+    padding-top: $b-space
 
 // ----- Item ----- //
 
@@ -29,4 +36,3 @@
   position: absolute
   top: -$b-space-l
   transform: translateX(-50%)
-
