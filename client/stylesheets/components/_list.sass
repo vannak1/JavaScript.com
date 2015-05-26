@@ -61,6 +61,16 @@
     &:last-child
       margin-right: 0
 
+// Shared
+
+.list--inline--divided, .list--inline--dotted
+
+  > .list-item
+
+    &:not(:first-child)::before
+      margin-left: -1ch
+      margin-right: $b-space-s
+
 // Divided
 
 .list--inline--divided
@@ -69,8 +79,6 @@
 
     &:not(:first-child)::before
       content: '|'
-      margin-left: -1ch
-      margin-right: $b-space-s
 
 // Dotted
 
@@ -81,8 +89,6 @@
     &:not(:first-child)::before
       content: '\b7'
       font-weight: bold
-      margin-left: -1ch
-      margin-right: $b-space-s
 
 // ----- Sizes ----- //
 
