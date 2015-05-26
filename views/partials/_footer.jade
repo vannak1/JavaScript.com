@@ -1,21 +1,26 @@
 footer.row.footer(role='contentinfo')
-  .cell.well.well--l
+  .cell.well.well--l.tac
 
-    .g
-      .g-b.g-b--l--1of4
+    .footer-logo
+      a.db.mbs(href='/')
+        img(src='/images/logo-monochrome.svg' alt='JavaScript.com')
 
-        .footer-logo.footer-logo--js
-          a.db.mbs(href='/')
-            img(src='/images/logo-monochrome.svg' alt='JavaScript.com')
-          a.db.tsxs(href='/brand') Download Brand Assets
+    ul.list.list--inline.list--inline--dotted.tsxs
+      li.list-item.tci
+        a.link.link--inverted(href='/brand') Brand Assets
+      li.list-item.tci
+        a.link.link--inverted(href='/brand') Give Feedback
+      li.list-item.tci
+        a.link.link--inverted(href='/brand') Community Guidelines
 
-      .g-b.g-b--l--2of4
+    p.footer-copyright &copy; 2015 JavaScript.com; Crafted lovingly in Orlando, Florida.
 
-        p.footer-copyright &copy; 2015 JavaScript.com; Crafted lovingly in Orlando, Florida.
-
-      .g-b.g-b--l--1of4
-
-        .footer-logo.footer-logo--cs
-          p.footer-descriptor Maintained by
-          a(href='http://www.codeschool.com')
-            img(src='/images/logo-cs.svg' alt='Code School')
+    ul.list.list--inline
+      li.list-item
+        a.link.link--inverted(href='#')
+          - iconPartial = { name: 'twitter', size: 24 }
+          include /views/partials/_icon
+      li.list-item
+        a.link.link--inverted(href='#')
+          - iconPartial = { name: 'rss', size: 16 }
+          include /views/partials/_icon

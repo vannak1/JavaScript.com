@@ -72,6 +72,18 @@
       margin-left: -1ch
       margin-right: $b-space-s
 
+// Dotted
+
+.list--inline--dotted
+
+  > .list-item
+
+    &:not(:first-child)::before
+      content: '\b7'
+      font-weight: bold
+      margin-left: -1ch
+      margin-right: $b-space-s
+
 // ----- Sizes ----- //
 
 .list--f
