@@ -11,7 +11,6 @@ describe('set_a_var', function(){
       errorMessage = e.message;
     }
   });
-
   details(function() {
     return {
       output: message
@@ -20,12 +19,12 @@ describe('set_a_var', function(){
 
   js.verify(code);
 
-  it('f_null', function(){
-    js.assert(message != null);
+  it('f_no_math_operators', function() {
+    js.assert(code.match(new RegExp('\\\\+|\\\\*|\\\\/|-')));
   });
 
-  it('f_not_username', function(){
-    js.assert(message == js.state.username);
+  it('f_no_number_result', function() {
+    js.assert(typeof message === 'number');
   });
 });
 `
@@ -34,22 +33,21 @@ failures = {
   "f_error": {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
-  'f_null': {
-    'message': 'Nope. This variable does not have any value assigned to it.',
+  'f_no_math_operators': {
+    'message': "Try adding two numbers together, like 14 and 42"
   },
-  'f_not_username': {
-    'message': 'That is not your name. Use the variable that you stored your name in.',
+  'f_no_number_result': {
+    'message': "Huh, the result wasn't a number. Try adding two numbers together."
   }
 };
 
 module.exports = {
-  'id': 5,
-  'title': 'Variable Value',
-  'instructions': `Now we have a variable called \`firstName\` that has a string stored inside of it. Output it to see what it looks like.
+  'id': 7,
+  'title': 'Combining Numbers',
+  'instructions': `We can also do math in Javascript! Combine any two numbers likes so:
 
-\`firstName;\`
-`,
+\`14 + 28;\``,
   'tests': tests,
   'failures': failures,
-  'answer': "test;"
+  'answer': "14 + 28;"
 };

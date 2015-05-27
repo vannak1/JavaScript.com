@@ -18,7 +18,12 @@ block content
             include /views/partials/_flash
 
             .bdrbl.mbl.pbl
-              h1.h.h--2 News From the Community
+              h1.h.h--2
+                | News From the 
+                span.dib Community
+                  a.mlxs.tch(href="/feed/rss")
+                    - iconPartial = { name: 'rss', size: 20 }
+                    include /views/partials/_icon
 
               .g
                 .g-b.g-b--l--3of4
@@ -37,7 +42,6 @@ block content
             ul.list.list--l.list--divided.list--divided--l
 
               - for story in flow_collection
-                - storyDatetime = moment(story.created_at)
 
                 li.list-item
                   article.bucket
@@ -50,7 +54,7 @@ block content
                         | via 
                         span.twsb= story.name
                         |  | 
-                        time.tsi(datetime=storyDatetime.format())= storyDatetime.format('dddd')
+                        time.tsi= story.date
                       p.mbf= story.body
 
         .g-b.g-b--m--2of5.sector.sector--b

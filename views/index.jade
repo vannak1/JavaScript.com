@@ -4,18 +4,16 @@ block content
   include /views/partials/_flash
 
   .row.hero.bc-regent
-    include /views/partials/_hero_img
-
     .cell.well.well--s--l
 
-      .mbm.mbxl--m.tac
-        h2.h.h--1.h--light Not sure what JavaScript is?
+      .mbxl.tac
+        h2.h.h--1.h--light.mbs Not exactly sure what JavaScript is?
 
-        p Watch to learn more.
-
-        a.btn.btn--sticker.js-video-trigger(href='#')
-          - iconPartial = { name: 'play', size: 24 }
-          include /views/partials/_icon
+        a.btn.btn--rounded.has-btn-icon.js-video-trigger(href='#')
+          span.btn.btn--sticker.btn-icon
+            - iconPartial = { name: 'play', size: 18 }
+            include /views/partials/_icon
+          span.btn-text Learn More
 
         .video
           video.video-element.js-video-element(controls preload='none')
@@ -23,7 +21,7 @@ block content
             source(src='http://www.viddler.com/file/d/1646e040.webm' type='video/webm')
 
       .g
-        .g-b.g-b--l--1of2.fr
+        .g-b.g-b--center.g-b--l--1of2
 
           include /views/partials/_hero_console
 

@@ -112,7 +112,7 @@ router.
     // TODO: Fetch image and save it to S3
     // req.user['_json']['avatar_url']
     // req.user['_json']['login']
-    res.redirect('/news');
+    res.redirect(req.session.returnTo || '/news');
    }).
   get('/signout', function(req, res){
     req.logout();
@@ -120,10 +120,21 @@ router.
   }).
 
   get('/', function(req, res) {
-    debug('Fetching and listing news');
     Articles.published( function(all) {
       var flow = [], news = [];
+      // TODO: Move date functionality into a serivce. It'll be used practically
+      // everywhere. Oh, and refactor this blasphemy.
+      //
+      // TODO: We shouldn't be needing to use moment in order to make the time
+      // UTC. There's an issue with pg and it's parsing the dates from the db
+      // incorrectly. This is a temporary fix until I can snipe the bug.
       all.map(function(item){
+        item.date = moment.utc(item.published_at).format('LL');
+        if (item.date == moment.utc(Date.now()).format('LL')){
+          item.date = 'Today'
+        }else{
+          item.date = moment(item.date).format('LL');
+        }
         if (item.news){
           news.push(item);
         }else{
@@ -137,6 +148,7 @@ router.
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
     if(!req.isAuthenticated()){
+      req.session.returnTo = '/news' + req.path
       res.redirect('/news/sign_in');
     }else{
       var csrfToken = req.csrfToken();
@@ -148,6 +160,7 @@ router.
   }).
 
   get('/sign_in', function(req, res) {
+    req.session.returnTo = req.session.returnTo || req.headers.referer;
     res.render('news/sign_in');
   }).
 
@@ -203,7 +216,7 @@ router.
     var newFlow = req.body;
     newFlow.userId = req.session.passport.user.userId;
     Articles.createFlow(newFlow, function() {
-      res.redirect('/news');
+      res.redirect('/news/' + newFlow.slug);
     });
   });
 
