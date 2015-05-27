@@ -10,9 +10,10 @@ var routes = require('./routes/index');
 var admin = require('./routes/admin');
 var brand = require('./routes/brand');
 var courses = require('./routes/courses');
-var learn = require('./routes/learn');
 var feed = require('./routes/feed');
+var feedback = require('./routes/feedback');
 var guidelines = require('./routes/guidelines');
+var learn = require('./routes/learn');
 var news = require('./routes/news');
 var notFound = require('./routes/notFound');
 var resources = require('./routes/resources');
@@ -53,6 +54,7 @@ app.use('/brand', brand);
 app.use('/courses', courses)
 app.use('/courses.json', courses);
 app.use('/feed', feed);
+app.use('/feedback', feedback);
 app.use('/guidelines', guidelines)
 app.use('/news', news);
 app.use('/resources', resources)
