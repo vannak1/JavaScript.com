@@ -215,8 +215,8 @@ router.
   post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
     var newFlow = req.body;
     newFlow.userId = req.session.passport.user.userId;
-    Articles.createFlow(newFlow, function() {
-      res.redirect('/news/' + newFlow.slug);
+    Articles.createFlow(newFlow, function(story) {
+      res.redirect('/news/' + story[0].slug);
     });
   });
 

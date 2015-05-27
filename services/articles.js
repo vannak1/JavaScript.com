@@ -52,8 +52,9 @@ var Articles = {
     var userId = newFlow.userId;
     var url = newFlow.url;
 
+    // Returning slug in order to properly redirect after create.
     db.query(
-      "INSERT INTO articles (title, slug, body, url, user_id, news) VALUES ($1, $2, $3, $4, $5, false);",
+      "INSERT INTO articles (title, slug, body, url, user_id, news) VALUES ($1, $2, $3, $4, $5, false) RETURNING slug;",
       [title, slugTitle, body, url, userId],
       cb
     )
