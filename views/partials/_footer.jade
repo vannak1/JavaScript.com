@@ -9,9 +9,9 @@ footer.row.footer(role='contentinfo')
       li.list-item.tci
         a.link.link--inverted(href='/brand') Brand Assets
       li.list-item.tci
-        a.link.link--inverted(href='/brand') Give Feedback
+        a.link.link--inverted(href='#') Give Feedback
       li.list-item.tci
-        a.link.link--inverted(href='/brand') Community Guidelines
+        a.link.link--inverted(href='/guidelines') Community Guidelines
 
     p.footer-copyright &copy; 2015 JavaScript.com; Crafted lovingly in Orlando, Florida.
 
@@ -21,6 +21,6 @@ footer.row.footer(role='contentinfo')
           - iconPartial = { name: 'twitter', size: 24 }
           include /views/partials/_icon
       li.list-item
-        a.link.link--inverted(href='#')
+        a.link.link--inverted(href='/feed/rss')
           - iconPartial = { name: 'rss', size: 16 }
           include /views/partials/_icon
