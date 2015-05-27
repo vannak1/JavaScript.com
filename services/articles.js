@@ -18,6 +18,11 @@ var Articles = {
     db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a,published_at, u.name, u.avatar_url, (SELECT count(*) from comments where article_id = a.id) as comment_count FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
   },
 
+  // Returns all stories that have been approved for RSS feed. Limit: 25
+  rss(cb){
+    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a,published_at FROM articles as a WHERE a.approved = true ORDER BY published_at DESC', [], cb)
+  },
+
   // Returns article based on slug
   findBySlug(slug, cb) {
     db.query('SELECT a.title, a.id, a.slug, a.body, a.url, u.avatar_url, u.name FROM articles a JOIN users u on a.user_id = u.id WHERE a.slug = $1', [slug], cb)
