@@ -1,7 +1,6 @@
 doctype html
-html.layout.js-layout.is-layout-header-fixed(lang='en')
+html.courseLayout.js-courseLayout(lang='en')
 
-  - headPartial = { fixedViewport: true }
   block layout_variables
   include /views/layouts/_head
 
@@ -9,9 +8,23 @@ html.layout.js-layout.is-layout-header-fixed(lang='en')
     .dn
       include /public/images/icons/icons.svg
 
-    include /views/partials/_header
+    header.header.courseLayout-header(role='banner')
+      .row
+        .cell.well.well--s.well--m--m
 
-    main(role='main')
+          .split.split--middle
+            .split-item
+              .split-cell
+                a.dib(href='/')
+                  img.dn--m(src='/images/logo-mark.svg' alt='JavaScript.com')
+                  img.dn.db--m(src='/images/logo.svg' alt='JavaScript.com')
+              nav.split-cell(role='navigation')
+                a.underline.header-link(href='/news') News
+                a.underline.header-link(href='/resources') Resources
+
+      button.courseLayout-header-toggle.js-courseLayout-toggle Toggle Navigation
+
+    main.ptm(role='main')
       block content
 
     script(src='/javascripts/vendor.js')
