@@ -82,10 +82,12 @@
 // in code of where these happen if we need to tweak things.
 .animate--fade.ng-enter,
 .animate--fade.ng-leave
-  transition: 1s linear all
+  // transition: all 1s ease-in-out
 .animate--fade.ng-enter,
 .animate--fade.ng-leave.ng-leave-active
-  opacity: 0
+  display: none
+  // opacity: 0
 .animate--fade.ng-leave,
 .animate--fade.ng-enter.ng-enter-active
-  opacity: 1
+  display: block
+  // opacity: 1
