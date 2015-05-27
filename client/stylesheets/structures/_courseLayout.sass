@@ -7,16 +7,18 @@
 //   Template (Haml)
 // -------------------------------------
 //
-// %html.courseLayout
+// %html.courseLayout(active)
 //
-//   .courseLayout-secondary
-//      // ...
+//   .courseLayout-header
+//     .courseLayout-header-toggle
+//
+//   .courseLayout-main
 //
 // *************************************
 
 .courseLayout
   background-color: $snow
-  height: 100vh
+  min-height: 100vh
   transform: translateY(#{-$site-header-height + ($courseLayout-header-toggle-height / 2)})
   transition: transform $b-transition
 
@@ -45,6 +47,7 @@
 // Toggle
 
 .courseLayout-header-toggle
+  +action
   background-color: $tulip
   border-radius: 100px
   border: 0
