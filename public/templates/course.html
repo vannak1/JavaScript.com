@@ -26,23 +26,19 @@
             <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge' ng-if='challenge.active' class='animate--fade'></js-challenge>
 
             <div ng-if='ctrl.onWrapupPage()' class='animate--fade'>
-              <div class='row'>
-                <div class='cell cell--s well well--l well--m--xl'>
-                  <div class="g">
-                    <div class="g-b g-b--m--2of5 mbl">
-                      <img class='thumb mhc' src='http://placehold.it/220x220' />
-                    </div>
+              <div class="g">
+                <div class="g-b g-b--m--2of5 mbl">
+                  <img src='/images/badge-try-javascript.svg' width='220' height='220' class='thumb mhc' alt='Try JavaScript Badge'/>
+                </div>
 
-                    <div class='g-b g-b--m--3of5'>
-                      <h1 class='h h--1'>Congratulations!</h1>
+                <div class='g-b g-b--m--3of5'>
+                  <h1 class='h h--1 h--semibold'>Congratulations!</h1>
 
-                      <p>You completed Try JavaScript and you earned this shiny new badge! Wow, you must be someone super important and awesome. You’re well on your way to becoming a JavaScript master.</p>
-                      <p class="mbl">Sign in or create an account to claim your badge at Code School where you can continue your learning!</p>
+                  <p>You completed Try JavaScript and you earned this shiny new badge! Wow, you must be someone super important and awesome. You’re well on your way to becoming a JavaScript master.</p>
+                  <p class="mbl">Sign in or create an account to claim your badge at Code School where you can continue your learning!</p>
 
-                      <a href='https://www.codeschool.com' class='btn db dib--s mbs mrs mrs--s'>Claim Your Badge</a>
-                      <a href='/resources' class='btn db dib--s btn--a--bordered'>Nope, I’m Good</a>
-                    </div>
-                  </div>
+                  <a href='https://www.codeschool.com/achievements/512/award' class='btn db dib--s mbs mrs mrs--s'>Claim Your Badge</a>
+                  <a href='/resources' class='btn db dib--s btn--a--bordered'>Nope, I’m Good</a>
                 </div>
               </div>
             </div>
