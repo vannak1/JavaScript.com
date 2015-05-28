@@ -13,8 +13,6 @@ npm install -g gulp
 npm install
 ```
 
-If you set the `BOWER` ENV the setup script will download the bower components and compile cs_console (requires ruby!)
-
 This app authenticates with GitHub, so you'll need to create a GitHub Application and set ENVs for `GH_CLIENT_ID` and `GH_CLIENT_SECRET`.
 
 ## Running
