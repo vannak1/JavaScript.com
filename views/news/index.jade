@@ -49,12 +49,20 @@ block content
                       img.thumb(src=story.avatar_url width='50')
                     .bucket-content
                       h2.h.h--3
-                        a.tct.twb(href='/news/' + story.slug)= story.title
+                        a.tct.twb.js-toggle(href=story.url)= story.title
                       p.tcs.tfh
                         | via 
                         span.twsb= story.name
                         |  | 
                         time.tsi= story.date
+                        |  | 
+                        - className = story.comment_count > 2 ? 'link link--highlighted' : ''
+                        a(href='/news/' + story.slug + '#comments' class=className)
+                          | View Discussion 
+                          if story.comment_count > 0
+                            | (
+                            = story.comment_count
+                            | )
                       p.mbf= story.body
 
         .g-b.g-b--m--2of5.sector.sector--b
