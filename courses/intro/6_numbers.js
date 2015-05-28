@@ -61,7 +61,7 @@ module.exports = {
 
 So far we have only worked with one value type (strings), but Javascript has many! Another example of a value type is number. Pass the alert method any number of your choosing. Just like a method, a number does not get quotations.
 
-\`alert(42);\``,
+<code class=\"inlineCode inlineCode--btn\">alert(42);</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "alert(42);"
