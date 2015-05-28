@@ -18,7 +18,12 @@ block content
             include /views/partials/_flash
 
             .bdrbl.mbl.pbl
-              h1.h.h--2 News From the Community
+              h1.h.h--2
+                | News From the
+                span.dib Community
+                  a.mlxs.tch(href="/feed/rss")
+                    - iconPartial = { name: 'rss', size: 20 }
+                    include /views/partials/_icon
 
               .g
                 .g-b.g-b--l--3of4
@@ -34,29 +39,34 @@ block content
 
                   a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
-            .js-loadFeed
+          .js-loadFeed
+            ul.list.list--l.list--divided.list--divided--l.mbl.js-loadFeed-list
 
-              ul.list.list--l.list--divided.list--divided--l.mbl.js-loadFeed-list
+              - for story in flow_collection
 
-                - for story in flow_collection
-                  - storyDatetime = moment(story.created_at)
-
-                  li.list-item
-                    article.bucket
-                      .bucket-media
-                        img.thumb(src=story.avatar_url width=50)
-                      .bucket-content
-                        h2.h.h--3
-                          a.tct.twb(href='/news/' + story.slug)= story.title
-                        p.tcs.tfh
-                          | via
-                          span.twsb= story.name
-                          |  |
-                          time.tsi(datetime=storyDatetime.format())= storyDatetime.format('dddd')
-                        p.mbf= story.body
-
-              .tac
-                button.btn.js-loadFeed-btn Load More
+                li.list-item
+                  article.bucket
+                    .bucket-media
+                      img.thumb(src=story.avatar_url width='50')
+                    .bucket-content
+                      h2.h.h--3
+                        a.tct.twb.js-toggle(href=story.url)= story.title
+                      p.tcs.tfh
+                        | via
+                        span.twsb= story.name
+                        |  |
+                        time.tsi= story.date
+                        |  |
+                        - className = story.comment_count > 2 ? 'link link--highlighted' : ''
+                        a(href='/news/' + story.slug + '#comments' class=className)
+                          | View Discussion
+                          if story.comment_count > 0
+                            | (
+                            = story.comment_count
+                            | )
+                      p.mbf= story.body
+            .tac
+              button.btn.js-loadFeed-btn Load More
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl

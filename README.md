@@ -13,8 +13,6 @@ npm install -g gulp
 npm install
 ```
 
-If you set the `BOWER` ENV the setup script will download the bower components and compile cs_console (requires ruby!)
-
 This app authenticates with GitHub, so you'll need to create a GitHub Application and set ENVs for `GH_CLIENT_ID` and `GH_CLIENT_SECRET`.
 
 ## Running
@@ -27,6 +25,19 @@ $ GH_CLIENT_ID=myid GH_CLIENT_SECRET=mysecret npm start
 
 For debugging all the things, run `DEBUG=* npm start`.
 
+## Database
+Whenever you do the initial `npm install` a db called `javascriptcom` is created
+for you. In the event that you need to drop that database and recreate it, don't
+forget to either run `npm install` again or `createdb javascriptcom`
+
+NPM will run new migrations whenever you `npm start`. In order for it to work,
+you'll need to set the `DATABASE_URL` ENV to pg://localhost:5432/javascriptcom.
+Migrations are already run for you after the initial `npm install`
+
+To create new migrations see the node-pg-migraton
+[documentation](https://github.com/theoephraim/node-pg-migrate).
+
+After setting your database up run `gulp seeds` to seed your database.
 ## Development
 
 If you add any runtime dependencies, you must run `npm shrinkwrap` and

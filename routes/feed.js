@@ -7,12 +7,12 @@ var Articles = require('./../services/articles');
 
 router.get('/rss', function(req, res, next) {
   var options = {
-      title: 'feed title',
-      description: 'feed description',
-      link: 'http://example.org/rss.xml',
+      title: 'JavaScript.com',
+      description: 'Learn JavaScript and stay connected with the latest news created and curated by the JavaScript community.',
+      link: 'http://javascript.com/rss',
       language: 'en'
   };
-  Articles.published(25, function(news) {
+  Articles.rss(function(news) {
     news.map(function(story){
       if (story.new){
         story.link = story.url

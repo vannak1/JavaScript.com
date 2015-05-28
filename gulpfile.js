@@ -21,6 +21,8 @@ var svgmin       = require('gulp-svgmin');
 var svgstore     = require('gulp-svgstore');
 var _            = require('lodash');
 var run          = require('run-sequence');
+var Chance       = require('chance');
+var db           = require('./services/db');
 
 // -------------------------------------
 //   Variables
@@ -47,7 +49,7 @@ var options = {
 
   js: {
     files: [
-      'client/javascripts/application.js', 
+      'client/javascripts/application.js',
       'client/javascripts/**/*.js'
     ],
     vendorFiles: ['bower_components/jquery/dist/jquery.js'],
@@ -55,6 +57,7 @@ var options = {
       'bower_components/angular/angular.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-animate/angular-animate.js',
+      'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/lodash/lodash.js',
       'bower_components/marked/marked.min.js',
       'bower_components/codemirror/lib/codemirror.js',
@@ -225,4 +228,56 @@ gulp.task('icons', function() {
     .pipe(svgmin())
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(gulp.dest(options.icons.destDir));
+});
+
+// -------------------------------------
+//   Task: Seeds
+// -------------------------------------
+gulp.task('seeds', function() {
+  var chance = new Chance();
+  for(i = 0; i < 50; i++) {
+    var title = chance.sentence({words: 5});
+    var slug = title.toLowerCase().replace(/[^a-zA-Z0-9\s]/g,"").replace(/\s/g,'-');
+    var body = chance.paragraph();
+    var url = chance.url();
+    var published_at = chance.date({year: 2014});
+    db.query('INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, $5, true, true);',
+      [title, slug, body, url, published_at],
+      function(){}
+    );
+  }
+  for (i = 0; i < 7; i++) {
+    var githubId = chance.integer({min: 1, max: 6000});
+    var email = chance.email();
+    var name = chance.name();
+    var avatarUrl = 'https://avatars.githubusercontent.com/u/' + chance.pick([6965062,3412,10722,6797535,2618,30208]) + '?v=3';
+    db.query('INSERT INTO users (github_id, email, name, avatar_url) VALUES ($1, $2, $3, $4);',
+      [githubId, email, name, avatarUrl],
+      function(){}
+    );
+  }
+
+  for(i = 0; i < 50; i++) {
+    var title = chance.sentence({words: 5});
+    var slug = title.toLowerCase().replace(/[^a-zA-Z0-9\s]/g,"").replace(/\s/g,'-');
+    var body = chance.paragraph();
+    var url = chance.url();
+    var published_at = chance.date({year: 2014});
+    var userId = chance.d6();
+    db.query('INSERT INTO articles (user_id, title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, $5, $6, false, true);',
+      [userId, title, slug, body, url, published_at],
+      function(){}
+    );
+  }
+
+   for(i = 0; i < 50; i++) {
+    var userId = chance.d6();
+    var body = chance.paragraph();
+    var articleId = chance.integer({min: 51, max: 100});
+    db.query('INSERT INTO comments (user_id, approved, body, article_id) VALUES ($1, true, $2, $3);',
+      [userId, body, articleId],
+      function(){}
+    );
+  }
+
 });

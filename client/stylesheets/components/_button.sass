@@ -52,6 +52,11 @@
     display: inline-block
     width: auto
 
+// Rounded
+
+.btn--rounded
+  border-radius: 40px
+
 // ----- Hierarchy ----- //
 
 .btn--a--bordered
@@ -79,7 +84,7 @@
 // ----- Sticker ----- //
 
 .btn--sticker
-  $size: 40px
+  $size: 24px
   border-radius: 50%
   height: $size
   line-height: $size
@@ -97,6 +102,8 @@
 //   Context
 // -------------------------------------
 
+// ----- Button ----- //
+
 .has-btn
 
   > .btn
@@ -104,3 +111,28 @@
 
     &:last-child
       margin-right: 0
+
+// ----- Icon ----- //
+
+.has-btn-icon
+  position: relative
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Icon ----- //
+
+.btn-icon
+  background: shade($btn-background, 25%)
+  left: $b-space-s
+  margin-right: $b-space-l
+  position: absolute
+
+  +state
+    background: shade($btn-background, 25%)
+
+// ----- Text ----- //
+
+.btn-text
+  padding-left: $b-space

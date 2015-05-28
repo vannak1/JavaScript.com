@@ -16,10 +16,15 @@ var Articles = {
   // in DESC published_date order.
   paginated(offset, cb){
     db.query(
-      'SELECT a.news, a.url, a.slug, a.title, a.id, a.body, u.name, u.avatar_url FROM articles as a LEFT JOIN users as u on a.user_id = u.id where a.id IN (select id from articles where news = true limit 10 offset $1) OR a.id IN (select id from articles where news = false limit 10 offset $1)',
+      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = true ORDER BY published_at DESC LIMIT 10 OFFSET $1) OR a.id IN (SELECT id FROM articles WHERE news = false ORDER BY published_at DESC LIMIT 10 OFFSET $1);',
       [offset],
       cb
     )
+  },
+
+  // Returns all stories that have been approved for RSS feed. Limit: 25
+  rss(cb){
+    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a,published_at FROM articles as a WHERE a.approved = true ORDER BY published_at DESC', [], cb)
   },
 
   // Returns article based on slug
@@ -29,7 +34,7 @@ var Articles = {
 
   // Approve a Flow story.
   approve(id, cb) {
-    db.query('UPDATE articles SET approved = true, published_at = current_timestamp WHERE id = $1;', [id], cb)
+    db.query("UPDATE articles SET approved = true, published_at = NOW() WHERE id = $1;", [id], cb)
   },
 
   // Denies a Flow story.
@@ -42,7 +47,7 @@ var Articles = {
     var slug = slugGenerator.createSlug(newStory.title);
 
     db.query(
-      "INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, current_timestamp, true, true);",
+      "INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, now(), true, true);",
       [newStory.title, slug, newStory.summary, newStory.url],
       cb
     )
@@ -56,8 +61,9 @@ var Articles = {
     var userId = newFlow.userId;
     var url = newFlow.url;
 
+    // Returning slug in order to properly redirect after create.
     db.query(
-      "INSERT INTO articles (title, slug, body, url, user_id, news) VALUES ($1, $2, $3, $4, $5, false);",
+      "INSERT INTO articles (title, slug, body, url, user_id, news) VALUES ($1, $2, $3, $4, $5, false) RETURNING slug;",
       [title, slugTitle, body, url, userId],
       cb
     )

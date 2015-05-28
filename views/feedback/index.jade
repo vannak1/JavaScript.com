@@ -1,0 +1,28 @@
+block current_nav
+  - current_page = 'Feedback'
+
+block layout_variables
+  - pageTitle = 'Feedback'
+
+extends /views/layouts/layout
+
+block content
+
+  section.row
+    .cell.cell--s.well.well--l.well--m--xl
+
+      h1.mbm Feedback
+
+      form.form.js-feedback(id='form70' name='form70' accept-charset='UTF-8' autocomplete='off' enctype='multipart/form-data' method='post' action='https://codeschool.wufoo.com/forms/p14727kn1c9coto/#public')
+        fieldset.form-field
+          label.form-label(for='comment') Give us your feedback to help us improve the site.
+          textarea.form-input.js-feedback-comment(name='Field1' id='Field1' rows='10' required='true')
+
+        input.btn(id='saveForm' name='saveForm' type='submit' value='Submit')
+
+        .dn
+          input(type='hidden' id='idstamp' name='idstamp' value='mAsIlUCmWuyO8I0NS7YobFDrEoc8cCW1OsaZoNtqhvI=')
+          textarea(name='comment' id='comment' rows='1' cols='1')
+
+block inline_javascript
+  script(src='/javascripts/wufoo.js')
