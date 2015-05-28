@@ -15,7 +15,7 @@ var Articles = {
   // Returns all stories that have been approved along with user information
   // in DESC published_date order.
   published(cb){
-    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a,published_at, u.name, u.avatar_url, (SELECT count(*) from comments where article_id = a.id) as commentCount FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
+    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT count(*) from comments where article_id = a.id) as comment_count FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
   },
 
   // Returns all stories that have been approved for RSS feed. Limit: 25
