@@ -12,10 +12,14 @@ var Articles = {
     db.query('SELECT * FROM articles where approved IS NULL ORDER BY created_at ASC', [], cb)
   },
 
-  // Returns all stories that have been approved along with user information
+  // Returns 10 Flow and 10 News articles that are published along with user information
   // in DESC published_date order.
-  published(cb){
-    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT count(*) from comments where article_id = a.id) as comment_count FROM articles as a LEFT JOIN users as u ON a.user_id = u.id WHERE a.approved = true ORDER BY published_at DESC', [], cb)
+  paginated(offset, cb){
+    db.query(
+      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = true ORDER BY published_at DESC LIMIT 10 OFFSET $1) OR a.id IN (SELECT id FROM articles WHERE news = false ORDER BY published_at DESC LIMIT 10 OFFSET $1);',
+      [offset],
+      cb
+    )
   },
 
   // Returns all stories that have been approved for RSS feed. Limit: 25
