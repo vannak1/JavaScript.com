@@ -12,6 +12,8 @@ block content
   section.row
     .cell.cell--s.well.well--l.well--m--xl
 
+      include /views/partials/_flash
+
       .split.split--middle.mbl
 
         .split-cell
@@ -63,3 +65,12 @@ block content
         .mtl
           input(type='hidden' name='_csrf' value=token)
           input.btn.btn--a.form-btn(type='submit' value='Submit')
+
+block inline_javascript
+  script.
+    jQuery(function($) {
+      JS.Services.expel({
+        $toggle     : $('.js-alert-close'),
+        elementNode : '.js-alert'
+      });
+    });

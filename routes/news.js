@@ -9,6 +9,7 @@ var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
 var moment = require('moment');
 var pluralize = require('pluralize');
+var expressValidator = require('express-validator');
 
 
 var csrfProtection = csrf();
@@ -218,12 +219,29 @@ router.
     }
   }).
 
-  post('/', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
-    var newFlow = req.body;
-    newFlow.userId = req.session.passport.user.userId;
-    Articles.createFlow(newFlow, function(story) {
-      res.redirect('/news/' + story[0].slug);
-    });
+  post('/', cookieParser, ensureAuthenticated, parseForm, expressValidator(), csrfProtection, function(req, res) {
+
+    // Validations
+    req.check('title','Title is required' ).notEmpty();
+    req.check('url', 'URL is required').notEmpty();
+    req.check('url', 'URL is not valid').isURL();
+    req.check('body', 'Content is required').notEmpty();
+    req.check('body', 'Content must be between 100 and 300 characters').len(100,300);
+
+    var errors = req.validationErrors();
+
+    if (errors) {
+      errors.map(function(error) {
+        res.flash('error', error.msg);
+      });
+      res.redirect('/news/new');
+    }else{
+      var newFlow = req.body;
+      newFlow.userId = req.session.passport.user.userId;
+      Articles.createFlow(newFlow, function(story) {
+        res.redirect('/news/' + story[0].slug);
+      });
+    }
   });
 
 module.exports = router;
