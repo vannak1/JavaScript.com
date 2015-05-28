@@ -54,23 +54,6 @@ jQuery(function($) {
     }
   });
 
-  // ----- Vendor ----- //
-
-  // Bootstrap
-
-  $('[data-tooltip]').tooltip({
-    animation  : false,
-    container  : 'body',
-    placement  : 'bottom',
-    title      : function() {
-      return $(this).data('tooltip');
-    },
-    viewport   : {
-      selector : 'body',
-      padding  : 10
-    }
-  });
-
 });
 
 // -------------------------------------

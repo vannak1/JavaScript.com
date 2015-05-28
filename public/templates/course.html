@@ -6,21 +6,18 @@
 
           <nav>
             <ol class='completionList mbm'>
-              <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }" class='completionList-item'>
-                <!--
-                <a ng-href='#{{challenge.id}}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='completionList-item-link'>{{ ::challenge.title }}</a>
-                <span ng-if='!challenge.started'>{{ ::challenge.title }}</span>
-                -->
+              <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }" class='completionList-item' data-tooltip="{{ ::challenge.title }}">
                 <svg class='icon completionList-item-icon' width='10' height='8'>
                   <use xlink:href='#icon-check'/>
                 </svg>
+                <a ng-href='#{{ challenge.id }}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='completionList-item-link'></a>
               </li>
 
-              <li ng-class="{ 'is-active': ctrl.onWrapupPage(), 'is-completed': ctrl.challengeProgress.courseCompleted }" class='completionList-item'>
-                <!--
-                <a ng-href='#wrapup' ng-if='ctrl.challengeProgress.courseCompleted' ng-click='ctrl.activateChallenge(null)' class='completionList-item-link'>Wrap Up</a>
-                <span>Wrap Up</span>
-                -->
+              <li ng-class="{ 'is-active': ctrl.onWrapupPage(), 'is-completed': ctrl.challengeProgress.courseCompleted }" class='completionList-item' data-tooltip='Wrapup'>
+                <svg class='icon completionList-item-icon' width='10' height='8'>
+                  <use xlink:href='#icon-check'/>
+                </svg>
+                <a ng-href='#wrapup' ng-if='ctrl.challengeProgress.courseCompleted' ng-click='ctrl.activateChallenge(null)' class='completionList-item-link'></a>
               </li>
             </ol>
           </nav>
