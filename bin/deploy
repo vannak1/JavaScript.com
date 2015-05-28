@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# This is a script used to deploy the app. After the git repository is updated, this script is
+# executed in order to complete the deployment. Feel free to customize with wild abandon. This
+# script is executed as root. Thus, it is critically important to sudo untrusted commands. 
+# Anything from the app should be considered untrusted.
+
+# If any simple command fails, halt the script.
+set -e
+
+# Environment variables available to you:
+# BASE_DIR  - base location for the application (usually /srv/app_name)
+# GIT_DIR   - location of the app's main git dir
+# RAILS_ENV - the environment (production, staging, etc.)
+# APP_USER  - the user (and group) for the application
+
+TIME=`date +%s`
+RELEASE_DIR=$BASE_DIR/releases/$TIME
+CURRENT_DIR=$BASE_DIR/current
+
+# We start by copying this directory into a releases directory.
+cp -R $GIT_DIR $RELEASE_DIR
+
+# Now symlink configuration
+ln -s /srv/javascriptcom/shared/config/* $RELEASE_DIR/config/
+
+# Make the tmp dir
+mkdir -p $RELEASE_DIR/tmp
+
+# Make the app own it
+chown -R $APP_USER:$APP_USER $RELEASE_DIR
+
+# Run whatever rake tasks this app requires. Generally tasks should follow the the following
+# pattern: 'sudo -i -u $APP_USER RAILS_ENV=$RAILS_ENV the_command'. Commands should only be
+# executed outside sudo for very, very good reason.
+
+su $APP_USER -l -c '[ -s "/usr/local/nvm/nvm.sh" ] && . "/usr/local/nvm/nvm.sh" ; cd $RELEASE_DIR ; npm install'
+su $APP_USER -l -c '[ -s "/usr/local/nvm/nvm.sh" ] && . "/usr/local/nvm/nvm.sh" ; cd $RELEASE_DIR ; mkdir tmp"'
+
+# Symlink the app
+rm -f $CURRENT_DIR
+ln -sf $RELEASE_DIR $CURRENT_DIR
+
+# Restart the app
+touch $RELEASE_DIR/tmp/restart.txt
