@@ -13,10 +13,6 @@
 //
 // *************************************
 
-$completionList-item-size: 22px
-$completionList-item-gutter: 30px
-$completionList-item-borderWidth: 4px
-
 .completionList
   +list-reset()
   @extend .group
@@ -49,6 +45,12 @@ $completionList-item-borderWidth: 4px
     top: calc(50% - #{$completionList-item-borderWidth / 2})
     width: $completionList-item-gutter
 
+    +respond-to($g-s)
+      width: $completionList-item-gutter-l
+
+    +respond-to($g-m)
+      width: $completionList-item-gutter-xl
+
   &:first-child
 
     &::before
@@ -56,6 +58,12 @@ $completionList-item-borderWidth: 4px
 
   &:last-child
     margin-right: 0
+
+  +respond-to($g-s)
+    margin-right: $completionList-item-gutter-l
+
+  +respond-to($g-m)
+    margin-right: $completionList-item-gutter-xl
 
 // States
 
