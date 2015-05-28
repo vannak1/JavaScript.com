@@ -553,6 +553,18 @@
         }
       }
     },
+    "express-validator": {
+      "version": "2.10.0",
+      "from": "express-validator@*",
+      "resolved": "https://registry.npmjs.org/express-validator/-/express-validator-2.10.0.tgz",
+      "dependencies": {
+        "validator": {
+          "version": "3.39.0",
+          "from": "validator@3.39.0",
+          "resolved": "https://registry.npmjs.org/validator/-/validator-3.39.0.tgz"
+        }
+      }
+    },
     "feedparser": {
       "version": "0.19.2",
       "from": "https://registry.npmjs.org/feedparser/-/feedparser-0.19.2.tgz",
