@@ -55,7 +55,7 @@ JavaScript also has built-in features, called *methods*. In order to call a meth
 
 Don't be afraid when a box pops up, that's your code working, {{username}}!
 
-\`alert();\``,
+<code class=\"inlineCode inlineCode--btn\">alert();</code>`,
   'hints': [
     'Call the alert method by typing the following: `alert();`'
   ],

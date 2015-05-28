@@ -76,7 +76,7 @@ module.exports = {
   'title': 'Variables',
   'instructions': `Often when programming we want to store values in containers so we can use them later; these are called variables. Let’s store your name in a variable, or ‘var’ for short, by typing the following:
 
-\`var firstName = "{{username}}";\``,
+<code class=\"inlineCode inlineCode--btn\">var firstName = "{{username}}";</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "var test = 'dan';"

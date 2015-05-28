@@ -60,7 +60,7 @@ Such math skills, good job ! Javascript not only can combine numbers, but string
 
 Create an alert which combines both your name and a string, like below.
 
-\`alert(firstName + " is awesome!");\``,
+<code class=\"inlineCode inlineCode--btn\">alert(firstName + " is awesome!");</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "alert(firstName + \" is awesome!\");"
