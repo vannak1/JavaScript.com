@@ -25,6 +25,9 @@
   +respond-to($g-m)
     transform: translateY(#{-$site-header-height-l + ($courseLayout-header-toggle-height / 2)})
 
+  +respond-to($courseLayout-viewportHeight-s, min-height)
+    transform: none
+
 // -------------------------------------
 //   States
 // -------------------------------------
@@ -33,6 +36,9 @@
 
 .courseLayout.is-active
   transform: none
+
+  .courseLayout-header-content
+    opacity: 1
 
 // -------------------------------------
 //   Scaffolding
@@ -44,7 +50,18 @@
   position: relative
   z-index: 1
 
-// Toggle
+// Scaffolding
+
+// Scaffolding: Content
+
+.courseLayout-header-content
+  opacity: 0
+  transition: opacity $b-transition
+
+  +respond-to($courseLayout-viewportHeight-s, min-height)
+    opacity: 1
+
+// Scaffolding: Toggle
 
 .courseLayout-header-toggle
   +action
@@ -52,7 +69,6 @@
   border-radius: 100px
   border: 0
   color: $c-text-invert
-  display: block
   font-size: 12px
   height: $courseLayout-header-toggle-height
   left: 50%
@@ -69,7 +85,11 @@
   +state
     transform: translate(-50%) scale(1.1)
 
+  +respond-to($courseLayout-viewportHeight-s, min-height)
+    display: none
+
 // ----- Main ----- //
 
 .courseLayout-main
   background-color: $white
+  padding-top: $b-space
