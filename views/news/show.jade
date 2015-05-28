@@ -31,20 +31,27 @@ block content
         a.btn.mbxl(href=flow.url) Visit Site
 
       aside#comments(role='complementary')
-        h2.h.h--3.tcs.mbm= pluralize('Comment', comments.length, true)
+        if comments.length > 0
 
-        ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
-          - for comment in comments
-            li.list-item(data-comment=comment.id)
-              .bucket
-                .bucket-media
-                  img.thumb(src=comment.avatar_url width=50)
-                .bucket-content
-                  p.tfh
-                    span.mrs.twb #{comment.name}
-                    span.tcs.tsi #{comment.created_at}
-                  p.mbf.
-                    #{comment.body}
+          h2.h.h--3.tcs.mbm= pluralize('Comment', comments.length, true)
+
+          ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
+            - for comment in comments
+              li.list-item(data-comment=comment.id)
+                .bucket
+                  .bucket-media
+                    img.thumb(src=comment.avatar_url width=50)
+                  .bucket-content
+                    p.tfh
+                      span.mrs.twb #{comment.name}
+                      span.tcs.tsi #{comment.created_at}
+                    p.mbf.
+                      #{comment.body}
+
+        else
+
+          .mbxl
+            p.tcs.tsi There are no comments on this story. Add yours below!
 
         h2.h.h--3.tcs.mbm Post a New Comment
 
