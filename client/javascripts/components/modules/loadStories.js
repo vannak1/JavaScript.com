@@ -44,7 +44,7 @@ JS.Modules.LoadStories = (function() {
         '<li class="list-item">' +
           '<article class="bucket">' +
             '<div class="bucket-media">' +
-              '<img src="' + story.avatar_url + '"/>' +
+              '<img class="thumb" src="' + story.avatar_url + '" width="50"/>' +
             '</div>' +
             '<div class="bucket-content">' +
               '<h2 class="h h--3">' +
@@ -68,7 +68,7 @@ JS.Modules.LoadStories = (function() {
   // -------------------------------------
 
   var _getStories = function() {
-      $.get('/news?page=' + _settings.offset, function(data){
+      $.get('/news?page=' + _settings.offset, function(data) {
         _appendStories(data);
         _toggleButton(data);
       });
