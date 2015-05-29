@@ -33,6 +33,7 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
         prompt: '> ',
         syntax: 'javascript',
         autoFocus: true,
+        welcomeMessage: $('<p>Press <code>enter</code> to submit commands</p>')[0],
         commandValidate: command.validate,
         commandHandle: command.handler
       });

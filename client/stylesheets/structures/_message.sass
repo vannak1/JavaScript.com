@@ -18,15 +18,26 @@
   padding: $b-space
 
 // -------------------------------------
+//   Context
+// -------------------------------------
+
+// ----- Solo ----- //
+
+.has-message--solo
+
+  .message:not(:last-child)
+    display: none
+
+// -------------------------------------
 //   Modifiers
 // -------------------------------------
 
 // ----- Error ----- //
 
 .message--error
-  // background: $c-error
+  background: $c-error
 
 // ----- Success ----- //
 
 .message--success
-  // background: $c-success
+  background: $c-success

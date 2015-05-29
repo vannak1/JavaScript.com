@@ -29,6 +29,21 @@
 @function font-size($target, $context: $b-fontSize)
   @return percentage($target / $context)
 
+// ----- Opposite Position ----- //
+// -> Returns the opposite side
+//
+// $side - the side to return the opposite of
+
+@function opposite-position($side)
+  @if $side == 'top'
+    @return 'bottom'
+  @if $side == 'bottom'
+    @return 'top'
+  @if $side == 'left'
+    @return 'right'
+  @if $side == 'right'
+    @return 'left'
+
 // ----- Shade ----- //
 // -> Slightly darken a color
 //    via: http://sass-guidelin.es/#lightening-and-darkening-colors (modified)

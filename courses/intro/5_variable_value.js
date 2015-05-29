@@ -47,8 +47,7 @@ module.exports = {
   'title': 'Variable Value',
   'instructions': `Now we have a variable called \`firstName\` that has a string stored inside of it. Output it to see what it looks like.
 
-\`firstName;\`
-`,
+<code class=\"inlineCode inlineCode--btn\">firstName;</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "test;"

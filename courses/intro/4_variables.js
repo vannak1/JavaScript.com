@@ -58,11 +58,11 @@ failures = {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
   'f_no_var_keyword': {
-    'message': 'Whoops. We did not use the `var` keyword when setting our variable.',
+    'message': 'Whoops. We did not use the `var` keyword when setting the variable.',
     'hint': ""
   },
   'f_name_blank': {
-    'message': 'Almost, but we did not set our name to our variable we created.',
+    'message': 'Almost, but we did not set the name to the variable we created.',
     'hint': ""
   },
   'f_name_not_string': {
@@ -76,7 +76,7 @@ module.exports = {
   'title': 'Variables',
   'instructions': `Often when programming we want to store values in containers so we can use them later; these are called variables. Let’s store your name in a variable, or ‘var’ for short, by typing the following:
 
-\`var firstName = "{{username}}";\``,
+<code class=\"inlineCode inlineCode--btn\">var firstName = "{{username}}";</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "var test = 'dan';"

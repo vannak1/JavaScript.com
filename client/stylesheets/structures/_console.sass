@@ -22,6 +22,7 @@
 
 .console
   background: $console-background
+  border-radius: $b-borderRadius
   box-sizing: border-box
   min-height: 100%
   overflow: auto
@@ -36,27 +37,24 @@
   li
     color: $console-color
 
+  .cs-console-height
+    max-height: $console-maxHeight
+    min-height: $console-minHeight
+
   .CodeMirror
     background: $console-background
     color: $console-color
 
+    code
+      background-color: $console-color
+      border-radius: 4px
+      color: $console-background
+      display: inline-block
+      padding: $b-space-xs 1ch
+
     .CodeMirror-cursor
       border-color: $console-color
       border-width: $console-cursor-size
-
-// -------------------------------------
-//   Modifiers
-// -------------------------------------
-
-// ----- Single ----- //
-
-.console--single
-  border-radius: $b-borderRadius
-  overflow: auto
-
-  .cs-console-height
-    max-height: $console-maxHeight
-    min-height: $console-minHeight
 
 // -------------------------------------
 //   Scaffolding
@@ -73,14 +71,6 @@
   color: $c-subdue
   line-height: 1.5
   margin-top: $b-space-s
-
-  code
-    background-color: $console-color
-    border-radius: $b-borderRadius
-    color: $console-background
-    display: inline-block
-    padding-left: 0.5ch
-    padding-right: 0.5ch
 
 // Error
 
