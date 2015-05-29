@@ -5,7 +5,8 @@ var GithubApi = {
     var options = {
       headers: {
         'User-Agent':    baseURL,
-        'Authorization': 'token ' + token
+        'Authorization': 'token ' + token,
+        'x-oauth-scopes': 'user:email'
       },
       json:    true,
       url:     'https://api.github.com/user/emails'
@@ -13,7 +14,6 @@ var GithubApi = {
 
     // get emails using oauth token
     request(options, function(error, response, body) {
-
       var emails = body.filter(function(email) {
         return (email.verified && email.primary);
         return email.verified;
