@@ -1,32 +1,22 @@
 var mandrill = require('node-mandrill')(process.env.MANDRILL_API);
-var mailer = {
-  postAccepted() {
+// TODO: DRY it
+var Mailer = {
+  postAccepted(url, userEmail) {
     mandrill('/messages/send-template', {
-      template_name: 'post-approved',
-      template_content: [
-        {
-          // Not completely sure what Mandril wants here. 
-          name: "",
-          // Not completely sure what Mandril wants here. 
-          content: ""
-        }
-      ],
+      template_name: 'notification-approved',
+      template_content: [], // required
       message: {
-        to: [{email: 'joel@codeschool.com', name: 'Joel Taylor'}],
-        from_email: 'javascript@codeschool.com',
-        subject: "add-a-subject"
-        text: "Hello, I sent this message using mandrill.",
-        merge_vars: [
-          {
-            rcpt: "recipient email",
-            vars: [
-              {
-                something: "the value",
-                again: "more value"
-              }
-            ]
-          }
-        ]
+        to: [{email: userEmail}],
+        from_email: 'support@javascript.com',
+        from_name: 'Javascript',
+        subject: "add-a-subject",
+        merge_vars: [{
+          rcpt: userEmail,
+          vars: [{
+                  name: "ARTICLE_URL",
+                  content: url
+                }]
+        }]
       }
     }, function(error, response)
     {
@@ -37,29 +27,22 @@ var mailer = {
       else console.log(response);
     });
   },
-  postDenied() {
+  postDenied(url, userEmail) {
     mandrill('/messages/send', {
-      template_name: 'post-denied',
-      template_content: [
-        {
-          // Not completely sure what Mandril wants here. 
-          name: "",
-          // Not completely sure what Mandril wants here. 
-          content: ""
-        }
-      ],
+      template_name: 'notification-unapproved',
+      template_content: [ ],
       message: {
-        to: [{email: 'joel@codeschool.com', name: 'Joel Taylor'}],
-        from_email: 'javascript@codeschool.com',
-        subject: "add-a-subject"
-        text: "Hello, I sent this message using mandrill.",
+        to: [{email: userEmail}],
+        from_email: 'support@javascript.com',
+        from_name: 'Javascript',
+        subject: "add-a-subject",
         merge_vars: [
           {
-            rcpt: "recipient email",
+            rcpt: userEmail,
             vars: [
               {
-                something: "the value",
-                again: "more value"
+                name: "ARTICLE_URL",
+                content: url
               }
             ]
           }
