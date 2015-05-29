@@ -9,7 +9,7 @@ var Mailer = {
         to: [{email: userEmail}],
         from_email: 'support@javascript.com',
         from_name: 'Javascript',
-        subject: "add-a-subject",
+        subject: "Your JavaScript.com story is approved!",
         merge_vars: [{
           rcpt: userEmail,
           vars: [{
@@ -35,7 +35,7 @@ var Mailer = {
         to: [{email: userEmail}],
         from_email: 'support@javascript.com',
         from_name: 'Javascript',
-        subject: "add-a-subject",
+        subject: "Unable to post your JavaScript.com story",
         merge_vars: [
           {
             rcpt: userEmail,
@@ -59,5 +59,4 @@ var Mailer = {
   }
 }
 
-//send an e-mail to jim rubenstein
 module.exports = Mailer;
