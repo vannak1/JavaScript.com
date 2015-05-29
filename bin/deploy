@@ -31,7 +31,7 @@ chown -R $APP_USER:$APP_USER $RELEASE_DIR
 # pattern: 'sudo -i -u $APP_USER RAILS_ENV=$RAILS_ENV the_command'. Commands should only be
 # executed outside sudo for very, very good reason.
 
-su $APP_USER -l -c 'cd $RELEASE_DIR ; npm install'
+su $APP_USER -l -c "cd $RELEASE_DIR ; npm install"
 
 # Symlink the app
 rm -f $CURRENT_DIR
