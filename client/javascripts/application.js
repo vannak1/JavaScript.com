@@ -37,6 +37,7 @@ jQuery(function($) {
 
   JS.Modules.Console.init();
   JS.Modules.Layout.init();
+  JS.Modules.LoadStories.init();
   JS.Modules.Video.init();
 
   JS.Modules.Counter.init({

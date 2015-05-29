@@ -19,7 +19,7 @@ block content
 
             .bdrbl.mbl.pbl
               h1.h.h--2
-                | News From the 
+                | News From the
                 span.dib Community
                   a.mlxs.tch(href="/feed/rss")
                     - iconPartial = { name: 'rss', size: 20 }
@@ -29,8 +29,8 @@ block content
                 .g-b.g-b--l--3of4
 
                   p.mbf--l.ptxs--l.tcs.tss
-                    | A curated list of news and stories submitted from the 
-                    | JavaScript.com community. To learn more about how you 
+                    | A curated list of news and stories submitted from the
+                    | JavaScript.com community. To learn more about how you
                     | can contribute, visit our 
                     a(href='/guidelines') Contribution Guidelines
                     | .
@@ -39,7 +39,8 @@ block content
 
                   a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
-            ul.list.list--l.list--divided.list--divided--l
+          .js-loadFeed
+            ul.list.list--l.list--divided.list--divided--l.mbl.js-loadFeed-list
 
               - for story in flow_collection
 
@@ -64,6 +65,8 @@ block content
                             = story.comment_count
                             | )
                       p.mbf= story.body
+            .mbxl--m.tac
+              button.btn.js-loadFeed-btn Load More
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
