@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET /brand page */
+/* GET /assets page */
 router.get('/', function(req, res) {
-  res.render('brand/index');
+  res.render('assets/index');
 });
 
 module.exports = router;

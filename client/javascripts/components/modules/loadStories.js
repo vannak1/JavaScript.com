@@ -48,11 +48,12 @@ JS.Modules.LoadStories = (function() {
             '</div>' +
             '<div class="bucket-content">' +
               '<h2 class="h h--3">' +
-                '<a class="tct twb" href="/news/' + 'TODO: Add path' + '">' + story.title + '</a>' +
+                '<a class="tct twb" href="' + story.url  + '">' + story.title + '</a>' +
               '</h2>' +
               '<p class="tcs tfh">' +
                 'via ' + '<span class="twsb">' + story.name + '</span>' +
-                ' | ' + '<time class="tsi">' + 'TODO: Add date' + '</time>' +
+                ' | ' + '<time class="tsi">' + story.date + '</time>' +
+                ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
               '</p>' +
               '<p class="tcs tfh">' + story.body + '</p>' +
             '</div>' +
@@ -74,6 +75,34 @@ JS.Modules.LoadStories = (function() {
       });
 
       _settings.offset += _settings.increment;
+  };
+
+  // -------------------------------------
+  //   Comment Class
+  // -------------------------------------
+  //
+  // @param count { integer }
+  //
+  // -------------------------------------
+
+  var commentClass = function(count) {
+    return count > 2 ? 'link link--highlighted' : '';
+  };
+
+  // -------------------------------------
+  //   Comment Number
+  // -------------------------------------
+  //
+  // @param count { integer }
+  //
+  // -------------------------------------
+
+  var commentNumber = function(count) {
+    if (count > 0) {
+      return '(' + count + ')';
+    } else {
+      return '';
+    }
   };
 
   // -------------------------------------
