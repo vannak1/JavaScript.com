@@ -38,7 +38,7 @@ failures = {
     'message': 'Nope. This variable does not have any value assigned to it.',
   },
   'f_not_username': {
-    'message': 'That is not your name. Use the variable that you stored your name in.',
+    'message': 'That is not your name. Make sure to use the variable that you stored your name in.',
   }
 };
 

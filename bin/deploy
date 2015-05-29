@@ -21,6 +21,9 @@ CURRENT_DIR=$BASE_DIR/current
 # We start by copying this directory into a releases directory.
 cp -R $GIT_DIR $RELEASE_DIR
 
+# Symlink node_modules
+ln -s /srv/javascriptcom/shared/node_modules $RELEASE_DIR/node_modules
+
 # Make the tmp dir
 mkdir -p $RELEASE_DIR/tmp
 
