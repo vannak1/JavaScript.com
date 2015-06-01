@@ -6,14 +6,14 @@
 
           <nav>
             <ol class='completionList mbm'>
-              <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }" class='completionList-item' data-tooltip="{{ ::challenge.title }}">
+              <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }" class='completionList-item' tooltip="{{ ::challenge.title }}">
                 <svg class='icon completionList-item-icon' width='10' height='8'>
                   <use xlink:href='#icon-check'/>
                 </svg>
                 <a ng-href='#{{ challenge.id }}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='completionList-item-link'></a>
               </li>
 
-              <li ng-class="{ 'is-active': ctrl.onWrapupPage(), 'is-completed': ctrl.challengeProgress.courseCompleted }" class='completionList-item' data-tooltip='Wrapup'>
+              <li ng-class="{ 'is-active': ctrl.onWrapupPage(), 'is-completed': ctrl.challengeProgress.courseCompleted }" class='completionList-item' tooltip='Wrapup'>
                 <svg class='icon completionList-item-icon' width='10' height='8'>
                   <use xlink:href='#icon-check'/>
                 </svg>
