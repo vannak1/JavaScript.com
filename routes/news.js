@@ -235,7 +235,7 @@ router.
       errors.map(function(error) {
         res.flash('error', error.msg);
       });
-      res.redirect('/news/new');
+      res.status(400).render('news/new', {token: req.csrfToken(), title: req.body.title, url: req.body.url, body: req.body.body});
     }else{
       var newFlow = req.body;
       newFlow.userId = req.session.passport.user.userId;

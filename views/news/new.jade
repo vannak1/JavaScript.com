@@ -33,18 +33,28 @@ block content
         fieldset.form-field
           label
             span.form-label Title
-          input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true')
+          if title
+            input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true' value=title)
+          else
+            input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true')
 
         fieldset.form-field
           label
             span.form-label Link
-          input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true')
+          if url
+            input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true' value=url)
+          else
+            input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true')
 
         fieldset.form-field
           label
             span.form-label Description
 
-          textarea.form-input.form-textarea.js-counter.js-formValidator-input(name='body' rows=8 data-validate='required' required='true')
+          if body
+            textarea.form-input.form-textarea.js-counter.js-formValidator-input(name='body' rows=8 data-validate='required' required='true')
+              =body
+          else
+            textarea.form-input.form-textarea.js-counter.js-formValidator-input(name='body' rows=8 data-validate='required' required='true')
 
           .split
             .split-cell
