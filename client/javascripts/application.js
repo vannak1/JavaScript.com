@@ -36,6 +36,10 @@ jQuery(function($) {
 
   // ----- Components ----- //
 
+  // Classes
+
+  new JS.Classes.FormValidator();
+
   // Modules
 
   JS.Modules.Console.init();
