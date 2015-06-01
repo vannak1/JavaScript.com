@@ -1,17 +1,11 @@
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', 'jsChallengeProgress', function(_, jsCommandFactory, jsChallengeProgress) {
-  return function jsCommand(successCallback, errorCallback, messages) {
+  return function jsCommand(successCallback, errorCallback) {
     var vm = this;
-    vm.messages  = messages;
 
-    function setErrorMessageType(message, fallback) {
-      message = _.isArray(message) ? message[1].content.textContent : message;
-
-      return message.match(/syntax error/i) ? 'error' : 'default';
-    }
-
-    function formatResponse(content, vm, report, type) {
-      vm.messages.push({ value: _.isArray(content) ? content[1].content.textContent : content, type: !type ? setErrorMessageType(content) : type })
-      report({ content: _.isArray(content) ? content[0].content : '' });
+    function jsReportAdapter(content) {
+      if(_.isArray(content)) { return content; }
+      if(_.isObject(content) && content['content']) { return [content]; }
+      return [{ content: content }];
     }
 
     vm.handler = function parseCommand(line, report) {
@@ -20,10 +14,10 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', '
       var challenge = jsChallengeProgress.activeChallenge();
 
       command(challenge, line).then(function(content) {
-        formatResponse(content, vm, report, 'success')
+        report(jsReportAdapter(content));
         successCallback(challenge);
       }, function(content) {
-        formatResponse(content, vm, report)
+        report(jsReportAdapter(content));
         errorCallback(challenge);
       });
     }

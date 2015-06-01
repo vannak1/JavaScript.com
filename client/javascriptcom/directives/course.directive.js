@@ -10,7 +10,6 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
     controller: function jsCourseDirective(jsCourseChallengeResource, jsChallengeProgress) {
       this.challengeProgress = jsChallengeProgress;
       this.challenges        = jsCourseChallengeResource.query({ course: this.course });
-      this.messages = [];
 
       this.challengeProgress.setChallenges(this.challenges);
 
