@@ -45,10 +45,9 @@ block content
                     img.thumb(src=comment.avatar_url width=50)
                   .bucket-content
                     p.tfh
-                      span.mrs.twb #{comment.name}
-                      span.tcs.tsi #{comment.created_at}
-                    p.mbf.
-                      #{comment.body}
+                      span.mrs.twb= comment.name
+                      time.tcs.tsi= moment(comment.created_at).format('LL')
+                    p.mbf= comment.body
 
         else
 
