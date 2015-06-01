@@ -10,18 +10,18 @@
 // -------------------------------------
 
 .bch
-  background: $c-highlight
+  background: $c-highlight !important
 .bci
-  background: $c-background-invert
+  background: $c-background-invert !important
 .bcs
-  background: $c-subdue
+  background: $c-subdue !important
 
 // ----- Palette ----- //
 
 @for $i from 1 through length($tool-background-vars)
 
   .bc-#{nth($tool-background-names, $i)}
-    background-color: nth($tool-background-vars, $i)
+    background-color: nth($tool-background-vars, $i) !important
 
 // -------------------------------------
 //   Border
@@ -30,43 +30,43 @@
 // ----- All ----- //
 
 .bdr
-  border: $b-border
+  border: $b-border !important
 .bdrs
-  border: $b-border-s
+  border: $b-border-s !important
 
 // ----- Sides ----- //
 
 .bdrb
-  border-bottom: $b-border
+  border-bottom: $b-border !important
 .bdrbl
-  border-bottom: $b-border-l
+  border-bottom: $b-border-l !important
 
 // -------------------------------------
 //   Display
 // -------------------------------------
 
 .db
-  display: block
+  display: block !important
 .di
-  display: inline
+  display: inline !important
 .dib
-  display: inline-block
+  display: inline-block !important
 .dn
-  display: none
+  display: none !important
 
 // Responsive
 
 +respond-to($g-s)
 
   .dib--s
-    display: inline-block
+    display: inline-block !important
 
 +respond-to($g-m)
 
   .db--m
-    display: block
+    display: block !important
   .dn--m
-    display: none
+    display: none !important
 
 // -------------------------------------
 //   Margins
@@ -75,132 +75,132 @@
 // ----- All ----- //
 
 .maxs
-  margin: $b-space-xs
+  margin: $b-space-xs !important
 .mas
-  margin: $b-space-s
+  margin: $b-space-s !important
 .mam
-  margin: $b-space
+  margin: $b-space !important
 .mal
-  margin: $b-space-l
+  margin: $b-space-l !important
 .maxl
-  margin: $b-space-xl
+  margin: $b-space-xl !important
 
 // ----- Bottom ----- //
 
 .mbf
-  margin-bottom: 0
+  margin-bottom: 0 !important
 .mbxs
-  margin-bottom: $b-space-xs
+  margin-bottom: $b-space-xs !important
 .mbs
-  margin-bottom: $b-space-s
+  margin-bottom: $b-space-s !important
 .mbm
-  margin-bottom: $b-space
+  margin-bottom: $b-space !important
 .mbl
-  margin-bottom: $b-space-l
+  margin-bottom: $b-space-l !important
 .mbxl
-  margin-bottom: $b-space-xl
+  margin-bottom: $b-space-xl !important
 
 // Responsive
 
 +respond-to($g-s)
 
   .mbl--s
-    margin-bottom: $b-space-l
+    margin-bottom: $b-space-l !important
 
 +respond-to($g-m)
 
   .mbf--m
-    margin-bottom: 0
+    margin-bottom: 0 !important
   .mbm--m
-    margin-bottom: $b-space
+    margin-bottom: $b-space !important
   .mbxl--m
-    margin-bottom: $b-space-xl
+    margin-bottom: $b-space-xl !important
 
 +respond-to($g-l)
 
   .mbf--l
-    margin-bottom: 0
+    margin-bottom: 0 !important
 
 // ----- Horizontal ----- //
 
 .mhc
-  margin-left: auto
-  margin-right: auto
+  margin-left: auto !important
+  margin-right: auto !important
 
 // ----- Left ----- //
 
 .mlf
-  margin-left: 0
+  margin-left: 0 !important
 .mlxs
-  margin-left: $b-space-xs
+  margin-left: $b-space-xs !important
 .mls
-  margin-left: $b-space-s
+  margin-left: $b-space-s !important
 .mlm
-  margin-left: $b-space
+  margin-left: $b-space !important
 .mll
-  margin-left: $b-space-l
+  margin-left: $b-space-l !important
 
 // ----- Right ----- //
 
 .mrf
-  margin-right: 0
+  margin-right: 0 !important
 .mrxs
-  margin-right: $b-space-xs
+  margin-right: $b-space-xs !important
 .mrs
-  margin-right: $b-space-s
+  margin-right: $b-space-s !important
 .mrm
-  margin-right: $b-space
+  margin-right: $b-space !important
 .mrl
-  margin-right: $b-space-l
+  margin-right: $b-space-l !important
 
 // Responsive
 
 +respond-to($g-s)
 
   .mrs--s
-    margin-right: $b-space-s
+    margin-right: $b-space-s !important
 
 +respond-to($g-m)
 
   .mrl--m
-    margin-right: $b-space-l
+    margin-right: $b-space-l !important
 
 // ----- Top ----- //
 
 .mtf
-  margin-top: 0
+  margin-top: 0 !important
 .mtxs
-  margin-top: $b-space-xs
+  margin-top: $b-space-xs !important
 .mts
-  margin-top: $b-space-s
+  margin-top: $b-space-s !important
 .mtm
-  margin-top: $b-space
+  margin-top: $b-space !important
 .mtl
-  margin-top: $b-space-l
+  margin-top: $b-space-l !important
 .mtxl
-  margin-top: $b-space-xl
+  margin-top: $b-space-xl !important
 
 // Responsive
 
 +respond-to($g-s)
   .mtf--s
-    margin-top: 0
+    margin-top: 0 !important
 
 +respond-to($g-m)
 
   .mts--m
-    margin-top: $b-space-s
+    margin-top: $b-space-s !important
   .mtm--m
-    margin-top: $b-space
+    margin-top: $b-space !important
   .mtl--m
-    margin-top: $b-space-l
+    margin-top: $b-space-l !important
 
 // -------------------------------------
 //   Opacity
 // -------------------------------------
 
 .op1of2
-  opacity: 0.5
+  opacity: 0.5 !important
 
 // -------------------------------------
 //   Padding
@@ -209,85 +209,85 @@
 // ----- All ----- //
 
 .paxs
-  padding: $b-space-xs
+  padding: $b-space-xs !important
 .pas
-  padding: $b-space-s
+  padding: $b-space-s !important
 .pam
-  padding: $b-space
+  padding: $b-space !important
 .pal
-  padding: $b-space-l
+  padding: $b-space-l !important
 .paxl
-  padding: $b-space-xl
+  padding: $b-space-xl !important
 
 // Responsive
 
 +respond-to($g-m)
 
   .pal--m
-    padding: $b-space-l
+    padding: $b-space-l !important
 
 // ----- Bottom ----- //
 
 .pbf
-  padding-bottom: 0
+  padding-bottom: 0 !important
 .pbxs
-  padding-bottom: $b-space-xs
+  padding-bottom: $b-space-xs !important
 .pbs
-  padding-bottom: $b-space-s
+  padding-bottom: $b-space-s !important
 .pbm
-  padding-bottom: $b-space
+  padding-bottom: $b-space !important
 .pbl
-  padding-bottom: $b-space-l
+  padding-bottom: $b-space-l !important
 .pbxl
-  padding-bottom: $b-space-xl
+  padding-bottom: $b-space-xl !important
 
 // ----- Left ----- //
 
 .plf
-  padding-left: 0
+  padding-left: 0 !important
 .plxs
-  padding-left: $b-space-xs
+  padding-left: $b-space-xs !important
 .pls
-  padding-left: $b-space-s
+  padding-left: $b-space-s !important
 .plm
-  padding-left: $b-space
+  padding-left: $b-space !important
 .pll
-  padding-left: $b-space-l
+  padding-left: $b-space-l !important
 
 // ----- Right ----- //
 
 .prf
-  padding-right: 0
+  padding-right: 0 !important
 .prxs
-  padding-right: $b-space-xs
+  padding-right: $b-space-xs !important
 .prs
-  padding-right: $b-space-s
+  padding-right: $b-space-s !important
 .prm
-  padding-right: $b-space
+  padding-right: $b-space !important
 .prl
-  padding-right: $b-space-l
+  padding-right: $b-space-l !important
 
 // ----- Top ----- //
 
 .ptf
-  padding-top: 0
+  padding-top: 0 !important
 .ptxs
-  padding-top: $b-space-xs
+  padding-top: $b-space-xs !important
 .pts
-  padding-top: $b-space-s
+  padding-top: $b-space-s !important
 .ptm
-  padding-top: $b-space
+  padding-top: $b-space !important
 .ptl
-  padding-top: $b-space-l
+  padding-top: $b-space-l !important
 .ptxl
-  padding-top: $b-space-xl
+  padding-top: $b-space-xl !important
 
 // Responsive
 
 +respond-to($g-l)
 
   .ptxs--l
-    padding-top: $b-space-xs
+    padding-top: $b-space-xs !important
 
 // -------------------------------------
 //   Positioning
@@ -296,27 +296,27 @@
 // ----- Float ----- //
 
 .fl
-  float: left
+  float: left !important
 .fr
-  float: right
+  float: right !important
 
 // Responsive
 
 +respond-to($g-l)
 
   .fr--l
-    float: right
+    float: right !important
 
 // ----- Position ----- //
 
 .poa
-  position: absolute
+  position: absolute !important
 .pof
-  position: fixed
+  position: fixed !important
 .por
-  position: relative
+  position: relative !important
 .pos
-  position: static
+  position: static !important
 
 // ----- Left ----- //
 
@@ -325,30 +325,30 @@
 +respond-to($g-m)
 
   .pol-1of4--m
-    left: percentage(1/4)
+    left: percentage(1/4) !important
 
 +respond-to($g-l)
 
   .pol-1of6--l
-    left: percentage(1/6)
+    left: percentage(1/6) !important
 
 // ----- Top ----- //
 
 .pot2n
-  top: -2px
+  top: -2px !important
 
 // -------------------------------------
 //   Rounding
 // -------------------------------------
 
 .ra
-  border-radius: 50%
+  border-radius: 50% !important
 .ram
-  border-radius: $b-borderRadius
+  border-radius: $b-borderRadius !important
 .ran
-  border-radius: 0
+  border-radius: 0 !important
 .ras
-  border-radius: $b-borderRadius-s
+  border-radius: $b-borderRadius-s !important
 
 // -------------------------------------
 //   Text
@@ -357,72 +357,72 @@
 // ----- Alignment ----- //
 
 .tac
-  text-align: center
+  text-align: center !important
 .tar
-  text-align: right
+  text-align: right !important
 
 // ----- Color ----- //
 
 .tch
-  color: $c-highlight
+  color: $c-highlight !important
 .tci
-  color: $c-text-invert
+  color: $c-text-invert !important
 .tcs
-  color: $c-subdue
+  color: $c-subdue !important
 .tct
-  color: $c-text
+  color: $c-text !important
 
 // Hover
 
 .tc-ht
 
   +state
-    color: $c-text
+    color: $c-text !important
 
 // ----- Family ----- //
 
 .tfb
-  font-family: $b-fontFamily
+  font-family: $b-fontFamily !important
 .tfh
-  font-family: $b-fontFamily-heading
+  font-family: $b-fontFamily-heading !important
 
 // ----- Size ----- //
 
 .tsxs
-  font-size: $b-fontSize-xs
+  font-size: $b-fontSize-xs !important
 .tss
-  font-size: $b-fontSize-s
+  font-size: $b-fontSize-s !important
 .tsl
-  font-size: $b-fontSize-l
+  font-size: $b-fontSize-l !important
 .tsxl
-  font-size: $b-fontSize-xl
+  font-size: $b-fontSize-xl !important
 .tsxxl
-  font-size: $b-fontSize-xxl
+  font-size: $b-fontSize-xxl !important
 
 // ----- Style ----- //
 
 .tsi
-  font-style: italic
+  font-style: italic !important
 
 // ----- Transform ----- //
 
 .ttu
-  text-transform: uppercase
+  text-transform: uppercase !important
 
 // ----- Weight ----- //
 
 .twb
-  font-weight: $b-fontWeight-bold
+  font-weight: $b-fontWeight-bold !important
 .twl
-  font-weight: $b-fontWeight-light
+  font-weight: $b-fontWeight-light !important
 .twn
-  font-weight: $b-fontWeight
+  font-weight: $b-fontWeight !important
 .twsb
-  font-weight: $b-fontWeight-semibold
+  font-weight: $b-fontWeight-semibold !important
 
 // -------------------------------------
 //   Width
 // -------------------------------------
 
 .w-1of1
-  width: 100%
+  width: 100% !important
