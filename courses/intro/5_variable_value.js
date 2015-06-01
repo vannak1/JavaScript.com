@@ -38,7 +38,7 @@ failures = {
     'message': 'Nope. This variable does not have any value assigned to it.',
   },
   'f_not_username': {
-    'message': 'That is not your name. Use the variable that you stored your name in.',
+    'message': 'That is not your name. Make sure to use the variable that you stored your name in.',
   }
 };
 
@@ -47,8 +47,7 @@ module.exports = {
   'title': 'Variable Value',
   'instructions': `Now we have a variable called \`firstName\` that has a string stored inside of it. Output it to see what it looks like.
 
-\`firstName;\`
-`,
+<code class=\"inlineCode inlineCode--btn\">firstName;</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "test;"

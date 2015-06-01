@@ -101,7 +101,7 @@ $underline-cover-background: $c-highlight
 $underline--inverted-borderColor: $c-highlight
 $underline--inverted-cover-background: $c-background
 
-// ----- Sector ----- //
+// Sector
 
 $sector--a-background: $white
 $sector--b-background: $snow
@@ -136,6 +136,11 @@ $link--highlighted-state-color: darken($link--highlighted-color, 15%)
 $link--inverted-color: $c-text-invert
 $link--inverted--state-color: rgba($link--inverted-color, 0.5)
 
+// ----- Vendor ----- //
+
+$tooltip-background: $slate
+$tooltip-color: $c-text-invert
+
 // -------------------------------------
 //   Base
 // -------------------------------------
@@ -160,7 +165,7 @@ $b-boxShadow: 0 2px 0 rgba($c-text, 0.25)
 // Family
 
 $b-fontFamily-heading: 'Open Sans', Arial, Helvetica, sans-serif
-$b-fontFamily-mono: monaco, Consolas, 'Lucida Console', monospace
+$b-fontFamily-mono: 'Courier', 'Monaco', 'Consolas', 'Lucida Console', monospace
 $b-fontFamily: 'Open Sans', Arial, Helvetica, sans-serif
 
 // Size
@@ -215,8 +220,8 @@ $b-space-xxl: $b-space * 8
 
 // ----- Tools ----- //
 
-$tool-background-names: 'bostonBlue', 'regent', 'gold', 'slate', 'sienna', 'metal', 'cucumber', 'aqua', 'cream'
-$tool-background-vars: $bostonBlue, $regent, $goldenDream, $slate, $sienna, $auroMetalSaurus, $cucumber, $aqua, $cream
+$tool-background-names: 'bostonBlue', 'regent', 'gold', 'slate', 'sienna', 'metal', 'cucumber', 'aqua', 'cream', 'snow'
+$tool-background-vars: $bostonBlue, $regent, $goldenDream, $slate, $sienna, $auroMetalSaurus, $cucumber, $aqua, $cream, $snow
 
 // ----- Z-index ----- //
 
@@ -291,11 +296,26 @@ $underline-color-transition-duration: 0.3s
 //   Structures
 // -------------------------------------
 
+// ----- Completion List ----- //
+
+// Item
+
+$completionList-item-size: 22px
+$completionList-item-gutter: 12px
+$completionList-item-gutter-l: 20px
+$completionList-item-gutter-xl: 30px
+$completionList-item-borderWidth: 4px
+
 // ----- Console ----- //
 
 $console-cursor-size: 6px
-$console-maxHeight: 80px
-$console-minHeight: 50px
+$console-maxHeight: 320px
+$console-minHeight: 160px
+
+// ----- Course Layout ----- //
+
+$courseLayout-header-toggle-height: 30px
+$courseLayout-viewportHeight-s: em(700px)
 
 // ----- Error Hero ----- //
 
@@ -315,3 +335,13 @@ $inlineConsole-transition: $inlineConsole-transition-duration ease-in-out
 $link-borderWidth: 2px
 $link-borderStyle: solid
 $link-border: $link-borderWidth $link-borderStyle
+
+// -------------------------------------
+//   Vendor
+// -------------------------------------
+
+$tooltip-caretSize: 6px
+$tooltip-lineHeight: $b-lineHeight
+$tooltip-maxWidth: 200px
+$tooltip-opacity: 1
+$tooltip-positions: 'bottom', 'top'

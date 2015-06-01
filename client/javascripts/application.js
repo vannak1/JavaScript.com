@@ -9,7 +9,10 @@
 //   Namespace
 // -------------------------------------
 
+// ----- JavaScript.com ----- //
+
 var JS = {};
+
 JS.Globals  = {},
 JS.Classes  = {},
 JS.Helpers  = {},
@@ -61,15 +64,16 @@ jQuery(function($) {
 //   Inbox
 // -------------------------------------
 
+// $('a:contains("Next Challenge")').on('click', function() {
+//   var name = $('.js-inlineConsole-input').val().replace(/['";]/g, '');
+
+//   document.cookie = 'try_name=' + name;
+// });
+
 jQuery(function($) {
 
-  // Hide sponsor links
-  $('tr[style="background-color: #faf9dc;"]').hide();
-
-
-  $('a:contains("Next Challenge")').on('click', function() {
-    var name = $('.js-inlineConsole-input').val().replace(/['";]/g, '');
-
-    document.cookie = 'try_name=' + name;
+  $('.js-courseLayout-toggle').on('click', function(event) {
+    $('.js-courseLayout').toggleClass('is-active')
   });
+
 });

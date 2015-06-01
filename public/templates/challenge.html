@@ -1,17 +1,5 @@
-<section class='row course-challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
-  <div id="{{ ctrl.challenge.id }}" class='course-challenge-anchor'></div>
+<section class='course-challenge' ng-class="{ 'is-active': ctrl.challenge.active, 'is-started': ctrl.challenge.started }">
+  <h2 class='course-challenge-title h h--2 h--semibold mbs'>{{::ctrl.challenge.id}}. {{::ctrl.challenge.title}}</h2>
 
-  <div class='cell well well--l well--m--xl'>
-    <div class='g'>
-      <div class='g-b g-b--m--3of4 g-b--l--4of6 pol-1of4--m pol-1of6--l por'>
-        <p class='label label--highlight course-challenge-label'>
-          Challenge {{::ctrl.challenge.id}}
-        </p>
-
-        <h2 class='course-challenge-title h h--1 mbs'>{{::ctrl.challenge.title}}</h2>
-
-        <js-instructions></js-instructions>
-      </div>
-    </div>
-  </div>
+  <js-instructions></js-instructions>
 </section>

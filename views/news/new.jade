@@ -9,10 +9,11 @@ extends /views/layouts/layout
 
 block content
 
+  .has-alert
+    include /views/partials/_flash
+
   section.row
     .cell.cell--s.well.well--l.well--m--xl
-
-      include /views/partials/_flash
 
       .split.split--middle.mbl
 
@@ -41,7 +42,7 @@ block content
 
         fieldset.form-field
           label
-            span.form-label Content
+            span.form-label Description
 
           textarea.form-input.form-textarea.js-counter(name='body' rows=8)
 

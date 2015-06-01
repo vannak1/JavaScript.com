@@ -14,6 +14,10 @@ var GithubApi = {
     // get emails using oauth token
     request(options, function(error, response, body) {
 
+      console.log(error);
+      console.log(response);
+      console.log(body);
+
       var emails = body.filter(function(email) {
         return (email.verified && email.primary);
         return email.verified;
