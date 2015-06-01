@@ -5,20 +5,12 @@ describe('set_a_var', function(){
   var message, errorMessage;
 
   before(function() {
-    var setup = "";
-    js.evaluate(setup);
-
     try {
       message = js.evaluate(code);
     } catch(e) {
       errorMessage = e.message;
     }
   });
-
-  after(function() {
-    js.evaluate("alert = _alert");
-  });
-
 
   details(function() {
     return {
@@ -59,15 +51,12 @@ failures = {
   },
   'f_no_var_keyword': {
     'message': 'Whoops. We did not use the `var` keyword when setting the variable.',
-    'hint': ""
   },
   'f_name_blank': {
-    'message': 'Almost, but we did not set the name to the variable we created.',
-    'hint': ""
+    'message': 'Almost, but you did not set the variable `firstName` to the correct value.',
   },
   'f_name_not_string': {
     'message': 'Hold up. It looks like we entered the name not as a string.',
-    'hint': ""
   }
 };
 
