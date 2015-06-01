@@ -1,11 +1,27 @@
-angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', 'jsChallengeProgress', function(_, jsCommandFactory, jsChallengeProgress) {
+angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', 'jsChallengeProgress', '$filter', function(_, jsCommandFactory, jsChallengeProgress, $filter) {
   return function jsCommand(successCallback, errorCallback) {
     var vm = this;
 
+    function filterMessage(content) {
+      var marked = $filter('markdown')(content.textContent);
+      $(content).html(marked)[0];
+
+      return { content: content };
+    }
+
     function jsReportAdapter(content) {
-      if(_.isArray(content)) { return content; }
-      if(_.isObject(content) && content['content']) { return [content]; }
-      return [{ content: content }];
+      var messages = [];
+
+      if (_.isArray(content)) {
+        _.each(content, function(obj) {
+          messages.push(filterMessage(obj.content));
+        });
+      } else {
+        content = _.isObject(content) && content['content'] ? filterMessage(content['content']) : filterMessage(content);
+        messages.push(content);
+      }
+
+      return messages;
     }
 
     vm.handler = function parseCommand(line, report) {
