@@ -5,10 +5,12 @@ block layout_variables
 extends /views/layouts/layout
 
 block content
+
+  .has-alert
+    include /views/partials/_flash
+
   section.row
     .cell.cell--s.well.well--xl
-
-      include /views/partials/_flash
 
       article.bdrbl.pbl.mbm(role='article')
 

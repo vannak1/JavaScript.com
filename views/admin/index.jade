@@ -8,8 +8,9 @@ block layout_variables
 extends /views/layouts/layout
 
 block content
-  include /views/partials/_flash
 
+  .has-alert
+    include /views/partials/_flash
 
   section.row.has-sector
     .cell
@@ -29,6 +30,7 @@ block content
                     a.tct.twb.approve(href='#') approve
                     ||
                     a.tct.twb.deny(href='#') deny
+
 block inline_javascript
   script.
     jQuery(function($) {
