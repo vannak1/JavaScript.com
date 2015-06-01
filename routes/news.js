@@ -226,8 +226,8 @@ router.
     req.check('title','Title is required' ).notEmpty();
     req.check('url', 'URL is required').notEmpty();
     req.check('url', 'URL is not valid').isURL();
-    req.check('body', 'Content is required').notEmpty();
-    req.check('body', 'Content must be between 100 and 300 characters').len(100,300);
+    req.check('body', 'Description is required').notEmpty();
+    req.check('body', 'Description must be between 100 and 300 characters').len(100,300);
 
     var errors = req.validationErrors();
 
