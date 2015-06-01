@@ -57,9 +57,9 @@ failures = {
 module.exports = {
   'id': 6,
   'title': 'Numbers',
-  'instructions': `Just as before the alert box displayed your name. This time though, it received your name from a variable instead of a string!
+  'instructions': `Just as before, the alert box displayed your name. This time, though, it received your name from a variable instead of a string!
 
-So far we have only worked with one value type (strings), but Javascript has many! Another example of a value type is number. Pass a number of your choosing into the alert method. Just like a method, a number does not get quotations.
+So far we have only worked with 1 value type (strings), but JavaScript has many! Another example of a value type is a number. Pass any number of your choosing into the alert method. Just like a method, a number does not get quotations.
 
 <code class=\"inlineCode inlineCode--btn\">alert(42);</code>`,
   'tests': tests,
