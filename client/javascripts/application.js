@@ -9,7 +9,10 @@
 //   Namespace
 // -------------------------------------
 
+// ----- JavaScript.com ----- //
+
 var JS = {};
+
 JS.Globals  = {},
 JS.Classes  = {},
 JS.Helpers  = {},
@@ -68,10 +71,9 @@ jQuery(function($) {
 // });
 
 jQuery(function($) {
-  // Hide sponsor links
-  $('tr[style="background-color: #faf9dc;"]').hide();
 
   $('.js-courseLayout-toggle').on('click', function(event) {
     $('.js-courseLayout').toggleClass('is-active')
   });
+
 });
