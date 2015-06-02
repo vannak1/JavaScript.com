@@ -66,8 +66,11 @@ block content
                             = story.comment_count
                             | )
                       p.mbf= story.body
-            .mbxl--m.tac
-              button.btn.js-loadFeed-btn Load More
+
+            if flow_collection.length === 10
+
+              .mbxl--m.tac
+                button.btn.js-loadFeed-btn Load More
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
