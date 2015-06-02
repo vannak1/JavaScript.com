@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', '$cookies', 'jsCourseState', function(CSConsole, jsCommand, jsChallengeProgress, $cookies, jsCourseState) {
+angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', '$cookies', 'jsCourseState', 'jsSuccessCloud', function(CSConsole, jsCommand, jsChallengeProgress, $cookies, jsCourseState, jsSuccessCloud) {
   return {
     templateUrl: 'templates/console.html',
     replace: true,
@@ -11,7 +11,10 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
 
       var onSuccess = function onSuccess(challenge) {
         console.log('successful challenge!');
+
         challenge.completed = true;
+
+        jsSuccessCloud.trigger();
         jsChallengeProgress.next();
       }
 
