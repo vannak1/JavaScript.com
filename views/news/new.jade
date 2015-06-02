@@ -33,18 +33,22 @@ block content
         fieldset.form-field
           label
             span.form-label Title
-          input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true')
+          - titleValue = title ? title : ''
+          input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true' value=titleValue)
 
         fieldset.form-field
           label
             span.form-label Link
-          input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true')
+          - urlValue = url ? url : ''
+          input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true' value=urlValue)
 
         fieldset.form-field
           label
             span.form-label Description
 
+          - bodyValue = body ? body : ''
           textarea.form-input.form-textarea.js-counter.js-formValidator-input(name='body' rows=8 data-validate='required' required='true')
+            =bodyValue
 
           .split
             .split-cell

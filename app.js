@@ -7,6 +7,7 @@ baseURL = (process.env.NODE_ENV === 'production' ? "http://javascript.preschool.
 
 var routes = require('./routes/index');
 
+var about = require('./routes/about');
 var admin = require('./routes/admin');
 var assets = require('./routes/assets');
 var courses = require('./routes/courses');
@@ -49,6 +50,7 @@ app.use(require('flash')());
 
 // routes
 app.use('/', routes);
+app.use('/about', about);
 app.use('/admin', admin);
 app.use('/assets', assets);
 app.use('/courses', courses)
