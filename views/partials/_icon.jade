@@ -1,4 +1,5 @@
 - iconPartial = iconPartial || { }
+- iconPartial.className = iconPartial.className || undefined
 - iconPartial.name = iconPartial.name || undefined
 - iconPartial.size = iconPartial.size || 40
 - iconPartial.width = iconPartial.width || iconPartial.size
@@ -6,5 +7,5 @@
 
 span.srt= iconPartial.name
 
-svg.icon( width=iconPartial.width height=iconPartial.height )
+svg.icon( class=iconPartial.className width=iconPartial.width height=iconPartial.height )
   use( 'xlink:href'='#icon-#{iconPartial.name}' )

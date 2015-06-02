@@ -11,10 +11,9 @@ li.list-item
         img.thumb.thumb--m(src="#{item.media}" alt="#{item.title}")
     .g-b.g-b--s--3of5.g-b--m--2of3.mtm.mtf--s
       h2.h.h--3
-        a.tct.tc-ht.twb.js-toggle(href="#{item.url}")
+        a.externalLink.tct.twb(href="#{item.url}")
           = item.title
-          span.mlxs.op1of2.por.pot2n.tcs.is-hidden
-            - iconPartial = { name: 'external', size: 16 }
-            include /views/partials/_icon
+          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
+          include /views/partials/_icon
 
       p.mbf= item.description

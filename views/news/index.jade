@@ -51,7 +51,10 @@ block content
                       img.thumb(src=story.avatar_url width='50')
                     .bucket-content
                       h2.h.h--3
-                        a.tct.twb.js-toggle(href=story.url)= story.title
+                        a.externalLink.tct.twb(href=story.url)
+                         = story.title
+                          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
+                          include /views/partials/_icon
                       p.tcs.tfh
                         | via 
                         span.twsb= story.name
