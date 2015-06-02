@@ -123,10 +123,9 @@ router.
 
   get('/', parseForm, function(req, res) {
     var offset = req.query.page;
-
+    var more;
     if (offset) {
       Articles.paginated(offset, function(all) {
-        var flow = [], news = [];
         // TODO: Move date functionality into a serivce. It'll be used practically
         // everywhere. Oh, and refactor this blasphemy.
         //
@@ -140,13 +139,9 @@ router.
           }else{
             item.date = moment(item.date).format('LL');
           }
-          if (item.news){
-            news.push(item);
-          }else{
-            flow.push(item);
-          }
         });
-        res.json({news: news, flow: flow});
+        more = (all.length % 10 === 0) ? true : false;
+        res.json({flow: all, more: more});
       });
     }else{
       Articles.recent(function(all) {
@@ -170,7 +165,8 @@ router.
             flow.push(item);
           }
         });
-        res.render('news/index', {flow_collection: flow, news_collection: news, moment: moment});
+        more = (all.length % 10 === 0) ? true : false;
+        res.render('news/index', {flow_collection: flow, news_collection: news, more: more });
       });
     }
   }).
