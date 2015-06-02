@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeResource', 'jsChallengeProgress', function(_, jsCourseChallengeResource, jsChallengeProgress) {
+angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeResource', 'jsChallengeProgress', '$cookies', 'jsCourseState', function(_, jsCourseChallengeResource, jsChallengeProgress, $cookies, jsCourseState) {
   return {
     replace: true,
     templateUrl: 'templates/course.html',
@@ -7,11 +7,24 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
     },
     bindToController: true,
     controllerAs: 'ctrl',
-    controller: function jsCourseDirective(jsCourseChallengeResource, jsChallengeProgress) {
-      this.challengeProgress = jsChallengeProgress;
-      this.challenges        = jsCourseChallengeResource.query({ course: this.course });
+    controller: function jsCourseDirective(jsCourseChallengeResource, jsChallengeProgress, jsCourseState) {
+      var _this = this;
 
-      this.challengeProgress.setChallenges(this.challenges);
+      this.challenges        = jsCourseChallengeResource.query({ course: this.course });
+      this.challengeProgress = jsChallengeProgress;
+
+      this.challenges.$promise.then(function() {
+        var cookieCourseState    = $cookies.getObject('course_state'),
+            cookieChallengeState = $cookies.get('course_challenge_state'),
+            tryName              = $cookies.get('try_name');
+
+        _this.challengeProgress.setChallenges(_this.challenges);
+        jsCourseState.update(cookieCourseState || (tryName ? { username: tryName } : {}));
+
+        if (cookieChallengeState || tryName) {
+          _this.challengeProgress.fastForward(cookieChallengeState || 1);
+        }
+      });
 
       this.activateChallenge = function activateChallenge(_challenge) {
         this.challengeProgress.activate(_challenge)

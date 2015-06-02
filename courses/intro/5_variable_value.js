@@ -5,6 +5,8 @@ describe('set_a_var', function(){
   var message, errorMessage;
 
   before(function() {
+    js.restoreName();
+
     try {
       message = js.evaluate(code);
     } catch(e) {
