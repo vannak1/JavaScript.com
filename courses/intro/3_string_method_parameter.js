@@ -22,6 +22,12 @@ describe('console.log example', function() {
     js.evaluate("alert = _alert");
   });
 
+  details(function() {
+    return {
+      output: message
+    };
+  });
+
   js.verify(code);
 
   it('f_no_alert', function() {
@@ -43,13 +49,6 @@ describe('console.log example', function() {
     var alertWasCalled = js.evaluate('_alertVal');
     js.assert(typeof alertWasCalled === 'string');
   });
-
-  details(function() {
-    return {
-      output: message
-    };
-  });
-
 });
 `
 

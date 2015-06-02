@@ -16,7 +16,6 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
       response.push(generateResponse(output));
 
       if(result.isSuccess()) {
-        response.push(generateResponse('Correct!', 'success'));
         jsExecutor.off('complete', onComplete);
 
         deferred.resolve(response);
@@ -27,7 +26,9 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
     }
 
     jsExecutor.on('complete', onComplete);
-    jsExecutor.run(line, challenge.tests);
+
+    var run = challenge ? challenge.tests : '';
+    jsExecutor.run(line, run);
 
     return deferred.promise;
   }
