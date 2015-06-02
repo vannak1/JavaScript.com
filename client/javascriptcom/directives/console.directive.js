@@ -12,6 +12,8 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
       });
 
       var onSuccess = function onSuccess(challenge) {
+        if (!challenge) { return; }
+
         console.log('successful challenge!');
 
         challenge.completed = true;

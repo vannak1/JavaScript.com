@@ -19,20 +19,18 @@ describe('alert example', function() {
     js.evaluate("alert = _alert");
   });
 
-  js.verify(code);
-
-  it('f_no_alert', function() {
-    var alertWasCalled = js.evaluate('_alertCalled');
-    js.assert(alertWasCalled);
-  });
-
   details(function() {
     return {
       output: message
     };
   });
 
+  js.verify(code);
 
+  it('f_no_alert', function() {
+    var alertWasCalled = js.evaluate('_alertCalled');
+    js.assert(alertWasCalled);
+  });
 });
 `
 
