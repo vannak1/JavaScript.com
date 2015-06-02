@@ -5,7 +5,10 @@ describe('console.log example', function() {
   var message, errorMessage;
 
   before(function() {
-    var setup = "var _alertCalled = false; var _alertVal; var _alert = alert; alert = function(val) { _alertVal = val; _alertCalled = true; return _alert(val); };"
+    var setup = "var _alertCalled = false; var _alertVal; var _alert = alert;";
+    setup += "alert = function(val) { _alertVal = val; _alertCalled = true; return _alertVal === '__wrong__' ? undefined : _alert(val); };";
+    setup += "var " + js.state.username + " = '__wrong__';";
+    setup += "var " + js.state.username.toLowerCase() + " = '__wrong__';";
     js.evaluate(setup);
 
     try {
@@ -31,6 +34,11 @@ describe('console.log example', function() {
     js.assert(alertWasCalled);
   });
 
+  it('f_non_string_name', function() {
+    var alertWasCalled = js.evaluate('_alertVal');
+    js.assert(alertWasCalled !== '__wrong__');
+  });
+
   it('f_string_not_passed', function() {
     var alertWasCalled = js.evaluate('_alertVal');
     js.assert(typeof alertWasCalled === 'string');
@@ -54,6 +62,9 @@ failures = {
   },
   'f_no_alert_val': {
     'message': "Here's a sample name to see how it works: `alert(\"Taylor\");`"
+  },
+  'f_non_string_name': {
+    'message': "You passed your name, but you didn't pass it as a string. Try adding quotes around it, like this: `\"Johnny\"`"
   },
   'f_string_not_passed': {
     'message': 'Make sure you pass a string, like `"Johnny"`, into the `alert` method.'
