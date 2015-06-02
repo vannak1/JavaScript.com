@@ -18,7 +18,7 @@
   pointer-events: none
   position: fixed
   top: 0
-  z-index: 5000
+  z-index: zi('message')
 
 // -------------------------------------
 //   Scaffolding
@@ -27,7 +27,6 @@
 // ----- Icon ----- //
 
 .message-icon
-  left: 15vw
   margin-left: -75px
   margin-top: -75px
   position: fixed
@@ -38,6 +37,7 @@
 // Scaffolding: Item
 
 .message-icon-item
+  animation: message-icon-item 1s ease-in-out both
   background: $c-success
   border-radius: 50%
   border: 15px solid white
@@ -49,6 +49,7 @@
 // ----- Text ----- //
 
 .message-text
+  animation: message-icon-text 1.7s ease-in-out both
   background: $c-success
   border-radius: 10px
   box-sizing: border-box
@@ -89,7 +90,7 @@
 
 // Message
 
-@keyframes message-icon-message
+@keyframes message-icon-text
   0%
     opacity: 0
   25%, 75%
