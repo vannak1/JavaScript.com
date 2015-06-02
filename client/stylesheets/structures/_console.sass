@@ -24,6 +24,7 @@
   background: $console-background
   border-radius: $b-borderRadius
   box-sizing: border-box
+  font-size: $console-fontSize
   min-height: 100%
   overflow: auto
   padding: $b-space
@@ -38,8 +39,11 @@
     color: $console-color
 
   .cs-console-height
-    max-height: $console-maxHeight
-    min-height: $console-minHeight
+    height: $console-height
+
+    +respond-to(em(750px), min-height)
+      height: 30vh // FIXME: Magic number!
+      max-height: $console-maxHeight
 
   .CodeMirror
     background: $console-background
@@ -55,6 +59,9 @@
     .CodeMirror-cursor
       border-color: $console-color
       border-width: $console-cursor-size
+
+  +respond-to($g-m)
+    font-size: $console-fontSize-l
 
 // -------------------------------------
 //   Scaffolding

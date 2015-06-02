@@ -25,7 +25,7 @@
   +respond-to($g-m)
     transform: translateY(#{-$site-header-height-l + ($courseLayout-header-toggle-height / 2)})
 
-  +respond-to($courseLayout-viewportHeight-s, min-height)
+  +respond-to($courseLayout-viewportHeight-l, min-height)
     transform: none
 
 // -------------------------------------
@@ -58,7 +58,7 @@
   opacity: 0
   transition: opacity $b-transition
 
-  +respond-to($courseLayout-viewportHeight-s, min-height)
+  +respond-to($courseLayout-viewportHeight-l, min-height)
     opacity: 1
 
 // Scaffolding: Toggle
@@ -85,7 +85,7 @@
   +state
     transform: translate(-50%) scale(1.1)
 
-  +respond-to($courseLayout-viewportHeight-s, min-height)
+  +respond-to($courseLayout-viewportHeight-l, min-height)
     display: none
 
 // ----- Main ----- //
