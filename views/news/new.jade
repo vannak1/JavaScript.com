@@ -34,20 +34,20 @@ block content
           label
             span.form-label Title
           - titleValue = title ? title : ''
-          input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true' value=titleValue)
+          input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true' value=titleValue placeholder='Sundae.js 2.0 Released')
 
         fieldset.form-field
           label
             span.form-label Link
           - urlValue = url ? url : ''
-          input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true' value=urlValue)
+          input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true' value=urlValue placeholder='http://www.example.com')
 
         fieldset.form-field
           label
             span.form-label Description
 
           - bodyValue = body ? body : ''
-          textarea.form-input.form-textarea.js-counter.js-formValidator-input(name='body' rows=8 data-validate='required' required='true')
+          textarea.form-input.form-textarea.js-counter.js-formValidator-input(name='body' rows=8 data-validate='required' required='true' placeholder="Today we released Sundae.js 2.0, which now has extra sprinkles, extra nuts, and now has three scoops of vanilla instead of two. If you can't eat dairy, you can now replace the ice cream with sherbert.")
             =bodyValue
 
           .split
