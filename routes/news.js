@@ -184,6 +184,10 @@ router.
     }
   }).
 
+  get('/pending', function(req, res) {
+    res.render('news/pending');
+  }).
+
   get('/sign_in', function(req, res) {
     req.session.returnTo = req.session.returnTo || req.headers.referer;
     res.render('news/sign_in');
