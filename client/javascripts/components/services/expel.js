@@ -14,11 +14,23 @@ JS.Services.expel = function(options) {
   var settings = $.extend({
     $toggle     : $('.js-expel-toggle'),
     elementNode : '.js-expel',
+    expelClass  : 'is-dismissed'
   }, options);
 
   settings.$toggle.on('click', function(event) {
     event.preventDefault();
-    $(this).closest(settings.elementNode).remove();
+
+    var element = $(this);
+
+    element
+      .closest(settings.elementNode)
+      .addClass(settings.expelClass);
+
+    setTimeout(function() {
+      element
+        .closest(settings.elementNode)
+        .remove();
+    }, 500);
   });
 };
 

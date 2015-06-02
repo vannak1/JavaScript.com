@@ -1,17 +1,27 @@
-angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', 'jsChallengeProgress', function(_, jsCommandFactory, jsChallengeProgress) {
-  return function jsCommand(successCallback, errorCallback, messages) {
+angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', 'jsChallengeProgress', '$filter', function(_, jsCommandFactory, jsChallengeProgress, $filter) {
+  return function jsCommand(successCallback, errorCallback) {
     var vm = this;
-    vm.messages  = messages;
 
-    function setErrorMessageType(message, fallback) {
-      message = _.isArray(message) ? message[1].content.textContent : message;
+    function filterMessage(content) {
+      var marked = $filter('markdown')(content.textContent);
+      $(content).html(marked)[0];
 
-      return message.match(/syntax error/i) ? 'error' : 'default';
+      return { content: content };
     }
 
-    function formatResponse(content, vm, report, type) {
-      vm.messages.push({ value: _.isArray(content) ? content[1].content.textContent : content, type: !type ? setErrorMessageType(content) : type })
-      report({ content: _.isArray(content) ? content[0].content : '' });
+    function jsReportAdapter(content) {
+      var messages = [];
+
+      if (_.isArray(content)) {
+        _.each(content, function(obj) {
+          messages.push(filterMessage(obj.content));
+        });
+      } else {
+        content = _.isObject(content) && content['content'] ? filterMessage(content['content']) : filterMessage(content);
+        messages.push(content);
+      }
+
+      return messages;
     }
 
     vm.handler = function parseCommand(line, report) {
@@ -20,10 +30,10 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', '
       var challenge = jsChallengeProgress.activeChallenge();
 
       command(challenge, line).then(function(content) {
-        formatResponse(content, vm, report, 'success')
+        report(jsReportAdapter(content));
         successCallback(challenge);
       }, function(content) {
-        formatResponse(content, vm, report)
+        report(jsReportAdapter(content));
         errorCallback(challenge);
       });
     }

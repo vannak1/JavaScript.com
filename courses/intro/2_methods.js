@@ -53,9 +53,9 @@ module.exports = {
 
 JavaScript also has built-in features, called *methods*. In order to call a method, we simply write its name (this time without quotes) and end it with a set of parentheses. Try calling the \`alert\` method as you see below.
 
-Don't be afraid when a box pops up, that's your code working, {{username}}!
+Don't be afraid when a box pops up &mdash; that's your code working, {{username}}!
 
-\`alert();\``,
+<code class=\"inlineCode inlineCode--btn\">alert();</code>`,
   'hints': [
     'Call the alert method by typing the following: `alert();`'
   ],

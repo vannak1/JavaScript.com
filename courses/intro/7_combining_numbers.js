@@ -44,9 +44,9 @@ failures = {
 module.exports = {
   'id': 7,
   'title': 'Combining Numbers',
-  'instructions': `We can also do math in Javascript! Combine any two numbers likes so:
+  'instructions': `We can also do math in JavaScript! Combine any 2 numbers like so:
 
-\`14 + 28;\``,
+<code class=\"inlineCode inlineCode--btn\">14 + 28;</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "14 + 28;"

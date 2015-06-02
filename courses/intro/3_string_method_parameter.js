@@ -31,6 +31,11 @@ describe('console.log example', function() {
     js.assert(alertWasCalled);
   });
 
+  it('f_string_not_passed', function() {
+    var alertWasCalled = js.evaluate('_alertVal');
+    js.assert(typeof alertWasCalled === 'string');
+  });
+
   details(function() {
     return {
       output: message
@@ -45,12 +50,13 @@ failures = {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
   'f_no_alert': {
-    'hint':    "You didn't call the alert method! Try Typing `alert();` in the console.",
     'message': 'You can call the alert method like this: `alert();`'
   },
   'f_no_alert_val': {
-    'hint':    'Woops, you forgot to pass the parameter to the `alert` method. Try this: `alert(\"yourNameGoesHere\")`',
     'message': "Here's a sample name to see how it works: `alert(\"Taylor\");`"
+  },
+  'f_string_not_passed': {
+    'message': 'Make sure you pass a string, like `"Johnny"`, into the `alert` method.'
   }
 };
 
@@ -61,7 +67,7 @@ module.exports = {
 
 Well, many methods (like the \`alert\` method) can take instructions, which we call *parameters*. By sending a string into the \`alert\` method, we can put text on the pop-up box. Try it!
 
-\`alert("{{username}}");\``,
+<code class=\"inlineCode inlineCode--btn\">alert("{{username}}");</code>`,
   'hints': [
     "Type in your first name surrounded by double quotes inside the alert method: `alert(\"{{username}}\");`"
   ],

@@ -54,13 +54,11 @@ failures = {
 module.exports = {
   'id': 8,
   'title': 'Combining Strings',
-  'instructions': `Note: We’ll probably have to have them define \`var = firstName\` again before this.
+  'instructions': `Great math skills! JavaScript not only can combine numbers &mdash; it can combine strings as well!
 
-Such math skills, good job ! Javascript not only can combine numbers, but strings as well!
+Create an alert that combines both your name and a string, like below:
 
-Create an alert which combines both your name and a string, like below.
-
-\`alert(firstName + " is awesome!");\``,
+<code class=\"inlineCode inlineCode--btn\">alert(firstName + " is awesome!");</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "alert(firstName + \" is awesome!\");"

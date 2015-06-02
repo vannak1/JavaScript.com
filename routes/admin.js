@@ -7,6 +7,7 @@ var Articles  = require('../services/articles');
 var Users = require('../services/users');
 var Comments = require('../services/comments');
 var Akismetor = require('../services/akismetor');
+var Mailer = require('../services/mailer');
 
 var csrfProtection = csrf();
 var parsePost = bodyParser.urlencoded({ extended: false });
@@ -33,6 +34,15 @@ function ensureAdmin(req, res, next) {
 }
 /* End Admin role */
 
+function buildMailerOptions(req, res, next) {
+  req.storyID = req.params.id;
+  Articles.getMailerInfo(req.storyID, function(result) {
+    req.storyURL = 'http://javascript.com/news/' + result[0].slug;
+    req.userEmail = result[0].email;
+    next();
+  });
+}
+
 router.
   get('/', cookieParser, ensureAuthenticated, ensureAdmin, csrfProtection, function(req, res){
     Articles.pending(function(stories){
@@ -40,14 +50,24 @@ router.
     });
   }).
 
-  post('/news/:id/approve', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, function(req, res) {
-    var storyId = req.params.id;
-    Articles.approve(storyId, function () { res.send(true); });
+  post('/news/:id/approve', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, buildMailerOptions, function(req, res) {
+    var url = req.storyURL
+    var userEmail = req.userEmail;
+
+    Articles.approve(req.storyID, function () {
+      Mailer.postAccepted(url, userEmail);
+      res.send(true);
+    });
   }).
 
-  post('/news/:id/deny', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, function(req, res) {
-    var storyId = req.params.id;
-    Articles.deny(storyId, function () { res.send(true); });
+  post('/news/:id/deny', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, buildMailerOptions, function(req, res) {
+    var url = req.storyURL
+    var userEmail = req.userEmail;
+
+    Articles.deny(req.storyID, function () {
+      Mailer.postDenied(url, userEmail);
+      res.send(true);
+    });
   });
 
 

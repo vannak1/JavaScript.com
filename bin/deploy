@@ -21,6 +21,9 @@ CURRENT_DIR=$BASE_DIR/current
 # We start by copying this directory into a releases directory.
 cp -R $GIT_DIR $RELEASE_DIR
 
+# Symlink node_modules
+ln -s /srv/javascriptcom/shared/node_modules $RELEASE_DIR/node_modules
+
 # Make the tmp dir
 mkdir -p $RELEASE_DIR/tmp
 
@@ -31,7 +34,7 @@ chown -R $APP_USER:$APP_USER $RELEASE_DIR
 # pattern: 'sudo -i -u $APP_USER RAILS_ENV=$RAILS_ENV the_command'. Commands should only be
 # executed outside sudo for very, very good reason.
 
-su $APP_USER -l -c 'cd $RELEASE_DIR ; npm install'
+su $APP_USER -l -c "cd $RELEASE_DIR ; npm install"
 
 # Symlink the app
 rm -f $CURRENT_DIR

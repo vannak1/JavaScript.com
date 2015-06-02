@@ -32,7 +32,8 @@ passport.use(new GitHubStrategy({
   clientID: process.env.GH_CLIENT_ID,
   clientSecret: process.env.GH_CLIENT_SECRET,
   callbackURL: (process.env.NODE_ENV === 'production' ?
-      "http://javascript.preschool.io/news/auth/github/callback" : "http://localhost:3000/news/auth/github/callback")
+      "http://javascript.preschool.io/news/auth/github/callback" : "http://localhost:3000/news/auth/github/callback"),
+  scope: ['user', 'user:email']
 },
 function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
@@ -225,8 +226,8 @@ router.
     req.check('title','Title is required' ).notEmpty();
     req.check('url', 'URL is required').notEmpty();
     req.check('url', 'URL is not valid').isURL();
-    req.check('body', 'Content is required').notEmpty();
-    req.check('body', 'Content must be between 100 and 300 characters').len(100,300);
+    req.check('body', 'Description is required').notEmpty();
+    req.check('body', 'Description must be between 100 and 300 characters').len(100,300);
 
     var errors = req.validationErrors();
 
@@ -234,7 +235,7 @@ router.
       errors.map(function(error) {
         res.flash('error', error.msg);
       });
-      res.redirect('/news/new');
+      res.status(400).render('news/new', {token: req.csrfToken(), title: req.body.title, url: req.body.url, body: req.body.body});
     }else{
       var newFlow = req.body;
       newFlow.userId = req.session.passport.user.userId;

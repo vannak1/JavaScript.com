@@ -9,19 +9,20 @@ extends /views/layouts/layout
 
 block content
 
+  .has-alert
+    include /views/partials/_flash
+
   section.row.has-sector
     .cell
       .g
         .g-b.g-b--m--3of5.sector.sector--a
           .well.well--l.well--m--xl
 
-            include /views/partials/_flash
-
             .bdrbl.mbl.pbl
               h1.h.h--2
-                | News From the
+                | News From the 
                 span.dib Community
-                  a.mlxs.tch(href="/feed/rss")
+                  a.mls.tch(href="/feed/rss")
                     - iconPartial = { name: 'rss', size: 20 }
                     include /views/partials/_icon
 
@@ -65,6 +66,7 @@ block content
                             = story.comment_count
                             | )
                       p.mbf= story.body
+
             .mbxl--m.tac
               button.btn.js-loadFeed-btn Load More
 

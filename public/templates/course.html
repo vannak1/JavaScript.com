@@ -1,52 +1,62 @@
 <div class='course js-course'>
-  <div class='row'>
-    <div class='cell'>
-      <nav class='course-toc'>
-        <div class='well well--m--xl course-toc-inner'>
-          <ol class='list list--s list--divided list--divided--s checklist tfh js-course--toc'>
-            <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }" class='list-item checklist-item'>
-              <a ng-href='#{{challenge.id}}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='checklist-item-link'>{{ ::challenge.title }}</a>
-              <span ng-if='!challenge.started'>{{ ::challenge.title }}</span>
-            </li>
+  <section class='row courseLayout-main'>
+    <div class='cell well well--s--l'>
+      <div class='g'>
+        <div class='g-b g-b--m--3of4'>
 
-            <li ng-class="{ 'is-active': ctrl.onWrapupPage(), 'is-completed': ctrl.challengeProgress.courseCompleted }" class='list-item checklist-item'>
-              <a ng-href='#wrapup' ng-if='ctrl.challengeProgress.courseCompleted' ng-click='ctrl.activateChallenge(null)' class='checklist-item-link'>Wrap Up</a>
-              <span>Wrap Up</span>
-            </li>
-          </ol>
-        </div>
-      </nav>
-    </div>
-  </div>
+          <nav>
+            <ol class='completionList mbm'>
+              <li ng-repeat='challenge in ctrl.challenges' ng-class="{ 'is-active': challenge.active, 'is-completed': challenge.completed }" class='completionList-item' tooltip="{{ ::challenge.title }}">
+                <svg class='icon completionList-item-icon' width='10' height='8'>
+                  <use xlink:href='#icon-check'/>
+                </svg>
+                <a ng-href='#{{ challenge.id }}' ng-if='challenge.started' ng-click='ctrl.activateChallenge(challenge)' class='completionList-item-link'></a>
+              </li>
 
-  <div ng-if='ctrl.challenges.length' id='im-sure-youll-change-this'>
-    <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge' ng-if='challenge.active' class='animate--fade'>
-    </js-challenge>
+              <li ng-class="{ 'is-active': ctrl.onWrapupPage(), 'is-completed': ctrl.challengeProgress.courseCompleted }" class='completionList-item' tooltip='Wrapup'>
+                <svg class='icon completionList-item-icon' width='10' height='8'>
+                  <use xlink:href='#icon-check'/>
+                </svg>
+                <a ng-href='#wrapup' ng-if='ctrl.challengeProgress.courseCompleted' ng-click='ctrl.activateChallenge(null)' class='completionList-item-link'></a>
+              </li>
+            </ol>
+          </nav>
 
-    <js-messages></js-messages>
+          <div ng-if='ctrl.challenges.length'>
+            <js-challenge ng-repeat='challenge in ::ctrl.challenges' challenge='challenge' ng-if='challenge.active' class='animate--fade'></js-challenge>
 
-    <section ng-if='ctrl.onWrapupPage()' class='animate--fade'>
-      <div class='row'>
-        <div class='cell cell--s well well--l well--m--xl'>
-          <div class="g">
-            <div class="g-b g-b--m--2of5 mbl">
-              <img class='thumb mhc' src='http://placehold.it/220x220' />
-            </div>
+            <div ng-if='ctrl.onWrapupPage()' class='animate--fade'>
+              <div class="g">
+                <div class="g-b g-b--m--2of5 mbl">
+                  <img src='/images/badge-try-javascript.svg' width='220' height='220' class='thumb mhc' alt='Try JavaScript Badge'/>
+                </div>
 
-            <div class="g-b g-b--m--3of5">
-              <h1 class='h h--1'>Congratulations!</h1>
+                <div class='g-b g-b--m--3of5'>
+                  <h1 class='h h--1 h--semibold'>Congratulations!</h1>
 
-              <p>You completed Try JavaScript and you earned this shiny new badge! Wow, you must be someone super important and awesome. You’re well on your way to becoming a JavaScript master.</p>
-              <p class="mbl">Sign in or create an account to claim your badge at Code School where you can continue your learning!</p>
+                  <p>You completed Try JavaScript and you earned this shiny new badge! If you'd like to add it to your achievements, you'll need to sign into your Code School account below.</p>
+                  <p class="mbl">Otherwise, if you want to learn about other places to get started with JavaScript, head over to our <a href='/resources'>Resources</a> page.</p>
 
-              <a href='https://www.codeschool.com' class='btn db dib--s mbs mrs mrs--s'>Claim Your Badge</a>
-              <a href='/resources' class='btn db dib--s btn--a--bordered'>Nope, I’m Good</a>
+                  <a href='https://www.codeschool.com/achievements/512/award' class='btn db dib--s mbs mrs mrs--s'>Claim Your Badge</a>
+                  <a href='/resources' class='btn db dib--s btn--a--bordered'>Nope, I’m Good</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
 
-  <js-console></js-console>
+        <div class='g-b g-b--m--1of4 dn db--m'>
+          <img src='/images/img-try-javascript.svg' alt='Try JavaScript'>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class='row bc-snow'>
+    <div class='cell well well--s--l'>
+      <js-messages></js-messages>
+      <js-console></js-console>
+    </div>
+  </div>
 </div>

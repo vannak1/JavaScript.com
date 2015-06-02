@@ -57,7 +57,7 @@ failures = {
 module.exports = {
   "id": 1,
   "title": "Strings",
-  "instructions": "Start learning JavaScript with us by typing in your *first name* surrounded by quotation marks, and ending with a semicolon. For example, I would type my name like this.\n\n`\"{{username || 'Gregg'}}\";`",
+  "instructions": "Start learning JavaScript with us by typing in your *first name* surrounded by quotation marks, and ending with a semicolon. For example, you could type a name like this:\n\n<code class=\"inlineCode inlineCode--btn\">\"{{username || 'Gregg'}}\";</code>",
   "tests": tests,
   "failures": failures,
   "answer": "\"Gregg\""

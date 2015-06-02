@@ -12,17 +12,21 @@ angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgres
       $(element).on('click', 'code', function(e) {
         if(!jsChallengeProgress.console) { return true; }
 
-        // Todo: incrementally add these in
         var csConsole = jsChallengeProgress.console,
             text      = $(this).text().split(''),
             timer     = (text.length > 15 ? 70 / 2 : 70),
-            count     = 0,
-            ticker;
+            count     = 0;
 
-        csConsole.setValue('');
+        if($(this).text() === csConsole.getValue()) {
+          csConsole.focus();
 
-        if (!ticker) {
-          ticker = setInterval(function() {
+          return;
+        }
+
+        if (!ctrl.ticker) {
+          csConsole.setValue('');
+
+          ctrl.ticker = setInterval(function() {
             var letter = text[count];
 
             count += 1;
@@ -30,8 +34,8 @@ angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgres
             if (letter) {
               csConsole.appendToInput(letter);
             } else {
-              clearInterval(ticker);
-              ticker = false;
+              clearInterval(ctrl.ticker);
+              ctrl.ticker = false;
             }
           }, timer);
         }
