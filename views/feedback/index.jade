@@ -21,10 +21,10 @@ block content
             | .
           p For any other site feedback or assistance, please submit your request below.
 
-      form.form.js-formValidator(id='form70' name='form70' accept-charset='UTF-8' autocomplete='off' enctype='multipart/form-data' method='post' action='https://codeschool.wufoo.com/forms/p14727kn1c9coto/#public')
+      form.form.js-formValidator.js-saveProgress-container(id='form70' name='form70' accept-charset='UTF-8' autocomplete='off' enctype='multipart/form-data' method='post' action='https://codeschool.wufoo.com/forms/p14727kn1c9coto/#public')
         fieldset.form-field
           label.form-label(for='email' id='Field4') Email
-          input.form-input.js-formValidator-input(name='Field4' id='Field4' type='email' required='true' data-validate='required')
+          input.form-input.js-formValidator-input.js-saveProgress(name='Field4' id='Field4' type='email' required='true' data-validate='required' data-saveprogress='feedback_email')
 
         fieldset.form-field
           label.form-label(for='type' id='Field5') Type of Feedback
@@ -37,7 +37,7 @@ block content
 
         fieldset.form-field
           label.form-label(for='comment' id='Field1') Give us your feedback to help us improve the site.
-          textarea.form-input.js-formValidator-input(name='Field1' id='Field1' rows='10' required='true' data-validate='required')
+          textarea.form-input.js-formValidator-input.js-saveProgress(name='Field1' id='Field1' rows='10' required='true' data-validate='required' data-saveprogress='feedback_content')
 
         input.btn.js-formValidator-submit(id='saveForm' name='saveForm' type='submit' value='Submit')
 

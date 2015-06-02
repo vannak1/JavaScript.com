@@ -60,13 +60,13 @@ block content
 
         if user.authenticated
 
-          form.form.js-formValidator(action='/news/'+flow.slug+'/comment' method='POST')
+          form.form.js-formValidator.js-saveProgress-container(action='/news/'+flow.slug+'/comment' method='POST')
             .bucket
               .bucket-media
                 img.thumb(src=user.avatar_url width=50)
               .bucket-content
                 fieldset.form-field
-                  textarea.form-input.form-textatrea.js-formValidator-input(name='body' data-validate='required' required='true')
+                  textarea.form-input.form-textatrea.js-formValidator-input.js-saveProgress(name='body' data-saveprogress='comment' data-validate='required' required='true')
 
                 input(type='hidden' name='_csrf' value=token)
                 input.btn.btn--a.form-btn.js-formValidator-submit(type='submit' value='Submit')

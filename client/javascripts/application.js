@@ -44,6 +44,7 @@ jQuery(function($) {
 
   JS.Modules.Console.init();
   JS.Modules.LoadStories.init();
+  JS.Modules.SaveProgress.init();
   JS.Modules.Video.init();
 
   JS.Modules.Counter.init({
