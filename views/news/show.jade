@@ -15,7 +15,11 @@ block content
       article.bdrbl.pbl.mbm(role='article')
 
         time.label.mbxs= moment(flow.published_at).format('ll')
-        h1.h.h--1= flow.title
+        h1.h.h--1
+          a.externalLink.tct.twb(href=flow.url)
+            = flow.title
+            - iconPartial = { name: 'external', className: 'externalLink-icon', size: 20 }
+            include /views/partials/_icon
 
         .bucket.bucket--flag.mbm
           .bucket-media
@@ -29,8 +33,6 @@ block content
                 a.dib(href='#comments')= pluralize('Comment', comments.length, true)
 
         p.well.well--l.tsl= flow.body
-
-        a.btn.mbxl(href=flow.url) Visit Site
 
       aside#comments(role='complementary')
         if comments.length > 0
