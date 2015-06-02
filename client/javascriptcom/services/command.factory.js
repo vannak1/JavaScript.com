@@ -32,7 +32,7 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', '
       var challenge = jsChallengeProgress.activeChallenge();
 
       command(challenge, line).then(function(content) {
-        report(jsReportAdapter(content));
+        report({ content: '' })
         successCallback(challenge);
       }, function(content) {
         report(jsReportAdapter(content));
