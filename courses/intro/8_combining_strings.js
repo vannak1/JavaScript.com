@@ -7,6 +7,7 @@ describe('set_a_var', function(){
   before(function() {
     var setup = "var _alertCalled = false, _alertVal, _alert = alert; alert = function(val) { _alertVal = val; _alertCalled = true; return _alert(val); };";
     js.evaluate(setup);
+    js.restoreName();
 
     try {
       message = js.evaluate(code);
@@ -46,8 +47,14 @@ failures = {
   "f_error": {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
+  'f_no_alert': {
+    'message': 'You can call the alert method like this: `alert();`'
+  },
   'f_no_alert_val': {
-    'message': "Here's a sample name to see how it works: `alert(firstName + \" is awesome!\");`"
+    'message': "Your alert message should look like this: `alert(firstName + \" is awesome!\");`"
+  },
+  'f_didnt_use_firstName': {
+    'message': "Don't forget to use the `firstName` variable in the beginning of your alert."
   }
 };
 

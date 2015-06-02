@@ -7,14 +7,7 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
     controllerAs: 'ctrl',
     require: '^jsCourse',
     link: function(scope, element, attrs, ctrl) {
-      var el = $(element).find('.console-ui')[0],
-          tryName = $cookies.get('try_name');
-
-      if (tryName) {
-        jsCourseState.state.username = tryName;
-        jsChallengeProgress.challenges[0].completed = true;
-        jsChallengeProgress.next();
-      }
+      var el = $(element).find('.console-ui')[0];
 
       var onSuccess = function onSuccess(challenge) {
         console.log('successful challenge!');
