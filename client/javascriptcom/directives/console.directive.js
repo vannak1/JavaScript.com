@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', '$cookies', 'jsCourseState', 'jsSuccessCloud', function(CSConsole, jsCommand, jsChallengeProgress, $cookies, jsCourseState, jsSuccessCloud) {
+angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', 'jsSuccessCloud', function(CSConsole, jsCommand, jsChallengeProgress, jsSuccessCloud) {
   return {
     templateUrl: 'templates/console.html',
     replace: true,
@@ -7,7 +7,9 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
     controllerAs: 'ctrl',
     require: '^jsCourse',
     link: function(scope, element, attrs, ctrl) {
-      var el = $(element).find('.console-ui')[0];
+      element.on('click', function() {
+        jsChallengeProgress.console.focus();
+      });
 
       var onSuccess = function onSuccess(challenge) {
         console.log('successful challenge!');
@@ -22,8 +24,8 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
         console.log('failed challenge!');
       }
 
-      // Todo: Figure out how to make this work as a one time init
       var command = new jsCommand(onSuccess, onFailure);
+      var el = $(element).find('.console-ui')[0];
 
       jsChallengeProgress.console = new CSConsole(el, {
         prompt: '> ',

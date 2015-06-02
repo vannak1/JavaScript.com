@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeResource', 'jsChallengeProgress', '$cookies', 'jsCourseState', function(_, jsCourseChallengeResource, jsChallengeProgress, $cookies, jsCourseState) {
+angular.module('javascriptcom').directive('jsCourse', ['jsCourseChallengeResource', 'jsChallengeProgress', '$cookies', 'jsCourseState', function(jsCourseChallengeResource, jsChallengeProgress, $cookies, jsCourseState) {
   return {
     replace: true,
     templateUrl: 'templates/course.html',
