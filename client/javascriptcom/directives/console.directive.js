@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', '$cookies', 'jsCourseState', 'jsSuccessCloud', function(CSConsole, jsCommand, jsChallengeProgress, $cookies, jsCourseState, jsSuccessCloud) {
+angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand', 'jsChallengeProgress', 'jsSuccessCloud', function(CSConsole, jsCommand, jsChallengeProgress, jsSuccessCloud) {
   return {
     templateUrl: 'templates/console.html',
     replace: true,
