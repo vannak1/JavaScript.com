@@ -9,8 +9,7 @@
 //
 // .hero
 //
-//   .hero-img--clouds
-//   .hero-img
+//   .hero-card
 //
 // *************************************
 
@@ -36,19 +35,25 @@
     +respond-to($g-l)
       display: block
 
-  .emblem
-    animation: emblem-fade-scale 1.2s ease .3s forwards
-    opacity: 0
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Card ----- //
+
+.hero-card
+  animation: hero-card-fadeInScale 1.2s ease 0.3s forwards
+  opacity: 0
 
 // -------------------------------------
 //   Animations
 // -------------------------------------
 
-// ----- Emblem ----- //
+// ----- Fade In Scale ----- //
 
-@keyframes emblem-fade-scale
-  0%
+@keyframes hero-card-fadeInScale
+  from
     opacity: 0
     transform: scale(1.1)
-  100%
+  to
     opacity: 1
