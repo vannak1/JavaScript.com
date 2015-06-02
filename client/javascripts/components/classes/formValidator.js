@@ -73,13 +73,6 @@ JS.Classes.FormValidator = (function() {
       };
     })(this));
 
-    this._settings.$input.on('keyup', (function(_this) {
-      return function(event) {
-        _this._input = $(event.currentTarget);
-        _this.validate(_this._input);
-      };
-    })(this));
-
   };
 
   // -------------------------------------
