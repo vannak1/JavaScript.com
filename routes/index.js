@@ -22,10 +22,10 @@ router.post('/subscribe', parseForm, function(req, res) {
       send_welcome: true
     },
     function(data) {
-      res.redirect('/');
+      res.json({data: data});
     },
     function(error) {
-      console.log(error);
+      res.json({error: error});
     });
 });
 

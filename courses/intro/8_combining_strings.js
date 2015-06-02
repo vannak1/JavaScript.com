@@ -7,6 +7,7 @@ describe('set_a_var', function(){
   before(function() {
     var setup = "var _alertCalled = false, _alertVal, _alert = alert; alert = function(val) { _alertVal = val; _alertCalled = true; return _alert(val); };";
     js.evaluate(setup);
+    js.restoreName();
 
     try {
       message = js.evaluate(code);
@@ -35,6 +36,10 @@ describe('set_a_var', function(){
     var alertWasCalled = js.evaluate('_alertVal');
     js.assert(alertWasCalled);
   });
+  it('f_missing_space', function() {
+    var alertWasCalled = js.evaluate('_alertVal');
+    js.assert(alertWasCalled !== js.state.username + "is awesome!");
+  });
   it('f_didnt_use_firstName', function() {
     var alertWasCalled = js.evaluate('_alertVal');
     js.assert(alertWasCalled === js.state.username + " is awesome!");
@@ -46,8 +51,17 @@ failures = {
   "f_error": {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
+  'f_no_alert': {
+    'message': 'You can call the alert method like this: `alert();`'
+  },
   'f_no_alert_val': {
-    'message': "Here's a sample name to see how it works: `alert(firstName + \" is awesome!\");`"
+    'message': "Your alert message should look like this: `alert(firstName + \" is awesome!\");`"
+  },
+  'f_missing_space': {
+    'message': 'In order for the sentence to make sense, you can add a space at the beginning of the string to look like this: `" is awesome!"`.'
+  },
+  'f_didnt_use_firstName': {
+    'message': "Don't forget to use the `firstName` variable in the beginning of your alert."
   }
 };
 

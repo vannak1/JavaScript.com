@@ -12,11 +12,20 @@ var Articles = {
     db.query('SELECT * FROM articles where approved IS NULL ORDER BY created_at ASC', [], cb)
   },
 
-  // Returns 10 Flow and 10 News articles that are published along with user information
-  // in DESC published_date order.
+  // Return 10 of the most recent Flow and News articles that are published
+  // along with user infomation.
+  recent(cb) {
+    db.query(
+      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = true AND approved = true ORDER BY published_at DESC LIMIT 10) OR a.id IN (SELECT id FROM articles WHERE news = false AND approved = true ORDER BY published_at DESC LIMIT 10) ORDER BY published_at DESC;',
+      [],
+      cb
+    )
+  },
+
+  // Returns 10 Flow articles that are published along with user information
   paginated(offset, cb){
     db.query(
-      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = true AND approved = true ORDER BY published_at DESC LIMIT 10 OFFSET $1) OR a.id IN (SELECT id FROM articles WHERE news = false AND approved = true ORDER BY published_at DESC LIMIT 10 OFFSET $1) order by published_at DESC;',
+      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = false AND approved = true ORDER BY published_at DESC LIMIT 10 OFFSET $1) ORDER BY published_at DESC;',
       [offset],
       cb
     )

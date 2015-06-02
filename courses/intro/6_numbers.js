@@ -33,6 +33,9 @@ describe('set_a_var', function(){
   });
   it('f_no_alert_val', function(){
     var alertWasCalled = js.evaluate('_alertVal');
+
+    if (alertWasCalled === 0) { alertWasCalled = true };
+
     js.assert(alertWasCalled);
   });
   it('f_alert_not_int', function(){

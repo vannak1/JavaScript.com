@@ -14,7 +14,9 @@ angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', '
 
       if (_.isArray(content)) {
         _.each(content, function(obj) {
-          messages.push(filterMessage(obj.content));
+          if (obj.content.textContent !== 'undefined') {
+            messages.push(filterMessage(obj.content));
+          }
         });
       } else {
         content = _.isObject(content) && content['content'] ? filterMessage(content['content']) : filterMessage(content);

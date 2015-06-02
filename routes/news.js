@@ -123,35 +123,52 @@ router.
 
   get('/', parseForm, function(req, res) {
     var offset = req.query.page;
-
-    Articles.paginated(offset, function(all) {
-      var flow = [], news = [];
-      // TODO: Move date functionality into a serivce. It'll be used practically
-      // everywhere. Oh, and refactor this blasphemy.
-      //
-      // TODO: We shouldn't be needing to use moment in order to make the time
-      // UTC. There's an issue with pg and it's parsing the dates from the db
-      // incorrectly. This is a temporary fix until I can snipe the bug.
-      all.map(function(item){
-        item.date = moment.utc(item.published_at).format('LL');
-        if (item.date == moment.utc(Date.now()).format('LL')){
-          item.date = 'Today'
-        }else{
-          item.date = moment(item.date).format('LL');
-        }
-        if (item.news){
-          news.push(item);
-        }else{
-          flow.push(item);
-        }
+    var more;
+    if (offset) {
+      Articles.paginated(offset, function(all) {
+        // TODO: Move date functionality into a serivce. It'll be used practically
+        // everywhere. Oh, and refactor this blasphemy.
+        //
+        // TODO: We shouldn't be needing to use moment in order to make the time
+        // UTC. There's an issue with pg and it's parsing the dates from the db
+        // incorrectly. This is a temporary fix until I can snipe the bug.
+        all.map(function(item){
+          item.date = moment.utc(item.published_at).format('LL');
+          if (item.date == moment.utc(Date.now()).format('LL')){
+            item.date = 'Today'
+          }else{
+            item.date = moment(item.date).format('LL');
+          }
+        });
+        more = (all.length % 10 === 0) ? true : false;
+        res.json({flow: all, more: more});
       });
-      if (offset) {
-        res.json({news: news, flow: flow});
-      }else{
-        res.render('news/index', {flow_collection: flow, news_collection: news, moment: moment});
-      }
-    });
-
+    }else{
+      Articles.recent(function(all) {
+        var flow = [], news = [];
+        // TODO: Move date functionality into a serivce. It'll be used practically
+        // everywhere. Oh, and refactor this blasphemy.
+        //
+        // TODO: We shouldn't be needing to use moment in order to make the time
+        // UTC. There's an issue with pg and it's parsing the dates from the db
+        // incorrectly. This is a temporary fix until I can snipe the bug.
+        all.map(function(item){
+          item.date = moment.utc(item.published_at).format('LL');
+          if (item.date == moment.utc(Date.now()).format('LL')){
+            item.date = 'Today'
+          }else{
+            item.date = moment(item.date).format('LL');
+          }
+          if (item.news){
+            news.push(item);
+          }else{
+            flow.push(item);
+          }
+        });
+        more = (all.length % 10 === 0) ? true : false;
+        res.render('news/index', {flow_collection: flow, news_collection: news, more: more });
+      });
+    }
   }).
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
