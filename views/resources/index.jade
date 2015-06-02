@@ -16,10 +16,12 @@ block content
         h1 Free Resources
         p.mbf.tcs
           | Here is a curated list of a few places you can start learning
-          | JavaScript for free. If you already know JavaScript and want to see
-          | how good you are, you might consider taking a quick 
-          a.smarterer_test_link(href='//smarterer.com/tests/javascript/run?wuid=mzuyndvhnj') Smarterer assessment
-          | .
+          | JavaScript for free. 
+          span.dn.di--m
+            | If you already know JavaScript and want to see
+            | how good you are, you might consider taking a quick 
+            a.smarterer_test_link(href='//smarterer.com/tests/javascript/run?wuid=mzuyndvhnj') Smarterer assessment
+            | .
 
       ul.list.list--l.list--divided.list--divided--l
 
@@ -61,11 +63,3 @@ block content
 
 block inline_javascript
   script(src='//smarterer.com/js/popup.js')
-
-  script.
-    jQuery(function($) {
-      JS.Modules.Toggle.init({
-        proximity : '> span',
-        event     : 'hover'
-      });
-    });

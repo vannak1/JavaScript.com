@@ -65,6 +65,8 @@
 
   .db--m
     display: block !important
+  .di--m
+    display: inline !important
   .dn--m
     display: none !important
 
@@ -283,6 +285,11 @@
   padding-top: $b-space-xl !important
 
 // Responsive
+
++respond-to($g-m)
+
+  .ptxl--m
+    padding-top: $b-space-xl !important
 
 +respond-to($g-l)
 

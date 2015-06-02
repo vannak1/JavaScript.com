@@ -16,7 +16,6 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
       response.push(generateResponse(output));
 
       if(result.isSuccess()) {
-        response.push(generateResponse('Correct!', 'success'));
         jsExecutor.off('complete', onComplete);
 
         deferred.resolve(response);
@@ -27,7 +26,22 @@ angular.module('javascriptcom').factory('jsJavaScriptCommand', ['$', '$q', 'jsEx
     }
 
     jsExecutor.on('complete', onComplete);
-    jsExecutor.run(line, challenge.tests);
+
+    noTest = "\
+      var js = require('/courses/helper/index.js'); \
+      describe('no tests', function() { \
+        var message;\
+        before(function() { \
+          try { message = js.evaluate(code); } catch(e) {}; \
+        }); \
+        details(function() { \
+          return { output: message } \
+        }); \
+      }); \
+    ";
+
+    var run = challenge ? challenge.tests : noTest;
+    jsExecutor.run(line, run);
 
     return deferred.promise;
   }

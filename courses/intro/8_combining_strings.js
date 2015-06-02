@@ -36,6 +36,10 @@ describe('set_a_var', function(){
     var alertWasCalled = js.evaluate('_alertVal');
     js.assert(alertWasCalled);
   });
+  it('f_missing_space', function() {
+    var alertWasCalled = js.evaluate('_alertVal');
+    js.assert(alertWasCalled !== js.state.username + "is awesome!");
+  });
   it('f_didnt_use_firstName', function() {
     var alertWasCalled = js.evaluate('_alertVal');
     js.assert(alertWasCalled === js.state.username + " is awesome!");
@@ -52,6 +56,9 @@ failures = {
   },
   'f_no_alert_val': {
     'message': "Your alert message should look like this: `alert(firstName + \" is awesome!\");`"
+  },
+  'f_missing_space': {
+    'message': 'In order for the sentence to make sense, you can add a space at the beginning of the string to look like this: `" is awesome!"`.'
   },
   'f_didnt_use_firstName': {
     'message': "Don't forget to use the `firstName` variable in the beginning of your alert."

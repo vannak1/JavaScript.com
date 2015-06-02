@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeResource', 'jsChallengeProgress', '$cookies', 'jsCourseState', function(_, jsCourseChallengeResource, jsChallengeProgress, $cookies, jsCourseState) {
+angular.module('javascriptcom').directive('jsCourse', ['jsCourseChallengeResource', 'jsChallengeProgress', '$cookies', 'jsCourseState', 'jsExecutor', function(jsCourseChallengeResource, jsChallengeProgress, $cookies, jsCourseState, jsExecutor) {
   return {
     replace: true,
     templateUrl: 'templates/course.html',
@@ -34,6 +34,9 @@ angular.module('javascriptcom').directive('jsCourse', ['_', 'jsCourseChallengeRe
       this.onWrapupPage = function onWrapupPage() {
         return jsChallengeProgress.activeChallenge() ? false : true;
       }
+
+      // This will kind of "pre-load" abecedary.
+      jsExecutor.run('0', '');
     }
   };
 }]);

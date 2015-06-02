@@ -16,31 +16,30 @@ block content
     .cell
       .g
         .g-b.g-b--m--3of5.sector.sector--a
-          .well.well--l.well--m--xl
+          .well.well--l.well--m--xl.mbl
 
-            .bdrbl.mbl.pbl
-              h1.h.h--2
-                | News From the 
-                span.dib Community
-                  a.mls.tch(href="/feed/rss")
-                    - iconPartial = { name: 'rss', size: 20 }
-                    include /views/partials/_icon
+            h1.h.h--2
+              | News From the 
+              span.dib Community
+                a.mls.tch(href="/feed/rss")
+                  - iconPartial = { name: 'rss', size: 20 }
+                  include /views/partials/_icon
 
-              .g
-                .g-b.g-b--l--3of4
+            .g
+              .g-b.g-b--l--3of4
 
-                  p.mbf--l.ptxs--l.tcs.tss
-                    | A curated list of news and stories submitted from the
-                    | JavaScript.com community. To learn more about how you
-                    | can contribute, visit our 
-                    a(href='/guidelines') Contribution Guidelines
-                    | .
+                p.mbf--l.ptxs--l.tcs.tss
+                  | A curated list of news and stories submitted from the
+                  | JavaScript.com community. To learn more about how you
+                  | can contribute, visit our 
+                  a(href='/guidelines') Contribution Guidelines
+                  | .
 
-                .g-b.g-b--l--1of4
+              .g-b.g-b--l--1of4
 
-                  a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
+                a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
-          .js-loadFeed
+          .pillar.pillar--thick.ptl.ptxl--m.js-loadFeed
             ul.list.list--l.list--divided.list--divided--l.mbl.js-loadFeed-list
 
               - for story in flow_collection
@@ -51,7 +50,10 @@ block content
                       img.thumb(src=story.avatar_url width='50')
                     .bucket-content
                       h2.h.h--3
-                        a.tct.twb.js-toggle(href=story.url)= story.title
+                        a.externalLink.tct.twb(href=story.url)
+                         = story.title
+                          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
+                          include /views/partials/_icon
                       p.tcs.tfh
                         | via 
                         span.twsb= story.name
@@ -67,10 +69,9 @@ block content
                             | )
                       p.mbf= story.body
 
-            if flow_collection.length === 10
-
-              .mbxl--m.tac
-                button.btn.js-loadFeed-btn Load More
+          if flow_collection.length === 10
+            .well.well--l.mbl.mbxl--m.tac
+              button.btn.js-loadFeed-btn Load More
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
@@ -86,7 +87,7 @@ block content
                 a.btn.btn--a--bordered.db.dib--s.mbs.mrs--s(href='https://itunes.apple.com/us/podcast/5-minutes-of-javascript/id775261328') Listen Now
                 a.btn.btn--a--bordered.db.dib--s(href='https://fivejs.codeschool.com/') Visit Site
 
-              .pillar.pillar--l.pillar--thick.mbm
+              .pillar.pillar--l.pillar--thick.mbl
 
                 ul.list.list--l.list--divided.list--divided--l
 
