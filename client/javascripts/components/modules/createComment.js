@@ -103,7 +103,7 @@ JS.Modules.CreateComment = (function() {
     var comment = '';
 
     comment+=
-      '<li id="comment-"' + data.comment.id + ' class="list-item is-added">' +
+      '<li id="comment-' + data.comment.id + '" class="list-item is-added">' +
         '<div class="bucket">' +
           '<div class="bucket-media">' +
             '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
@@ -128,7 +128,7 @@ JS.Modules.CreateComment = (function() {
     var comment = '';
 
     comment+=
-      '<li id="comment-"' + data.comment.id + ' class="list-item is-added">' +
+      '<li id="comment-' + data.comment.id + '" class="list-item is-added">' +
         '<div class="bucket">' +
           '<div class="bucket-media">' +
             '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
