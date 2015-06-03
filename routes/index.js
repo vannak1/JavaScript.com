@@ -2,10 +2,10 @@ var express = require('express');
 var router  = express.Router();
 var path    = require('path');
 var bodyParser = require('body-parser');
+var parseForm = bodyParser.urlencoded({ extended: false });
 var mcapi = require('mailchimp-api');
 
 mc = new mcapi.Mailchimp(process.env.MAILCHIMP_API);
-var parseJson = bodyParser.json();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST subscribe an email to JS5 list. */
-router.post('/subscribe', parseJson, function(req, res) {
+router.post('/subscribe', parseForm, function(req, res) {
   mc.lists.subscribe(
     {
       id: process.env.LIST_ID,
