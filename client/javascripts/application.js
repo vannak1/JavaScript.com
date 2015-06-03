@@ -42,7 +42,8 @@ jQuery(function($) {
     events: [
       { page  : 'home',      run : function() { JS.Pages.Home(); } },
       { match : 'news',      run : function() { JS.Pages.News(); } },
-      { page  : 'news:new',  run : function() { JS.Pages.News.New(); } }
+      { page  : 'news:new',  run : function() { JS.Pages.News.New(); } },
+      { page  : 'news:show', run : function() { JS.Pages.News.Show(); } }
     ]
   });
 
