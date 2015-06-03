@@ -10,6 +10,7 @@ var Akismetor = require('../services/akismetor');
 var moment = require('moment');
 var pluralize = require('pluralize');
 var expressValidator = require('express-validator');
+var _ = require('lodash');
 
 
 var csrfProtection = csrf();
@@ -144,6 +145,7 @@ router.
           });
           // There are strings and integers here - not so good.
           more = (all.length == (total[0].count - offset )) ? false : true;
+          all = _.groupBy(all, 'date');
           res.json({flow: all, more: more});
         });
       });
@@ -170,7 +172,8 @@ router.
               flow.push(item);
             }
           });
-          more = (flow.length <= total[0].count) ? false : true;
+          more = (flow.length <= parseInt(total[0].count)) ? true : false;
+          flow = _.groupBy(flow, 'date');
           res.render('news/index', {flow_collection: flow, news_collection: news, more: more });
         });
       });
