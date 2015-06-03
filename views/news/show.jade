@@ -60,7 +60,13 @@ block content
           .mbxl.js-createComment-empty
             p.tcs.tsi There are no comments on this story. Add yours below!
 
-        h2.h.h--3.tcs.mbm Post a New Comment
+        .split.mbm
+          .split-item
+            .split-cell
+              h2.h.h--3.tcs Post a New Comment
+            if user.authenticated
+              .split-cell
+                a(href='/news/signout') Not you?
 
         if user.authenticated
 

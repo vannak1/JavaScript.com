@@ -31,6 +31,14 @@ var Articles = {
     )
   },
 
+  totalPublished(cb){
+    db.query(
+      'SELECT count(*) FROM articles WHERE news = false AND approved = true',
+      [],
+      cb
+    )
+  },
+
   // Returns all stories that have been approved for RSS feed. Limit: 25
   rss(cb){
     db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a,published_at FROM articles as a WHERE a.approved = true ORDER BY published_at DESC', [], cb)

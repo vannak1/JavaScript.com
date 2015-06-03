@@ -110,9 +110,9 @@ JS.Modules.LoadStories = (function() {
   // -------------------------------------
 
   var _toggleButton = function(data) {
-    var stories = data.flow;
+    var isMoreStories = data.more;
 
-    if (stories.length < _settings.increment) {
+    if (!isMoreStories) {
       _settings.$button.addClass(_settings.hiddenClass);
     }
   };

@@ -6,6 +6,7 @@ block layout_variables
   - metaDescription = 'The latest news from the JavaScript community and the fine folks at 5 Minutes of JavaScript.'
   - dispatcher = 'news'
 
+
 extends /views/layouts/layout
 
 block content
@@ -20,7 +21,7 @@ block content
           .well.well--l.well--m--xl.mbl
 
             h1.h.h--2
-              | News From the 
+              | News From the
               span.dib Community
                 a.mls.tch(href="/feed/rss")
                   - iconPartial = { name: 'rss', size: 20 }
@@ -32,7 +33,7 @@ block content
                 p.mbf--l.ptxs--l.tcs.tss
                   | A curated list of news and stories submitted from the
                   | JavaScript.com community. To learn more about how you
-                  | can contribute, visit our 
+                  | can contribute, visit our
                   a(href='/guidelines') Contribution Guidelines
                   | .
 
@@ -56,13 +57,13 @@ block content
                           - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
                           include /views/partials/_icon
                       p.tcs.tfh
-                        | via 
+                        | via
                         span.twsb= story.name
-                        |  | 
+                        |  |
                         time.tsi= story.date
-                        |  | 
+                        |  |
                         a(href='/news/' + story.slug + '#comments')
-                          | View Discussion 
+                          | View Discussion
                           if story.comment_count > 0
                             | (
                             = story.comment_count
@@ -80,9 +81,9 @@ block content
               .mbl
                 img.db.mbl.mhc(src='/images/img-news.svg' alt='' width='250')
 
-                h2.h.h--3 5 Minutes of JavaScript
+                h2.h.h--3 News From FiveJS
 
-                p.tcs.tss News from the 5 Minutes of JavaScript podcast.
+                p.tcs.tss 5 Minutes of JavaScript (FiveJS) is a weekly newsletter and podcast curating the latest news in the JavaScript community.
 
                 a.btn.btn--a--bordered.db.dib--s.mbs.mrs--s(href='https://itunes.apple.com/us/podcast/5-minutes-of-javascript/id775261328') Listen Now
                 a.btn.btn--a--bordered.db.dib--s(href='https://fivejs.codeschool.com/') Visit Site
@@ -103,8 +104,9 @@ block content
 
               p.tcs.tss Subscribe now to the 5 Minutes of JavaScript newsletter. Updated weekly.
 
-              form.form.form--inline.tar(action='/subscribe' method='post')
-                fieldset.form-field.mbs
-                  input.form-input(type='email' name='email' placeholder='Email Address')
+              .newsletter.js-newsletter
+                form.form.form--inline.newsletter-form.tar.js-newsletter-form
+                  fieldset.form-field.mbs
+                    input.form-input(type='email' name='email' placeholder='Email Address' required)
 
-                input.btn.btn--b.btn--block.btn--m--inline.form-btn(type='submit' value='Subscribe')
+                  input.btn.btn--b.btn--block.btn--m--inline.form-btn(type='submit' value='Subscribe')

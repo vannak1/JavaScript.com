@@ -26,7 +26,8 @@ JS.Inbox    = {};
 // -------------------------------------
 
 JS.Globals = {
-  homepageChallengeAnswer : /^['"][A-z-\.\s]*['"](;)?/
+  homepageChallengeAnswer : /^['"][A-z-\.\s]*['"](;)?/,
+  userNameCookie          : 'try_name'
 };
 
 // -------------------------------------
@@ -52,14 +53,10 @@ jQuery(function($) {
 //   Inbox
 // -------------------------------------
 
-$('a:contains("Next Challenge")').on('click', function() {
-  var name = $('.js-inlineConsole-input').val().replace(/['";]/g, '');
-
-  document.cookie = 'try_name=' + name;
-});
-
 jQuery(function($) {
+
   $('.js-courseLayout-toggle').on('click', function(event) {
     $('.js-courseLayout').toggleClass('is-active')
   });
+
 });
