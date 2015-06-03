@@ -223,7 +223,7 @@ router.
         comment[0].isSpam = true;
         res.json({comment: comment[0]});
       }else{
-        Comments.findByArticleId(comment[0].id, function(comment) {
+        Comments.findByCommentId(comment[0].id, function(comment) {
           res.json({comment: comment[0]});
         });
       }
