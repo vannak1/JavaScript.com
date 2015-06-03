@@ -39,27 +39,42 @@ JS.Modules.LoadStories = (function() {
     var stories = data.flow,
         markup  = '';
 
-    stories.forEach(function(story) {
+    for (group in stories) {
+
       markup +=
-        '<li class="list-item">' +
-          '<article class="bucket">' +
-            '<div class="bucket-media">' +
-              '<img class="thumb" src="' + story.avatar_url + '" width="50"/>' +
-            '</div>' +
-            '<div class="bucket-content">' +
-              '<h2 class="h h--3">' +
-                '<a class="tct twb" href="' + story.url  + '">' + story.title + '</a>' +
-              '</h2>' +
-              '<p class="tcs tfh">' +
-                'via ' + '<span class="twsb">' + story.name + '</span>' +
-                ' | ' + '<time class="tsi">' + story.date + '</time>' +
-                ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
-              '</p>' +
-              '<p class="tcs tfh">' + story.body + '</p>' +
-            '</div>' +
-          '</article>' +
+        '<li class="list-item list-item--header bdrbl pbs">' +
+          '<span class="mrs por pot2n">' +
+            '<span class="srt">calendar</span>' +
+            '<svg class="icon" width="16" height="16">' +
+              '<use xlink:href="#icon-calendar"></use>' +
+            '</svg>' +
+          '</span>' +
+          '<span>' + group + '</span>' +
         '</li>';
-    });
+
+      stories[group].forEach(function(story) {
+        markup +=
+          '<li class="list-item">' +
+            '<article class="bucket">' +
+              '<div class="bucket-media">' +
+                '<img class="thumb" src="' + story.avatar_url + '" width="50"/>' +
+              '</div>' +
+              '<div class="bucket-content">' +
+                '<h2 class="h h--3">' +
+                  '<a class="tct twb" href="' + story.url  + '">' + story.title + '</a>' +
+                '</h2>' +
+                '<p class="tcs tfh">' +
+                  'via ' + '<span class="twsb">' + story.name + '</span>' +
+                  ' | ' + '<time class="tsi">' + story.date + '</time>' +
+                  ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
+                '</p>' +
+                '<p class="tcs tfh">' + story.body + '</p>' +
+              '</div>' +
+            '</article>' +
+          '</li>';
+      });
+
+    }
 
     _settings.$list.append(markup);
   };
