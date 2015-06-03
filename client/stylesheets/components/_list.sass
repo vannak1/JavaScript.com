@@ -26,29 +26,36 @@
 .list--divided
 
   > .list-item
-    border-bottom: $b-border
-    padding-bottom: $b-space
+    border-top: $b-border
+    padding-top: $b-space
 
-    &:last-child
-      border-bottom: 0
-      padding-bottom: 0
+    &:first-child
+      border-top: 0
+      padding-top: 0
+
+  > .list-item--header
+    border-top: 0
+
+    + .list-item
+      border-top: 0
+      padding-top: 0
 
 // Sizes
 
 .list--divided--f
 
   > .list-item
-    padding-bottom: 0
+    padding-top: 0
 
 .list--divided--s
 
   > .list-item
-    padding-bottom: $b-space-s
+    padding-top: $b-space-s
 
 .list--divided--l
 
   > .list-item
-    padding-bottom: $b-space-l
+    padding-top: $b-space-l
 
 // ----- Inline ----- //
 
