@@ -768,6 +768,11 @@
         }
       }
     },
+    "lodash": {
+      "version": "3.9.3",
+      "from": "lodash@*",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.9.3.tgz"
+    },
     "mailchimp-api": {
       "version": "2.0.7",
       "from": "https://registry.npmjs.org/mailchimp-api/-/mailchimp-api-2.0.7.tgz",
