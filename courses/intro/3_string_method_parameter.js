@@ -6,7 +6,7 @@ describe('console.log example', function() {
 
   before(function() {
     var setup = "var _alertCalled = false; var _alertVal; var _alert = alert;";
-    setup += "alert = function(val) { _alertVal = val; _alertCalled = true; return _alertVal === '__wrong__' ? undefined : _alert(val); };";
+    setup += "alert = function(val) { _alertVal = val; _alertCalled = true; return _alertVal === '__wrong__' ? false : _alert(val); };";
     setup += "var " + js.state.username + " = '__wrong__';";
     setup += "var " + js.state.username.toLowerCase() + " = '__wrong__';";
     js.evaluate(setup);

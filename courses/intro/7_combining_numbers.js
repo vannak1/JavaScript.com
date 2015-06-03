@@ -11,6 +11,7 @@ describe('set_a_var', function(){
       errorMessage = e.message;
     }
   });
+
   details(function() {
     return {
       output: message

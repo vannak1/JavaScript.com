@@ -34,10 +34,13 @@ var state = {};
 
 // getOwnPropertyNames doesn't work in IE 8 and below.
 if (Object.getOwnPropertyNames(state).length === 0) {
-  var cookie = readCookie('course_state');
+  var courseState = readCookie('course_state'),
+      tryName     = readCookie('try_name');
 
-  if (typeof cookie === 'string') {
-    state = JSON.parse(decodeURIComponent(cookie));
+  if (courseState) {
+    state = JSON.parse(decodeURIComponent(courseState));
+  } else if (tryName) {
+    state.username = tryName;
   }
 }
 
