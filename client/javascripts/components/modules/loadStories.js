@@ -22,8 +22,8 @@ JS.Modules.LoadStories = (function() {
       $element        : $('.js-loadFeed'),
       $button         : $('.js-loadFeed-btn'),
       $list           : $('.js-loadFeed-list'),
-      increment       : 10,
-      offset          : 10,
+      increment       : 25,
+      offset          : 25,
       path            : '/news?page=',
       hiddenClass     : 'is-hidden'
     }, options);
