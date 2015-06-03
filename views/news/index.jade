@@ -60,8 +60,7 @@ block content
                         |  | 
                         time.tsi= story.date
                         |  | 
-                        - className = story.comment_count > 2 ? 'link link--highlighted' : ''
-                        a(href='/news/' + story.slug + '#comments' class=className)
+                        a(href='/news/' + story.slug + '#comments')
                           | View Discussion 
                           if story.comment_count > 0
                             | (
