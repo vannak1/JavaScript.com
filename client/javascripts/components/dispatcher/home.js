@@ -23,4 +23,14 @@ JS.Pages.Home = function() {
     elementNode : '.js-alert'
   });
 
+  // -------------------------------------
+  //   Local
+  // -------------------------------------
+
+  $('.js-inlineConsole-btn').on('click', function(event) {
+    var name = $('.js-inlineConsole-input').val().replace(/['";]/g, '');
+
+    document.cookie = JS.Globals.userNameCookie + '=' + name;
+  });
+
 };
