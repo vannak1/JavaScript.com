@@ -1,6 +1,7 @@
 block layout_variables
   - pageTitle = 'Submit New Post'
   - metaDescription = 'Submit a new post to JavaScript.com'
+  - dispatcher = 'news:new'
 
 extends /views/layouts/layout
 
@@ -88,12 +89,3 @@ block content
                 | submit advertisements about commercial products or job postings.
               li.list-item
                 a(href='/guidelines') View all community guidelines &rarr;
-
-block inline_javascript
-  script.
-    jQuery(function($) {
-      JS.Services.expel({
-        $toggle     : $('.js-alert-close'),
-        elementNode : '.js-alert'
-      });
-    });

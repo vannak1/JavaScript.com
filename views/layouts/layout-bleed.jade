@@ -4,7 +4,8 @@ html(lang='en')
   block layout_variables
   include /views/layouts/_head
 
-  body
+  - dispatcher = dispatcher ? dispatcher : ''
+  body.js-dispatcher(data-dispatcher-page=dispatcher)
     .dn
       include /public/images/icons/icons.svg
 
