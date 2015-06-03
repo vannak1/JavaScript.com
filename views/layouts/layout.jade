@@ -4,7 +4,7 @@ html(lang='en')
   block layout_variables
   include /views/layouts/_head
 
-  - dispatcher = dispatcher ? dispatcher : pageTitle.toLowerCase()
+  - dispatcher = dispatcher ? dispatcher : ''
   body.js-dispatcher(data-dispatcher-page=dispatcher)
     .dn
       include /public/images/icons/icons.svg

@@ -69,12 +69,12 @@ JS.Modules.LoadStories = (function() {
   // -------------------------------------
 
   var _getStories = function() {
-      $.get('/news?page=' + _settings.offset, function(data) {
-        _appendStories(data);
-        _toggleButton(data);
-      });
+    $.get('/news?page=' + _settings.offset, function(data) {
+      _appendStories(data);
+      _toggleButton(data);
+    });
 
-      _settings.offset += _settings.increment;
+    _settings.offset += _settings.increment;
   };
 
   // -------------------------------------

@@ -31,16 +31,17 @@ block content
                 span.twn via 
                 | #{flow.name}
               li.list-item
-                a.dib(href='#comments')= pluralize('Comment', comments.length, true)
+                a.dib.js-createComment-number(href='#comments')= pluralize('Comment', comments.length, true)
 
         p.well.well--l.tsl= flow.body
 
-      aside#comments(role='complementary')
+      - commentsClass = comments.length == 0 ? 'is-empty' : ''
+      aside#comments.js-createComment-container(role='complementary' class=commentsClass)
         if comments.length > 0
 
-          h2.h.h--3.tcs.mbm= pluralize('Comment', comments.length, true)
+          h2.h.h--3.tcs.mbm.js-createComment-number= pluralize('Comment', comments.length, true)
 
-          ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
+          ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl.js-createComment-list
             - for comment in comments
               li.list-item(id='comment-' + comment.id)
                 .bucket
@@ -61,7 +62,7 @@ block content
 
         if user.authenticated
 
-          form.form.js-formValidator.js-saveProgress-container(action='/news/'+flow.slug+'/comment' method='POST')
+          form.form.js-formValidator.js-saveProgress-container.js-createComment(action='/news/'+flow.slug+'/comment' method='POST')
             .bucket
               .bucket-media
                 img.thumb(src=user.avatar_url width=50)
