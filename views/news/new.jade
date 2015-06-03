@@ -30,26 +30,26 @@ block content
       .g
         .g-b.g-b--m--3of5
 
-          form.form.js-formValidator(action='/news' method='POST')
+          form.form.js-formValidator.js-saveProgress-container(action='/news' method='POST')
 
             fieldset.form-field
               label
                 span.form-label Title
               - titleValue = title ? title : ''
-              input.form-input.js-formValidator-input(type='text' name='title' data-validate='required' required='true' value=titleValue placeholder='Sundae.js 2.0 Released')
+              input.form-input.js-formValidator-input.js-saveProgress(type='text' name='title' data-validate='required' required='true' value=titleValue placeholder='Sundae.js 2.0 Released' data-saveprogress='news_title')
 
             fieldset.form-field
               label
                 span.form-label Link
               - urlValue = url ? url : ''
-              input.form-input.js-formValidator-input(type='text' name='url' data-validate='required' required='true' value=urlValue placeholder='http://www.example.com')
+              input.form-input.js-formValidator-input.js-saveProgress(type='text' name='url' data-validate='required' required='true' value=urlValue placeholder='http://www.example.com' data-saveprogress='news_link')
 
             fieldset.form-field
               label
                 span.form-label Description
 
               - bodyValue = body ? body : ''
-              textarea.form-input.form-textarea.js-counter.js-formValidator-input(name='body' rows=8 data-validate='required' required='true' placeholder="Today we released Sundae.js 2.0, which now has extra sprinkles, extra nuts, and now has three scoops of vanilla instead of two. If you can't eat dairy, you can now replace the ice cream with sherbert.")
+              textarea.form-input.form-textarea.js-counter.js-formValidator-input.js-saveProgress(name='body' rows=8 data-validate='required' required='true' placeholder="Today we released Sundae.js 2.0, which now has extra sprinkles, extra nuts, and now has three scoops of vanilla instead of two. If you can't eat dairy, you can now replace the ice cream with sherbert." data-saveprogress='news_description')
                 =bodyValue
 
               .split

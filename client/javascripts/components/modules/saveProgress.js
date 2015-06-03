@@ -56,7 +56,9 @@ JS.Modules.SaveProgress = (function() {
           key      = $element.data(_settings.dataAttribute),
           value    = localStorage.getItem(key);
 
-      $element.val(value);
+      if (value !== null) {
+        $element.val(value);
+      }
     });
   };
 
