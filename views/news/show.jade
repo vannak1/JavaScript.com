@@ -1,6 +1,7 @@
 block layout_variables
   - pageTitle = 'News'
   - metaDescription = 'The latest news from the JavaScript community and the fine folks at 5 Minutes of JavaScript.'
+  - dispatcher = 'news:show'
 
 extends /views/layouts/layout
 
@@ -75,12 +76,3 @@ block content
           .card.bdr.tac
             p.tcs.tsi You need to authenticate with GitHub in order to comment on this post.
             a.btn.btn--a.form-btn(href='/news/sign_in') Authenticate with GitHub
-
-block inline_javascript
-  script.
-    jQuery(function($) {
-      JS.Services.expel({
-        $toggle     : $('.js-alert-close'),
-        elementNode : '.js-alert'
-      });
-    });

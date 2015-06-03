@@ -17,6 +17,7 @@ JS.Globals  = {},
 JS.Classes  = {},
 JS.Helpers  = {},
 JS.Modules  = {},
+JS.Pages    = {},
 JS.Services = {},
 JS.Inbox    = {};
 
@@ -34,32 +35,14 @@ JS.Globals = {
 
 jQuery(function($) {
 
-  // ----- Components ----- //
+  // ----- Dispatcher ----- //
 
-  // Classes
-
-  new JS.Classes.FormValidator();
-
-  // Modules
-
-  JS.Modules.Console.init();
-  JS.Modules.LoadStories.init();
-  JS.Modules.SaveProgress.init();
-  JS.Modules.Video.init();
-
-  JS.Modules.Counter.init({
-    onMinPreceeded: function(settings) {
-      $('.js-counter-message-min').removeClass('is-hidden');
-      $('.js-counter-message-max').addClass('is-hidden');
-    },
-    onMaxExceeded: function(settings) {
-      $('.js-counter-message-max').removeClass('is-hidden');
-      $('.js-counter-message-min').addClass('is-hidden');
-    },
-    onConditionsMet: function(settings){
-      $('.js-counter-message-min').addClass('is-hidden');
-      $('.js-counter-message-max').addClass('is-hidden');
-    }
+  new JS.Classes.Dispatcher({
+    events: [
+      { page  : 'home',      run : function() { JS.Pages.Home(); } },
+      { match : 'news',      run : function() { JS.Pages.News(); } },
+      { page  : 'news:new',  run : function() { JS.Pages.News.New(); } }
+    ]
   });
 
 });

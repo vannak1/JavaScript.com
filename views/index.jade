@@ -1,3 +1,6 @@
+block layout_variables
+  - dispatcher = 'home'
+
 extends /views/layouts/layout-bleed
 
 block content
@@ -44,12 +47,3 @@ block content
             | of JavaScript newsletter and podcast.
 
           include /views/partials/_newsletter_form
-
-block inline_javascript
-  script.
-    jQuery(function($) {
-      JS.Services.expel({
-        $toggle     : $('.js-alert-close'),
-        elementNode : '.js-alert'
-      });
-    });
