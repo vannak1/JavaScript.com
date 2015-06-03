@@ -260,8 +260,8 @@ router.
     }else{
       var newFlow = req.body;
       newFlow.userId = req.session.passport.user.userId;
-      Articles.createFlow(newFlow, function(story) {
-        res.redirect('/news/' + story[0].slug);
+      Articles.createFlow(newFlow, function() {
+        res.redirect('/news/pending');
       });
     }
   });
