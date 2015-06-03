@@ -229,7 +229,7 @@ router.
         req.flash('info', 'Whoops! Your comment will need to be moderated.')
         res.redirect('/news/' + newComment.slug );
       }else{
-        res.redirect('/news/' + newComment.slug + '?comment=' + comment[0].id );
+        res.redirect('/news/' + newComment.slug + '#comment-' + comment[0].id );
       }
     });
   }).

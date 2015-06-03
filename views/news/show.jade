@@ -42,7 +42,7 @@ block content
 
           ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl
             - for comment in comments
-              li.list-item(data-comment=comment.id)
+              li.list-item(id='comment-' + comment.id)
                 .bucket
                   .bucket-media
                     img.thumb(src=comment.avatar_url width=50)
