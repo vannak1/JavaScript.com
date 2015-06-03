@@ -37,9 +37,9 @@ block content
 
       - commentsClass = comments.length == 0 ? 'is-empty' : ''
       aside#comments.js-createComment-container(role='complementary' class=commentsClass)
-        if comments.length > 0
+        h2.h.h--3.tcs.mbm.js-createComment-number= pluralize('Comment', comments.length, true)
 
-          h2.h.h--3.tcs.mbm.js-createComment-number= pluralize('Comment', comments.length, true)
+        if comments.length > 0
 
           ul.list.list--l.list--divided.list--divided--l.bdrb.mbxl.pbl.js-createComment-list
             - for comment in comments
@@ -55,7 +55,7 @@ block content
 
         else
 
-          .mbxl
+          .mbxl.js-createComment-empty
             p.tcs.tsi There are no comments on this story. Add yours below!
 
         h2.h.h--3.tcs.mbm Post a New Comment

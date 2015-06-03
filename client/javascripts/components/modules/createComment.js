@@ -16,7 +16,8 @@ JS.Modules.CreateComment = (function() {
   //   Private Variables
   // -------------------------------------
 
-  var _settings = {};
+  var _settings     = {};
+  var _firstComment = false;
 
   // -------------------------------------
   //   Initialize
@@ -24,10 +25,11 @@ JS.Modules.CreateComment = (function() {
 
   var init = function( options ) {
     _settings = $.extend({
-      $element   : $('.js-createComment'),
-      $list      : $('.js-createComment-list'),
-      $number    : $('.js-createComment-number'),
-      $container : $('.js-createComment-container')
+      $element        : $('.js-createComment'),
+      $list           : $('.js-createComment-list'),
+      $number         : $('.js-createComment-number'),
+      $container      : $('.js-createComment-container'),
+      $emptyContainer : $('.js-createComment-empty')
     }, options );
 
     _setEventHandlers();
@@ -58,12 +60,17 @@ JS.Modules.CreateComment = (function() {
     $.post(url, form.serialize(), function(data) {
       var comment = '';
 
-      console.log( _settings.$container.hasClass('is-empty') );
-
-      if (data.comment.isSpam) {
-        comment = _addModerationComment(data);
+      if (_settings.$container.hasClass('is-empty')) {
+        _firstComment = true;
+        comment       = _addFirstComment(data);
       } else {
-        comment = _addRegularComment(data);
+        _firstComment = false;
+
+        if (data.comment.isSpam) {
+          comment = _addModerationComment(data);
+        } else {
+          comment = _addRegularComment(data);
+        }
       }
 
       _appendComment(comment);
@@ -102,7 +109,7 @@ JS.Modules.CreateComment = (function() {
           '<div class="bucket-content">' +
             '<p class="tfh">' +
               '<span class="mrs twb">' + data.comment.name + '</span>' +
-              '<time class="tcs tsi">' + data.comment.created_at + '</time>' +
+              '<time class="tcs tsi">Today</time>' +
             '</p>' +
             '<p class="mbf">' + data.comment.body + '</p>' +
           '</div>' +
@@ -112,14 +119,30 @@ JS.Modules.CreateComment = (function() {
   };
 
   // -------------------------------------
-  //   Update Comment Number
+  //   Add First Comment
   // -------------------------------------
 
-  var _updateCommentNumber = function() {
-    var number = _settings.$number.text().split(' ')[0];
-    number++;
-    _settings.$number.text(number + ' Comments');
-    _settings.$number.addClass('is-added');
+  var _addFirstComment = function(data) {
+    var comment = '';
+
+    comment+=
+      '<ul class="list list--l list--divided list--divided--l bdrb mbxl pbl js-createComment-list">' +
+        '<li id="comment-"' + data.comment.id + ' class="list-item is-added">' +
+          '<div class="bucket">' +
+            '<div class="bucket-media">' +
+              '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
+            '</div>' +
+            '<div class="bucket-content">' +
+              '<p class="tfh">' +
+                '<span class="mrs twb">' + data.comment.name + '</span>' +
+                '<time class="tcs tsi">Today</time>' +
+              '</p>' +
+              '<p class="mbf">' + data.comment.body + '</p>' +
+            '</div>' +
+          '</li>' +
+        '</ul>';
+
+    return comment;
   };
 
   // -------------------------------------
@@ -127,8 +150,24 @@ JS.Modules.CreateComment = (function() {
   // -------------------------------------
 
   var _appendComment = function(comment) {
-    _settings.$list.append(comment);
+    if (_firstComment) {
+      _settings.$emptyContainer.replaceWith(comment);
+    } else {
+      _settings.$list.append(comment);
+    }
+
     _settings.$element.find('textarea').val('');
+  };
+
+  // -------------------------------------
+  //   Update Comment Number
+  // -------------------------------------
+
+  var _updateCommentNumber = function() {
+    var number = _settings.$number.text().split(' ')[0];
+
+    number++;
+    _settings.$number.text(number + ' Comments');
   };
 
   // -------------------------------------
