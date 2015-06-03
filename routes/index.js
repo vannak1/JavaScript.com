@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var mcapi = require('mailchimp-api');
 
 mc = new mcapi.Mailchimp(process.env.MAILCHIMP_API);
-var parseForm = bodyParser.urlencoded({ extended: false });
+var parseJson = bodyParser.json();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST subscribe an email to JS5 list. */
-router.post('/subscribe', parseForm, function(req, res) {
+router.post('/subscribe', parseJson, function(req, res) {
   mc.lists.subscribe(
     {
       id: process.env.LIST_ID,
