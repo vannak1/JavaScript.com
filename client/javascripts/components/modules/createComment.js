@@ -26,11 +26,13 @@ JS.Modules.CreateComment = (function() {
   var init = function( options ) {
     _settings = $.extend({
       $element        : $('.js-createComment'),
-      $list           : $('.js-createComment-list'),
       $number         : $('.js-createComment-number'),
       $container      : $('.js-createComment-container'),
-      $emptyContainer : $('.js-createComment-empty')
+      $emptyContainer : $('.js-createComment-empty'),
+      listClass       : 'js-createComment-list'
     }, options );
+
+    _settings.$list = $('.' + _settings.listClass);
 
     _setEventHandlers();
   };
@@ -126,21 +128,19 @@ JS.Modules.CreateComment = (function() {
     var comment = '';
 
     comment+=
-      '<ul class="list list--l list--divided list--divided--l bdrb mbxl pbl js-createComment-list">' +
-        '<li id="comment-"' + data.comment.id + ' class="list-item is-added">' +
-          '<div class="bucket">' +
-            '<div class="bucket-media">' +
-              '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
-            '</div>' +
-            '<div class="bucket-content">' +
-              '<p class="tfh">' +
-                '<span class="mrs twb">' + data.comment.name + '</span>' +
-                '<time class="tcs tsi">Today</time>' +
-              '</p>' +
-              '<p class="mbf">' + data.comment.body + '</p>' +
-            '</div>' +
-          '</li>' +
-        '</ul>';
+      '<li id="comment-"' + data.comment.id + ' class="list-item is-added">' +
+        '<div class="bucket">' +
+          '<div class="bucket-media">' +
+            '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
+          '</div>' +
+          '<div class="bucket-content">' +
+            '<p class="tfh">' +
+              '<span class="mrs twb">' + data.comment.name + '</span>' +
+              '<time class="tcs tsi">Today</time>' +
+            '</p>' +
+            '<p class="mbf">' + data.comment.body + '</p>' +
+          '</div>' +
+        '</li>';
 
     return comment;
   };
@@ -151,11 +151,11 @@ JS.Modules.CreateComment = (function() {
 
   var _appendComment = function(comment) {
     if (_firstComment) {
-      _settings.$emptyContainer.replaceWith(comment);
-    } else {
-      _settings.$list.append(comment);
+      _settings.$emptyContainer.remove();
+      _settings.$list.removeClass('is-hidden');
     }
 
+    _settings.$list.append(comment);
     _settings.$element.find('textarea').val('');
   };
 
