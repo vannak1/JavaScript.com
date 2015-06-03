@@ -12,10 +12,6 @@ JS.Pages.News.New = function() {
   // -------------------------------------
 
   JS.Modules.Counter.init({
-    onMinPreceeded: function(settings) {
-      $('.js-counter-message-min').removeClass('is-hidden');
-      $('.js-counter-message-max').addClass('is-hidden');
-    },
     onMaxExceeded: function(settings) {
       $('.js-counter-message-max').removeClass('is-hidden');
       $('.js-counter-message-min').addClass('is-hidden');
