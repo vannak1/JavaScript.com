@@ -60,12 +60,12 @@ JS.Modules.CreateComment = (function() {
     $.post(url, form.serialize(), function(data) {
       var comment = '';
 
+      _firstComment = false;
+
       if (_settings.$container.hasClass('is-empty')) {
         _firstComment = true;
         comment       = _addFirstComment(data);
       } else {
-        _firstComment = false;
-
         if (data.comment.isSpam) {
           comment = _addModerationComment(data);
         } else {
