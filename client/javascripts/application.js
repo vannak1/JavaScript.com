@@ -58,16 +58,4 @@ jQuery(function($) {
     $('.js-courseLayout').toggleClass('is-active')
   });
 
-  $( '.js-newsletterForm' ).on('submit', function( event ) {
-    event.preventDefault();
-
-    var formData = $(this).serialize();
-
-    console.log( formData );
-
-    $.post('/subscribe', formData, function(data) {
-      console.log( data );
-    });
-  });
-
 });
