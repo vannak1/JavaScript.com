@@ -42,6 +42,10 @@ describe('set_a_var', function(){
   });
   it('f_didnt_use_firstName', function() {
     var alertWasCalled = js.evaluate('_alertVal');
+    js.assert(alertWasCalled.match(js.state.username));
+  });
+  it('f_wrong_message', function() {
+    var alertWasCalled = js.evaluate('_alertVal');
     js.assert(alertWasCalled === js.state.username + " is awesome!");
   });
 });
@@ -62,6 +66,9 @@ failures = {
   },
   'f_didnt_use_firstName': {
     'message': "Don't forget to use the `firstName` variable in the beginning of your alert."
+  },
+  'f_wrong_message': {
+    'message': "Almost there, but make sure what you're passing to `alert` looks like this: `firstName + \" is awesome!\"`"
   }
 };
 

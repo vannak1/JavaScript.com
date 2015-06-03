@@ -53,7 +53,9 @@ jQuery(function($) {
 // -------------------------------------
 
 jQuery(function($) {
+
   $('.js-courseLayout-toggle').on('click', function(event) {
     $('.js-courseLayout').toggleClass('is-active')
   });
+
 });
