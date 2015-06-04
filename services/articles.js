@@ -25,7 +25,7 @@ var Articles = {
   // Returns 10 Flow articles that are published along with user information
   paginated(offset, cb){
     db.query(
-      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = false AND approved = true ORDER BY published_at DESC LIMIT 10 OFFSET $1) ORDER BY published_at DESC;',
+      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = false AND approved = true ORDER BY published_at DESC LIMIT 25 OFFSET $1) ORDER BY published_at DESC;',
       [offset],
       cb
     )
