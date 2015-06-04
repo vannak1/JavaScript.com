@@ -27,8 +27,8 @@ var Mailer = {
       else console.log(response);
     });
   },
-  postDenied(url, userEmail) {
-    mandrill('/messages/send', {
+  postDenied(url, userEmail, reasonDenied) {
+    mandrill('/messages/send-template', {
       template_name: 'notification-unapproved',
       template_content: [ ],
       message: {
@@ -41,8 +41,8 @@ var Mailer = {
             rcpt: userEmail,
             vars: [
               {
-                name: "ARTICLE_URL",
-                content: url
+                name: "UNAPPROVED_REASON",
+                content: reasonDenied
               }
             ]
           }

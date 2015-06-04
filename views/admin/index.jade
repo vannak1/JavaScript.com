@@ -29,6 +29,14 @@ block content
                     p.mbf= story.body
                     a.tct.twb.approve(href='#') approve
                     ||
+                    select(name="moderate" id="moderate")
+                      option(value=0) Select reason...
+                      option(value=1) Duplicate
+                      option(value=2) Hard to understand
+                      option(value=3) Directly advertising
+                      option(value=4) Job Posting
+                      option(value=5) Disrespectful language
+                      option(value=6) Not within community interests
                     a.tct.twb.deny(href='#') deny
 
 block inline_javascript
@@ -52,8 +60,26 @@ block inline_javascript
 
       $('a.deny').on('click', function(){
         var storyId = $(this).closest('li').attr('data-article');
+        var reason;
+
+        switch ($('#moderate').val()) {
+          case "1":
+            reason = 'is a duplicate story.';
+          case "2":
+            reason = 'is not easy to understand — please try again with a different description.';
+          case "3":
+            reason = 'is directly advertising for a paid product.';
+          case "4":
+            reason = 'is a job posting.';
+          case "5":
+            reason = 'contains disrespectful language.';
+          case "6":
+            reason = 'does not align with community interests.';
+        }
+
         $.ajax({
           type: 'POST',
+          data: { reason: reason },
           url: '/admin/news/' + storyId + '/deny',
           beforeSend: setHeader
         })
