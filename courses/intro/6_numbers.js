@@ -47,7 +47,7 @@ describe('set_a_var', function(){
 
 failures = {
   'f_no_alert': {
-    "message": "You didn't call the alert method! Try typing `alert();` in the console."
+    "message": "You didn't call the alert function! Try typing `alert();` in the console."
   },
   'f_no_alert_val': {
     'message': "Here's a sample name to see how it works: `alert(42);`"
@@ -62,7 +62,7 @@ module.exports = {
   'title': 'Numbers',
   'instructions': `Great! Notice how your name printed out on the screen below, showing you the value inside the variable.
 
-So far we have only worked with 1 value type (strings), but JavaScript has many! Another example of a value type is a number. Pass any number of your choosing into the alert method. Just like a method, a number does not get quotations.
+So far we have only worked with 1 value type (strings), but JavaScript has many! Another example of a value type is a number. Pass any number of your choosing into the alert function. Just like a function, a number does not get quotations.
 
 <code class=\"inlineCode inlineCode--btn\">alert(42);</code>`,
   'tests': tests,

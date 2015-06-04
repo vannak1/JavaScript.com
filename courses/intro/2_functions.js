@@ -39,23 +39,23 @@ failures = {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
   'f_no_alert': {
-    'message': "You didn't call the alert method! Try typing `alert();` in the console.",
-    'hint':    'Call the alert method by typing the following: `alert();`'
+    'message': "You didn't call the alert function! Try typing `alert();` in the console.",
+    'hint':    'Call the alert function by typing the following: `alert();`'
   }
 };
 
 module.exports = {
   'id': 2,
-  'title': 'Methods',
+  'title': 'Functions',
   'instructions': `Great job, {{username}}! In JavaScript, when we surround a word with quotes it's called a *string*, and when we're done with a line of code we finish it with a semicolon.
 
-JavaScript also has built-in features, called *methods*. In order to call a method, we simply write its name (this time without quotes) and end it with a set of parentheses. Try calling the \`alert\` method as you see below.
+JavaScript also has built-in features, called *functions*. In order to call a function, we simply write its name (this time without quotes) and end it with a set of parentheses. Try calling the \`alert\` function as you see below.
 
 Don't be afraid when a box pops up &mdash; that's your code working, {{username}}!
 
 <code class=\"inlineCode inlineCode--btn\">alert();</code>`,
   'hints': [
-    'Call the alert method by typing the following: `alert();`'
+    'Call the alert function by typing the following: `alert();`'
   ],
   'tests': tests,
   'failures': failures,

@@ -56,7 +56,7 @@ failures = {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
   'f_no_alert': {
-    'message': 'You can call the alert method like this: `alert();`'
+    'message': 'You can call the alert function like this: `alert();`'
   },
   'f_no_alert_val': {
     'message': "Your alert message should look like this: `alert(firstName + \" is awesome!\");`"

@@ -57,7 +57,7 @@ failures = {
     "message": "Uh oh, it looks like your code won't run. Here's the error message we're getting"
   },
   'f_no_alert': {
-    'message': 'You can call the alert method like this: `alert();`'
+    'message': 'You can call the alert function like this: `alert();`'
   },
   'f_no_alert_val': {
     'message': "Here's a sample name to see how it works: `alert(\"Taylor\");`"
@@ -66,20 +66,20 @@ failures = {
     'message': "You passed your name, but you didn't pass it as a string. Try adding quotes around it, like this: `\"Johnny\"`"
   },
   'f_string_not_passed': {
-    'message': 'Make sure you pass a string, like `"Johnny"`, into the `alert` method.'
+    'message': 'Make sure you pass a string, like `"Johnny"`, into the `alert` function.'
   }
 };
 
 module.exports = {
   'id': 3,
-  'title': 'String Method Parameter',
+  'title': 'String Function Parameter',
   'instructions': `Nice pop-up box, {{username}}, but there wasn't much in it. How can we get that box to show your name?
 
-Well, many methods (like the \`alert\` method) can take instructions, which we call *parameters*. By sending a string into the \`alert\` method, we can put text on the pop-up box. Try it!
+Well, many functions (like the \`alert\` function) can take instructions, which we call *parameters*. By sending a string into the \`alert\` function, we can put text on the pop-up box. Try it!
 
 <code class=\"inlineCode inlineCode--btn\">alert("{{username}}");</code>`,
   'hints': [
-    "Type in your first name surrounded by double quotes inside the alert method: `alert(\"{{username}}\");`"
+    "Type in your first name surrounded by double quotes inside the alert function: `alert(\"{{username}}\");`"
   ],
   'tests': tests,
   'failures': failures,

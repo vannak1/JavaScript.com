@@ -3,8 +3,8 @@ var path = require('path');
 
 challenges = [
   '1_string',
-  '2_methods',
-  '3_string_method_parameter',
+  '2_functions',
+  '3_string_function_parameter',
   '4_variables',
   '5_variable_value',
   '6_numbers',
