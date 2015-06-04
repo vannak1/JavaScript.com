@@ -10,6 +10,7 @@ var Akismetor = require('../services/akismetor');
 var moment = require('moment');
 var pluralize = require('pluralize');
 var expressValidator = require('express-validator');
+var _ = require('lodash');
 
 
 var csrfProtection = csrf();
@@ -138,12 +139,15 @@ router.
             item.date = moment.utc(item.published_at).format('LL');
             if (item.date == moment.utc(Date.now()).format('LL')){
               item.date = 'Today'
+            } else if (item.date == moment.utc(Date.now()).subtract(1, 'days').format('LL')){
+              item.date = 'Yesterday'
             }else{
               item.date = moment(item.date).format('LL');
             }
           });
           // There are strings and integers here - not so good.
           more = (all.length == (total[0].count - offset )) ? false : true;
+          all = _.groupBy(all, 'date');
           res.json({flow: all, more: more});
         });
       });
@@ -161,8 +165,10 @@ router.
             item.date = moment.utc(item.published_at).format('LL');
             if (item.date == moment.utc(Date.now()).format('LL')){
               item.date = 'Today'
+            } else if (item.date == moment.utc(Date.now()).subtract(1, 'days').format('LL')){
+              item.date = 'Yesterday'
             }else{
-              item.date = moment(item.date).format('LL');
+              item.date = moment(item.date).format('dddd, LL');
             }
             if (item.news){
               news.push(item);
@@ -170,7 +176,8 @@ router.
               flow.push(item);
             }
           });
-          more = (flow.length <= total[0].count) ? false : true;
+          more = (flow.length <= parseInt(total[0].count)) ? true : false;
+          flow = _.groupBy(flow, 'date');
           res.render('news/index', {flow_collection: flow, news_collection: news, more: more });
         });
       });

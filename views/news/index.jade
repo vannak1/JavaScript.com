@@ -41,36 +41,41 @@ block content
 
                 a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
-          .pillar.pillar--thick.ptl.ptxl--m.js-loadFeed
+          .js-loadFeed
             ul.list.list--l.list--divided.list--divided--l.mbl.js-loadFeed-list
 
-              - for story in flow_collection
+              - for group, title in flow_collection
 
-                li.list-item
-                  article.bucket
-                    .bucket-media
-                      img.thumb(src=story.avatar_url width='50')
-                    .bucket-content
-                      h2.h.h--3
-                        a.externalLink.tct.twb(href=story.url)
-                         = story.title
-                          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
-                          include /views/partials/_icon
-                      p.tcs.tfh
-                        | via 
-                        span.twsb= story.name
-                        |  | 
-                        time.tsi= story.date
-                        |  | 
-                        a(href='/news/' + story.slug + '#comments')
-                          | View Discussion 
-                          if story.comment_count > 0
-                            | (
-                            = story.comment_count
-                            | )
-                      p.mbf= story.body
+                - dateText = title
+                include /views/news/_data_separator
 
-          if flow_collection.length === 10
+                - for story in group
+
+                  li.list-item
+                    article.bucket
+                      .bucket-media
+                        img.thumb(src=story.avatar_url width='50')
+                      .bucket-content
+                        h2.h.h--3
+                          a.externalLink.tct.twb(href=story.url)
+                           = story.title
+                            - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
+                            include /views/partials/_icon
+                        p.tcs.tfh
+                          | via 
+                          span.twsb= story.name
+                          |  | 
+                          time.tsi= story.date
+                          |  | 
+                          a(href='/news/' + story.slug + '#comments')
+                            | View Discussion 
+                            if story.comment_count > 0
+                              | (
+                              = story.comment_count
+                              | )
+                        p.mbf= story.body
+
+          if more
             .well.well--l.mbl.mbxl--m.tac
               button.btn.js-loadFeed-btn Load More
 

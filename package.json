@@ -25,6 +25,7 @@
     "feedparser": "^0.19.2",
     "flash": "^1.1.0",
     "jade": "~1.9.1",
+    "lodash": "^3.9.3",
     "mailchimp-api": "^2.0.7",
     "moment": "^2.10.2",
     "morgan": "~1.5.1",
