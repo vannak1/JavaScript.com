@@ -37,7 +37,7 @@ function ensureAdmin(req, res, next) {
 function buildMailerOptions(req, res, next) {
   req.storyID = req.params.id;
   Articles.getMailerInfo(req.storyID, function(result) {
-    req.storyURL = 'http://javascript.com/news/' + result[0].slug;
+    req.storyURL = baseURL + 'news/' + result[0].slug;
     req.userEmail = result[0].email;
     next();
   });
