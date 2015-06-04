@@ -63,9 +63,10 @@ router.
   post('/news/:id/deny', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, buildMailerOptions, function(req, res) {
     var url = req.storyURL
     var userEmail = req.userEmail;
+    var reasonDenied = req.body.reason;
 
     Articles.deny(req.storyID, function () {
-      Mailer.postDenied(url, userEmail);
+      Mailer.postDenied(url, userEmail, reasonDenied);
       res.send(true);
     });
   });
