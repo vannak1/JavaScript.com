@@ -58,7 +58,7 @@ block content
                       .bucket-content
                         h2.h.h--3
                           a.externalLink.tct.twb(href=story.url)
-                           = story.title
+                            = story.title
                             - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
                             include /views/partials/_icon
                         p.tcs.tfh
@@ -101,7 +101,10 @@ block content
                     li.list-item
                       article
                         h2.h.h--4
-                          a.tct.twb(href=story.url)= story.title
+                          a.externalLink.tct.twb(href=story.url)
+                            = story.title
+                            - iconPartial = { name: 'external', className: 'externalLink-icon', size: 14 }
+                            include /views/partials/_icon
                         p.mbf.tss.
                           #{story.body}
 
