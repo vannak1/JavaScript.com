@@ -30,4 +30,10 @@ JS.Pages.News = function() {
     elementNode : '.js-alert'
   });
 
+  // -------------------------------------
+  //   Vendor
+  // -------------------------------------
+
+  autosize($(JS.Globals.Vendor.autosizeQuery));
+
 };

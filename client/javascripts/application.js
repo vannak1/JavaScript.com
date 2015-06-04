@@ -27,7 +27,10 @@ JS.Inbox    = {};
 
 JS.Globals = {
   homepageChallengeAnswer : /^['"][A-z-\.\s]*['"](;)?/,
-  userNameCookie          : 'try_name'
+  userNameCookie          : 'try_name',
+  Vendor                  : {
+    autosizeQuery         : '.js-autosize'
+  }
 };
 
 // -------------------------------------
@@ -41,6 +44,7 @@ jQuery(function($) {
   new JS.Classes.Dispatcher({
     events: [
       { page  : 'course',    run : function() { JS.Pages.Course(); } },
+      { page  : 'feedback',  run : function() { JS.Pages.Feedback(); } },
       { page  : 'home',      run : function() { JS.Pages.Home(); } },
       { match : 'news',      run : function() { JS.Pages.News(); } },
       { page  : 'news:new',  run : function() { JS.Pages.News.New(); } },

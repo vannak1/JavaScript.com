@@ -2,6 +2,7 @@ block current_nav
   - current_page = 'Feedback'
 
 block layout_variables
+  - dispatcher = 'feedback'
   - pageTitle = 'Feedback'
 
 extends /views/layouts/layout
@@ -37,7 +38,7 @@ block content
 
         fieldset.form-field
           label.form-label(for='comment' id='Field1') Give us your feedback to help us improve the site.
-          textarea.form-input.js-formValidator-input.js-saveProgress(name='Field1' id='Field1' rows='10' required='true' data-validate='required' data-saveprogress='feedback_content')
+          textarea.form-input.form-textarea.js-autosize.js-formValidator-input.js-saveProgress(name='Field1' id='Field1' rows='8' required='true' data-validate='required' data-saveprogress='feedback_content')
 
         input.btn.js-formValidator-submit(id='saveForm' name='saveForm' type='submit' value='Submit')
 
