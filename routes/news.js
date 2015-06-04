@@ -139,6 +139,8 @@ router.
             item.date = moment.utc(item.published_at).format('LL');
             if (item.date == moment.utc(Date.now()).format('LL')){
               item.date = 'Today'
+            } else if (item.date == moment.utc(Date.now()).subtract(1, 'days').format('LL')){
+              item.date = 'Yesterday'
             }else{
               item.date = moment(item.date).format('LL');
             }
@@ -163,6 +165,8 @@ router.
             item.date = moment.utc(item.published_at).format('LL');
             if (item.date == moment.utc(Date.now()).format('LL')){
               item.date = 'Today'
+            } else if (item.date == moment.utc(Date.now()).subtract(1, 'days').format('LL')){
+              item.date = 'Yesterday'
             }else{
               item.date = moment(item.date).format('LL');
             }
