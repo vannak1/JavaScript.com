@@ -232,7 +232,9 @@ router.
         comment[0].isSpam = true;
         res.json({comment: comment[0]});
       }else{
-        res.redirect('/news/' + newComment.slug + '#comment-' + comment[0].id );
+        Comments.findByCommentId(comment[0].id, function(comment) {
+          res.json({comment: comment[0]});
+        });
       }
     });
   }).
