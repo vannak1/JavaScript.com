@@ -61,7 +61,11 @@ JS.Modules.LoadStories = (function() {
               '</div>' +
               '<div class="bucket-content">' +
                 '<h2 class="h h--3">' +
-                  '<a class="tct twb" href="' + story.url  + '">' + story.title + '</a>' +
+                  '<a class="externalLink tct twb" href="' + story.url + '">' + story.title +
+                    '<svg width="16" height="16" class="icon externalLink-icon">' +
+                      '<use xlink:href="#icon-external"/>' +
+                    '</svg>' +
+                  '</a>' +
                 '</h2>' +
                 '<p class="tcs tfh">' +
                   'via ' + '<span class="twsb">' + story.name + '</span>' +
@@ -84,7 +88,7 @@ JS.Modules.LoadStories = (function() {
   // -------------------------------------
 
   var _getStories = function() {
-    $.get('/news?page=' + _settings.offset, function(data) {
+    $.get(_settings.path + _settings.offset, function(data) {
       _appendStories(data);
       _toggleButton(data);
     });
