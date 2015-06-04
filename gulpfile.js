@@ -52,7 +52,11 @@ var options = {
       'client/javascripts/application.js',
       'client/javascripts/**/*.js'
     ],
-    vendorFiles: ['bower_components/jquery/dist/jquery.js', 'bower_components/bootstrap/js/tooltip.js'],
+    vendorFiles: [
+      'bower_components/jquery/dist/jquery.js',
+      'bower_components/bootstrap/js/tooltip.js',
+      'bower_components/autosize/dist/autosize.js'
+    ],
     vendorCourseFiles: [
       'bower_components/angular/angular.js',
       'bower_components/angular-resource/angular-resource.js',
