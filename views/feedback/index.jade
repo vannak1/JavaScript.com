@@ -23,20 +23,28 @@ block content
           p For any other site feedback or assistance, please submit your request below.
 
       form.form.js-formValidator.js-saveProgress-container(id='form70' name='form70' accept-charset='UTF-8' autocomplete='off' enctype='multipart/form-data' method='post' action='https://codeschool.wufoo.com/forms/p14727kn1c9coto/#public')
-        fieldset.form-field
-          label.form-label(for='email' id='Field4') Email
-          input.form-input.js-formValidator-input.js-saveProgress(name='Field4' id='Field4' type='email' required='true' data-validate='required' data-saveprogress='feedback_email')
 
-        fieldset.form-field
-          label.form-label(for='type' id='Field5') Type of Feedback
-          select.form-select(id='Field5' name='Field5' required='true')
-            option(value='' selected='selected')
-            option(value='General Feedback') General Feedback
-            option(value='Report Bug') Report Bug
-            option(value='Report Abuse') Report Abuse
-            option(value='Interested in Helping') Interested in Helping
+        .g
+          .g-b.g-b--m--1of2
 
-        fieldset.form-field
+            fieldset.form-field.mbl--m
+              label.form-label(for='email' id='Field4') Email
+              input.form-input.js-formValidator-input.js-saveProgress(name='Field4' id='Field4' type='email' required='true' data-validate='required' data-saveprogress='feedback_email')
+
+          .g-b.g-b--m--1of2
+
+            fieldset.form-field.mbl--m
+              label.form-label(for='type' id='Field5') Type of Feedback
+
+              .select
+                select.form-select.select-input(id='Field5' name='Field5' required='true')
+                  option.select-input-option(value='' selected='selected')
+                  option.select-input-option(value='General Feedback') General Feedback
+                  option.select-input-option(value='Report Bug') Report Bug
+                  option.select-input-option(value='Report Abuse') Report Abuse
+                  option.select-input-option(value='Interested in Helping') Interested in Helping
+
+        fieldset.form-field.mbl--m
           label.form-label(for='comment' id='Field1') Give us your feedback to help us improve the site.
           textarea.form-input.form-textarea.js-autosize.js-formValidator-input.js-saveProgress(name='Field1' id='Field1' rows='8' required='true' data-validate='required' data-saveprogress='feedback_content')
 
