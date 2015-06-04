@@ -146,7 +146,9 @@ router.
             }
           });
           // There are strings and integers here - not so good.
-          lastDay = all[all.length - 1].date;
+          if (all.length) {
+            lastDay = all[all.length - 1].date;
+          }
           more = (all.length == (total[0].count - offset )) ? false : true;
           all = _.groupBy(all, 'date');
           res.json({flow: all, more: more, lastDay: lastDay});
@@ -177,7 +179,9 @@ router.
               flow.push(item);
             }
           });
-          lastDay = flow[flow.length - 1].date;
+          if(flow.length){
+            lastDay = flow[flow.length - 1].date;
+          }
           more = (flow.length === parseInt(total[0].count)) ? false : true;
           flow = _.groupBy(flow, 'date');
           res.render('news/index', {flow_collection: flow, news_collection: news, more: more, lastDay: lastDay });
