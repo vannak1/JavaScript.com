@@ -13,4 +13,10 @@ JS.Pages.Feedback = function() {
 
   JS.Modules.SaveProgress.init();
 
+  // -------------------------------------
+  //   Vendor
+  // -------------------------------------
+
+  autosize($(JS.Globals.Vendor.autosizeQuery));
+
 };
