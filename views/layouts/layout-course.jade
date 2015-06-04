@@ -4,7 +4,8 @@ html.courseLayout.js-courseLayout(lang='en')
   block layout_variables
   include /views/layouts/_head
 
-  body.mbf
+  - dispatcher = dispatcher ? dispatcher : ''
+  body.mbf.js-dispatcher(data-dispatcher-page=dispatcher)
     .dn
       include /public/images/icons/icons.svg
 

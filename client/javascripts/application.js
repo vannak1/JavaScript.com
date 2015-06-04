@@ -40,9 +40,11 @@ jQuery(function($) {
 
   new JS.Classes.Dispatcher({
     events: [
+      { page  : 'course',    run : function() { JS.Pages.Course(); } },
       { page  : 'home',      run : function() { JS.Pages.Home(); } },
       { match : 'news',      run : function() { JS.Pages.News(); } },
-      { page  : 'news:new',  run : function() { JS.Pages.News.New(); } }
+      { page  : 'news:new',  run : function() { JS.Pages.News.New(); } },
+      { page  : 'news:show', run : function() { JS.Pages.News.Show(); } }
     ]
   });
 
@@ -52,10 +54,4 @@ jQuery(function($) {
 //   Inbox
 // -------------------------------------
 
-jQuery(function($) {
-
-  $('.js-courseLayout-toggle').on('click', function(event) {
-    $('.js-courseLayout').toggleClass('is-active')
-  });
-
-});
+// ...

@@ -21,7 +21,7 @@ block content
           .well.well--l.well--m--xl.mbl
 
             h1.h.h--2
-              | News From the
+              | News From the 
               span.dib Community
                 a.mls.tch(href="/feed/rss")
                   - iconPartial = { name: 'rss', size: 20 }
@@ -33,7 +33,7 @@ block content
                 p.mbf--l.ptxs--l.tcs.tss
                   | A curated list of news and stories submitted from the
                   | JavaScript.com community. To learn more about how you
-                  | can contribute, visit our
+                  | can contribute, visit our 
                   a(href='/guidelines') Contribution Guidelines
                   | .
 
@@ -57,13 +57,13 @@ block content
                           - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
                           include /views/partials/_icon
                       p.tcs.tfh
-                        | via
+                        | via 
                         span.twsb= story.name
-                        |  |
+                        |  | 
                         time.tsi= story.date
-                        |  |
+                        |  | 
                         a(href='/news/' + story.slug + '#comments')
-                          | View Discussion
+                          | View Discussion 
                           if story.comment_count > 0
                             | (
                             = story.comment_count

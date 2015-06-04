@@ -53,6 +53,7 @@ JS.Modules.Toggle = (function() {
     switch (_settings.event) {
       case 'click':
         _handleClickEvent();
+        return;
       case 'hover':
         _handleHoverEvent();
     }
