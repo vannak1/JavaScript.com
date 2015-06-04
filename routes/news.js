@@ -128,7 +128,7 @@ router.
     if (offset) {
       Articles.paginated(offset, function(all) {
         Articles.totalPublished(function(total) {
-
+          var lastDay;
           // TODO: Move date functionality into a serivce. It'll be used practically
           // everywhere. Oh, and refactor this blasphemy.
           //
@@ -146,15 +146,16 @@ router.
             }
           });
           // There are strings and integers here - not so good.
+          lastDay = all[all.length - 1].date;
           more = (all.length == (total[0].count - offset )) ? false : true;
           all = _.groupBy(all, 'date');
-          res.json({flow: all, more: more});
+          res.json({flow: all, more: more, lastDay: lastDay});
         });
       });
     }else{
       Articles.recent(function(all) {
         Articles.totalPublished(function(total) {
-          var flow = [], news = [];
+          var flow = [], news = [], lastDay;
           // TODO: Move date functionality into a serivce. It'll be used practically
           // everywhere. Oh, and refactor this blasphemy.
           //
@@ -176,9 +177,10 @@ router.
               flow.push(item);
             }
           });
+          lastDay = flow[flow.length - 1].date;
           more = (flow.length === parseInt(total[0].count)) ? false : true;
           flow = _.groupBy(flow, 'date');
-          res.render('news/index', {flow_collection: flow, news_collection: news, more: more });
+          res.render('news/index', {flow_collection: flow, news_collection: news, more: more, lastDay: lastDay });
         });
       });
     }
