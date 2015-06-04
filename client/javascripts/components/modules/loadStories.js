@@ -37,20 +37,23 @@ JS.Modules.LoadStories = (function() {
 
   var _appendStories = function(data) {
     var stories = data.flow,
+        lastDay = _settings.$button.data('last-day'),
         markup  = '';
 
     for (group in stories) {
 
-      markup +=
-        '<li class="list-item list-item--header bdrbl pbs">' +
-          '<span class="mrs por pot2n">' +
-            '<span class="srt">calendar</span>' +
-            '<svg class="icon" width="16" height="16">' +
-              '<use xlink:href="#icon-calendar"></use>' +
-            '</svg>' +
-          '</span>' +
-          '<span>' + group + '</span>' +
-        '</li>';
+      if ( lastDay !== group ) {
+        markup +=
+          '<li class="list-item list-item--header bdrbl pbs">' +
+            '<span class="mrs por pot2n">' +
+              '<span class="srt">calendar</span>' +
+              '<svg class="icon" width="16" height="16">' +
+                '<use xlink:href="#icon-calendar"></use>' +
+              '</svg>' +
+            '</span>' +
+            '<span>' + group + '</span>' +
+          '</li>';
+      }
 
       stories[group].forEach(function(story) {
         markup +=
@@ -132,7 +135,7 @@ JS.Modules.LoadStories = (function() {
     var isMoreStories = data.more;
 
     if (!isMoreStories) {
-      _settings.$button.addClass(_settings.hiddenClass);
+      _settings.$button.parent().addClass(_settings.hiddenClass);
     }
   };
 

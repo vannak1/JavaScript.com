@@ -41,8 +41,8 @@ block content
 
                 a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
-          .js-loadFeed
-            ul.list.list--l.list--divided.list--divided--l.bdrbl.mbl.pbxl.js-loadFeed-list
+          .mbxl.js-loadFeed
+            ul.list.list--l.list--divided.list--divided--l.js-loadFeed-list
 
               - for group, title in flow_collection
 
@@ -76,8 +76,8 @@ block content
                         p.mbf= story.body
 
           if more
-            .well.well--l.mbl.mbxl--m.tac
-              button.btn.js-loadFeed-btn Load More
+            .well.well--l.mbl.mbxl--m.bdrtl.ptl.tac
+              button.btn.js-loadFeed-btn(data-last-day=lastDay) Load More
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
