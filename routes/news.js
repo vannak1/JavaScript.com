@@ -168,7 +168,7 @@ router.
             } else if (item.date == moment.utc(Date.now()).subtract(1, 'days').format('LL')){
               item.date = 'Yesterday'
             }else{
-              item.date = moment(item.date).format('LL');
+              item.date = moment(item.date).format('dddd, LL');
             }
             if (item.news){
               news.push(item);
