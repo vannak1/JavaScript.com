@@ -73,6 +73,10 @@
   #{$g-selector}g-b--#{$namespace}1of1
     width: 100%
 
+  @for $column from 1 to 5
+    #{$g-selector}g-b--#{$namespace}#{$column}of5
+      width: percentage($column / 5)
+
   @for $column from 1 to $g-columns
     @if $column != $g-columns
       #{$g-selector}g-b--#{$namespace}#{$column}of#{$g-columns}
