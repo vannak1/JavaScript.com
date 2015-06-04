@@ -34,7 +34,7 @@ passport.use(new GitHubStrategy({
   clientSecret: process.env.GH_CLIENT_SECRET,
   callbackURL: (process.env.NODE_ENV === 'production' ?
       "http://javascript.preschool.io/news/auth/github/callback" : "http://localhost:3000/news/auth/github/callback"),
-  scope: ['user', 'user:email']
+  scope: ['user:email']
 },
 function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
