@@ -176,7 +176,7 @@ router.
               flow.push(item);
             }
           });
-          more = (flow.length <= parseInt(total[0].count)) ? true : false;
+          more = (flow.length === parseInt(total[0].count)) ? false : true;
           flow = _.groupBy(flow, 'date');
           res.render('news/index', {flow_collection: flow, news_collection: news, more: more });
         });
