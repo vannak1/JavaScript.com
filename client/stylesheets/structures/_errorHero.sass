@@ -33,12 +33,18 @@
 // ----- Image ----- //
 
 .errorHero-img
+  $errorHero-img-width: 90vw
   bottom: 0
   height: calc(100vh - #{$site-header-height-l} - #{$site-footer-height})
-  left: 4vw // FIXME: Magic number!
+  left: (100 - $errorHero-img-width) / 2
   max-width: none
   position: absolute
-  width: 90vw
+  width: $errorHero-img-width
+
+  @media screen and (min-aspect-ratio: 3 / 2)
+    $errorHero-img-width-l: 70vw
+    left: (100 - $errorHero-img-width-l) / 2
+    width: $errorHero-img-width-l
 
 // Scaffolding
 
