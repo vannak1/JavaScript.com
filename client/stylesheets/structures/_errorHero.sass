@@ -9,6 +9,8 @@
 //
 // .errorHero
 //   .errorHero-img
+//     .errorHero-img-boat
+//     .errorHero-img-ocean
 //
 // *************************************
 
@@ -37,3 +39,30 @@
   max-width: none
   position: absolute
   width: 90vw
+
+// Scaffolding
+
+// Scaffolding: Boat
+
+.errorHero-img-boat
+  animation: errorHero-img-boat 1.25s ease-in-out infinite alternate
+  transform-origin: center
+
+// Scaffolding: Ocean
+
+.errorHero-img-ocean
+  animation: slideLeft1of6 2.5s linear infinite
+
+// ------------------------------------
+//   Animations
+// ------------------------------------
+
+// ----- Image ----- //
+
+// Boat
+
+@-webkit-keyframes errorHero-img-boat
+  from
+    transform: translateY(-$errorHero-bob-offset) rotate(-2deg)
+  to
+    transform: translateY($errorHero-bob-offset) rotate(1deg)
