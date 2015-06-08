@@ -250,6 +250,20 @@ router.
     });
   }).
 
+  put('/:slug([a-zA-Z0-9_.-]+)/comment/:id([0-9]+)', cookieParsers, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
+    var updatedComment = req.body;
+    var commentId      = req.params.id;
+    var userId         = req.user.userId;
+
+    Comments.checkOwnership(commentId, userId, function(comment) {
+      if(comment.id){
+        Comments.update(comment.id, updatedComment, function() { res.send(200) });
+      }else{
+        res.send(403);
+      }
+    });
+  }).
+
    post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
     var stories = req.body;
     for (i=0; i < stories.length; i++) {
