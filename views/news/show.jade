@@ -52,6 +52,11 @@ block content
                       span.mrs.twb= comment.name
                       time.tcs.tsi= moment(comment.created_at).format('LL')
                     p.mbf= comment.body
+                    if comment.user_id == user.id
+                      a edit // PUT to /news/:slug/comment/:comment_id
+                      a delete // DELETE to /news/:slug/comment/:comment_id
+                      // you'll need to send the token along with requests made
+                      // for edit and delete. It's accessible via `token`.
 
         else
 
