@@ -220,6 +220,7 @@ router.
     if (user.authenticated) {
       user.login      = req.user['_json']['login'];
       user.avatar_url = req.user['_json']['avatar_url'];
+      user.id         = req.user.userId;
     }
 
     Articles.findBySlug(req.params.slug, function(flow) {
