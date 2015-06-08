@@ -251,13 +251,17 @@ router.
   }).
 
   put('/:slug([a-zA-Z0-9_.-]+)/comment/:id([0-9]+)', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
-    var updatedComment = req.body;
+    var updatedComment = req.body.body;
     var commentId      = req.params.id;
     var userId         = req.user.userId;
 
     Comments.checkOwnership(commentId, userId, function(comment) {
-      if(comment.id){
-        Comments.update(comment.id, updatedComment, function() { res.send(200) });
+      if(comment[0]){
+        Comments.update(comment[0].id, updatedComment, function(comment) {
+          Comments.findByCommentId(comment[0].id, function(comment) {
+            res.json({comment: comment[0]});
+          });
+        });
       }else{
         res.send(403);
       }

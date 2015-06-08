@@ -21,7 +21,7 @@ var Comments = {
 
   update(id, body, cb) {
     db.query(
-      "UPDATE comments SET body = $1 where id = $2;",
+      "UPDATE comments SET body = $1 where id = $2 RETURNING id;",
       [body, id],
       cb
     );
