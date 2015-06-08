@@ -21,5 +21,9 @@ JS.Pages.Course = function() {
   //   Local
   // -------------------------------------
 
+  // ----- Preloading ----- //
+
+  $('.js-courseLayout').addClass('is-loaded');
+  $('.js-preload').addClass('is-hidden');
 
 };
