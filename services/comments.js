@@ -8,12 +8,12 @@ var Comments = {
   },
 
   findByCommentId(id, cb) {
-    db.query('SELECT c.id, c.created_at, c.body, u.avatar_url, u.name FROM comments as c JOIN users as u on u.id = c.user_id WHERE c.id = $1 AND approved = true ORDER BY created_at ASC;', [ id ], cb)
+    db.query('SELECT c.id, c.created_at, c.body, c.user_id, u.avatar_url, u.name FROM comments as c JOIN users as u on u.id = c.user_id WHERE c.id = $1 AND approved = true ORDER BY created_at ASC;', [ id ], cb)
   },
 
   checkOwnership(commentId, userId, cb) {
     db.query(
-      "SELECT c.id FROM comments AS c WHERE c.id = $1 AND c.user_id = $2 RETURNING c.id;",
+      "SELECT c.id FROM comments AS c WHERE c.id = $1 AND c.user_id = $2",
       [commentId, userId],
       cb
     );
