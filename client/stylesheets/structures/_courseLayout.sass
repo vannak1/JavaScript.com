@@ -17,7 +17,7 @@
 // *************************************
 
 .courseLayout
-  background-color: $snow
+  background-color: $tulip
   min-height: 100vh
   transform: translateY(#{-$site-header-height + ($courseLayout-header-toggle-height / 2)})
   transition: transform $b-transition
@@ -40,6 +40,14 @@
   .courseLayout-header-content
     opacity: 1
 
+// ----- Loaded ----- //
+
+.courseLayout.is-loaded
+  background-color: $snow
+
+  .courseLayout-header
+    visibility: visible
+
 // -------------------------------------
 //   Scaffolding
 // -------------------------------------
@@ -48,6 +56,7 @@
 
 .courseLayout-header
   position: relative
+  visibility: hidden
   z-index: 1
 
 // Scaffolding
