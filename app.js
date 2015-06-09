@@ -6,9 +6,9 @@ var logger = require('morgan');
 // Set baseURL depending on enviornment
 var env = process.env.NODE_ENV;
 if (env === 'production') {
-  baseURL = "https://preview.javascript.com/";
+  baseURL = "https://javascript.com/";
 }else if(env === 'staging'){
-  baseURL = "http://javascript.preschool.io/";
+  baseURL = "https://preview.javascript.com/";
 }else{
   baseURL = "http://localhost:3000/";
 }
