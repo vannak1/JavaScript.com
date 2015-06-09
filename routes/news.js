@@ -105,6 +105,14 @@ function buildComment(request, response, next){
   }
 }
 
+// TODO move this into a module. Better yet, I'd like to get the custom
+// sanitizers to start working.
+function addhttp(url) {
+  if(!url.match(/^(http|https):\/\//)){
+        url = "http://" + url;
+    }
+    return url;
+}
 
 router.
   get('/auth/github', passport.authenticate('github'), function(req, res){
@@ -279,8 +287,11 @@ router.
       });
       res.status(400).render('news/new', {token: req.csrfToken(), title: req.body.title, url: req.body.url, body: req.body.body});
     }else{
+
       var newFlow = req.body;
+      newFlow.url = addhttp(newFlow.url);
       newFlow.userId = req.session.passport.user.userId;
+
       Articles.createFlow(newFlow, function() {
         res.redirect('/news/pending');
       });
