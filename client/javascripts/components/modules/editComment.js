@@ -51,7 +51,7 @@ JS.Modules.EditComment = (function() {
     // ----- Delete Button ----- //
 
     _settings.$deleteBtn.on('click', function(event) {
-      _deleteComment();
+      _deleteComment($(this).closest(_settings.$element));
     });
 
     // ----- Save Button ----- //
@@ -66,8 +66,15 @@ JS.Modules.EditComment = (function() {
   //   Delete Comment
   // -------------------------------------
 
-  var _deleteComment = function(parameters) {
-    console.log( '_deleteComment()' );
+  var _deleteComment = function($element) {
+    var id   = $element.data('id'),
+        body = $element.find(_settings.$textarea).val();
+
+    $.ajax({
+      beforeSend : function(xhr) { xhr.setRequestHeader('csrf-token', _settings.token); },
+      url        : '/news/' + _settings.storySlug + '/comment/' + id,
+      type       : 'delete'
+    });
 
     // Ajax to delete
   };
