@@ -105,6 +105,14 @@ function buildComment(request, response, next){
   }
 }
 
+// TODO move this into a module. Better yet, I'd like to get the custom
+// sanitizers to start working.
+function addhttp(url) {
+  if(!url.match(/^(http|https):\/\//)){
+        url = "http://" + url;
+    }
+    return url;
+}
 
 router.
   get('/auth/github', passport.authenticate('github'), function(req, res){
@@ -233,20 +241,30 @@ router.
     });
   }).
 
-  post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, csrfProtection, buildComment, function(req, res) {
-    var newComment = req.newComment;
+  post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, expressValidator(),  csrfProtection, buildComment, function(req, res) {
+    // TODO: Perhaps this should be done in the buildComment()?
+    req.sanitize('body').trim();
+    req.check('body').notEmpty();
 
-    newComment.userId = req.session.passport.user.userId;
-    Comments.create(newComment, function(comment) {
-      if(newComment.isSpam){
-        comment[0].isSpam = true;
-        res.json({comment: comment[0]});
-      }else{
-        Comments.findByCommentId(comment[0].id, function(comment) {
+    var errors = req.validationErrors();
+
+    if (errors) {
+      res.json({error: "Comment cannot be empty"});
+    }else{
+      var newComment = req.newComment;
+
+      newComment.userId = req.session.passport.user.userId;
+      Comments.create(newComment, function(comment) {
+        if(newComment.isSpam){
+          comment[0].isSpam = true;
           res.json({comment: comment[0]});
-        });
-      }
-    });
+        }else{
+          Comments.findByCommentId(comment[0].id, function(comment) {
+            res.json({comment: comment[0]});
+          });
+        }
+      });
+    }
   }).
 
    post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
@@ -271,6 +289,9 @@ router.
     req.check('body', 'Description is required').notEmpty();
     req.check('body', 'Description must be between 100 and 300 characters').len(100,300);
 
+    req.sanitize('body').escape();
+    req.sanitize('title').escape();
+
     var errors = req.validationErrors();
 
     if (errors) {
@@ -279,8 +300,11 @@ router.
       });
       res.status(400).render('news/new', {token: req.csrfToken(), title: req.body.title, url: req.body.url, body: req.body.body});
     }else{
+
       var newFlow = req.body;
+      newFlow.url = addhttp(newFlow.url);
       newFlow.userId = req.session.passport.user.userId;
+
       Articles.createFlow(newFlow, function() {
         res.redirect('/news/pending');
       });
