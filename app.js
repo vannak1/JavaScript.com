@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 
 // Set baseURL depending on enviornment
+
 var env = process.env.NODE_ENV;
 if (env === 'production') {
   baseURL = "https://javascript.com/";
