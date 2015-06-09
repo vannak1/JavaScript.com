@@ -27,6 +27,10 @@ var Comments = {
     );
   },
 
+  delete(id, cb) {
+    db.query("DELETE FROM comments where id = $1;", [id], cb);
+  },
+
   // Creates a new comment
   create(newComment, cb) {
 

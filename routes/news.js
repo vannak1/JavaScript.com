@@ -268,6 +268,18 @@ router.
     });
   }).
 
+  delete('/:slug([a-zA-Z0-9_.-]+)/comment/:id([0-9]+)', cookieParser, ensureAuthenticated, csrfProtection, function(req, res) {
+    var commentId = req.params.id;
+    var userId = req.user.userId;
+    Comments.checkOwnership(commentId, userId, function(comment) {
+      if(comment[0]){
+        Comments.delete(comment[0].id, function() { res.send(200 )});
+      }else{
+        res.send(403);
+      }
+    });
+  }).
+
    post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
     var stories = req.body;
     for (i=0; i < stories.length; i++) {
