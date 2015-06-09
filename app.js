@@ -29,9 +29,12 @@ var expressSession = require('express-session');
 var RedisStore = require('connect-redis')(expressSession);
 var redis = require('redis');
 var client = redis.createClient();
+// Don't set cookies to secure in dev.
+var secureCookie = process.env.NODE_ENV === 'production' ? true : false
 app.use(expressSession({
   store: new RedisStore({client: client}),
-  secret: 'replace-me-with-secret-key'
+  secret: 'replace-me-with-secret-key',
+  cookie: {secure: secureCookie}
 }));
 app.use(passport.initialize());
 app.use(passport.session());
