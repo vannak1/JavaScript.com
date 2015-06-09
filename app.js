@@ -3,7 +3,15 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 
-baseURL = (process.env.NODE_ENV === 'production' ? "http://javascript.preschool.io/" : "http://localhost:3000/");
+// Set baseURL depending on enviornment
+var env = process.env.NODE_ENV;
+if (env === 'production') {
+  baseURL = "https://javascript.com/";
+}else if(env === 'staging'){
+  baseURL = "http://javascript.preschool.io/";
+}else{
+  baseURL = "http://localhost:3000/";
+}
 
 var routes = require('./routes/index');
 
