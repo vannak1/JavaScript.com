@@ -12,5 +12,6 @@ JS.Pages.News.Show = function() {
   // -------------------------------------
 
   JS.Modules.CreateComment.init();
+  JS.Modules.EditComment.init();
 
 };

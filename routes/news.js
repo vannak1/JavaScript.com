@@ -227,6 +227,7 @@ router.
     if (user.authenticated) {
       user.login      = req.user['_json']['login'];
       user.avatar_url = req.user['_json']['avatar_url'];
+      user.id         = req.user.userId;
     }
 
     Articles.findBySlug(req.params.slug, function(flow) {
@@ -264,6 +265,36 @@ router.
         }
       });
     }
+  }).
+
+  put('/:slug([a-zA-Z0-9_.-]+)/comment/:id([0-9]+)', cookieParser, ensureAuthenticated, parseForm, csrfProtection, function(req, res) {
+    var updatedComment = req.body.body;
+    var commentId      = req.params.id;
+    var userId         = req.user.userId;
+
+    Comments.checkOwnership(commentId, userId, function(comment) {
+      if(comment[0]){
+        Comments.update(comment[0].id, updatedComment, function(comment) {
+          Comments.findByCommentId(comment[0].id, function(comment) {
+            res.json({comment: comment[0]});
+          });
+        });
+      }else{
+        res.send(403);
+      }
+    });
+  }).
+
+  delete('/:slug([a-zA-Z0-9_.-]+)/comment/:id([0-9]+)', cookieParser, ensureAuthenticated, csrfProtection, function(req, res) {
+    var commentId = req.params.id;
+    var userId = req.user.userId;
+    Comments.checkOwnership(commentId, userId, function(comment) {
+      if(comment[0]){
+        Comments.delete(comment[0].id, function() { res.send(200 )});
+      }else{
+        res.send(403);
+      }
+    });
   }).
 
    post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
