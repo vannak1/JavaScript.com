@@ -5,8 +5,11 @@
 //
 // *************************************
 //
-// @param $element  { jQuery object }
-// @param className { string }
+// @param $element        { jQuery object }
+// @param $number         { jQuery object }
+// @param $container      { jQuery object }
+// @param $emptyContainer { jQuery object }
+// @param listClass       { string }
 //
 // *************************************
 
@@ -167,7 +170,12 @@ JS.Modules.CreateComment = (function() {
     var number = _settings.$number.text().split(' ')[0];
 
     number++;
-    _settings.$number.text(number + ' Comments');
+
+    if (number === 1) {
+      _settings.$number.text(number + ' Comment');
+    } else {
+      _settings.$number.text(number + ' Comments');
+    }
   };
 
   // -------------------------------------
