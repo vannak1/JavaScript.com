@@ -167,7 +167,7 @@ JS.Modules.CreateComment = (function() {
   // -------------------------------------
 
   var _updateCommentNumber = function() {
-    var number = _settings.$number.text().split(' ')[0];
+    var number = parseInt(_settings.$number.first().text(), 10);
 
     number++;
 

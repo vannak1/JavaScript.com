@@ -8,6 +8,7 @@
 // @param $element    { jQuery object }
 // @param $comment    { jQuery object }
 // @param $form       { jQuery object }
+// @param $cancelBtn  { jQuery object }
 // @param $deleteBtn  { jQuery object }
 // @param $editBtn    { jQuery object }
 // @param $saveBtn    { jQuery object }
@@ -35,9 +36,11 @@ JS.Modules.EditComment = (function() {
       $element    : $('.js-editComment'),
       $comment    : $('.js-editComment-comment'),
       $form       : $('.js-editComment-form'),
+      $cancelBtn  : $('.js-editComment-cancelBtn'),
       $deleteBtn  : $('.js-editComment-deleteBtn'),
       $editBtn    : $('.js-editComment-editBtn'),
       $saveBtn    : $('.js-editComment-saveBtn'),
+      $number     : $('.js-editComment-number'),
       $textarea   : $('.js-editComment-textarea'),
       hiddenClass : 'is-hidden',
       storySlug   : window.location.pathname.split('/')[2],
@@ -59,10 +62,18 @@ JS.Modules.EditComment = (function() {
       event.preventDefault();
     });
 
+    // ----- Cancel Button ----- //
+
+    _settings.$cancelBtn.on('click', function(event) {
+      _restoreComment($(this).closest(_settings.$element));
+      _toggleForm($(this).closest(_settings.$element));
+    });
+
     // ----- Delete Button ----- //
 
     _settings.$deleteBtn.on('click', function(event) {
       _deleteComment($(this).closest(_settings.$element));
+      _updateCommentNumber();
     });
 
     // ----- Edit Button ----- //
@@ -96,14 +107,25 @@ JS.Modules.EditComment = (function() {
   };
 
   // -------------------------------------
+  //   Restore Comment
+  // -------------------------------------
+
+  var _restoreComment = function($element) {
+    var $comment  = $element.find(_settings.$comment),
+        $textarea = $element.find(_settings.$textarea);
+
+    $textarea.val($comment.text());
+  };
+
+  // -------------------------------------
   //   Save Comment
   // -------------------------------------
 
   var _saveComment = function($element) {
-    var $comment = $element.find(_settings.$comment),
+    var $comment  = $element.find(_settings.$comment),
         $textarea = $element.find(_settings.$textarea),
-        body = $textarea.val(),
-        id   = $element.data('id');
+        body      = $textarea.val(),
+        id        = $element.data('id');
 
     $comment.text(body);
 
@@ -115,7 +137,9 @@ JS.Modules.EditComment = (function() {
     });
   }
 
-  // ----- Toggle Form ----- //
+  // -------------------------------------
+  //   Toggle Form
+  // -------------------------------------
 
   var _toggleForm = function($element) {
     var $comment = $element.find(_settings.$comment),
@@ -125,6 +149,22 @@ JS.Modules.EditComment = (function() {
     $comment.toggleClass(_settings.hiddenClass);
     $editBtn.toggleClass(_settings.hiddenClass);
     $form.toggleClass(_settings.hiddenClass);
+  };
+
+  // -------------------------------------
+  //   Update Comment Number
+  // -------------------------------------
+
+  var _updateCommentNumber = function() {
+    var number = parseInt(_settings.$number.first().text(), 10);
+
+    number--;
+
+    if (number === 1) {
+      _settings.$number.text(number + ' Comment');
+    } else {
+      _settings.$number.text(number + ' Comments');
+    }
   };
 
   // -------------------------------------
