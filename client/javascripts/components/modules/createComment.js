@@ -56,6 +56,84 @@ JS.Modules.CreateComment = (function() {
   };
 
   // -------------------------------------
+  //   Append Comment
+  // -------------------------------------
+
+  var _appendComment = function(comment) {
+    if (_firstComment) {
+      _settings.$emptyContainer.remove();
+      _settings.$list.removeClass('is-hidden');
+    }
+
+    _settings.$list.append(comment);
+    _settings.$element.find('textarea').val('');
+  };
+
+  // -------------------------------------
+  //   Build Comment
+  // -------------------------------------
+
+  var _buildComment = function(data) {
+    var comment = '';
+
+    comment+=
+      '<li id="comment-' + data.comment.id + '" class="list-item is-added js-editComment" data-id="' + data.comment.id + '">' +
+        '<div class="bucket">' +
+          '<div class="bucket-media">' +
+            '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
+          '</div>' +
+          '<div class="bucket-content">' +
+            '<div class="split mbm tfh">' +
+              '<div class="split-item">' +
+                '<div class="split-cell">' +
+                  '<span class="mrs twb">' + data.comment.name + '</span>' +
+                  '<time class="tcs tsi">Today</time>' +
+                '</div>' +
+                '<div class="split-cell">' +
+                  '<button class="link js-editComment-editBtn">Edit</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<p class="mbf js-editComment-comment">' + data.comment.body + '</p>' +
+            '<form class="form js-editComment-form is-hidden" action="">' +
+              '<textarea class="form-input form-textarea js-autosize js-editComment-textarea">' + data.comment.body + '</textarea>' +
+              '<div class="split split--center">' +
+                '<div class="split-item">' +
+                  '<div class="split-cell">' +
+                    '<button class="link link--error js-editComment-deleteBtn">Delete</button>' +
+                  '</div>' +
+                  '<div class="split-cell">' +
+                    '<div class="has-btn">' +
+                      '<button class="btn btn--a--bordered js-editComment-cancelBtn">Cancel</button>' +
+                      '<button class="btn js-editComment-saveBtn">Save Changes</button>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</form>' +
+          '</div>' +
+        '</div>' +
+      '</li>';
+
+    return comment;
+  };
+
+  // -------------------------------------
+  //   Build Moderation Comment
+  // -------------------------------------
+
+  var _buildModerationComment = function(data) {
+    var comment = '';
+
+    comment +=
+      '<li class="list-item">' +
+        '<p class="mbf tac tce tsi">Hang tight! Your comment needs to be moderated.</p>' +
+      '</li>';
+
+    return comment;
+  };
+
+  // -------------------------------------
   //   Post Comment
   // -------------------------------------
 
@@ -69,97 +147,19 @@ JS.Modules.CreateComment = (function() {
 
       if (_settings.$container.hasClass('is-empty')) {
         _firstComment = true;
-        comment       = _addFirstComment(data);
+        comment       = _buildComment(data);
       } else {
         if (data.comment.isSpam) {
-          comment = _addModerationComment(data);
+          comment = _buildModerationComment(data);
         } else {
-          comment = _addRegularComment(data);
+          comment = _buildComment(data);
         }
       }
 
       _appendComment(comment);
       _updateCommentNumber();
+      JS.Modules.EditComment.init();
     });
-  };
-
-  // -------------------------------------
-  //   Add Moderation Comment
-  // -------------------------------------
-
-  var _addModerationComment = function(data) {
-    var comment = '';
-
-    comment +=
-      '<li class="list-item">' +
-        '<p class="mbf tac tce tsi">Hang tight! Your comment needs to be moderated.</p>' +
-      '</li>';
-
-    return comment;
-  };
-
-  // -------------------------------------
-  //   Add Regular Comment
-  // -------------------------------------
-
-  var _addRegularComment = function(data) {
-    var comment = '';
-
-    comment+=
-      '<li id="comment-' + data.comment.id + '" class="list-item is-added">' +
-        '<div class="bucket">' +
-          '<div class="bucket-media">' +
-            '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
-          '</div>' +
-          '<div class="bucket-content">' +
-            '<p class="tfh">' +
-              '<span class="mrs twb">' + data.comment.name + '</span>' +
-              '<time class="tcs tsi">Today</time>' +
-            '</p>' +
-            '<p class="mbf">' + data.comment.body + '</p>' +
-          '</div>' +
-      '</li>';
-
-    return comment;
-  };
-
-  // -------------------------------------
-  //   Add First Comment
-  // -------------------------------------
-
-  var _addFirstComment = function(data) {
-    var comment = '';
-
-    comment+=
-      '<li id="comment-' + data.comment.id + '" class="list-item is-added">' +
-        '<div class="bucket">' +
-          '<div class="bucket-media">' +
-            '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
-          '</div>' +
-          '<div class="bucket-content">' +
-            '<p class="tfh">' +
-              '<span class="mrs twb">' + data.comment.name + '</span>' +
-              '<time class="tcs tsi">Today</time>' +
-            '</p>' +
-            '<p class="mbf">' + data.comment.body + '</p>' +
-          '</div>' +
-        '</li>';
-
-    return comment;
-  };
-
-  // -------------------------------------
-  //   Append Comment
-  // -------------------------------------
-
-  var _appendComment = function(comment) {
-    if (_firstComment) {
-      _settings.$emptyContainer.remove();
-      _settings.$list.removeClass('is-hidden');
-    }
-
-    _settings.$list.append(comment);
-    _settings.$element.find('textarea').val('');
   };
 
   // -------------------------------------
