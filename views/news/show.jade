@@ -87,6 +87,7 @@ block content
               h2.h.h--3.tcs Post a New Comment
             if user.authenticated
               .split-cell
+                img.thumb.dib.mrs.mwn(src=user.avatar_url width=25)
                 a(href='/news/signout') Not you?
 
         if user.authenticated

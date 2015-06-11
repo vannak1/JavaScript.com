@@ -187,7 +187,7 @@ JS.Classes.FormValidator = (function() {
   // -------------------------------------
 
   FormValidator.prototype._validateRequired = function() {
-    if (this._input.val() === '') {
+    if (!/\S/.test(this._input.val())) {
       return true;
     } else {
       return false;
