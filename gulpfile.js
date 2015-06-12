@@ -237,6 +237,13 @@ gulp.task('icons', function() {
   gulp.src(options.icons.files)
     .pipe(svgmin())
     .pipe(svgstore({ inlineSvg: true }))
+    .pipe(cheerio(function($) {
+      $('title').remove();
+      $('[fill]').removeAttr('fill');
+      $('[opacity]').removeAttr('opacity');
+      $('[title]').removeAttr('title');
+      $('[xmlns]').removeAttr('xmlns');
+    }))
     .pipe(gulp.dest(options.icons.destDir));
 });
 
