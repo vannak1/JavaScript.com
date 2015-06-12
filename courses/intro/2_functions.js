@@ -53,7 +53,7 @@ JavaScript also has built-in features, called *functions*. In order to call a fu
 
 Don't be afraid when a box pops up &mdash; that's your code working, {{username}}!
 
-<code class=\"inlineCode inlineCode--btn\">alert();</code>`,
+<code class=\"inlineCode inlineCode--btn\"><svg class=\"icon inlineCode-icon\" width=\"16\" height=\"16\"><use xlink:href=\"#icon-submit\"/></svg>alert();</code>`,
   'hints': [
     'Call the alert function by typing the following: `alert();`'
   ],

@@ -49,7 +49,7 @@ module.exports = {
   'title': 'Variable Value',
   'instructions': `Now we have a variable called \`firstName\` that has a string stored inside of it. Output it to see what it looks like.
 
-<code class=\"inlineCode inlineCode--btn\">firstName;</code>`,
+<code class=\"inlineCode inlineCode--btn\"><svg class=\"icon inlineCode-icon\" width=\"16\" height=\"16\"><use xlink:href=\"#icon-submit\"/></svg>firstName;</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "test;"

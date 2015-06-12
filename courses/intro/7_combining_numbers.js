@@ -47,7 +47,7 @@ module.exports = {
   'title': 'Combining Numbers',
   'instructions': `We can also do math in JavaScript! Combine any 2 numbers like so:
 
-<code class=\"inlineCode inlineCode--btn\">14 + 28;</code>`,
+<code class=\"inlineCode inlineCode--btn\"><svg class=\"icon inlineCode-icon\" width=\"16\" height=\"16\"><use xlink:href=\"#icon-submit\"/></svg>14 + 28;</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "14 + 28;"

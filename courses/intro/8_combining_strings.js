@@ -79,7 +79,7 @@ module.exports = {
 
 Create an alert that combines both your name and a string, like below:
 
-<code class=\"inlineCode inlineCode--btn\">alert(firstName + " is awesome!");</code>`,
+<code class=\"inlineCode inlineCode--btn\"><svg class=\"icon inlineCode-icon\" width=\"16\" height=\"16\"><use xlink:href=\"#icon-submit\"/></svg>alert(firstName + " is awesome!");</code>`,
   'tests': tests,
   'failures': failures,
   'answer': "alert(firstName + \" is awesome!\");"
