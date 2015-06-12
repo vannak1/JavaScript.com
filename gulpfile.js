@@ -8,17 +8,23 @@
 //   Modules
 // -------------------------------------
 
+// ----- Gulp ----- //
+
 var gulp         = require('gulp');
-var watch        = require('gulp-watch');
-var sass         = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var cheerio      = require('gulp-cheerio');
+var concat       = require('gulp-concat');
 var minifycss    = require('gulp-minify-css');
 var rename       = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
-var uglify       = require('gulp-uglify');
-var concat       = require('gulp-concat');
+var sass         = require('gulp-sass');
 var shell        = require('gulp-shell');
 var svgmin       = require('gulp-svgmin');
 var svgstore     = require('gulp-svgstore');
+var uglify       = require('gulp-uglify');
+var watch        = require('gulp-watch');
+
+// ----- NPM ----- //
+
 var _            = require('lodash');
 var run          = require('run-sequence');
 var Chance       = require('chance');
