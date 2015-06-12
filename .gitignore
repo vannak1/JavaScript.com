@@ -31,5 +31,6 @@ node_modules
 
 bower_components
 
-public/stylesheets/
+public/images/icons/icons.svg
 public/javascripts/
+public/stylesheets/

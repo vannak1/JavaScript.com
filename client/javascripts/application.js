@@ -52,6 +52,10 @@ jQuery(function($) {
     ]
   });
 
+  // ----- Global ----- //
+
+  JS.injectSvg({ assetPath : '/images/icons/icons.svg' });
+
 });
 
 // -------------------------------------
