@@ -77,7 +77,7 @@ module.exports = {
 
 Well, many functions (like the \`alert\` function) can take instructions, which we call *parameters*. By sending a string into the \`alert\` function, we can put text on the pop-up box. Try it!
 
-<code class=\"inlineCode inlineCode--btn\">alert("{{username}}");</code>`,
+<code class=\"inlineCode inlineCode--btn\"><svg class=\"icon inlineCode-icon\" width=\"16\" height=\"16\"><use xlink:href=\"#icon-submit\"/></svg>alert("{{username}}");</code>`,
   'hints': [
     "Type in your first name surrounded by double quotes inside the alert function: `alert(\"{{username}}\");`"
   ],
