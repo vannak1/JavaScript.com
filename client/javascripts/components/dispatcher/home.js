@@ -13,7 +13,7 @@ JS.Pages.Home = function() {
 
   JS.Modules.Console.init();
   JS.Modules.Newsletter.init();
-  JS.Modules.Video.init();
+  JS.Modules.Video.init({ vendor: true, ytVideo: true });
 
   // -------------------------------------
   //   Services

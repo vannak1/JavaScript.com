@@ -23,7 +23,9 @@ JS.Modules.Video = (function() {
   // -------------------------------------
 
   var _settings  = {};
+  var _isPlaying = false;
   var _video     = null;
+  var _videoSrc  = null;
 
   // -------------------------------------
   //   Initialize
@@ -32,18 +34,31 @@ JS.Modules.Video = (function() {
   var init = function(options) {
     _settings = $.extend({
       $element    : $('body'),
+      $container  : $('.js-video'),
       $trigger    : $('.js-video-trigger'),
       $video      : $('.js-video-element'),
       $close      : $('<a href="#" class="video-close js-video-close" aria-label="close">&times;</a>'),
       $overlay    : $('<div class="video-overlay js-video-overlay"></div>'),
       overlayNode : '.js-video-overlay',
       closeNode   : '.js-video-close',
-      activeClass : 'is-video-playing'
+      activeClass : 'is-video-playing',
+      playDelay   : 1000,
+      vendor      : null,
+      ytVideo     : null
     }, options);
 
     _video = _settings.$video[0];
 
+    _getYouTubeSrc();
     _setEventHandlers();
+  };
+
+  // -------------------------------------
+  //   Get YouTube Source
+  // -------------------------------------
+
+  var _getYouTubeSrc = function() {
+    _videoSrc = $( _video ).attr( 'src' );
   };
 
   // -------------------------------------
@@ -107,15 +122,28 @@ JS.Modules.Video = (function() {
           _settings.$element.addClass(_settings.activeClass);
         }, 200);
 
-        setTimeout(function() {
-          _play();
-        }, 1000);
+        if (_settings.vendor === null) {
+          setTimeout(function() {
+            _play();
+          }, 1000);
+        }
+
+        if (_settings.ytVideo !== null) {
+          $(_video).attr('src', _videoSrc + '?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1');
+        }
 
         break;
 
       case 'close':
         _settings.$element.removeClass(_settings.activeClass);
-        _pause();
+
+        if (_settings.vendor === null) {
+          _pause();
+        }
+
+        if (_settings.ytVideo !== null) {
+          $(_video).attr('src', _videoSrc);
+        }
 
         break;
     }

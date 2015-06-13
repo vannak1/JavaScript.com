@@ -20,10 +20,9 @@ block content
             include /views/partials/_icon
           span.btn-text Learn More
 
-        .video
-          video.video-element.js-video-element(controls preload='none')
-            source(src='https://www.viddler.com/file/d/1646e040.mp4' type='video/mp4')
-            source(src='https://www.viddler.com/file/d/1646e040.webm' type='video/webm')
+        .video.js-video
+          .video-embed
+            iframe.js-video-element(width='560' height='315' src='https://www.youtube.com/embed/nItSSTwBvSU' frameborder='0' allowfullscreen)
 
       .g.ptl
         .g-b.g-b--center.g-b--l--1of2

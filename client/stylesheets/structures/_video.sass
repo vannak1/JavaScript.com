@@ -7,6 +7,8 @@
 //   Template (Haml)
 // -------------------------------------
 //
+// (video-playing)
+//
 // .video
 //
 // *************************************
@@ -16,7 +18,7 @@
   box-sizing: border-box
   left: 50%
   max-width: 960px
-  padding: $b-space-l
+  padding: 0
   position: fixed
   top: 50%
   transform: translate(-50%, -40%)
@@ -70,11 +72,19 @@
   transform: scale(0.5)
   transition: all 0.3s ease-in-out
 
-// ----- Element ----- //
+// ----- Embed ----- //
 
-.video-element
-  border-radius: $b-borderRadius-l
-  max-width: 100%
+.video-embed
+  height: 0
+  overflow: hidden
+  padding-bottom: 56.25% // 16:9
+
+  iframe, object, embed
+    left: 0
+    height: 100%
+    position: absolute
+    top: 0
+    width: 100%
 
 // ----- Overlay ----- //
 
