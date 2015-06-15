@@ -1,7 +1,8 @@
 var express = require('express');
-var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+// Global, it's used everywhere
+path = require('path');
 
 // Set baseURL depending on enviornment
 
@@ -14,21 +15,21 @@ if (env === 'production') {
   baseURL = "http://localhost:3000/";
 }
 
-var routes = require('./routes/index');
+var routes = require(path.join(__dirname, 'routes','index'));
 
-var about = require('./routes/about');
-var admin = require('./routes/admin');
-var assets = require('./routes/assets');
-var courses = require('./routes/courses');
-var feed = require('./routes/feed');
-var feedback = require('./routes/feedback');
-var guidelines = require('./routes/guidelines');
-var learn = require('./routes/learn');
-var news = require('./routes/news');
-var notFound = require('./routes/notFound');
-var resources = require('./routes/resources');
-var styleguide = require('./routes/styleguide');
-var users = require('./routes/users');
+var about = require(path.join(__dirname, 'routes', 'about'));
+var admin = require(path.join(__dirname, 'routes', 'admin'));
+var assets = require(path.join(__dirname, 'routes', 'assets'));
+var courses = require(path.join(__dirname, 'routes', 'courses'));
+var feed = require(path.join(__dirname, 'routes', 'feed'));
+var feedback = require(path.join(__dirname, 'routes', 'feedback'));
+var guidelines = require(path.join(__dirname, 'routes', 'guidelines'));
+var learn = require(path.join(__dirname, 'routes', 'learn'));
+var news = require(path.join(__dirname, 'routes', 'news'));
+var notFound = require(path.join(__dirname, 'routes', 'notFound'));
+var resources = require(path.join(__dirname, 'routes', 'resources'));
+var styleguide = require(path.join(__dirname, 'routes', 'styleguide'));
+var users = require(path.join(__dirname, 'routes', 'users'));
 
 var app = express();
 
@@ -42,7 +43,7 @@ var client = redis.createClient();
 var secureCookie = process.env.NODE_ENV === 'production' ? true : false
 app.use(expressSession({
   store: new RedisStore({client: client}),
-  secret: 'replace-me-with-secret-key',
+  secret: process.env.COOKIE_KEY,
   cookie: {secure: secureCookie}
 }));
 app.use(passport.initialize());
@@ -55,7 +56,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Flash messages
 app.use(require('flash')());

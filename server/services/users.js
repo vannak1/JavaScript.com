@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require(path.join(__dirname, 'db'));
 var GithubApi = require('./github-api');
 
 var Users = {

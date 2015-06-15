@@ -1,5 +1,5 @@
-var db = require('./db');
-var Akismetor = require('../services/akismetor');
+var db = require(path.join(__dirname, 'db'));
+var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
 
 var Comments = {
   // Returns all comments by article with user information.

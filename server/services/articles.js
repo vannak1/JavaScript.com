@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require(path.join(__dirname, 'db'));
 var slugGenerator = require('./slug-generator');
 
 /* Articles fall into two seperate categories, Flow and News. Flow stories are user

@@ -3,11 +3,12 @@ var router = express.Router();
 var csrf = require('csurf');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')();
-var Articles  = require('../services/articles');
-var Users = require('../services/users');
-var Comments = require('../services/comments');
-var Akismetor = require('../services/akismetor');
-var Mailer = require('../services/mailer');
+
+var Articles  = require(path.join(__dirname, '..', 'services', 'articles'));
+var Users = require(path.join(__dirname, '..', 'services', 'users'));
+var Comments = require(path.join(__dirname, '..', 'services', 'comments'));
+var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
+var Mailer = require(path.join(__dirname, '..', 'services', 'mailer'));
 
 var csrfProtection = csrf();
 var parsePost = bodyParser.urlencoded({ extended: false });
