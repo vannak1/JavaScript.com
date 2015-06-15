@@ -37,7 +37,7 @@ var db           = require('./services/db');
 var options = {
 
   build: {
-    tasks: ['sass', 'abecedary', 'javascript']
+    tasks: ['sass', 'abecedary', 'javascript', 'icons']
   },
 
   css: {
