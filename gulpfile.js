@@ -28,7 +28,7 @@ var watch        = require('gulp-watch');
 var _            = require('lodash');
 var run          = require('run-sequence');
 var Chance       = require('chance');
-var db           = require('./services/db');
+var db           = require('./server/services/db');
 
 // -------------------------------------
 //   Variables

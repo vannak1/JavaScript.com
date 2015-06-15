@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var path = require('path');
+var app = require(path.join(__dirname, '..', 'server', 'app'));
 var debug = require('debug')('JavaScript.com:server');
 var http = require('http');
 
