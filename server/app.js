@@ -43,7 +43,7 @@ var client = redis.createClient();
 var secureCookie = process.env.NODE_ENV === 'production' ? true : false
 app.use(expressSession({
   store: new RedisStore({client: client}),
-  secret: process.env.COOKIE_KEY,
+  secret: 'asecret',
   cookie: {secure: secureCookie}
 }));
 app.use(passport.initialize());
