@@ -32,6 +32,7 @@ var styleguide = require(path.join(__dirname, 'routes', 'styleguide'));
 var users = require(path.join(__dirname, 'routes', 'users'));
 
 var app = express();
+app.set('trust proxy', 1);
 
 // Must come before calls to app.use
 var passport = require('passport');
