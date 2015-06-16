@@ -21,7 +21,9 @@ JS.Modules.Newsletter = (function() {
     _settings = $.extend({
       $element            : $('.js-newsletter'),
       $form               : $('.js-newsletter-form'),
+      $error              : $('.js-newsletter-error'),
       submittedClass      : 'is-submitted',
+      hiddenClass         : 'is-hidden',
       newsletterTextClass : 'newsletter-text',
       newsletterTextCopy  : "Thanks! You're all set to receive the latest JavaScript&nbsp;news."
     }, options);
@@ -34,18 +36,38 @@ JS.Modules.Newsletter = (function() {
   // -------------------------------------
 
   var _submitForm = function() {
-    $.post('/subscribe', _settings.$form.serialize());
+    $.post('/subscribe', _settings.$form.serialize(), function(results) {
+      if (results.error) {
+        _updateInterface('error', results.error.error);
+      } else {
+        _updateInterface('success');
+      }
+    });
   };
 
   // -------------------------------------
   //   Update Interface
   // -------------------------------------
 
-  var _updateInterface = function() {
+  var _updateInterface = function(type, message) {
+    var newsletterTextCopy;
+
+    if (message !== undefined) {
+      newsletterTextCopy = message;
+    } else {
+      newsletterTextCopy = _settings.newsletterTextCopy;
+    }
+
     _settings.$form.find('input').prop('disabled', true);
 
-    _settings.$element.addClass(_settings.submittedClass);
-    _settings.$element.append("<p class='" + _settings.newsletterTextClass + "'>" + _settings.newsletterTextCopy + "</p>");
+    if (type === 'success') {
+      _settings.$element.addClass(_settings.submittedClass);
+      _settings.$element.append("<p class='" + _settings.newsletterTextClass + "'>" + newsletterTextCopy + "</p>");
+    } else {
+      _settings.$error
+        .text(newsletterTextCopy)
+        .removeClass(_settings.hiddenClass);
+    }
   };
 
   // -------------------------------------
@@ -57,7 +79,6 @@ JS.Modules.Newsletter = (function() {
       event.preventDefault();
 
       _submitForm();
-      _updateInterface();
     });
   };
 
