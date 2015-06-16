@@ -129,7 +129,7 @@ JS.Modules.Video = (function() {
         }
 
         if (_settings.ytVideo !== null) {
-          $(_video).attr('src', _videoSrc + '?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1');
+          $(_video).attr('src', _videoSrc + '?rel=0&showinfo=0&html5=1&autoplay=1');
         }
 
         break;
