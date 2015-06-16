@@ -246,6 +246,7 @@ router.
     req.sanitize('body').trim();
     req.check('body').notEmpty();
 
+
     var errors = req.validationErrors();
 
     if (errors) {
@@ -319,8 +320,6 @@ router.
     req.check('body', 'Description is required').notEmpty();
     req.check('body', 'Description must be between 100 and 300 characters').len(100,300);
 
-    req.sanitize('body').escape();
-    req.sanitize('title').escape();
 
     var errors = req.validationErrors();
 
