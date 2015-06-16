@@ -26,7 +26,7 @@ JS.Inbox    = {};
 // -------------------------------------
 
 JS.Globals = {
-  homepageChallengeAnswer : /^['"][A-z-\.\s]*['"](;)?/,
+  homepageChallengeAnswer : /^('|")\w+\1;?$/,
   userNameCookie          : 'try_name',
   Vendor                  : {
     autosizeQuery         : '.js-autosize'
