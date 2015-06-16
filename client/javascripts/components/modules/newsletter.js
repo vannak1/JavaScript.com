@@ -34,7 +34,7 @@ JS.Modules.Newsletter = (function() {
   // -------------------------------------
 
   var _submitForm = function() {
-    $.post('/subscribe', _settings.$element.serialize());
+    $.post('/subscribe', _settings.$form.serialize());
   };
 
   // -------------------------------------
