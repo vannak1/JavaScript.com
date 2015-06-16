@@ -21,23 +21,39 @@ block content
 
             - for story in stories
               li.list-item(data-article=story.id)
-                article.bucket
-                  .bucket-content
-                    h2.h.h--3
-                      h3 #{story.title}
-                      a.tct.twb(href='/news/' + story.slug)=story.url
-                    p.mbf= story.body
-                    a.tct.twb.approve(href='#') approve
-                    ||
-                    select(name="moderate" id="moderate")
-                      option(value=0) Select reason...
-                      option(value=1) Duplicate
-                      option(value=2) Hard to understand
-                      option(value=3) Directly advertising
-                      option(value=4) Job Posting
-                      option(value=5) Disrespectful language
-                      option(value=6) Not within community interests
-                    a.tct.twb.deny(href='#') deny
+                section.row
+                  .cell.cell--s.well
+
+                    article.bdrbl.pbl.mbm(role='article')
+
+                      h1.h.h--1
+                        a.externalLink.tct.twb(href=story.url)
+                          = story.title
+                          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 20 }
+                          include /views/partials/_icon
+
+                      .bucket.bucket--flag.mbm
+                        .bucket-media
+                          img.thumb(src=story.avatar_url width=50)
+                        .bucket-content.h.h--3.tcs
+                          ul.list.list--inline.list--inline--divided.tfh
+                            li.list-item
+                              span.twn via 
+                              | #{story.name}
+
+                      p.well.well--l.tsl= story.body
+
+                      a.tct.twb.approve(href='#') approve
+                      ||
+                      select(name="moderate" id="moderate")
+                        option(value=0) Select reason...
+                        option(value=1) Duplicate
+                        option(value=2) Hard to understand
+                        option(value=3) Directly advertising
+                        option(value=4) Job Posting
+                        option(value=5) Disrespectful language
+                        option(value=6) Not within community interests
+                      a.tct.twb.deny(href='#') deny
 
 block inline_javascript
   script.
