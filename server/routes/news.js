@@ -231,13 +231,13 @@ router.
     }
 
     Articles.findBySlug(req.params.slug, function(flow) {
-      Comments.findByArticleId(flow[0].id, function(comments) {
-        if (flow.length > 0){
+      if (flow.length > 0){
+        Comments.findByArticleId(flow[0].id, function(comments) {
           res.render('news/show', { flow: flow[0], comments: comments, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
-        }else{
+        });
+      }else{
           res.render('404');
-        }
-      });
+      }
     });
   }).
 
