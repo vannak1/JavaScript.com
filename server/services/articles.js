@@ -9,7 +9,7 @@ var Articles = {
 
   // Returns Flow stories that haven't been moderated.
   pending(cb) {
-    db.query('SELECT * FROM articles where approved IS NULL ORDER BY created_at ASC', [], cb)
+    db.query('SELECT a.id, a,url, a.title, a.slug, a.body, u.name, u.avatar_url FROM articles as a JOIN users as u on a.user_id = u.id WHERE approved IS NULL ORDER BY a.created_at ASC', [], cb)
   },
 
   // Return 25 of the most recent Flow and News articles that are published
