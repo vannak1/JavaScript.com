@@ -8,7 +8,7 @@ path = require('path');
 
 var env = process.env.NODE_ENV;
 if (env === 'production') {
-  baseURL = "https://preview.javascript.com/";
+  baseURL = "https://www.javascript.com/";
 }else if(env === 'staging'){
   baseURL = "http://javascript.preschool.io/";
 }else{
