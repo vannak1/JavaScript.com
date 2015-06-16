@@ -244,7 +244,6 @@ router.
   post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, expressValidator(),  csrfProtection, buildComment, function(req, res) {
     // TODO: Perhaps this should be done in the buildComment()?
     req.sanitize('body').trim();
-    req.sanitize('body').escape();
     req.check('body').notEmpty();
 
 
@@ -321,8 +320,6 @@ router.
     req.check('body', 'Description is required').notEmpty();
     req.check('body', 'Description must be between 100 and 300 characters').len(100,300);
 
-    req.sanitize('body').escape();
-    req.sanitize('title').escape();
 
     var errors = req.validationErrors();
 
