@@ -5,7 +5,9 @@ if (settings == undefined) {
   settings = "pg://localhost:5432/javascriptcom";
 }
 
-pg.defaults.ssl = true;
+if (process.env.NODE_ENV === 'production') {
+  pg.defaults.ssl = true;
+}
 
 /* A parameterized query. An empty args array may be passed if there are no paramaters.
  * Results are passed to a callback.
