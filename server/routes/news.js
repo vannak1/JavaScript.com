@@ -244,7 +244,9 @@ router.
   post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, ensureAuthenticated, parseForm, expressValidator(),  csrfProtection, buildComment, function(req, res) {
     // TODO: Perhaps this should be done in the buildComment()?
     req.sanitize('body').trim();
+    req.sanitize('body').escape();
     req.check('body').notEmpty();
+
 
     var errors = req.validationErrors();
 
