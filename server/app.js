@@ -38,12 +38,13 @@ var passport = require('passport');
 var expressSession = require('express-session');
 var RedisStore = require('connect-redis')(expressSession);
 var redis = require('redis');
-var client = redis.createClient();
+var redisHost = process.env.REDIS_HOST === undefined ? '127.0.0.1' : process.env.REDIS_HOST;
+var client = redis.createClient(6379, redisHost, {});
 // Don't set cookies to secure in dev.
 var secureCookie = process.env.NODE_ENV === 'production' ? true : false
 app.use(expressSession({
   store: new RedisStore({client: client}),
-  secret: 'asecret',
+  secret: 'asd9fjasdflmasdf98u543mlsaffasdf9787asdflkjmfsdalasfdjasdfiuhwqerl',
   cookie: {secure: secureCookie}
 }));
 app.use(passport.initialize());
