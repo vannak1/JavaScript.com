@@ -1,5 +1,4 @@
 angular.module('javascriptcom').factory('jsCourseState', ['_', function(_) {
-
   return {
     state: {},
     update: function(newState) {

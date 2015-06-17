@@ -1,5 +1,4 @@
 angular.module('javascriptcom').factory('jsChallengeProgress', ['_', '$cookies', 'jsCourseState', function(_, $cookies, jsCourseState) {
-
   var state = {
     courseCompleted: false,
     challenges: [],

@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function SafeHtmlDirective($sce) {
+angular.module('javascriptcom').directive('jsSafeHtml', ['$sce', function($sce) {
   return {
     restrict: 'A',
     scope: {

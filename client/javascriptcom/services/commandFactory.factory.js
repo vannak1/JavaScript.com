@@ -2,7 +2,6 @@
 // If none are found, runs as JavaScript.
 
 angular.module('javascriptcom').factory('jsCommandFactory', ['_', 'jsJavaScriptCommand', function(_, jsJavaScriptCommand) {
-
   var matchers = [
     {
       pattern: /[.|\s]*/,

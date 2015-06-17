@@ -1,5 +1,5 @@
 angular.module('javascriptcom').factory('jsCommand', ['_', 'jsCommandFactory', 'jsChallengeProgress', '$filter', function(_, jsCommandFactory, jsChallengeProgress, $filter) {
-  return function jsCommand(successCallback, errorCallback) {
+  return function(successCallback, errorCallback) {
     var vm = this;
 
     function filterMessage(content) {

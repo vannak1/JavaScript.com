@@ -1,4 +1,4 @@
-angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgress', 'jsCourseState', function jsInstructions(jsChallengeProgress, jsCourseState) {
+angular.module('javascriptcom').directive('jsInstructions', ['jsChallengeProgress', 'jsCourseState', function(jsChallengeProgress, jsCourseState) {
   return {
     templateUrl: 'templates/instructions.html',
     replace: true,
