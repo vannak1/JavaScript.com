@@ -2,8 +2,9 @@ block current_nav
 - current_page = 'Admin'
 
 block layout_variables
-- pageTitle = 'Admin'
-- metaDescription = 'The latest news from the JavaScript community and the fine folks at 5 Minutes of JavaScript.'
+  - dispatcher = 'admin'
+  - pageTitle = 'Admin'
+  - metaDescription = 'The latest news from the JavaScript community and the fine folks at 5 Minutes of JavaScript.'
 
 extends /views/layouts/layout
 
@@ -13,47 +14,59 @@ block content
     include /views/partials/_flash
 
   section.row.has-sector
-    .cell
+    .cell.well.well--l.well--m--xl
       .g
-        .g-b.g-b--m--3of5.sector.sector--a
-          .well.well--l.well--m--xl
+        .g-b.g-b--m--3of5
+          .bdrbl.mbl.pbm
             h1 Unapproved Stories
 
+          if stories.length > 0
             - for story in stories
               li.list-item(data-article=story.id)
-                section.row
-                  .cell.cell--s.well
 
-                    article.bdrbl.pbl.mbm(role='article')
+                article.bdrbl.pbl.mbm(role='article')
 
-                      h1.h.h--1
-                        a.externalLink.tct.twb(href=story.url target='_blank')
-                          = story.title
-                          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 20 }
-                          include /views/partials/_icon
+                  h1.h.h--1
+                    a.externalLink.tct.twb(href=story.url target='_blank')
+                      = story.title
+                      - iconPartial = { name: 'external', className: 'externalLink-icon', size: 20 }
+                      include /views/partials/_icon
 
-                      .bucket.bucket--flag.mbm
-                        .bucket-media
-                          img.thumb(src=story.avatar_url width=50)
-                        .bucket-content.h.h--3.tcs
-                          ul.list.list--inline.list--inline--divided.tfh
-                            li.list-item
-                              span.twn via 
-                              | #{story.name}
+                  .bucket.bucket--flag.mbm
+                    .bucket-media
+                      img.thumb(src=story.avatar_url width=50)
+                    .bucket-content.h.h--3.tcs
+                      ul.list.list--inline.list--inline--divided.tfh
+                        li.list-item
+                          span.twn via 
+                          | #{story.name}
 
-                      p.well.well--l.tsl= story.body
+                  p.well.well--l.tsl= story.body
 
-                      a.tct.twb.approve(href='#') approve
-                      ||
-                      select(name="moderate" id="moderate")
-                        option(value=0) Select reason...
-                        option(value=1) Duplicate
-                        option(value=2) Hard to understand
-                        option(value=3) Directly advertising
-                        option(value=4) Job Posting
-                        option(value=5) Disrespectful language
-                        option(value=6) Not within community interests
-                      a.tct.twb.deny(href='#') deny
+                  .mbl
+                    a.btn.btn--success.approve(href='#') Approve Story
+
+                  h2 Deny Story
+                  p.tcs.tss
+                    | If the story doesn't follow the Community Guidelines, provide 
+                    | a reason and select 
+                    strong Deny Story.
+                  .g.g--xs
+                    .g-b.g-b--3of4
+                      .select
+                        select.select-input(name="moderate" id="moderate")
+                          option.select-input-option(value=0) Select reason...
+                          option.select-input-option(value=1) Duplicate
+                          option.select-input-option(value=2) Hard to understand
+                          option.select-input-option(value=3) Directly advertising
+                          option.select-input-option(value=4) Job Posting
+                          option.select-input-option(value=5) Disrespectful language
+                          option.select-input-option(value=6) Not within community interests
+                    .g-b.g-b--1of4
+                      a.btn.btn--a.btn--block.deny(href='#') Deny Story
+
+          else
+            p.tsi There are no unapproved stories right now.
 
 block inline_javascript
   script.

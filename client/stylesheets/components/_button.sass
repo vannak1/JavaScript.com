@@ -10,7 +10,7 @@
 //
 // .has-btn
 //
-// .btn[a|b s|l block bordered|rounded]
+// .btn[a|b s|l block bordered|rounded success]
 //
 // *************************************
 
@@ -97,6 +97,14 @@
     position: absolute
     top: 50%
     transform: translate(-50%, -50%)
+
+// ----- Theme ----- //
+
+.btn--success
+  background: $c-success
+
+  +state
+    background: shade($c-success, 10%)
 
 // -------------------------------------
 //   Context
