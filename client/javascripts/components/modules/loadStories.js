@@ -64,7 +64,7 @@ JS.Modules.LoadStories = (function() {
               '</div>' +
               '<div class="bucket-content">' +
                 '<h2 class="h h--3">' +
-                  '<a class="externalLink tct twb" href="' + story.url + '">' + story.title +
+                  '<a class="externalLink tct twb" href="' + story.url + '" target="_blank">' + story.title +
                     '<svg width="16" height="16" class="icon externalLink-icon">' +
                       '<use xlink:href="#icon-external"/>' +
                     '</svg>' +

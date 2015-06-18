@@ -56,7 +56,7 @@ block content
                         img.thumb(src=story.avatar_url width='50')
                       .bucket-content
                         h2.h.h--3
-                          a.externalLink.tct.twb(href=story.url)
+                          a.externalLink.tct.twb(href=story.url target='_blank')
                             = story.title
                             - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
                             include /views/partials/_icon
@@ -98,7 +98,7 @@ block content
                     li.list-item
                       article
                         h2.h.h--4
-                          a.externalLink.tct.twb(href=story.url)
+                          a.externalLink.tct.twb(href=story.url target='_blank')
                             = story.title
                             - iconPartial = { name: 'external', className: 'externalLink-icon', size: 14 }
                             include /views/partials/_icon

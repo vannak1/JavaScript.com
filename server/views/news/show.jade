@@ -17,7 +17,7 @@ block content
 
         time.label.mbxs= moment(flow.published_at).format('ll')
         h1.h.h--1
-          a.externalLink.tct.twb(href=flow.url)
+          a.externalLink.tct.twb(href=flow.url target='_blank')
             = flow.title
             - iconPartial = { name: 'external', className: 'externalLink-icon', size: 20 }
             include /views/partials/_icon
