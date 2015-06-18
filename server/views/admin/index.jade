@@ -10,7 +10,7 @@ extends /views/layouts/layout
 
 block content
 
-  .has-alert
+  .has-alert.js-alerts
     include /views/partials/_flash
 
   section.row.has-sector
@@ -22,7 +22,7 @@ block content
 
           if stories.length > 0
             - for story in stories
-              li.list-item(data-article=story.id)
+              li.list-item(data-article=story.id id='story-' + story.id)
 
                 article.bdrbl.pbl.mbm(role='article')
 
@@ -44,7 +44,7 @@ block content
                   p.well.well--l.tsl= story.body
 
                   .mbl
-                    a.btn.btn--success.approve(href='#') Approve Story
+                    a.btn.btn--success.js-admin-approve(href='#' data-story-id=story.id) Approve Story
 
                   h2 Deny Story
                   p.tcs.tss
@@ -54,7 +54,7 @@ block content
                   .g.g--xs
                     .g-b.g-b--3of4
                       .select
-                        select.select-input(name="moderate" id="moderate")
+                        select.select-input.js-admin-reason(name="moderate" id="moderate")
                           option.select-input-option(value=0) Select reason...
                           option.select-input-option(value=1) Duplicate
                           option.select-input-option(value=2) Hard to understand
@@ -63,7 +63,7 @@ block content
                           option.select-input-option(value=5) Disrespectful language
                           option.select-input-option(value=6) Not within community interests
                     .g-b.g-b--1of4
-                      a.btn.btn--a.btn--block.deny(href='#') Deny Story
+                      a.btn.btn--a.btn--block.js-admin-deny(href='#' data-story-id=story.id) Deny Story
 
           else
             p.tsi There are no unapproved stories right now.
@@ -75,23 +75,50 @@ block inline_javascript
         xhr.setRequestHeader('csrf-token', '#{token}');
       };
 
-      $('a.approve').on('click', function(){
-        var storyId = $(this).closest('li').attr('data-article');
+      function notify(type, message) {
+        var notification = '';
+
+        notification +=
+          '<div class="alert alert--' + type + ' in js-alert">' +
+            '<a class="alert-msg-close js-alert-close" href="#">&times;</a>' +
+            '<p class="alert-msg">' + message + '</p>' +
+          '</div>';
+
+        $('.js-alerts').append(notification);
+
+
+        JS.Services.expel({
+          $toggle     : $('.js-alert-close'),
+          elementNode : '.js-alert'
+        });
+      };
+
+      $('.js-admin-approve').on('click', function(event) {
+        event.preventDefault();
+
+        var storyId = $(this).data('story-id');
+
         $.ajax({
           type: 'POST',
           url: '/admin/news/' + storyId + '/approve',
           beforeSend: setHeader
         })
-          .done(function(response){
+          .done(function(response) {
             console.log(response);
+            if (response === true) {
+              $('#story-' + storyId).remove();
+              notify('success', 'The story has been approved.');
+            }
           });
       });
 
-      $('a.deny').on('click', function(){
-        var storyId = $(this).closest('li').attr('data-article');
+      $('.js-admin-deny').on('click', function(event) {
+        event.preventDefault();
+
+        var storyId = $(this).data('story-id');
         var reason;
 
-        switch ($('#moderate').val()) {
+        switch ($('.js-admin-reason').val()) {
           case "1":
             reason = 'is a duplicate story.';
           case "2":
@@ -112,8 +139,12 @@ block inline_javascript
           url: '/admin/news/' + storyId + '/deny',
           beforeSend: setHeader
         })
-          .done(function(response){
+          .done(function(response) {
             console.log(response);
+            if (response === true) {
+              $('#story-' + storyId).remove();
+              notify('success', 'The story has been denied.');
+            }
           });
       });
 
