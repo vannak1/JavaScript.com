@@ -61,5 +61,9 @@ block content
         - item.description = 'If you’re primarily interested in JavaScript to make interactive web pages, you might want to jump straight into jQuery, the most popular JavaScript library on the Internet.'
         include /views/resources/_resource
 
+        - item = { title: 'JSbooks', url: 'http://jsbooks.revolunet.com/', media: '/images/resources/img-js-books.png' }
+        - item.description = 'An extensive collection of free JavaScript books categorized by beginner, intermediate, and advanced.'
+        include /views/resources/_resource
+
 block inline_javascript
   script(src='//smarterer.com/js/popup.js')
