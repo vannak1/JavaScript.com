@@ -14,11 +14,7 @@ router.get('/rss', function(req, res, next) {
   };
   Articles.rss(function(news) {
     news.map(function(story){
-      if (story.new){
-        story.link = story.url
-      }else{
-        story.link = "https://javascript.com/news/" + story.slug
-      }
+      story.link = "https://javascript.com/news/" + story.slug
     });
     res.set('Content-Type', 'text/xml');
     res.render('feed/rss', { options: options, news: news });
