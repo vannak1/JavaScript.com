@@ -17,8 +17,8 @@ var debug = require('debug')('JavaScript.com:server');
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  req.flash('Please log in.');
-  res.redirect('/')
+  req.session.returnTo = '/admin'
+  res.redirect('/news/sign_in')
 }
 
 /* Admin role */
