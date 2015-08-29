@@ -41,7 +41,7 @@ var Articles = {
 
   // Returns all stories that have been approved for RSS feed. Limit: 25
   rss(cb){
-    db.query('SELECT a.news, a.url, a.title, a.slug, a.body, a,published_at FROM articles as a WHERE a.approved = true ORDER BY published_at DESC', [], cb)
+    db.query('SELECT a.news, a.title, a.slug, a.body, a,published_at FROM articles as a WHERE a.approved = true AND a.news = false ORDER BY published_at DESC', [], cb)
   },
 
   // Returns article based on slug
