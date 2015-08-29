@@ -41,12 +41,9 @@ block content
                 a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
 
           .mbxl.js-loadFeed
-            ul.list.list--l.list--divided.list--divided--l.js-loadFeed-list
+            ul.list.list--divided.js-loadFeed-list
 
               - for group, title in flow_collection
-
-                - dateText = title
-                include /views/news/_data_separator
 
                 - for story in group
 
@@ -55,12 +52,12 @@ block content
                       .bucket-media
                         img.thumb(src=story.avatar_url width='50')
                       .bucket-content
-                        h2.h.h--3
+                        h2.h.h--4
                           a.externalLink.tct.twb(href=story.url target='_blank')
                             = story.title
                             - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
                             include /views/partials/_icon
-                        p.tcs.tfh
+                        p.mbf.tcs.tfh.tss
                           | via 
                           span.twsb= story.name
                           |  | 
@@ -70,11 +67,10 @@ block content
                               | (
                               = story.comment_count
                               | )
-                        p.mbf= story.body
 
           if more
             .well.well--l.mbl.mbxl--m.bdrtl.ptl.tac
-              button.btn.js-loadFeed-btn(data-last-day=lastDay) Load More
+              button.btn.js-loadFeed-btn Load More
 
         .g-b.g-b--m--2of5.sector.sector--b
           .well.well--l.well--m--xl
