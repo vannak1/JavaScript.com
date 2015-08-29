@@ -16,12 +16,7 @@ block content
         h1 Free Resources
         p.mbf.tcs
           | Here is a curated list of places you can start learning
-          | JavaScript for free. 
-          span.dn.di--m
-            | If you already know JavaScript and want to test your
-            | skills, you can take a quick 
-            a.smarterer_test_link(href='//smarterer.com/tests/javascript/run?wuid=mzuyndvhnj') Smarterer assessment
-            | .
+          | JavaScript for free.
 
       ul.list.list--l.list--divided.list--divided--l
 
@@ -64,6 +59,3 @@ block content
         - item = { title: 'JSbooks', url: 'http://jsbooks.revolunet.com/', media: '/images/resources/img-js-books.png' }
         - item.description = 'An extensive collection of free JavaScript books categorized by beginner, intermediate, and advanced.'
         include /views/resources/_resource
-
-block inline_javascript
-  script(src='//smarterer.com/js/popup.js')
