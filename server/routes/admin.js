@@ -4,11 +4,12 @@ var csrf = require('csurf');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')();
 
-var Articles  = require(path.join(__dirname, '..', 'services', 'articles'));
+var Articles = require(path.join(__dirname, '..', 'services', 'articles'));
 var Users = require(path.join(__dirname, '..', 'services', 'users'));
 var Comments = require(path.join(__dirname, '..', 'services', 'comments'));
 var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
 var Mailer = require(path.join(__dirname, '..', 'services', 'mailer'));
+var Twitter = require(path.join(__dirname, '..', 'services', 'twitter'));
 
 var csrfProtection = csrf();
 var parsePost = bodyParser.urlencoded({ extended: false });
@@ -52,11 +53,20 @@ router.
   }).
 
   post('/news/:id/approve', ensureAuthenticated, ensureAdmin, csrfProtection, parsePost, buildMailerOptions, function(req, res) {
-    var url = req.storyURL
+    var twitter;
+    var url = req.storyURL;
     var userEmail = req.userEmail;
+
+    Articles.getTitleFromId(req.storyID, function(result) {
+      twitter = new Twitter({
+        url: url,
+        title: result[0].title
+      });
+    });
 
     Articles.approve(req.storyID, function () {
       Mailer.postAccepted(url, userEmail);
+      twitter.publish();
       res.send(true);
     });
   }).

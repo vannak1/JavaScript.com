@@ -130,6 +130,7 @@ gulp.task('default', function() {
   watch(options.js.files, function(files) {
     gulp.start('javascript');
   });
+
   watch(options.js.courseFiles, function(files) {
     gulp.start('javascript');
   });

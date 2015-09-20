@@ -7,7 +7,7 @@
   },
   "scripts": {
     "prestart": "./node_modules/node-pg-migrate/bin/pg-migrate up",
-    "start": "node --harmony_object_literals ./bin/www",
+    "start": "node ./bin/www",
     "postinstall": "./setup.sh",
     "bower": "node_modules/.bin/bower",
     "gulp": "node_modules/.bin/gulp"
@@ -39,7 +39,8 @@
     "request": "^2.53.0",
     "serve-favicon": "~2.2.0",
     "shortid": "^2.2.2",
-    "slug": "^0.9.1"
+    "slug": "^0.9.1",
+    "twit": "^2.1.0"
   },
   "devDependencies": {
     "bower": "^1.4.1",

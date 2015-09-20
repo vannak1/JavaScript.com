@@ -34,3 +34,5 @@ bower_components
 public/images/icons/icons.svg
 public/javascripts/
 public/stylesheets/
+
+start.sh
