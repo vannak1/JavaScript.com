@@ -25,6 +25,29 @@ $ GH_CLIENT_ID=myid GH_CLIENT_SECRET=mysecret npm start
 
 For debugging all the things, run `DEBUG=* npm start`.
 
+### Environment variables
+
+The following are environment variables required to run various parts of the
+application:
+
+```bash
+# Express session store
+COOKIE_KEY
+
+# Database
+DATABASE_URL
+
+# GitHub authentication
+GH_CLIENT_ID
+GH_CLIENT_SECRET
+
+# Twitter authentication
+TWITTER_CONSUMER_KEY
+TWITTER_CONSUMER_SECRET
+TWITTER_ACCESS_TOKEN
+TWITTER_ACCESS_TOKEN_SECRET
+```
+
 ## Database
 Whenever you do the initial `npm install` a db called `javascriptcom` is created
 for you. In the event that you need to drop that database and recreate it, don't
