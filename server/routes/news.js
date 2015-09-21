@@ -122,11 +122,11 @@ router.
     // TODO: Fetch image and save it to S3
     // req.user['_json']['avatar_url']
     // req.user['_json']['login']
-    res.redirect(req.session.returnTo || '/news');
+    res.redirect(req.session.returnTo || '/');
    }).
   get('/signout', function(req, res){
     req.logout();
-    res.redirect('/news');
+    res.redirect('/');
   }).
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
