@@ -13,14 +13,19 @@ module.exports = {
   },
 
   apiKeys: {
-    mailchimp: {
-      key: '',
-      listId: ''
-    },
-
+    /**
+     * GitHub is used to authenticate and these fields are required to start the
+     * application. You can fake these values but you will not be able to log
+     * into the application without valid credentials.
+     **/
     github: {
       clientId: '',
       clientSecret: ''
+    },
+
+    mailchimp: {
+      key: '',
+      listId: ''
     },
 
     akismet: '',
