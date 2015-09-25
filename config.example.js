@@ -1,7 +1,7 @@
 module.exports = {
   server: {
     port: 3000,
-    environment: 'development',
+    environment: process.env.APP_ENV || 'development',
     cookieKey: 'somerandomstring',
     redis: '127.0.0.1',
     database: 'pg://localhost:5432/javascriptcom',
@@ -23,12 +23,22 @@ module.exports = {
       clientSecret: ''
     },
 
+    twitter: {
+      // Tweet when a story is approved.
+      enabled: false,
+      consumerKey: '',
+      consumerSecret: '',
+      accessToken: '',
+      accessTokenSecret: ''
+    },
+
     mailchimp: {
+      enabled: false,
       key: '',
       listId: ''
     },
 
-    akismet: '',
-    mandrill: ''
+    mandrill: '',
+    akismet: ''
   }
 }

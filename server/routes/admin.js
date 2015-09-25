@@ -3,6 +3,7 @@ var router = express.Router();
 var csrf = require('csurf');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')();
+var config = require(path.join(__dirname, '..', '..', 'config'));
 
 var Articles = require(path.join(__dirname, '..', 'services', 'articles'));
 var Users = require(path.join(__dirname, '..', 'services', 'users'));
@@ -66,7 +67,11 @@ router.
 
     Articles.approve(req.storyID, function () {
       Mailer.postAccepted(url, userEmail);
-      twitter.publish();
+
+      if (config.apiKeys.twitter.enabled) {
+        twitter.publish();
+      }
+
       res.send(true);
     });
   }).

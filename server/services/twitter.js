@@ -1,6 +1,8 @@
 "use strict"
 
 var twit = require('twit');
+var path = require('path');
+var config = require(path.join(__dirname, '..', '..', 'config'));
 
 class Twitter {
   constructor(article) {
@@ -13,10 +15,10 @@ class Twitter {
 
   twitCaller() {
     return new twit({
-      consumer_key:        process.env.TWITTER_CONSUMER_KEY,
-      consumer_secret:     process.env.TWITTER_CONSUMER_SECRET,
-      access_token:        process.env.TWITTER_ACCESS_TOKEN,
-      access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+      consumer_key:        config.apiKeys.twitter.consumerKey,
+      consumer_secret:     config.apiKeys.twitter.consumerSecret,
+      access_token:        config.apiKeys.twitter.accessToken,
+      access_token_secret: config.apiKeys.twitter.accessTokenSecret
     });
   }
 
