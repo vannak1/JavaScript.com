@@ -39,7 +39,7 @@ router.get('/', parseForm, function(req, res) {
       });
     });
   }
-}).
+});
 
 /* POST subscribe an email to JS6 list. */
 router.post('/subscribe', parseForm, function(req, res) {
