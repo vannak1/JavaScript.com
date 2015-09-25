@@ -11,6 +11,7 @@ var moment = require('moment');
 var pluralize = require('pluralize');
 var expressValidator = require('express-validator');
 var _ = require('lodash');
+var config = require(path.join(__dirname, '..', '..', 'config'));
 
 
 var csrfProtection = csrf();
@@ -30,8 +31,8 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 passport.use(new GitHubStrategy({
-  clientID: process.env.GH_CLIENT_ID,
-  clientSecret: process.env.GH_CLIENT_SECRET,
+  clientID: config.apiKeys.github.clientId,
+  clientSecret: config.apiKeys.github.clientSecret,
   callbackURL: (baseURL + "news/auth/github/callback"),
   scope: ['user:email']
 },
@@ -79,8 +80,8 @@ passport.use(new BasicStrategy({
       // Check for username. If there is no username given or the password is
       // incorrect, set the user to 'false' to indicate failure. Otherwise,
       // return the authenticated 'user'.
-      if (!username || username != process.env.BASICAUTH_USERNAME ) { return done(null, false); }
-      if (password != process.env.BASICAUTH_PASSWORD) { return done(null, false); }
+      if (!username || username != config.server.basicAuth.username ) { return done(null, false); }
+      if (password != config.server.basicAuth.password) { return done(null, false); }
       return done(null, username);
     });
   }

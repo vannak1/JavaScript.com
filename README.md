@@ -7,46 +7,25 @@ This is the repo for the JavaScript.com website.
 Install NVM (`$ brew install nvm` and follow instructions)
 
 ```bash
-nvm install iojs-v1.2.0
-nvm use iojs-v1.2.0
+nvm install
+nvm use
 npm install -g gulp
 npm install
 ```
-
-This app authenticates with GitHub, so you'll need to create a GitHub Application and set ENVs for `GH_CLIENT_ID` and `GH_CLIENT_SECRET`.
 
 ## Running
 
 Run the application with `$ npm start`. You can also set the environment variables at start time. Here's an example:
 
 ```bash
-$ GH_CLIENT_ID=myid GH_CLIENT_SECRET=mysecret npm start
+$ DATABASE_URL=pg://localhost:5432/javascriptcom npm start
 ```
 
 For debugging all the things, run `DEBUG=* npm start`.
 
-### Environment variables
+## Configuration
 
-The following are environment variables required to run various parts of the
-application:
-
-```bash
-# Express session store
-COOKIE_KEY
-
-# Database
-DATABASE_URL
-
-# GitHub authentication
-GH_CLIENT_ID
-GH_CLIENT_SECRET
-
-# Twitter authentication
-TWITTER_CONSUMER_KEY
-TWITTER_CONSUMER_SECRET
-TWITTER_ACCESS_TOKEN
-TWITTER_ACCESS_TOKEN_SECRET
-```
+To get started `cp config.example.js config.js` then edit.
 
 ## Database
 Whenever you do the initial `npm install` a db called `javascriptcom` is created
@@ -61,6 +40,7 @@ To create new migrations see the node-pg-migraton
 [documentation](https://github.com/theoephraim/node-pg-migrate).
 
 After setting your database up run `gulp seeds` to seed your database.
+
 ## Development
 
 If you add any runtime dependencies, you must run `npm shrinkwrap` and
@@ -72,8 +52,8 @@ To build assets locally, you'll need to install Bower dependencies and run these
 
 ```bash
 $ bower install
-$ gulp sass
-$ gulp javascript
+$ gulp build
 ```
 
-Remember to re-run these tasks after pulling or changing branches.
+Remember to re-run these tasks after pulling or changing branches. See the
+gulp configuration for more options.

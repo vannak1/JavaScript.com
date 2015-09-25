@@ -1,11 +1,9 @@
+var path = require('path');
+var config = require(path.join(__dirname, '..', '..', 'config'));
 var pg = require("pg");
-var settings = process.env.DATABASE_URL;
+var settings = config.server.database;
 
-if (settings == undefined) {
-  settings = "pg://localhost:5432/javascriptcom";
-}
-
-if (process.env.NODE_ENV === 'production') {
+if (config.server.environment === 'production') {
   pg.defaults.ssl = true;
 }
 
