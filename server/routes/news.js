@@ -10,7 +10,6 @@ var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
 var moment = require('moment');
 var pluralize = require('pluralize');
 var expressValidator = require('express-validator');
-var _ = require('lodash');
 
 
 var csrfProtection = csrf();
@@ -127,6 +126,21 @@ router.
   get('/signout', function(req, res){
     req.logout();
     res.redirect('/');
+  }).
+
+  get('/', parseForm, function(req, res) {
+    var offset = req.query.page;
+    var more;
+    if (offset) {
+      Articles.paginated(offset, function(all) {
+        Articles.totalPublished(function(total) {
+          more = (all.length == (total[0].count - offset )) ? false : true;
+          res.json({flow: all, more: more});
+        });
+      });
+    }else{
+      res.redirect('/');
+    }
   }).
 
   get('/new', cookieParser, csrfProtection, function(req, res) {
