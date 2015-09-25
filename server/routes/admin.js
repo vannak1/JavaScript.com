@@ -58,7 +58,7 @@ router.
     var url = req.storyURL;
     var userEmail = req.userEmail;
 
-    Articles.getTitleFromId(req.storyID, function(result) {
+    Articles.getTitleById(req.storyID, function(result) {
       twitter = new Twitter({
         url: url,
         title: result[0].title

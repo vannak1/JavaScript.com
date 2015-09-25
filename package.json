@@ -8,6 +8,7 @@
   "scripts": {
     "prestart": "./node_modules/node-pg-migrate/bin/pg-migrate up",
     "start": "node ./bin/www",
+    "start-debug": "node debug ./bin/www",
     "postinstall": "./setup.sh",
     "bower": "node_modules/.bin/bower",
     "gulp": "node_modules/.bin/gulp"
