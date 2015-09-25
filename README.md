@@ -7,15 +7,15 @@ This is the repo for the JavaScript.com website.
 Install NVM (`$ brew install nvm` and follow instructions)
 
 ```bash
-nvm install iojs-v1.2.0
-nvm use iojs-v1.2.0
+nvm install
+nvm use
 npm install -g gulp
 npm install
 ```
 
-This app authenticates with GitHub, so you'll need to create a GitHub Application and set ENVs for `GH_CLIENT_ID` and `GH_CLIENT_SECRET`.
-
 ## Running
+
+This app authenticates with GitHub, so you'll need to create a GitHub Application and set ENVs for `GH_CLIENT_ID` and `GH_CLIENT_SECRET`.
 
 Run the application with `$ npm start`. You can also set the environment variables at start time. Here's an example:
 
@@ -49,8 +49,8 @@ To build assets locally, you'll need to install Bower dependencies and run these
 
 ```bash
 $ bower install
-$ gulp sass
-$ gulp javascript
+$ gulp build
 ```
 
-Remember to re-run these tasks after pulling or changing branches.
+Remember to re-run these tasks after pulling or changing branches. See the
+gulp configuration for more options.
