@@ -121,11 +121,11 @@ router.
     // TODO: Fetch image and save it to S3
     // req.user['_json']['avatar_url']
     // req.user['_json']['login']
-    res.redirect(req.session.returnTo || '/news');
+    res.redirect(req.session.returnTo || '/');
    }).
   get('/signout', function(req, res){
     req.logout();
-    res.redirect('/news');
+    res.redirect('/');
   }).
 
   get('/', parseForm, function(req, res) {
@@ -139,20 +139,7 @@ router.
         });
       });
     }else{
-      Articles.recent(function(all) {
-        Articles.totalPublished(function(total) {
-          var flow = [], news = [];
-          all.map(function(item){
-            if (item.news){
-              news.push(item);
-            }else{
-              flow.push(item);
-            }
-          });
-          more = (flow.length === parseInt(total[0].count)) ? false : true;
-          res.render('news/index', {flow_collection: flow, news_collection: news, more: more});
-        });
-      });
+      res.redirect('/');
     }
   }).
 
@@ -300,4 +287,3 @@ router.
   });
 
 module.exports = router;
-
