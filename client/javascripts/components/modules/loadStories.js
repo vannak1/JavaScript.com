@@ -39,33 +39,30 @@ JS.Modules.LoadStories = (function() {
     var stories = data.flow,
         markup  = '';
 
-    for (group in stories) {
+    stories.forEach(function(story) {
+      markup +=
+        '<li class="list-item">' +
+          '<article class="bucket">' +
+            '<div class="bucket-media">' +
+              '<img class="thumb" src="' + story.avatar_url + '" width="50"/>' +
+            '</div>' +
+            '<div class="bucket-content">' +
+              '<h2 class="h h--4">' +
+                '<a class="externalLink tct twb" href="' + story.url + '" target="_blank">' + story.title +
+                  '<svg width="16" height="16" class="icon externalLink-icon">' +
+                    '<use xlink:href="#icon-external"/>' +
+                  '</svg>' +
+                '</a>' +
+              '</h2>' +
+              '<p class="mbf tcs tfh tss">' +
+                'via ' + '<span class="twsb">' + story.name + '</span>' +
+                ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
+              '</p>' +
+            '</div>' +
+          '</article>' +
+        '</li>';
+    });
 
-      stories[group].forEach(function(story) {
-        markup +=
-          '<li class="list-item">' +
-            '<article class="bucket">' +
-              '<div class="bucket-media">' +
-                '<img class="thumb" src="' + story.avatar_url + '" width="50"/>' +
-              '</div>' +
-              '<div class="bucket-content">' +
-                '<h2 class="h h--4">' +
-                  '<a class="externalLink tct twb" href="' + story.url + '" target="_blank">' + story.title +
-                    '<svg width="16" height="16" class="icon externalLink-icon">' +
-                      '<use xlink:href="#icon-external"/>' +
-                    '</svg>' +
-                  '</a>' +
-                '</h2>' +
-                '<p class="mbf tcs tfh tss">' +
-                  'via ' + '<span class="twsb">' + story.name + '</span>' +
-                  ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
-                '</p>' +
-              '</div>' +
-            '</article>' +
-          '</li>';
-      });
-
-    }
 
     _settings.$list.append(markup);
   };
