@@ -1,8 +1,10 @@
 var akismet = require('akismet-api');
+var path    = require('path');
+var config  = require(path.join(__dirname, '..', '..', 'config'));
 
 var client = akismet.client({
-  key  : process.env.AKISMET_API,                   // Required!
-  blog : baseURL                                    // Required!
+  key  : config.apiKeys.akismet,
+  blog : baseURL
 });
 
 var createAkismetHash = function(req, comment) {
