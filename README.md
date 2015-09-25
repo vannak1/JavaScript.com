@@ -20,7 +20,7 @@ This app authenticates with GitHub, so you'll need to create a GitHub Applicatio
 Run the application with `$ npm start`. You can also set the environment variables at start time. Here's an example:
 
 ```bash
-$ GH_CLIENT_ID=myid GH_CLIENT_SECRET=mysecret npm start
+$ DATABASE_URL=pg://localhost:5432/javascriptcom npm start
 ```
 
 For debugging all the things, run `DEBUG=* npm start`.

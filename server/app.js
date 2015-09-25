@@ -1,12 +1,13 @@
+path = require('path');
+
 var express = require('express');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-// Global, it's used everywhere
-path = require('path');
+var config = require(path.join(__dirname, '..', 'config'))
 
 // Set baseURL depending on enviornment
 
-var env = process.env.NODE_ENV;
+var env = config.server.environment;
 if (env === 'production') {
   baseURL = "https://www.javascript.com/";
 }else if(env === 'staging'){
@@ -39,13 +40,13 @@ var passport = require('passport');
 var expressSession = require('express-session');
 var RedisStore = require('connect-redis')(expressSession);
 var redis = require('redis');
-var redisHost = process.env.REDIS_HOST === undefined ? '127.0.0.1' : process.env.REDIS_HOST;
+var redisHost = config.server.redis;
 var client = redis.createClient(6379, redisHost, {});
 // Don't set cookies to secure in dev.
-var secureCookie = process.env.NODE_ENV === 'production' ? true : false
+var secureCookie = config.server.environment === 'production' ? true : false
 app.use(expressSession({
   store: new RedisStore({client: client}),
-  secret: process.env.COOKIE_KEY
+  secret: config.server.cookieKey
 }));
 app.use(passport.initialize());
 app.use(passport.session());

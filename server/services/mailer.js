@@ -1,4 +1,7 @@
-var mandrill = require('node-mandrill')(process.env.MANDRILL_API);
+var path     = require('path');
+var config   = require(path.join(__dirname, '..', '..', 'config'));
+var mandrill = require('node-mandrill')(config.apiKeys.mandrill);
+
 // TODO: DRY it
 var Mailer = {
   postAccepted(url, userEmail) {
