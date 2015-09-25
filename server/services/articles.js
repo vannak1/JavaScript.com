@@ -49,6 +49,10 @@ var Articles = {
     db.query('SELECT a.title, a.id, a.slug, a.body, a.url, u.avatar_url, u.name FROM articles a JOIN users u on a.user_id = u.id WHERE a.slug = $1', [slug], cb)
   },
 
+  getTitleById(id, cb) {
+    db.query('SELECT title FROM articles WHERE id = $1', [id], cb)
+  },
+
   // Returns slug based on id
   getMailerInfo(id, cb) {
     db.query('SELECT a.slug, u.email FROM articles AS a JOIN users AS u on u.id = user_id WHERE a.id = $1;', [id], cb)
