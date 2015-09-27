@@ -16,7 +16,7 @@ var Articles = {
   // along with user infomation.
   recent(cb) {
     db.query(
-      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = true AND approved = true ORDER BY published_at DESC LIMIT 13) OR a.id IN (SELECT id FROM articles WHERE news = false AND approved = true ORDER BY published_at DESC LIMIT 25) ORDER BY published_at DESC;',
+      'SELECT a.news, a.url, a.title, a.slug, a.body, a.published_at, u.name, u.avatar_url, (SELECT COUNT(*) FROM comments WHERE article_id = a.id) AS comment_count FROM articles AS a LEFT JOIN users AS u ON a.user_id = u.id WHERE a.id IN (SELECT id FROM articles WHERE news = true AND approved = true ORDER BY published_at DESC LIMIT 10) OR a.id IN (SELECT id FROM articles WHERE news = false AND approved = true ORDER BY published_at DESC LIMIT 25) ORDER BY published_at DESC;',
       [],
       cb
     )
