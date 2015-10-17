@@ -1,6 +1,6 @@
 - headerPartial = headerPartial || {}
 - headerPartial.bleed = headerPartial.bleed || false
-- menu = { 'News' : '/', 'Resources' : '/resources' }
+- menu = { 'News' : '/news', 'Resources' : '/resources' }
 
 block current_nav
 
@@ -19,4 +19,3 @@ header.row.header(class=(headerPartial.bleed ? 'bc-regent' : '' ) role='banner')
               a.underline.header-link.is-active(href=url class=(headerPartial.bleed ? 'underline--alt' : '' ))= title
             else
               a.underline.header-link(href=url class=(headerPartial.bleed ? 'underline--alt' : '' ))= title
-          a.btn.btn--s.header-btn(href='/try') Learn JavaScript
