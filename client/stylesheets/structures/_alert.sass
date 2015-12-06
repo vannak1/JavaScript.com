@@ -7,7 +7,9 @@
 //   Template (Haml)
 // -------------------------------------
 //
-// .alert[error|success|warning]
+// .has-alert
+//
+// .alert[error|success|warning](dismissed)
 //
 //   .alert-msg
 //
@@ -29,13 +31,18 @@
 
 // ----- Types ----- //
 
+// Error
+
 .alert--error
   background: $c-error
+
+// Success
 
 .alert--success
   background: $c-success
 
-.alert--info,
+// Warning
+
 .alert--warning
   background: $c-warning
 
@@ -59,8 +66,8 @@
   position: fixed
   right: 0
   top: 0
-  z-index: 10
   width: 100%
+  z-index: 10
 
   +respond-to($g-m)
     width: em(300px)

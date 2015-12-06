@@ -8,14 +8,15 @@
 // -------------------------------------
 //
 // %ul.completionList
-//   %li.completionList-item
+//   %li.completionList-item(active|completed)
+//     .completionList-item-icon
 //     %a.completionList-item-link
 //
 // *************************************
 
 .completionList
-  +list-reset()
-  @extend .group
+  +group
+  +list-reset
 
 // -------------------------------------
 //   Scaffolding

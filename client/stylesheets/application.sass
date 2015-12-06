@@ -67,6 +67,7 @@
 //   Vendor
 // -------------------------------------
 
+@import 'vendor/animate'
 @import 'vendor/codemirror'
 @import 'vendor/codemirror-theme'
 @import 'vendor/tooltip'
@@ -75,18 +76,4 @@
 //   Inbox
 // -------------------------------------
 
-// Animations are handled using Angulars ng-animate which adds and
-// removes classes during various phases. If this doesn't work we can
-// do something different, but ng-animate is pretty crazy flexible in the timing
-// in code of where these happen if we need to tweak things.
-.animate--fade.ng-enter,
-.animate--fade.ng-leave
-  // transition: all 1s ease-in-out
-.animate--fade.ng-enter,
-.animate--fade.ng-leave.ng-leave-active
-  display: none
-  // opacity: 0
-.animate--fade.ng-leave,
-.animate--fade.ng-enter.ng-enter-active
-  display: block
-  // opacity: 1
+// ...

@@ -12,8 +12,9 @@
 //   %fieldset.form-field[inline]
 //     .form-instruction
 //     %label.form-label
-//     %input.form-input[dark]
+//     %input.form-input[dark](invalid)
 //     %textarea.form-textarea
+//     .form-btn
 //
 // *************************************
 
@@ -125,8 +126,8 @@
 // ----- Textarea ----- //
 
 .form-textarea
-  resize: vertical
   max-height: 40vh // FIXME: Magic number!
+  resize: vertical
 
   +respond-to($g-m)
     max-height: none

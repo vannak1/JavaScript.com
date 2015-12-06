@@ -8,7 +8,7 @@
 //   Template (Haml)
 // -------------------------------------
 //
-// %a.underline[alt]
+// %a.underline[alt](active)
 //
 // *************************************
 
@@ -35,9 +35,7 @@
     transition: transform $underline-color-transition-duration ease-in-out
     z-index: 1
 
-  &:active,
-  &:focus,
-  &:hover
+  +state
     background: none
 
     &::before
