@@ -18,7 +18,7 @@
 // *************************************
 
 .video
-  @extend .fauxHide
+  +fauxHide
   box-sizing: border-box
   left: 50%
   max-width: 960px
@@ -42,7 +42,7 @@
   .video,
   .video-close,
   .video-overlay
-    @extend .fauxShow
+    +fauxShow
 
   .video
     transform: translate(-50%, -50%)
@@ -63,7 +63,7 @@
 // ----- Close ----- //
 
 .video-close
-  @extend .fauxHide
+  +fauxHide
   color: $c-text-invert
   display: block
   font-size: $b-fontSize-h1
@@ -90,7 +90,7 @@
 // ----- Overlay ----- //
 
 .video-overlay
-  @extend .fauxHide
+  +fauxHide
   background: $c-highlight
   bottom: 0
   height: 100%
