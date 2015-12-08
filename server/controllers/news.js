@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser')();
 var moment = require('moment');
 var pluralize = require('pluralize');
 var expressValidator = require('express-validator');
+var marked = require('marked');
 var Articles = require(path.join(__dirname, '..', 'models', 'articles'));
 var Users = require(path.join(__dirname, '..', 'models', 'users'));
 var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
@@ -94,7 +95,8 @@ router.
 
     Articles.findBySlug(req.params.slug, function(err, doc) {
       if(doc){
-        res.render('news/show', { doc: doc, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
+        // doc.body = marked(doc.body); // This sync compiling can become costly
+        res.render('news/show', { doc: doc, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize, marked: marked });
       }else{
         res.render('404');
       }
@@ -102,7 +104,7 @@ router.
   }).
 
   post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, authenticator.authorize, parseForm, expressValidator(),  csrfProtection, buildComment, function(req, res) {
-    req.sanitize('body').trim();
+    req.sanitize('body').escape().trim();
     req.check('body').notEmpty();
 
     var errors = req.validationErrors();
@@ -118,7 +120,10 @@ router.
     }
   }).
 
-  put('/:slug([a-zA-Z0-9_.-]+)/comment/:id([a-zA-Z0-9_.-]+)', cookieParser, authenticator.authorize, parseForm, csrfProtection, function(req, res) {
+  put('/:slug([a-zA-Z0-9_.-]+)/comment/:id([a-zA-Z0-9_.-]+)', cookieParser, authenticator.authorize, parseForm, expressValidator(), csrfProtection, function(req, res) {
+    req.sanitize('body').escape().trim();
+    req.check('body').notEmpty();
+
     var args = {
       updatedComment : req.body.body,
       commentId      : req.params.id,
@@ -150,6 +155,9 @@ router.
   }).
 
   post('/', cookieParser, authenticator.authorize, parseForm, addhttp, expressValidator(), csrfProtection, function(req, res) {
+
+    req.sanitize('body').escape().trim();
+    req.check('body').notEmpty();
 
     // Validations
     req.check('title','Title is required' ).notEmpty();

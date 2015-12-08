@@ -33,7 +33,7 @@ block content
               li.list-item
                 a.dib.js-createComment-number.js-editComment-number(href='#comments')= pluralize('Comment', doc.comment_count, true)
 
-        p.well.well--l.tsl= doc.body
+        p.well.well--l.tsl!= marked(doc.body)
 
       - commentsClass = doc.comment_count == 0 ? 'is-empty' : ''
       aside#comments.js-createComment-container(role='complementary' class=commentsClass)
@@ -59,7 +59,8 @@ block content
                           .split-cell
                             button.link.js-editComment-editBtn Edit
 
-                    p.mbf.js-editComment-comment= comment.body
+                    .mbf.js-editComment-comment
+                      != marked(comment.body)
 
                     if comment.user.id == user.id
 
