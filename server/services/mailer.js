@@ -14,7 +14,7 @@ var Mailer = {
           rcpt: userEmail,
           vars: [{
                   name: "ARTICLE_URL",
-                  content: url
+                  content: baseURL + '/news' + url
                 }]
         }]
       }

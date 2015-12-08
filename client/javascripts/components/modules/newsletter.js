@@ -37,6 +37,7 @@ JS.Modules.Newsletter = (function() {
 
   var _submitForm = function() {
     $.post('/subscribe', _settings.$form.serialize(), function(results) {
+      console.log(results)
       if (results.error) {
         _updateInterface('error', results.error.error);
       } else {

@@ -1,13 +1,10 @@
 {
   "name": "JavaScript.com",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
-  "engines": {
-    "iojs": "1.2.0"
-  },
+  "engines": {},
   "scripts": {
-    "prestart": "./node_modules/node-pg-migrate/bin/pg-migrate up",
-    "start": "node --harmony_object_literals ./bin/www",
+    "start": "node ./bin/www",
     "postinstall": "./setup.sh",
     "bower": "node_modules/.bin/bower",
     "gulp": "node_modules/.bin/gulp"
@@ -28,6 +25,7 @@
     "lodash": "^3.9.3",
     "mailchimp-api": "^2.0.7",
     "moment": "^2.10.2",
+    "mongodb": "^2.0.46",
     "morgan": "~1.5.1",
     "node-mandrill": "^1.0.1",
     "passport": "^0.2.1",
@@ -52,7 +50,7 @@
     "gulp-concat": "^2.5.2",
     "gulp-minify-css": "^0.4.6",
     "gulp-rename": "^1.2.0",
-    "gulp-sass": "^1.3.3",
+    "gulp-sass": "^2.1.0",
     "gulp-shell": "^0.4.0",
     "gulp-svgmin": "^1.1.1",
     "gulp-svgstore": "^5.0.0",
@@ -62,7 +60,6 @@
     "jshint": "^2.6.3",
     "lodash": "^3.5.0",
     "mocha": "^2.2.1",
-    "node-pg-migrate": "0.0.9",
     "run-sequence": "^1.1.0"
   }
 }
