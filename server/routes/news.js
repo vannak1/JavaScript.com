@@ -63,29 +63,6 @@ function ensureAuthenticated(req, res, next) {
 }
 /* End GitHub Auth */
 
-/* Basic Auth*/
-var BasicStrategy = require('passport-http').BasicStrategy;
-// Use the BasicStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, a username and password), and invoke a callback
-//   with a user object.
-passport.use(new BasicStrategy({
-  },
-  function(username, password, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
-
-      // Check for username. If there is no username given or the password is
-      // incorrect, set the user to 'false' to indicate failure. Otherwise,
-      // return the authenticated 'user'.
-      if (!username || username != process.env.BASICAUTH_USERNAME ) { return done(null, false); }
-      if (password != process.env.BASICAUTH_PASSWORD) { return done(null, false); }
-      return done(null, username);
-    });
-  }
-));
-/* End Basic Auth*/
-
 function buildComment(request, response, next){
 
   var newComment = request.body;
@@ -255,19 +232,6 @@ router.
         res.send(403);
       }
     });
-  }).
-
-   post('/update', passport.authenticate('basic', { session: false }), parseJson, function(req, res) {
-    var stories = req.body;
-    for (i=0; i < stories.length; i++) {
-      var story = stories[i];
-      // I'm sure there's a better way to do this.
-      if(i === stories.length-1){
-        Articles.createNews(story, function(){res.sendStatus(201);});
-      }else{
-        Articles.createNews(story, function(){});
-      }
-    }
   }).
 
   post('/', cookieParser, ensureAuthenticated, parseForm, expressValidator(), csrfProtection, function(req, res) {

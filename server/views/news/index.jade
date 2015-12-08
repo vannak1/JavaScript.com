@@ -84,21 +84,6 @@ block content
                 a.btn.btn--a--bordered.db.dib--s.mbs.mrs--s(href='https://itunes.apple.com/us/podcast/5-minutes-of-javascript/id775261328') Listen Now
                 a.btn.btn--a--bordered.db.dib--s(href='https://fivejs.codeschool.com/') Visit Site
 
-              .pillar.pillar--l.pillar--thick.mbl
-
-                ul.list.list--l.list--divided.list--divided--l
-
-                  - for story in news_collection
-                    li.list-item
-                      article
-                        h2.h.h--4
-                          a.externalLink.tct.twb(href=story.url target='_blank')
-                            = story.title
-                            - iconPartial = { name: 'external', className: 'externalLink-icon', size: 14 }
-                            include /views/partials/_icon
-                        p.mbf.tss.
-                          #{story.body}
-
               h3.h.h--4.mbs The Latest News in Your Inbox
 
               p.tcs.tss Subscribe now to the weekly 5 Minutes of JavaScript newsletter.
