@@ -4,7 +4,9 @@
   "private": true,
   "engines": {},
   "scripts": {
+    "prestart": "mongod --fork --logpath /dev/null",
     "start": "node ./bin/www",
+    "poststop": "mongo admin --eval 'db.shutdownServer()' > /dev/null",
     "postinstall": "./setup.sh",
     "bower": "node_modules/.bin/bower",
     "gulp": "node_modules/.bin/gulp"
