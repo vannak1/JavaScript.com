@@ -64,17 +64,6 @@ var Articles = {
     db.query('UPDATE articles SET approved = false WHERE id = $1;', [id], cb)
   },
 
-  // Creates a new News story pre-approved.
-  createNews(newStory, cb) {
-    var slug = slugGenerator.createSlug(newStory.title);
-
-    db.query(
-      "INSERT INTO articles (title, slug, body, url, published_at, news, approved) VALUES ($1, $2, $3, $4, now(), true, true);",
-      [newStory.title, slug, newStory.summary, newStory.url],
-      cb
-    )
-  },
-
   // Creates a new Flow article
   createFlow(newFlow, cb) {
     var title = newFlow.title;
