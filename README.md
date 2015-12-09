@@ -6,17 +6,7 @@ In addition, we aim to be a gateway for those wanting to learn JavaScript.
 
 # Roadmap
 JavaScript.com was the product of a hack day and there's a lot of room for
-improvement. We have three main areas of focus for v2 of the app.
-
-##### Spec coverage
-If only the amount of console.logs counted as spec coverage, we'd be golden.
-
-##### User Voting
-Instead of approving new posts, we'll allow users to upvote and downvote stories
-as they see fit.
-
-##### Markdown Support
-Life just doesn't feel right without Markdown.
+improvement. Check out the current [roadmap](https://github.com/codeschool/JavaScript.com/milestones/v2)
 
 ### Contributions
 We'd love for you to contribute! For the time being, we will be placing a strong
