@@ -23,7 +23,7 @@ process. Please bear with us for the timing being!
 
 # Getting Started
 #### Installing NVM
-Install NVM (`$ brew install nvm` and follow instructions)
+Install NVM (`brew install nvm` and follow instructions)
 
 ```bash
 nvm install 4.2.1
@@ -36,9 +36,9 @@ npm install
 To build assets locally, you'll need to install Bower dependencies and run these Gulp tasks:
 
 ```bash
-$ bower install
-$ gulp sass
-$ gulp javascript
+bower install
+gulp sass
+gulp javascript
 ```
 Remember to re-run these tasks after pulling or changing branches.
 
