@@ -20,9 +20,9 @@ block content
           .bdrbl.mbm.pbm
             h1 Unapproved Stories
 
-          if stories.length > 0
-            - for story in stories
-              li.list-item(data-article=story.id id='story-' + story.id)
+          if docs.length > 0
+            - for story in docs
+              li.list-item(data-article=story._id id='story-' + story._id)
 
                 article.bdrbl.pbl.mbm(role='article')
 
@@ -34,17 +34,19 @@ block content
 
                   .bucket.bucket--flag.mbm
                     .bucket-media
-                      img.thumb(src=story.avatar_url width=50)
+                      img.thumb(src=story.user.avatar_url width=50)
                     .bucket-content.h.h--3.tcs
                       ul.list.list--inline.list--inline--divided.tfh
                         li.list-item
                           span.twn via 
-                          | #{story.name}
+                          | #{story.user.name}
 
                   p.well.well--l.tsl= story.body
 
                   .mbl
-                    a.btn.btn--success.js-admin-approve(href='#' data-story-id=story.id) Approve Story
+                    a.btn.btn--success.js-admin-approve(href='#'
+                    data-story-id=story._id.toString()
+                    data-user-email=story.user.email data-story-slug=story.slug) Approve Story
 
                   h2 Deny Story
                   p.tcs.tss
@@ -63,7 +65,9 @@ block content
                           option.select-input-option(value=5) Disrespectful language
                           option.select-input-option(value=6) Not within community interests
                     .g-b.g-b--1of4
-                      a.btn.btn--a.btn--block.js-admin-deny(href='#' data-story-id=story.id) Deny Story
+                      a.btn.btn--a.btn--block.js-admin-deny(href='#'
+                      data-story-id=story._id.toString() data-user-email=story.user.email 
+                      data-story-slug=story.slug) Deny Story
 
           else
             p.tsi There are no unapproved stories right now.
@@ -97,14 +101,16 @@ block inline_javascript
         event.preventDefault();
 
         var storyId = $(this).data('story-id');
+        var storySlug = $(this).data('story-slug');
+        var userEmail = $(this).data('user-email');
 
         $.ajax({
           type: 'POST',
           url: '/admin/news/' + storyId + '/approve',
+          data: {slug: storySlug, userEmail: userEmail},
           beforeSend: setHeader
         })
           .done(function(response) {
-            console.log(response);
             if (response === true) {
               $('#story-' + storyId).remove();
               notify('success', 'The story has been approved.');
@@ -116,6 +122,9 @@ block inline_javascript
         event.preventDefault();
 
         var storyId = $(this).data('story-id');
+        var storySlug = $(this).data('story-slug');
+        var userEmail = $(this).data('user-email');
+
         var reason;
 
         switch ($('.js-admin-reason').val()) {
@@ -135,12 +144,11 @@ block inline_javascript
 
         $.ajax({
           type: 'POST',
-          data: { reason: reason },
+          data: {reason: reason, slug: storySlug, userEmail: userEmail},
           url: '/admin/news/' + storyId + '/deny',
           beforeSend: setHeader
         })
           .done(function(response) {
-            console.log(response);
             if (response === true) {
               $('#story-' + storyId).remove();
               notify('success', 'The story has been denied.');

@@ -32,7 +32,7 @@ block content
                 p.mbf--l.ptxs--l.tcs.tss
                   | A curated list of news and stories submitted from the
                   | JavaScript.com community. To learn more about how you
-                  | can contribute, visit our 
+                  | can contribute, visit our
                   a(href='/guidelines') Community&nbsp;Guidelines
                   | .
 
@@ -43,24 +43,26 @@ block content
           .mbxl.js-loadFeed
             ul.list.list--divided.js-loadFeed-list
 
-              - for story in flow_collection
+              - for story in docs
 
+                h2
                 li.list-item
                   article.bucket
                     .bucket-media
-                      img.thumb(src=story.avatar_url width='50')
+                      img.thumb(src=story.user.avatar_url width='50')
                     .bucket-content
                       h2.h.h--4
-                        a.externalLink.tct.twb(href=story.url target='_blank')
+                        a.externalLink.tct.twb(href=story.url target='_blank'
+                          data-pub=new Date(story.published_at).valueOf())
                           = story.title
                           - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
                           include /views/partials/_icon
                       p.mbf.tcs.tfh.tss
                         | via 
-                        span.twsb= story.name
+                        span.twsb= story.user.name
                         |  | 
                         a(href='/news/' + story.slug + '#comments')
-                          | View Discussion 
+                          | View Discussion
                           if story.comment_count > 0
                             | (
                             = story.comment_count

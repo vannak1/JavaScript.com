@@ -22,9 +22,8 @@ JS.Modules.LoadStories = (function() {
       $element        : $('.js-loadFeed'),
       $button         : $('.js-loadFeed-btn'),
       $list           : $('.js-loadFeed-list'),
-      increment       : 25,
-      offset          : 25,
-      path            : '/news?page=',
+      lastDate        : $(".js-loadFeed-list .list-item .externalLink").last().data("pub"),
+      path            : '/news?pub_date=',
       hiddenClass     : 'is-hidden'
     }, options);
 
@@ -36,7 +35,7 @@ JS.Modules.LoadStories = (function() {
   // -------------------------------------
 
   var _appendStories = function(data) {
-    var stories = data.flow,
+    var stories = data.docs,
         markup  = '';
 
     stories.forEach(function(story) {
@@ -44,7 +43,7 @@ JS.Modules.LoadStories = (function() {
         '<li class="list-item">' +
           '<article class="bucket">' +
             '<div class="bucket-media">' +
-              '<img class="thumb" src="' + story.avatar_url + '" width="50"/>' +
+              '<img class="thumb" src="' + story.user.avatar_url + '" width="50"/>' +
             '</div>' +
             '<div class="bucket-content">' +
               '<h2 class="h h--4">' +
@@ -55,7 +54,7 @@ JS.Modules.LoadStories = (function() {
                 '</a>' +
               '</h2>' +
               '<p class="mbf tcs tfh tss">' +
-                'via ' + '<span class="twsb">' + story.name + '</span>' +
+                'via ' + '<span class="twsb">' + story.user.name + '</span>' +
                 ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
               '</p>' +
             '</div>' +
@@ -72,12 +71,11 @@ JS.Modules.LoadStories = (function() {
   // -------------------------------------
 
   var _getStories = function() {
-    $.get(_settings.path + _settings.offset, function(data) {
+    $.get(_settings.path + _settings.lastDate, function(data) {
       _appendStories(data);
       _toggleButton(data);
+      _setNewLastDate(data);
     });
-
-    _settings.offset += _settings.increment;
   };
 
   // -------------------------------------
@@ -106,6 +104,17 @@ JS.Modules.LoadStories = (function() {
     } else {
       return '';
     }
+  };
+
+  // -------------------------------------
+  //   Set New Last Date
+  // -------------------------------------
+
+  var _setNewLastDate = function(data) {
+    var newDate = data.docs[data.docs.length - 1].published_at;
+    _settings.lastDate = new Date(newDate).valueOf()
+    console.log(_settings.lastDate)
+    
   };
 
   // -------------------------------------

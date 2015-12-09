@@ -19,6 +19,7 @@ var createAkismetHash = function(req, comment) {
 };
 
 var Akismetor = {
+  // For testing
   verifyKey() {
     client.verifyKey(function(err, valid) {
       if (valid) {

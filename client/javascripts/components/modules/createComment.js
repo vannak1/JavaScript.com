@@ -75,18 +75,17 @@ JS.Modules.CreateComment = (function() {
 
   var _buildComment = function(data) {
     var comment = '';
-
     comment+=
-      '<li id="comment-' + data.comment.id + '" class="list-item is-added js-editComment" data-id="' + data.comment.id + '">' +
+      '<li id="comment-' + data.doc._id + '" class="list-item is-added js-editComment" data-id="' + data.doc._id + '">' +
         '<div class="bucket">' +
           '<div class="bucket-media">' +
-            '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
+            '<img class="thumb" src="' + data.doc.comments[0].user.avatar_url + '" width="50">' +
           '</div>' +
           '<div class="bucket-content">' +
             '<div class="split mbm tfh">' +
               '<div class="split-item">' +
                 '<div class="split-cell">' +
-                  '<span class="mrs twb">' + data.comment.name + '</span>' +
+                  '<span class="mrs twb">' + data.doc.comments[0].user.name + '</span>' +
                   '<time class="tcs tsi">Today</time>' +
                 '</div>' +
                 '<div class="split-cell">' +
@@ -94,9 +93,9 @@ JS.Modules.CreateComment = (function() {
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<p class="mbf js-editComment-comment">' + data.comment.body + '</p>' +
+            '<p class="mbf js-editComment-comment">' + data.doc.comments[0].body + '</p>' +
             '<form class="form js-editComment-form is-hidden" action="">' +
-              '<textarea class="form-input form-textarea js-autosize js-editComment-textarea">' + data.comment.body + '</textarea>' +
+              '<textarea class="form-input form-textarea js-autosize js-editComment-textarea">' + data.doc.comments[0].body + '</textarea>' +
               '<div class="split split--center">' +
                 '<div class="split-item">' +
                   '<div class="split-cell">' +
@@ -149,7 +148,7 @@ JS.Modules.CreateComment = (function() {
         _firstComment = true;
         comment       = _buildComment(data);
       } else {
-        if (data.comment.isSpam) {
+        if (data.doc.comments[0].flagged) {
           comment = _buildModerationComment(data);
         } else {
           comment = _buildComment(data);
