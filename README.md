@@ -36,7 +36,7 @@ process. Please bear with us for the timing being!
 Install NVM (`$ brew install nvm` and follow instructions)
 
 ```bash
-nvm install 5.0.0
+nvm install 4.2.1
 npm install -g gulp
 npm install
 ```
