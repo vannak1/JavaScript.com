@@ -14,7 +14,7 @@ emphasis on getting the code base up to standards before adding new features.
 
 ### Deployments
 We have two main branches, `master` and `production`. All PR's will be merged
-into `master` which is then merged into `production. The `production` branch is
+into `master` which is then merged into `production`. The `production` branch is
 the code that is currenly deployed.
 
 At the moment, `master` is ahead of `production` while we streamline our deploy
