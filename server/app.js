@@ -3,6 +3,7 @@ path = require('path');
 
 // Cofigurations to set before requirements
 require('./config');
+require('dotenv').load();
 
 var express = require('express');
 var favicon = require('serve-favicon');

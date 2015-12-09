@@ -28,6 +28,7 @@ node_modules
 .DS_Store
 .lock-wscript
 .service-credentials
+.env
 
 bower_components
 
