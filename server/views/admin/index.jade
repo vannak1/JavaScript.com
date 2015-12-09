@@ -111,7 +111,6 @@ block inline_javascript
           beforeSend: setHeader
         })
           .done(function(response) {
-            console.log(response);
             if (response === true) {
               $('#story-' + storyId).remove();
               notify('success', 'The story has been approved.');
@@ -150,7 +149,6 @@ block inline_javascript
           beforeSend: setHeader
         })
           .done(function(response) {
-            console.log(response);
             if (response === true) {
               $('#story-' + storyId).remove();
               notify('success', 'The story has been denied.');

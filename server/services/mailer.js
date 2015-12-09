@@ -22,9 +22,6 @@ var Mailer = {
     {
       //uh oh, there was an error
       if (error) console.log( JSON.stringify(error) );
-
-      //everything's good, lets see what mandrill said
-      else console.log(response);
     });
   },
   postDenied(url, userEmail, reasonDenied) {
@@ -52,9 +49,6 @@ var Mailer = {
     {
       //uh oh, there was an error
       if (error) console.log( JSON.stringify(error) );
-
-      //everything's good, lets see what mandrill said
-      else console.log(response);
     });
   }
 }

@@ -171,7 +171,6 @@ router.
       args.body = req.body.body;
       args.url = req.body.url;
       args.user = req.session.passport.user;
-      console.log(args)
       Articles.create(args, function(err) {
         if(err) { throw err };
         res.redirect('/news/pending');

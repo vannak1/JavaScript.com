@@ -3,7 +3,6 @@ var mc = new mcapi.Mailchimp(process.env.MAILCHIMP_API);
 
 var mailchimpApi = {
   subscribe(email, cb) {
-    console.log("here");
     mc.lists.subscribe(
       {
         id: process.env.LIST_ID,

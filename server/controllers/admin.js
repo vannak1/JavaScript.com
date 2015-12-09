@@ -27,7 +27,6 @@ router.
     var slug = req.body.slug;
     var userEmail = req.body.userEmail;
 
-    console.log(slug, userEmail);
     Articles.approve(storyId, function(err) {
       Mailer.postAccepted(slug, userEmail);
       res.send(true);

@@ -11,7 +11,6 @@ router.
   }).
 
   post('/subscribe', parseForm, function(req, res) {
-    console.log("in subscribe");
     mailchimpApi.subscribe(req.body.email, function(err, data){
       res.json({error: err, data: data});
     });
