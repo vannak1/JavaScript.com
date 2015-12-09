@@ -9,6 +9,7 @@ var expressValidator = require('express-validator');
 var Articles = require(path.join(__dirname, '..', 'models', 'articles'));
 var Users = require(path.join(__dirname, '..', 'models', 'users'));
 var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
+var _ = require('lodash');
 
 var csrfProtection = csrf();
 var parseForm = bodyParser.urlencoded({ extended: false });
@@ -93,6 +94,8 @@ router.
     }
 
     Articles.findBySlug(req.params.slug, function(err, doc) {
+      doc.comments = _.filter(doc.comments, {'flagged': false})
+
       if(doc){
         res.render('news/show', { doc: doc, user: user, token: req.csrfToken(), moment: moment, pluralize: pluralize });
       }else{
