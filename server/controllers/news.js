@@ -119,20 +119,30 @@ router.
     }
   }).
 
-  put('/:slug([a-zA-Z0-9_.-]+)/comment/:id([a-zA-Z0-9_.-]+)', cookieParser, authenticator.authorize, parseForm, csrfProtection, function(req, res) {
+  put('/:slug([a-zA-Z0-9_.-]+)/comment/:id([a-zA-Z0-9_.-]+)', cookieParser, authenticator.authorize, parseForm, expressValidator(), csrfProtection, function(req, res) {
+    // Validations
+    req.sanitize('body').trim();
+    req.check('body').notEmpty();
+
+    var errors = req.validationErrors();
+
     var args = {
       updatedComment : req.body.body,
       commentId      : req.params.id,
       userId         : req.session.passport.user.uid
     }
 
-    Articles.editComment(args, function(err, doc){
-      if(doc){
-        res.json({comment: doc})
-      }else{
-        res.send(404)
-      }
-    });
+    if(errors){
+      res.send(400);
+    }else{
+      Articles.editComment(args, function(err, doc){
+        if(doc){
+          res.json({comment: doc})
+        }else{
+          res.send(404)
+        }
+      });
+    }
   }).
 
   delete('/:slug([a-zA-Z0-9_.-]+)/comment/:id([a-zA-Z0-9_.-]+)', cookieParser, authenticator.authorize, csrfProtection, function(req, res) {
