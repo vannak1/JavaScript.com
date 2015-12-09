@@ -102,6 +102,7 @@ router.
   }).
 
   post('/:slug([a-zA-Z0-9_.-]+)/comment', cookieParser, authenticator.authorize, parseForm, expressValidator(),  csrfProtection, buildComment, function(req, res) {
+    // Validations
     req.sanitize('body').trim();
     req.check('body').notEmpty();
 

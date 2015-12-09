@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 var path    = require('path');
 
-// Other controllers
+// Set controller variables
 var about = require(path.join(__dirname,  'about'));
 var admin = require(path.join(__dirname,  'admin'));
 var assets = require(path.join(__dirname,  'assets'));
@@ -19,7 +19,7 @@ var sessions = require(path.join(__dirname,  'sessions'));
 var styleguide = require(path.join(__dirname,  'styleguide'));
 var users = require(path.join(__dirname,  'users'));
 
-// Use the other controllers
+// Use the controllers
 router.use('/', index);
 router.use('/about', about);
 router.use('/admin', admin);
