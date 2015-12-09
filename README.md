@@ -6,7 +6,7 @@ In addition, we aim to be a gateway for those wanting to learn JavaScript.
 
 # Roadmap
 JavaScript.com was the product of a hack day and there's a lot of room for
-improvement. Check out the current [roadmap](https://github.com/codeschool/JavaScript.com/milestones/v2)
+improvement. Check out the current [roadmap](https://github.com/codeschool/JavaScript.com/milestones/v2).
 
 ### Contributions
 We'd love for you to contribute! For the time being, we will be placing a strong
