@@ -9,10 +9,7 @@ var express = require('express');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var authenticator = require(path.join(__dirname, 'services', 'authenticator'));
-var dbConnection = require(path.join(__dirname, 'services','dbConnection'));
 
-// Connect to mongoDB;
-dbConnection.connect();
 
 // Initialize authentication
 authenticator.init()
