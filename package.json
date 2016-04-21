@@ -34,10 +34,12 @@
     "passport": "^0.2.1",
     "passport-github": "^0.1.5",
     "passport-http": "^0.2.2",
-    "pg": "^4.2.0",
+    "pg": "^4.5.3",
+    "pg-hstore": "^2.3.2",
     "pluralize": "^1.1.2",
     "redis": "^0.12.1",
     "request": "^2.53.0",
+    "sequelize": "^3.21.0",
     "serve-favicon": "~2.2.0",
     "shortid": "^2.2.2",
     "slug": "^0.9.1"
