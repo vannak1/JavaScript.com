@@ -1,7 +1,7 @@
 var request = require('request');
 
 var GithubApi = {
-  fetchEmail(profile, token, cb) {
+  fetchEmail(token, cb) {
     var options = {
       headers: {
         'User-Agent':    baseURL,
@@ -13,14 +13,11 @@ var GithubApi = {
 
     // get emails using oauth token
     request(options, function(error, response, body) {
-
-      var emails = body.filter(function(email) {
+      var email = body.filter(function(email) {
         return (email.verified && email.primary);
         return email.verified;
       });
-
-      profile.email = emails[0].email;
-      cb(profile);
+      cb(email[0].email);
     });
   }
 }

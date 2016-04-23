@@ -1,7 +1,9 @@
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var BasicStrategy = require('passport-http').BasicStrategy;
-var Users = require(path.join(__dirname, '..', 'models', 'users'));
+var User = require('./../../server/models').User;
+var GithubApi = require('../services/github-api');
+var sequelize = require('sequelize');
 
 authenticator = {
   init: function(){
@@ -22,12 +24,30 @@ authenticator = {
     passport.use(new GitHubStrategy(githubClientArgs, function(accessToken, refreshToken, profile, done) {
       // asynchronous verification, for effect...
       process.nextTick(function () {
-        Users.findOrCreate(profile, accessToken, function (err, user) {
-          if(err) throw err;
+        var query = { 'github_id': profile.id }
+        var user =
+         {
+           'github_id' : profile.id,
+           'name' : profile.displayName || profile.username,
+           'avatar_url' : profile['_json'].avatar_url
+         };
 
-          profile.uid = user._id; // Storing intetnal user _id
-          profile.email = user.email;
+        // TODO: There is probably a more sane way of handling this.
+        User.afterCreate(function(_user, options ){
+          GithubApi.fetchEmail(accessToken, function(email){
+            _user.email = email
+            _user.save();
+          });
+        });
+
+        User.findOrCreate({where: query, defaults: user})
+        .spread(function(_user, created) {
+          profile.uid = _user.id;
           return done(null, profile);
+        })
+        .catch(function(err){
+          console.log(err);
+          return done(err, profile);
         });
       });
     }));

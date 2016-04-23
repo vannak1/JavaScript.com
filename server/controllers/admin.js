@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')();
 
 var authorizeAdmin = require("../services/authenticator").authorizeAdmin;
-var Articles  = require(path.join(__dirname, '..', 'models', 'articles'));
+var Articles  = require(path.join(__dirname, '..', 'models', 'article'));
 var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
 var Mailer = require(path.join(__dirname, '..', 'services', 'mailer'));
 

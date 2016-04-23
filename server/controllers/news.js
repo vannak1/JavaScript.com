@@ -6,8 +6,8 @@ var cookieParser = require('cookie-parser')();
 var moment = require('moment');
 var pluralize = require('pluralize');
 var expressValidator = require('express-validator');
-var Articles = require(path.join(__dirname, '..', 'models', 'articles'));
-var Users = require(path.join(__dirname, '..', 'models', 'users'));
+var Articles = require(path.join(__dirname, '..', 'models', 'article'));
+var Users = require(path.join(__dirname, '..', 'models', 'user'));
 var Akismetor = require(path.join(__dirname, '..', 'services', 'akismetor'));
 var _ = require('lodash');
 
