@@ -5,6 +5,7 @@ var models  = require('./../../server/models');
 var User = models.User;
 
 describe('User', function() {
+  var user;
 
   beforeEach(function(done) {
     User.sync({ force : true }) // drops table and re-creates it
@@ -69,4 +70,40 @@ describe('User', function() {
       });
     });
   });
+
+ describe('#findOrCreate', function() {
+   describe('new user', function() {
+     it('creates a new user', function(done) {
+       var user = { github_id: 123, email: 'test@example.com', name: 'tester', avatar_url: 'http://somewhere.com' }
+
+       User.findOrCreate({where: { github_id: user.github_id }, defaults: user})
+       .spread(function(_user, created) {
+         expect(created).to.eq(true);
+         done();
+       });
+     });
+   });
+
+   describe('existing user', function() {
+     beforeEach(function(done) {
+       User.create({
+         github_id: 123,
+         email: 'test@example.com',
+         name: 'tester',
+         avatar_url: 'http://somewhere.com'
+       }).then(function(_user) {
+         user = _user.get({plain: true});
+         done();
+       });
+     });
+
+     it('returns the user', function(done) {
+       User.findOrCreate({where: { github_id: user.github_id }, defaults: user})
+       .spread(function(_user, created) {
+         expect(created).to.eq(false);
+         done();
+       });
+     });
+   });
+ });
 });
