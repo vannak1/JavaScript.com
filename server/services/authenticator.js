@@ -46,7 +46,6 @@ authenticator = {
           return done(null, profile);
         })
         .catch(function(err){
-          console.log(err);
           return done(err, profile);
         });
       });
