@@ -7,7 +7,8 @@
     "start": "node ./bin/www",
     "postinstall": "./setup.sh",
     "bower": "node_modules/.bin/bower",
-    "gulp": "node_modules/.bin/gulp"
+    "gulp": "node_modules/.bin/gulp",
+    "test": "NODE_ENV=test node_modules/mocha/bin/mocha tests/*/"
   },
   "dependencies": {
     "akismet-api": "^1.1.5",
