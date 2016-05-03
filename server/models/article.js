@@ -1,11 +1,13 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    admin: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false},
-    github_id: { type: DataTypes.INTEGER, allowNull: false },
-    name: { type: DataTypes.STRING, allowNull: false },
-    email: DataTypes.STRING,
-    avatar_url: {type: DataTypes.STRING, allowNull: false}
+  var Article = sequelize.define("Article", {
+    approved: { type: DataTypes.BOOLEAN, defaultValue: false},
+    slug: { type: DataTypes.STRING, notNull: true},
+    title: { type: DataTypes.STRING, notNull: true},
+    body: { type: DataTypes.STRING},
+    url: { type: DataTypes.STRING},
+    user_id: { type: DataTypes.INTEGER},
+    published_at: {type: DataTypes.TIME}
   }, {
     classMethods: {
       associate: function(models) {
@@ -13,5 +15,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return User;
+  return Article;
 };
