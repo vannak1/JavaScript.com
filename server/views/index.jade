@@ -1,29 +1,16 @@
 block layout_variables
-  - dispatcher = 'home'
+  - dispatcher    = 'home'
+  - headerPartial = { bleed: true }
 
-extends /views/layouts/layout-bleed
+extends /views/layouts/layout
 
 block content
 
   .has-alert
     include /views/partials/_flash
 
-  .row.hero.bc-regent
+  .row.hero
     .cell.well.well--s--l
-
-      .mbxl.tac
-        h2.h.h--1.h--light.mbs Not exactly sure what JavaScript is?
-
-        a.btn.btn--rounded.has-btn-icon.js-video-trigger(href='#')
-          span.btn.btn--sticker.btn-icon
-            - iconPartial = { name: 'play', size: 18 }
-            include /views/partials/_icon
-          span.btn-text Learn More
-
-        .video.js-video
-          .video-embed
-            iframe.js-video-element(width='560' height='315' src='https://www.youtube.com/embed/nItSSTwBvSU' frameborder='0' allowfullscreen)
-
       .g.ptl
         .g-b.g-b--center.g-b--l--1of2
 

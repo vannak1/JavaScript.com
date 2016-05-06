@@ -1,0 +1,42 @@
+// *************************************
+//
+//   Split
+//   -> Horizontally repellent content
+//      CodePen: https://codepen.io/johndjameson/pen/wGYajP
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .flexSplit[baseline]
+//   .flexSplit-item[fixed]
+//       / ...
+//
+// *************************************
+
+.flexSplit
+  align-items: center
+  display: flex
+  justify-content: space-between
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Baseline ----- //
+
+.flexSplit--baseline
+  align-items: baseline
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Item ----- //
+
+// .flexSplit-item
+
+// Fixed
+
+.flexSplit-item--fixed
+  flex-shrink: 0
