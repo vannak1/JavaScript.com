@@ -63,15 +63,12 @@ app.use(require('flash')());
 app.use('/', routes);
 app.use('/about', about);
 app.use('/admin', admin);
-app.use('/assets', assets);
 app.use('/courses', courses)
 app.use('/courses.json', courses);
 app.use('/feed', feed);
-app.use('/feedback', feedback);
 app.use('/guidelines', guidelines)
 app.use('/news', news);
 app.use('/resources', resources)
-app.use('/styleguide', styleguide);
 app.use('/try', learn)
 app.use('/users', users);
 
