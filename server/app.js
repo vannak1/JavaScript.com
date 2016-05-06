@@ -19,16 +19,13 @@ var routes = require(path.join(__dirname, 'routes','index'));
 
 var about = require(path.join(__dirname, 'routes', 'about'));
 var admin = require(path.join(__dirname, 'routes', 'admin'));
-var assets = require(path.join(__dirname, 'routes', 'assets'));
 var courses = require(path.join(__dirname, 'routes', 'courses'));
 var feed = require(path.join(__dirname, 'routes', 'feed'));
-var feedback = require(path.join(__dirname, 'routes', 'feedback'));
 var guidelines = require(path.join(__dirname, 'routes', 'guidelines'));
 var learn = require(path.join(__dirname, 'routes', 'learn'));
 var news = require(path.join(__dirname, 'routes', 'news'));
 var notFound = require(path.join(__dirname, 'routes', 'notFound'));
 var resources = require(path.join(__dirname, 'routes', 'resources'));
-var styleguide = require(path.join(__dirname, 'routes', 'styleguide'));
 var users = require(path.join(__dirname, 'routes', 'users'));
 
 var app = express();
