@@ -1,15 +1,15 @@
 doctype html
-html(lang='en')
+html.has-site(lang='en')
 
   block layout_variables
   include /views/layouts/_head
 
   - dispatcher = dispatcher ? dispatcher : ''
-  body.js-dispatcher(data-dispatcher-page=dispatcher)
+  body.site.js-dispatcher(data-dispatcher-page=dispatcher)
 
     include /views/partials/_header
 
-    main(role='main')
+    main.site-item.site-item--grow(role='main')
       block content
 
     include /views/partials/_footer
