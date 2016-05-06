@@ -15,6 +15,10 @@
 
 .header
   background: $header-background
+  height: $site-header-height
+
+  +respond-to($g-m)
+    height: $site-header-height-l
 
 // -------------------------------------
 //   Scaffolding
