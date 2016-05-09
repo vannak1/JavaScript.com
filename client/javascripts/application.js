@@ -56,6 +56,10 @@ jQuery(function($) {
 
   JS.injectSvg({ assetPath : '/images/icons/icons.svg' });
 
+  // Newsletter
+
+  new JS.Classes.Newsletter();
+
 });
 
 // -------------------------------------

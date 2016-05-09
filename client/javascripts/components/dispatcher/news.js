@@ -18,7 +18,6 @@ JS.Pages.News = function() {
   // -------------------------------------
 
   JS.Modules.LoadStories.init();
-  JS.Modules.Newsletter.init();
   JS.Modules.SaveProgress.init();
 
   // -------------------------------------

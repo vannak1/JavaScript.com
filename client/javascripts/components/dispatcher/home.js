@@ -8,11 +8,20 @@
 JS.Pages.Home = function() {
 
   // -------------------------------------
+  //   Classes
+  // -------------------------------------
+
+  new JS.Classes.Newsletter({
+    $element : $('.js-homeNewsletter'),
+    $error   : $('.js-homeNewsletter-error'),
+    $form    : $('.js-homeNewsletter-form')
+  });
+
+  // -------------------------------------
   //   Modules
   // -------------------------------------
 
   JS.Modules.Console.init();
-  JS.Modules.Newsletter.init();
 
   // -------------------------------------
   //   Services
