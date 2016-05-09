@@ -58,11 +58,11 @@ JS.Modules.Newsletter = (function() {
       newsletterTextCopy = _settings.newsletterTextCopy;
     }
 
-    _settings.$form.find('input').prop('disabled', true);
-
     if (type === 'success') {
       _settings.$element.addClass(_settings.submittedClass);
       _settings.$element.append("<p class='" + _settings.newsletterTextClass + "'>" + newsletterTextCopy + "</p>");
+
+      _settings.$form.prop('disabled', true);
     } else {
       _settings.$error
         .text(newsletterTextCopy)

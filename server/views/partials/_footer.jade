@@ -1,8 +1,8 @@
 footer.site-item.tcs(role='contentinfo')
   .row.bc-slate
     .cell.well.well--l
-      .g.fx-aic.fx-jcsb
-        .g-b.g-b--5of12
+      .g.fx-jcsb
+        .g-b.g-b--5of12.mtm
 
           ul.list.list--inline.bdrb.bdrcs.mbm.pbm
             li.list-item
@@ -30,19 +30,7 @@ footer.site-item.tcs(role='contentinfo')
 
         .g-b.g-b--6of12
 
-          .bucket.mbm
-            .bucket-media
-              img(src='/images/img-news.svg' width=190)
-            .bucket-content
-              h.h.h--4.tci The Latest News to Your Inbox
-              p.mbf.tss Subscribe now to the weekly 5 Minutes of JavaScript newsletter.
-
-          form.form
-            .flexSplit
-              .flexSplit-item.fx-g1.mrm
-                input.form-input(type='text')
-              .flexSplit-item.flexSplit-item--fixed
-                button.btn Subscribe
+          include /views/partials/_footer_newsletter
 
   .row.bc-outerSpace
     .cell.well.well--l
