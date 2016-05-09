@@ -1,44 +1,56 @@
-footer.row.footer.site-item.bc-slate.tcs(role='contentinfo')
-  .cell.well.well--l
-    .g.fx-jcsb
-      .g-b.g-b--5of12
+footer.site-item.tcs(role='contentinfo')
+  .row.bc-slate
+    .cell.well.well--l
+      .g.fx-aic.fx-jcsb
+        .g-b.g-b--5of12
 
-        ul.list.list--inline.bdrb.bdrcs.mbm.pbm
-          li.list-item
-            a.link.link--subdued.tss(href='/') Home
-          li.list-item
-            a.link.link--subdued.tss(href='/news') News
-          li.list-item
-            a.link.link--subdued.tss(href='/try') Try JavaScript
-          li.list-item
-            a.link.link--subdued.tss(href='/about') About
-          li.list-item
-            a.link.link--subdued.tss(href='/guidelines') Community Guidelines
+          ul.list.list--inline.bdrb.bdrcs.mbm.pbm
+            li.list-item
+              a.link.link--subdued.tss(href='/') Home
+            li.list-item
+              a.link.link--subdued.tss(href='/news') News
+            li.list-item
+              a.link.link--subdued.tss(href='/try') Try JavaScript
+            li.list-item
+              a.link.link--subdued.tss(href='/about') About
+            li.list-item
+              a.link.link--subdued.tss(href='/guidelines') Community Guidelines
 
-        ul.list.list--inline
-          li.list-item
-            a.link.link--subdued(href='https://twitter.com/javascriptcom')
-              - iconPartial = { name: 'twitter', size: 24, className: 'mrxs vam' }
-              include /views/partials/_icon
-              span.tss.vam Twitter
-          li.list-item
-            a.link.link--subdued(href='/feed/rss')
-              - iconPartial = { name: 'rss', size: 16, className: 'mrxs ' }
-              include /views/partials/_icon
-              span.tss.vam RSS
+          ul.list.list--inline
+            li.list-item
+              a.link.link--subdued(href='https://twitter.com/javascriptcom')
+                - iconPartial = { name: 'twitter', size: 24, className: 'mrxs vam' }
+                include /views/partials/_icon
+                span.tss.vam Twitter
+            li.list-item
+              a.link.link--subdued(href='/feed/rss')
+                - iconPartial = { name: 'rss', size: 16, className: 'mrxs ' }
+                include /views/partials/_icon
+                span.tss.vam RSS
 
-      .g-b.g-b--6of12
+        .g-b.g-b--6of12
 
-        .bucket.mbm
-          .bucket-media
-            img(src='/images/img-news.svg' width=190)
-          .bucket-content
-            h.h.h--4.tci The Latest News to Your Inbox
-            p.mbf.tss Subscribe now to the weekly 5 Minutes of JavaScript newsletter.
+          .bucket.mbm
+            .bucket-media
+              img(src='/images/img-news.svg' width=190)
+            .bucket-content
+              h.h.h--4.tci The Latest News to Your Inbox
+              p.mbf.tss Subscribe now to the weekly 5 Minutes of JavaScript newsletter.
 
-        form.form
-          .flexSplit
-            .flexSplit-item.fx-g1.mrm
-              input.form-input(type='text')
-            .flexSplit-item.flexSplit-item--fixed
-              button.btn Subscribe
+          form.form
+            .flexSplit
+              .flexSplit-item.fx-g1.mrm
+                input.form-input(type='text')
+              .flexSplit-item.flexSplit-item--fixed
+                button.btn Subscribe
+
+  .row.bc-outerSpace
+    .cell.well.well--l
+      .g.fx-aic.fx-jcsb
+        .g-b.g-b--6of12
+
+          p.mbf © 2016 JavaScript.com; Made with ♥ by Code School.
+
+        .g-b.g-b--3of12
+
+          img(src='/images/logo-code-school-subdued.svg')
