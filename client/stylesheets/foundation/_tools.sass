@@ -81,6 +81,16 @@
 //   Flexbox
 // -------------------------------------
 
+.fx
+  display: flex !important
+
+// Responsive
+
++respond-to($g-m)
+
+  .fx--m
+    display: flex !important
+
 // ----- Align Items ----- //
 
 .fx-aic
@@ -192,6 +202,8 @@
 
 +respond-to($g-m)
 
+  .mrm--m
+    margin-right: $b-space !important
   .mrl--m
     margin-right: $b-space-l !important
 
