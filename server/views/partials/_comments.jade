@@ -9,7 +9,7 @@ aside#comments.js-createComment-container(role='complementary' class=commentsCla
         li.list-item.js-editComment(id='comment-' + comment.id data-id=comment.id)
           .bucket
             .bucket-media
-              img.thumb(src=comment.avatar_url width=50)
+              img.thumb(src=comment.avatar_url width=40)
             .bucket-content
               .split.mbm.tfh
                 .split-item
@@ -58,7 +58,7 @@ aside#comments.js-createComment-container(role='complementary' class=commentsCla
     form.form.js-formValidator.js-saveProgress-container.js-createComment(action='/news/'+flow.slug+'/comment' method='POST')
       .bucket
         .bucket-media
-          img.thumb(src=user.avatar_url width=50)
+          img.thumb(src=user.avatar_url width=40)
         .bucket-content
           fieldset.form-field
             textarea.form-input.form-textatrea.js-autosize.js-formValidator-input.js-saveProgress(name='body' data-saveprogress='comment' data-validate='required' required='true')
