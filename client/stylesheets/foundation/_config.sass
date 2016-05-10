@@ -14,6 +14,7 @@
 // Grayscale
 
 $black: #000
+$outerSpace: #273531
 $slate: #313d38
 $capeCod: #3e4942
 $auroMetalSaurus: #6d7d79
@@ -126,6 +127,8 @@ $link-color: $c-highlight
 $link--state-color: darken($link-color, 15%)
 $link--inverted-color: $c-text-invert
 $link--inverted--state-color: rgba($link--inverted-color, 0.5)
+$link--subdued-color: $c-subdue
+$link--subdued--state-color: rgba($link--subdued-color, 0.5)
 
 // Select
 
@@ -218,8 +221,8 @@ $b-space-xxl: $b-space * 8
 
 // ----- Tools ----- //
 
-$tool-background-names: 'bostonBlue', 'regent', 'gold', 'slate', 'sienna', 'metal', 'cucumber', 'aqua', 'cream', 'snow'
-$tool-background-vars: $bostonBlue, $regent, $goldenDream, $slate, $sienna, $auroMetalSaurus, $cucumber, $aqua, $cream, $snow
+$tool-background-names: 'bostonBlue', 'regent', 'gold', 'slate', 'sienna', 'metal', 'cucumber', 'aqua', 'cream', 'snow', 'outerSpace'
+$tool-background-vars: $bostonBlue, $regent, $goldenDream, $slate, $sienna, $auroMetalSaurus, $cucumber, $aqua, $cream, $snow, $outerSpace
 
 // ----- Z-index ----- //
 
@@ -262,7 +265,7 @@ $g-l: em(1024px)
 
 // Settings
 
-$g-columns: 5
+$g-columns: 12
 $g-defaults: 's' $g-s, 'm' $g-m, 'l' $g-l
 $g-gutter: em(40px)
 $g-gutter-s: em(20px)

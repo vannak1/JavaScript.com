@@ -43,6 +43,11 @@
 .bdrtl
   border-top: $b-border-l !important
 
+// ----- Color ----- //
+
+.bdrcs
+  border-color: $c-subdue !important
+
 // -------------------------------------
 //   Display
 // -------------------------------------
@@ -71,6 +76,46 @@
     display: inline !important
   .dn--m
     display: none !important
+
+// -------------------------------------
+//   Flexbox
+// -------------------------------------
+
+.fx
+  display: flex !important
+
+// Responsive
+
++respond-to($g-m)
+
+  .fx--m
+    display: flex !important
+
+// ----- Align Items ----- //
+
+.fx-aic
+  align-items: center !important
+
+// ----- Grow ----- //
+
+.fx-g1
+  flex-grow: 1 !important
+
+// ----- Justify Content ----- //
+
+.fx-jcsb
+  justify-content: space-between !important
+
+// ----- Order ----- //
+
+// Responsive
+
++respond-to($g-m)
+
+  .fx-o1--m
+    order: 1 !important
+  .fx-o2--m
+    order: 2 !important
 
 // -------------------------------------
 //   Margins
@@ -168,6 +213,8 @@
 
 +respond-to($g-m)
 
+  .mrm--m
+    margin-right: $b-space !important
   .mrl--m
     margin-right: $b-space-l !important
 
@@ -423,6 +470,13 @@
   font-weight: $b-fontWeight !important
 .twsb
   font-weight: $b-fontWeight-semibold !important
+
+// -------------------------------------
+//   Vertical Align
+// -------------------------------------
+
+.vam
+  vertical-align: middle
 
 // -------------------------------------
 //   Whitespace
