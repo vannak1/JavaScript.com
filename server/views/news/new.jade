@@ -11,37 +11,35 @@ block content
     include /views/partials/_flash
 
   section.row
-    .cell.cell--m.well.well--l.well--m--xl
+    .cell.well.well--l.well--m--xl
 
-      .g
-        .g-b.g-b--m--3of5
+      .g.g--centered
+        .g-b.g-b--m--6of12
 
-          .split.split--middle.mbl
-            .split-item
-              .split-cell
-                h1.h.h--2.mbf New Story
+          .flexSplit.mbl
+            .flexSplit-item
+              h1.h.h--2.mbf New Story
 
-              .split-cell
-                .bucket.bucket--flag
-                  .bucket-media.tac
-                    img.thumb(src=avatar width=50)
-                  .bucket-content
-                    a.tfh(href='/news/signout') Not you?
+            .flexSplit-item.flexSplit-item--fixed
+              .flexSplit
+                .flexSplit-item.mrs
+                  img.thumb(src=avatar width=40)
+                .flexSplit-item.flexSplit-item--fixed
+                  a.tfh.tss(href='/news/signout') Not you?
 
           include /views/partials/_news_form
 
-        .g-b.g-b--m--2of5
+        .g-b.g-b--m--4of12
 
           .mtxl
             h2.h.h--3.mbs Guidelines
 
             ul.list.list--styled.tss
+              li.list-item.
+                #[strong Please use] 100–300 characters to describe why a
+                JavaScript developer should care.
+              li.list-item.
+                #[strong Please do not] submit advertisements about commercial
+                products or job postings.
               li.list-item
-                strong Please use 
-                | 100-300 characters to describe why a JavaScript
-                | developer should care.
-              li.list-item
-                strong Please do not 
-                | submit advertisements about commercial products or job postings.
-              li.list-item
-                a(href='/guidelines') View all community guidelines &rarr;
+                a(href='/guidelines') View all community guidelines →
