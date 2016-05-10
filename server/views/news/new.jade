@@ -28,50 +28,11 @@ block content
                   .bucket-content
                     a.tfh(href='/news/signout') Not you?
 
-      .g
-        .g-b.g-b--m--3of5
-
-          form.form.js-formValidator.js-saveProgress-container(action='/news' method='POST')
-
-            fieldset.form-field
-              label
-                span.form-label Title
-              - titleValue = title ? title : ''
-              input.form-input.js-formValidator-input.js-saveProgress(type='text' name='title' data-validate='required' required='true' value=titleValue placeholder='Sundae.js 2.0 Released' data-saveprogress='news_title')
-
-            fieldset.form-field
-              label
-                span.form-label Link
-              - urlValue = url ? url : ''
-              input.form-input.js-formValidator-input.js-saveProgress(type='text' name='url' data-validate='required' required='true' value=urlValue placeholder='http://www.example.com' data-saveprogress='news_link')
-
-            fieldset.form-field
-              label
-                span.form-label Description
-
-              - bodyValue = body ? body : ''
-              textarea.form-input.form-textarea.js-autosize.js-counter.js-formValidator-input.js-saveProgress(name='body' rows=4 data-validate='required' required='true' placeholder="Today we released Sundae.js 2.0, which now has extra sprinkles, extra nuts, and now has three scoops of vanilla instead of two. If you can't eat dairy, you can now replace the ice cream with sherbert." data-saveprogress='news_description')
-                =bodyValue
-
-              .split
-                .split-cell
-                  p.mbf.tss.tcs.js-counter-message-max.is-hidden
-                    | Hmm, your description is a little long — it should be 
-                    strong no more than 300 characters
-                    | .
-
-                .split-cell
-                  span.tss.label.label--subdued.js-counter-label
-                    span.js-counter-number 0
-                    |  Characters
-
-            .mtl
-              input(type='hidden' name='_csrf' value=token)
-              input.btn.btn--a.form-btn.js-formValidator-submit(type='submit' value='Submit')
+          include /views/partials/_news_form
 
         .g-b.g-b--m--2of5
 
-          .mtm
+          .mtxl
             h2.h.h--3.mbs Guidelines
 
             ul.list.list--styled.tss
