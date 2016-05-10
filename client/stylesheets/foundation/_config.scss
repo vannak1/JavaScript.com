@@ -221,8 +221,19 @@ $b-space-xxl: $b-space * 8;
 
 // ----- Tools ----- //
 
-$tool-background-names: 'bostonBlue', 'regent', 'gold', 'slate', 'sienna', 'metal', 'cucumber', 'aqua', 'cream', 'snow', 'outerSpace';
-$tool-background-vars: $bostonBlue, $regent, $goldenDream, $slate, $sienna, $auroMetalSaurus, $cucumber, $aqua, $cream, $snow, $outerSpace;
+$tool-backgrounds: (
+  aqua: $aqua,
+  bostonBlue: $bostonBlue,
+  cream: $cream,
+  cucumber: $cucumber,
+  gold: $goldenDream,
+  metal: $auroMetalSaurus,
+  outerSpace: $outerSpace,
+  regent: $regent,
+  sienna: $sienna,
+  slate: $slate,
+  snow: $snow
+);
 
 // ----- Z-index ----- //
 
