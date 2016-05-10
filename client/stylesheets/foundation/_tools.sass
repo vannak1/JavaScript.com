@@ -18,10 +18,9 @@
 
 // ----- Palette ----- //
 
-@for $i from 1 through length($tool-background-vars)
-
-  .bc-#{nth($tool-background-names, $i)}
-    background-color: nth($tool-background-vars, $i) !important
+@each $key, $value in $tool-backgrounds
+  .bc-#{$key}
+    background-color: $value !important
 
 // -------------------------------------
 //   Border
@@ -409,6 +408,13 @@
   text-align: center !important
 .tar
   text-align: right !important
+
+// Responsive
+
++respond-to($g-m)
+
+  .tac--m
+    text-align: center !important
 
 // ----- Color ----- //
 
