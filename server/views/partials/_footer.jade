@@ -2,7 +2,11 @@ footer.site-item.tcs(role='contentinfo')
   .row.bc-slate
     .cell.well.well--l
       .g.fx-jcsb
-        .g-b.g-b--m--5of12.mbl.mbf--m.mtm--m
+        .g-b.g-b--m--6of12.fx-o2--m.mbl.mbf--m
+
+          include /views/partials/_footer_newsletter
+
+        .g-b.g-b--m--5of12.fx-o1--m.mtm--m
 
           ul.list.list--inline.bdrb.bdrcs.mbm.pbm
             li.list-item
@@ -27,10 +31,6 @@ footer.site-item.tcs(role='contentinfo')
                 - iconPartial = { name: 'rss', size: 16, className: 'mrxs ' }
                 include /views/partials/_icon
                 span.tss.vam RSS
-
-        .g-b.g-b--m--6of12
-
-          include /views/partials/_footer_newsletter
 
   .row.bc-outerSpace
     .cell.well.well--l
