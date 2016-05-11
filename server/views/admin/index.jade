@@ -29,8 +29,7 @@ block content
                   h1.h.h--1
                     a.externalLink.tct.twb(href=story.url target='_blank')
                       = story.title
-                      - iconPartial = { name: 'external', className: 'externalLink-icon', size: 20 }
-                      include /views/partials/_icon
+                      +icon('external', 20).externalLink-icon
 
                   .bucket.bucket--flag.mbm
                     .bucket-media
