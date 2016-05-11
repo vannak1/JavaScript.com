@@ -23,8 +23,7 @@ block content
               | News From the 
               span.dib.wsnw Community
                 a.mls.tch(href="/feed/rss")
-                  - iconPartial = { name: 'rss', size: 20 }
-                  include /views/partials/_icon
+                  +icon('rss', 20)
 
             .g
               .g-b.g-b--l--3of4
@@ -53,8 +52,7 @@ block content
                       h2.h.h--4
                         a.externalLink.tct.twb(href=story.url target='_blank')
                           = story.title
-                          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
-                          include /views/partials/_icon
+                          +icon('external', 16).externalLink-icon
                       p.mbf.tcs.tfh.tss
                         | via 
                         span.twsb= story.name

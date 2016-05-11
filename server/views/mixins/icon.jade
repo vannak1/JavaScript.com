@@ -1,0 +1,5 @@
+mixin icon(name, size)
+  - size = size || 20
+
+  svg.icon( width=size height=size )&attributes(attributes)
+    use( 'xlink:href'='#icon-#{name}' )

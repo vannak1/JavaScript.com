@@ -23,13 +23,11 @@ footer.site-item.tcs(role='contentinfo')
           ul.list.list--inline
             li.list-item
               a.link.link--subdued(href='https://twitter.com/javascriptcom')
-                - iconPartial = { name: 'twitter', size: 24, className: 'mrxs vam' }
-                include /views/partials/_icon
+                +icon('twitter', 24).mrxs
                 span.tss.vam Twitter
             li.list-item
               a.link.link--subdued(href='/feed/rss')
-                - iconPartial = { name: 'rss', size: 16, className: 'mrxs ' }
-                include /views/partials/_icon
+                +icon('rss', 16).mrxs
                 span.tss.vam RSS
 
   .row.bc-outerSpace
