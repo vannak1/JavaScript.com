@@ -13,7 +13,6 @@ li.list-item
       h2.h.h--3
         a.externalLink.tct.twb(href="#{item.url}")
           = item.title
-          - iconPartial = { name: 'external', className: 'externalLink-icon', size: 16 }
-          include /views/partials/_icon
+          +icon('external', 16).externalLink-icon
 
       p.mbf= item.description
