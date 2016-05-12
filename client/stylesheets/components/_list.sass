@@ -69,41 +69,29 @@
     &:last-child
       margin-right: 0
 
-// Shared
-
-.list--inline--divided, .list--inline--dotted
-
-  > .list-item
-
-    &:not(:first-child)::before
-      margin-left: -1ch
-      margin-right: $b-space-s
-
 // Divided
 
 .list--inline--divided
 
+  > .list-item:not(:first-child)::before
+    content: '|'
+    margin-right: $b-space
+
+// Divided: Sizes
+
+.list--inline--divided--xs
+
+  > .list-item:not(:first-child)::before
+    margin-right: $b-space-xs
+
+// Sizes
+
+.list--inline--xs
+
   > .list-item
-
-    &:not(:first-child)::before
-      content: '|'
-
-// Dotted
-
-.list--inline--dotted
-
-  > .list-item
-
-    &:not(:first-child)::before
-      content: '\b7'
-      font-weight: bold
+    margin-right: $b-space-xs
 
 // ----- Sizes ----- //
-
-.list--f
-
-  > .list-item
-    margin-bottom: 0
 
 .list--s
 

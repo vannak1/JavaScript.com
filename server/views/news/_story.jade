@@ -10,13 +10,11 @@
         = story.title
         +icon('external', 16).externalLink-icon
 
-    p.mbf.tcs.tfh.tss
-      | via 
-      span.twsb= story.name
-      |  | 
-      a(href='/news/' + story.slug + '#comments')
-        | View Discussion 
-        if story.comment_count > 0
-          | (
-          = story.comment_count
-          | )
+    .list.list--inline.list--inline--divided.list--inline--xs.list--inline--divided--xs.tss
+      .list-item.tcs.
+        via #[span.twsb= story.name]
+      .list-item
+        a(href=`/news/${story.slug}#comments`)
+          | View Discussion&nbsp;
+          if story.comment_count > 0
+            | (#{story.comment_count})
