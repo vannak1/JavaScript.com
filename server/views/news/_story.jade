@@ -15,6 +15,5 @@
         via #[span.twsb= story.name]
       .list-item
         a(href=`/news/${story.slug}#comments`)
-          | View Discussion&nbsp;
-          if story.comment_count > 0
-            | (#{story.comment_count})
+          +icon('comment-line', 14).mrxs
+          | #{story.comment_count} Comments
