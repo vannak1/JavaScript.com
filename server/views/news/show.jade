@@ -11,28 +11,39 @@ block content
     include /views/partials/_flash
 
   section.row
-    .cell.well.well--xl
-      .g.g--centered
-        .g-b.g-b--8of12
+    .cell.well.well--m--xl
+      .g
+        .g-b.g-b--m--2of12.mbm.mbf--m
+
+          a(href='/news')
+            +icon('arrow-left', 14).mrxs
+            | Back to News
+
+        .g-b.g-b--m--10of12.g-b--l--8of12
 
           article.bdrbl.pbl.mbm(role='article')
 
             time.label.mbxs= moment(flow.published_at).format('ll')
-            h1.h.h--1
-              a.externalLink.tct.twb(href=flow.url target='_blank')
-                = flow.title
-                +icon('external', 20).externalLink-icon
+            h1.h.h--1= flow.title
 
             .bucket.bucket--flag.mbm
               .bucket-media.mrs
                 img.thumb(src=flow.avatar_url width=40)
               .bucket-content.h.h--3.tcs
-                ul.list.list--inline.list--inline--divided.tfh
-                  li.list-item.
-                    #[span.twn via]
-                    #{flow.name}
+                ul.list.list--inline.list--inline--xs.list--inline--divided.list--inline--divided--xs
                   li.list-item
-                    a.dib.js-createComment-number.js-editComment-number(href='#comments')= pluralize('Comment', comments.length, true)
+                    span.twn via&nbsp;
+                    = flow.name
+
+                  li.list-item
+                    a.dib.js-createComment-number.js-editComment-number(href='#comments')
+                      +icon('comment-line').mrxs
+                      = pluralize('Comment', comments.length, true)
+
+                  li.list-item
+                    a(href=flow.url target='_blank')
+                      +icon('open').mrxs
+                      | Site
 
             p.well.well--l.tsl= flow.body
 

@@ -25,44 +25,25 @@ block content
                 a.mls.tch(href="/feed/rss")
                   +icon('rss', 20)
 
-            .g
-              .g-b.g-b--l--3of4
+            .flexSplit.flexSplit--responsive.flexSplit--responsive--m
+              .flexSplit-item.mrm--m
 
-                p.mbf--l.ptxs--l.tcs.tss
-                  | A curated list of news and stories submitted from the
-                  | JavaScript.com community. To learn more about how you
-                  | can contribute, visit our 
-                  a(href='/guidelines') Community&nbsp;Guidelines
-                  | .
+                p.mbf--m.ptxs--l.tcs.tss.
+                  A curated list of news and stories submitted from the
+                  JavaScript.com&nbsp;community.
 
-              .g-b.g-b--l--1of4
+              .flexSplit-item
 
-                a.btn.btn--a.db.dib--s.fr--l(href='/news/new') New Post
+                a.btn.btn--a.db.dib--s(href='/news/new')
+                  +icon('add', 12).mrxs(style='position: relative; top: -1px;')
+                  | Submit Story
 
           .mbxl.js-loadFeed
             ul.list.list--divided.js-loadFeed-list
 
               - for story in flow_collection
-
                 li.list-item
-                  article.bucket
-                    .bucket-media
-                      img.thumb(src=story.avatar_url width='50')
-                    .bucket-content
-                      h2.h.h--4
-                        a.externalLink.tct.twb(href=story.url target='_blank')
-                          = story.title
-                          +icon('external', 16).externalLink-icon
-                      p.mbf.tcs.tfh.tss
-                        | via 
-                        span.twsb= story.name
-                        |  | 
-                        a(href='/news/' + story.slug + '#comments')
-                          | View Discussion 
-                          if story.comment_count > 0
-                            | (
-                            = story.comment_count
-                            | )
+                  include _story
 
           if more
             .well.well--l.mbl.mbxl--m.bdrtl.ptl.tac
@@ -77,7 +58,9 @@ block content
 
                 h2.h.h--3 News From FiveJS
 
-                p.tcs.tss 5 Minutes of JavaScript (FiveJS) is a weekly newsletter and podcast curating the latest news in the JavaScript community.
+                p.tcs.tss.
+                  5 Minutes of JavaScript (FiveJS) is a weekly newsletter and
+                  podcast curating the latest news in the JavaScript community.
 
                 a.btn.btn--a--bordered.db.dib--s.mbs.mrs--s(href='https://itunes.apple.com/us/podcast/5-minutes-of-javascript/id775261328') Listen Now
                 a.btn.btn--a--bordered.db.dib--s(href='https://fivejs.codeschool.com/') Visit Site
