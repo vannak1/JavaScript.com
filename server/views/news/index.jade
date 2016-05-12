@@ -43,26 +43,8 @@ block content
             ul.list.list--divided.js-loadFeed-list
 
               - for story in flow_collection
-
                 li.list-item
-                  article.bucket
-                    .bucket-media
-                      img.thumb(src=story.avatar_url width='50')
-                    .bucket-content
-                      h2.h.h--4
-                        a.externalLink.tct.twb(href=story.url target='_blank')
-                          = story.title
-                          +icon('external', 16).externalLink-icon
-                      p.mbf.tcs.tfh.tss
-                        | via 
-                        span.twsb= story.name
-                        |  | 
-                        a(href='/news/' + story.slug + '#comments')
-                          | View Discussion 
-                          if story.comment_count > 0
-                            | (
-                            = story.comment_count
-                            | )
+                  include _story
 
           if more
             .well.well--l.mbl.mbxl--m.bdrtl.ptl.tac
