@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "iojs": "1.2.0"
+    "iojs": "2.0.1"
   },
   "scripts": {
     "prestart": "./node_modules/node-pg-migrate/bin/pg-migrate up",
@@ -52,7 +52,7 @@
     "gulp-concat": "^2.5.2",
     "gulp-minify-css": "^0.4.6",
     "gulp-rename": "^1.2.0",
-    "gulp-sass": "^1.3.3",
+    "gulp-sass": "^2.0.0",
     "gulp-shell": "^0.4.0",
     "gulp-svgmin": "^1.1.1",
     "gulp-svgstore": "^5.0.0",
