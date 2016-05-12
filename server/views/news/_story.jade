@@ -6,14 +6,19 @@
   .bucket-content
 
     h2.h.h--4
-      a.externalLink.tct.twb(href=story.url target='_blank')
+      a.tct.twb(href=`/news/${story.slug}`)
         = story.title
-        +icon('external', 16).externalLink-icon
 
     .list.list--inline.list--inline--divided.list--inline--xs.list--inline--divided--xs.tss
       .list-item.tcs.
         via #[span.twsb= story.name]
+
       .list-item
         a(href=`/news/${story.slug}#comments`)
           +icon('comment-line', 14).mrxs
           | #{story.comment_count} Comments
+
+      .list-item
+        a(href=story.url target='_blank')
+          +icon('open', 14).mrxs
+          | Site
