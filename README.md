@@ -7,8 +7,8 @@ This is the repo for the JavaScript.com website.
 Install NVM (`$ brew install nvm` and follow instructions)
 
 ```bash
-nvm install iojs-v1.2.0
-nvm use iojs-v1.2.0
+nvm install iojs-v2.0.1
+nvm use iojs-v2.0.1
 npm install -g gulp
 npm install
 ```
