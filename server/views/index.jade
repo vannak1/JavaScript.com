@@ -11,10 +11,23 @@ block content
 
   .row.hero
     .cell.well.well--s--l
-      .g.g--centered.ptl
-        .g-b.g-b--s--10of12.g-b--m--8of12.g-b--l--1of2
+      .g.g--centered.mbm.ptl
+        .g-b.g-b--s--10of12.g-b--m--8of12.g-b--l--6of12
+            include /views/partials/_hero_console
 
-          include /views/partials/_hero_console
+      .g.g--centered
+        .g-b.g-b--s--10of12.g-b--m--8of12.g-b--l--6of12.tac
+          .dib
+            .flexBucket.flexBucket--flag.flexBucket--s
+              .flexBucket-media
+                a.mediaLink(href='http://javascript-roadtrip.codeschool.com/')
+                  img(src='/images/badge-javascript-road-trip.png' width=60 alt='JavaScript Road Trip Part 1')
+
+              .flexBucket-content
+                .card.pbs.pts
+                  p.mbf.tss.
+                    Already know the basics? Skip ahead with
+                    #[a(href='http://javascript-roadtrip.codeschool.com/') JavaScript&nbsp;Road&nbsp;Trip.]
 
   .row
     .cell.well.well--l.well--m--xl
