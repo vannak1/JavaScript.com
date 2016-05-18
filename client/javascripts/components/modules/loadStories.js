@@ -55,7 +55,7 @@ JS.Modules.LoadStories = (function() {
                 '</a>' +
               '</h2>' +
               '<p class="mbf tcs tss">' +
-                'via ' + '<span class="twsb">' + story.name + '</span>' +
+                'via ' + '<span class="tw6">' + story.name + '</span>' +
                 ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
               '</p>' +
             '</div>' +
