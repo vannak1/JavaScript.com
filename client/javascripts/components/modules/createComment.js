@@ -86,7 +86,7 @@ JS.Modules.CreateComment = (function() {
             '<div class="split mbm>' +
               '<div class="split-item">' +
                 '<div class="split-cell">' +
-                  '<span class="mrs twb">' + data.comment.name + '</span>' +
+                  '<span class="mrs tw7">' + data.comment.name + '</span>' +
                   '<time class="tcs tsi">Today</time>' +
                 '</div>' +
                 '<div class="split-cell">' +
