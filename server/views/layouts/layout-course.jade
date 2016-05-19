@@ -2,7 +2,8 @@ doctype html
 html.courseLayout.js-courseLayout(lang='en')
 
   block layout_variables
-  include /views/mixins/all
+  include /views/_globals/links
+  include /views/_mixins/all
 
   include /views/layouts/_head
 
@@ -17,8 +18,8 @@ html.courseLayout.js-courseLayout(lang='en')
 
               .flexSplit-item
                 a.db(href='/')
-                  img.dn--m(src='/images/logo-mark.svg' alt='JavaScript.com' width='54')
-                  img.dn.db--m(src='/images/logo.svg' alt='JavaScript.com' width='240')
+                  img.dn--m(src='/images/logo-mark.svg' alt='JavaScript.com' width=54)
+                  img.dn.db--m(src='/images/logo.svg' alt='JavaScript.com' width=240)
 
               nav.flexSplit-item(role='navigation')
                 a.underline.header-link(href='/news') News

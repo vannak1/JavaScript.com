@@ -83,10 +83,10 @@ JS.Modules.CreateComment = (function() {
             '<img class="thumb" src="' + data.comment.avatar_url + '" width="50">' +
           '</div>' +
           '<div class="bucket-content">' +
-            '<div class="split mbm tfh">' +
+            '<div class="split mbm>' +
               '<div class="split-item">' +
                 '<div class="split-cell">' +
-                  '<span class="mrs twb">' + data.comment.name + '</span>' +
+                  '<span class="mrs tw7">' + data.comment.name + '</span>' +
                   '<time class="tcs tsi">Today</time>' +
                 '</div>' +
                 '<div class="split-cell">' +

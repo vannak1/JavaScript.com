@@ -48,14 +48,14 @@ JS.Modules.LoadStories = (function() {
             '</div>' +
             '<div class="bucket-content">' +
               '<h2 class="h h--4">' +
-                '<a class="externalLink tct twb" href="' + story.url + '" target="_blank">' + story.title +
+                '<a class="externalLink tct tw7" href="' + story.url + '" target="_blank">' + story.title +
                   '<svg width="16" height="16" class="icon externalLink-icon">' +
                     '<use xlink:href="#icon-external"/>' +
                   '</svg>' +
                 '</a>' +
               '</h2>' +
-              '<p class="mbf tcs tfh tss">' +
-                'via ' + '<span class="twsb">' + story.name + '</span>' +
+              '<p class="mbf tcs tss">' +
+                'via ' + '<span class="tw6">' + story.name + '</span>' +
                 ' | ' + '<a class="' + commentClass(story.comment_count) + '" href="/news/' + story.slug + '#comments">View Discussion ' + commentNumber(story.comment_count) + '</a>' +
               '</p>' +
             '</div>' +
