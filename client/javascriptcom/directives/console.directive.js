@@ -20,6 +20,8 @@ angular.module('javascriptcom').directive('jsConsole', ['CSConsole', 'jsCommand'
 
         jsSuccessCloud.trigger();
         jsChallengeProgress.next();
+
+        ga('send', 'event', 'challenge', 'success', challenge.id)
       }
 
       var onFailure = function onFailure(challenge) {

@@ -54,11 +54,14 @@ jQuery(function($) {
 
   // ----- Global ----- //
 
-  JS.injectSvg({ assetPath : '/images/icons/icons.svg' });
-
-  // Newsletter
+  // Classes
 
   new JS.Classes.Newsletter();
+
+  // Services
+
+  JS.injectSvg({ assetPath : '/images/icons/icons.svg' });
+  JS.trackAnalyticsEvents();
 
 });
 

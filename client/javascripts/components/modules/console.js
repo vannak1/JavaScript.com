@@ -45,6 +45,8 @@ JS.Modules.Console = (function() {
       if (value.match(JS.Globals.homepageChallengeAnswer)) {
         $element.removeClass(_settings.incorrectClass);
         $element.addClass(_settings.correctClass);
+
+        ga('send', 'event', 'challenge', 'success', 1);
       } else {
         $element.removeClass(_settings.correctClass);
         $element.addClass(_settings.incorrectClass);
