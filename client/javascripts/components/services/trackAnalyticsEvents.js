@@ -12,7 +12,7 @@ JS.trackAnalyticsEvents = function () {
   $(document).on('click', 'a[href^=http]', function(){
     var url = $(this).attr('href');
 
-    ga('send', 'event', 'outbound', 'click', url, {
+    ga('send', 'event', 'outbound', 'click', JS.Helpers.cleanUrl(url), {
       'transport': 'beacon'
     });
   });
