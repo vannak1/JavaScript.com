@@ -4,15 +4,12 @@
 - item.media = item.media || 'https://placehold.it/220x120'
 - item.description = item.description || ''
 
-li.list-item
-  article.g
-    .g-b.g-b--s--2of5.g-b--m--1of3
-      a(href="#{item.url}")
-        img.thumb.thumb--m(src="#{item.media}" alt="#{item.title}")
-    .g-b.g-b--s--3of5.g-b--m--2of3.mtm.mtf--s
-      h2.h.h--3
-        a.externalLink.tct.tw7(href="#{item.url}")
-          = item.title
-          +icon('external', 16).externalLink-icon
+div
+  a.mediaLink(href=item.url)
+    img.thumb.thumb--m(src=item.media alt=item.title)
 
-      p.mbf= item.description
+  a.link.link--subdued.externalLink(href=item.url)
+    = item.title
+    +icon('external', 12).externalLink-icon
+
+  p.mbf.tss= item.description
