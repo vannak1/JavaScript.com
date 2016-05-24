@@ -1,11 +1,19 @@
-- item = { title: "JavaScript Road Trip", url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
-- item.description = 'A learn-by-doing introduction to the basics of the JavaScript language with high-quality videos and interactive challenges. Build a foundation of JavaScript syntax and learn how to use values, variables, and files.'
-include /views/resources/_resource
+ul.list.list--divided
 
-- item = { title: "JavaScript Best Practices", url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
-- item.description = 'Become a more informed, conscientious user of JavaScript as you explore time-tested, useful techniques that will improve legibility, performance quality, and safety in your scripts.'
-include /views/resources/_resource
+  - item = { title: 'JavaScript Road Trip', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
+  - item.description = 'An introduction to the very basics of the JavaScript language. Build a foundation of JavaScript syntax and learn how to use values, variables, and&nbsp;files.'
 
-- item = { title: "ES2015: The Shape of JavaScript to Come", url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
-- item.description = 'Stay in tune and learn some of the new features of ES2015, the most extensive update to the JavaScript language since it was first released in the ‘90s.'
-include /views/resources/_resource
+  li.list-item
+    include _course
+
+  - item = { title: 'JavaScript Best Practices', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
+  - item.description = 'Become a more informed, conscientious user of JavaScript as you explore time-tested, useful techniques that will improve legibility, performance quality, and safety in your&nbsp;scripts.'
+
+  li.list-item
+    include _course
+
+  - item = { title: 'ES2015: The Shape of JavaScript to Come', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
+  - item.description = 'Stay in tune and learn some of the new features of ES2015, the most extensive update to the JavaScript language since it was first released in the&nbsp;‘90s.'
+
+  li.list-item
+    include _course

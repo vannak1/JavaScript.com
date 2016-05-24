@@ -1,0 +1,21 @@
+- item = item || {}
+- item.title = item.title || 'Placeholder Title'
+- item.url = item.url || '#'
+- item.media = item.media || 'https://placehold.it/220x120'
+- item.description = item.description || ''
+
+.g.fx-aic
+  .g-b.g-b--l--3of12
+    a(href=item.url)
+      img.thumb.thumb--m(src=item.media alt=item.title)
+
+  .g-b.g-b--l--6of12
+    h3.h.h--3
+      a.externalLink.tct.tw7(href=item.url)
+        = item.title
+        +icon('external', 16).externalLink-icon
+
+    p!= item.description
+
+  .g-b.g-b--l--3of12
+    a.btn.btn--a--bordered(href=item.url) View Course
