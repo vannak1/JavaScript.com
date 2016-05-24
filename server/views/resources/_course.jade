@@ -5,17 +5,19 @@
 - item.description = item.description || ''
 
 .g.fx-aic
-  .g-b.g-b--l--3of12
-    a.mediaLink.db(href=item.url)
+  .g-b.g-b--m--6of12.g-b--l--3of12
+    a.mediaLink.db.mbm.mbf--m(href=item.url)
       img.thumb.thumb--m(src=item.media alt=item.title)
 
-  .g-b.g-b--l--6of12
+  .g-b.g-b--m--6of12
     h3.h.h--3
       a.externalLink.tct.tw7(href=item.url)
         = item.title
         +icon('external', 16).externalLink-icon
 
-    p!= item.description
+    p.mbs.mbf--l!= item.description
 
-  .g-b.g-b--l--3of12
+    a.btn.btn--a--bordered.dn--l(href=item.url) View Course
+
+  .g-b.g-b--l--3of12.dn.db--l
     a.btn.btn--a--bordered(href=item.url) View Course
