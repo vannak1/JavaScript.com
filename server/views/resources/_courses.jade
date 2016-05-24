@@ -1,19 +1,20 @@
 ul.list.list--divided
-
-  - item = { title: 'JavaScript Road Trip', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
-  - item.description = 'An introduction to the very basics of the JavaScript language. Build a foundation of JavaScript syntax and learn how to use values, variables, and&nbsp;files.'
-
   li.list-item
+    - item = { title: 'JavaScript Road Trip', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
+    - item.description = 'An introduction to the very basics of the JavaScript language. Build a foundation of JavaScript syntax and learn how to use values, variables, and&nbsp;files.'
     include _course
 
-  - item = { title: 'JavaScript Best Practices', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
-  - item.description = 'Become a more informed, conscientious user of JavaScript as you explore time-tested, useful techniques that will improve legibility, performance quality, and safety in your&nbsp;scripts.'
-
   li.list-item
+    - item = { title: 'JavaScript Best Practices', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
+    - item.description = 'Become a more informed, conscientious user of JavaScript as you explore time-tested, useful techniques that will improve legibility, performance quality, and safety in your&nbsp;scripts.'
     include _course
 
-  - item = { title: 'ES2015: The Shape of JavaScript to Come', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
-  - item.description = 'Stay in tune and learn some of the new features of ES2015, the most extensive update to the JavaScript language since it was first released in the&nbsp;‘90s.'
+  li.list-item
+    - item = { title: 'ES2015: The Shape of JavaScript to Come', url: 'http://javascript-roadtrip.codeschool.com/', media: '/images/resources/img-jsrt.jpg' }
+    - item.description = 'Stay in tune and learn some of the new features of ES2015, the most extensive update to the JavaScript language since it was first released in the&nbsp;‘90s.'
+    include _course
 
   li.list-item
+    - item = { title: 'Try jQuery', url: 'http://try.jquery.com/', media: '/images/resources/img-try-jquery.jpg' }
+    - item.description = 'Learn the basics of jQuery 2.0, a JavaScript library, to modify elements on the page and improve user interaction.'
     include _course
