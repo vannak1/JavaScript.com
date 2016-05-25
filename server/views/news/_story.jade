@@ -16,7 +16,10 @@
       .list-item
         a(href=`/news/${story.slug}#comments`)
           +icon('comment-line', 14).mrxs
-          | #{story.comment_count} Comments
+          if story.comment_count > 0
+            | #{story.comment_count} Comments
+          else
+            | Comments
 
       .list-item
         a(href=story.url target='_blank')
