@@ -22,6 +22,7 @@ var admin = require(path.join(__dirname, 'routes', 'admin'));
 var courses = require(path.join(__dirname, 'routes', 'courses'));
 var feed = require(path.join(__dirname, 'routes', 'feed'));
 var guidelines = require(path.join(__dirname, 'routes', 'guidelines'));
+var learn = require(path.join(__dirname, 'routes', 'learn'));
 var news = require(path.join(__dirname, 'routes', 'news'));
 var notFound = require(path.join(__dirname, 'routes', 'notFound'));
 var resources = require(path.join(__dirname, 'routes', 'resources'));
@@ -67,6 +68,7 @@ app.use('/courses', courses)
 app.use('/courses.json', courses);
 app.use('/feed', feed);
 app.use('/guidelines', guidelines)
+app.use('/learn', learn)
 app.use('/news', news);
 app.use('/resources', resources)
 app.use('/try', tryJavascript)
