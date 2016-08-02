@@ -22,10 +22,10 @@ var admin = require(path.join(__dirname, 'routes', 'admin'));
 var courses = require(path.join(__dirname, 'routes', 'courses'));
 var feed = require(path.join(__dirname, 'routes', 'feed'));
 var guidelines = require(path.join(__dirname, 'routes', 'guidelines'));
-var learn = require(path.join(__dirname, 'routes', 'learn'));
 var news = require(path.join(__dirname, 'routes', 'news'));
 var notFound = require(path.join(__dirname, 'routes', 'notFound'));
 var resources = require(path.join(__dirname, 'routes', 'resources'));
+var tryJavascript = require(path.join(__dirname, 'routes', 'tryJavascript'));
 var users = require(path.join(__dirname, 'routes', 'users'));
 
 var app = express();
@@ -69,7 +69,7 @@ app.use('/feed', feed);
 app.use('/guidelines', guidelines)
 app.use('/news', news);
 app.use('/resources', resources)
-app.use('/try', learn)
+app.use('/try', tryJavascript)
 app.use('/users', users);
 
 // catch 404 and forward to error handler
