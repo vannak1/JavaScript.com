@@ -6,8 +6,6 @@ block layout_variables
 extends /views/layouts/layout
 
 block content
-  h1 JavaScript
-
   -
     lessons = [
       { title: 'Functions', slug: 'functions' },
@@ -22,7 +20,11 @@ block content
       { title: 'Dates', slug: 'dates' }
     ]
 
-  ul.list
-    - each lesson in lessons
-      li.list-item
-        a(href=`/learn/javascript/${lesson.slug}`)= lesson.title
+  section.row
+    .cell.well
+      h1 JavaScript
+
+      ul.list
+        - each lesson in lessons
+          li.list-item
+            a(href=`/learn/javascript/${lesson.slug}`)= lesson.title
