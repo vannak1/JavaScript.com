@@ -1,0 +1,28 @@
+block layout_variables
+  - dispatcher = 'learn'
+  - pageTitle = 'Learn JavaScript'
+  - metaDescription = 'Interactive reference pages for learning JavaScript features.'
+
+extends /views/layouts/layout
+
+block content
+  h1 JavaScript
+
+  -
+    lessons = [
+      { title: 'Functions', slug: 'functions' },
+      { title: 'String Functions', slug: 'string-functions'},
+      { title: 'Variables', slug: 'variables'},
+      { title: 'Variable Value', slug: 'variable-value'},
+      { title: 'Numbers', slug: 'numbers'},
+      { title: 'Combining Numbers', slug: 'combining-numbers'},
+      { title: 'Combining Strings', slug: 'combining-strings'},
+      { title: 'Events', slug: 'events'},
+      { title: 'Objects', slug: 'objects'},
+      { title: 'Dates', slug: 'dates' }
+    ]
+
+  ul.list
+    - each lesson in lessons
+      li.list-item
+        a(href=`/learn/javascript/${lesson.slug}`)= lesson.title

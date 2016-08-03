@@ -1,14 +1,67 @@
+// *************************************
+//
+//   Routes - Learn
+//   -> Lesson pages
+//
+// *************************************
+
+// -------------------------------------
+//   Dependencies
+// -------------------------------------
+
 var express = require('express');
 var router = express.Router();
 
-/* GET /learn page */
+// -------------------------------------
+//   Routes
+// -------------------------------------
+
+// ----- Index ----- //
+
 router.get('/', function(req, res) {
   res.render('learn/index');
 });
 
-/* GET /learn/* page */
-router.get('*', function(req, res) {
-  res.render('learn/show');
-});
+// ----- Lessons ----- //
+
+var subjects = {
+  'javascript': [
+    'functions',
+    'string-functions',
+    'variables',
+    'variable-value',
+    'numbers',
+    'combining-numbers',
+    'combining-strings',
+    'events',
+    'objects',
+    'dates'
+  ]
+};
+
+var createSubjectRoute = function(subject) {
+  router.get(`/${subject}`, function(req, res) {
+    res.render(`learn/${subject}/index`);
+  });
+};
+
+var createLessonRoute = function(subject, lesson) {
+  router.get(`/${subject}/${lesson}`, function(req, res) {
+    res.render(`learn/${subject}/${lesson}`);
+  });
+};
+
+for (var subject in subjects) {
+  createSubjectRoute(subject);
+
+  for (var i = 0; i < subject.length; i++) {
+    createLessonRoute(subject, subjects[subject][i]);
+  }
+}
+
+
+// -------------------------------------
+//   Exports
+// -------------------------------------
 
 module.exports = router;
