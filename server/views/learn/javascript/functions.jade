@@ -1,9 +1,38 @@
 block layout_variables
   - dispatcher = 'learn'
-  - pageTitle = 'Learn JavaScript'
-  - metaDescription = 'Interactive reference pages for learning JavaScript features.'
+  - pageTitle = 'JavaScript Functions'
 
 extends /views/layouts/layout
 
 block content
-  h1 Functions
+  link(rel='stylesheet' href='https://storage.googleapis.com/app.klipse.tech/css/codemirror.css')
+
+  section.row
+    .cell.well.well--l
+      .blockGrid
+        .blockGrid-box.blockGrid-box--8of12.blockGrid-box--centered
+          h1.h.h--1.mbm JavaScript Functions
+
+          p.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae
+            risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam
+            congue. Donec risus risus, pretium ac, tincidunt eu, tempor eu, quam.
+            Morbi blandit mollis magna. Suspendisse eu tortor. Donec vitae felis
+            nec ligula blandit rhoncus.
+
+          p.mbl
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae
+            risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam
+            congue.
+
+          pre.js-klipse.
+            function greetThePlanet() {
+                return 'Hello world!';
+            }
+
+            greetThePlanet();
+
+  script.
+    window.klipse_settings = { selector_eval_js: '.js-klipse' };
+
+  script(src='https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js')
