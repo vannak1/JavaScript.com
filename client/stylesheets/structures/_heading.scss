@@ -1,0 +1,95 @@
+// *************************************
+//
+//   Heading
+//   -> Section title
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .h[1|2|3|4 light|semibold]
+//
+// *************************************
+
+.h {
+  @extend %h;
+}
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Hierarchy ----- //
+
+// Top-level
+
+.h--1 {
+  font-size: $b-fontSize-h1;
+  letter-spacing: -1px;
+  word-spacing: -1px;
+
+  @include respond-to($g-m) {
+    font-size: $b-fontSize-h1-l;
+  }
+}
+
+// Second-level
+
+.h--2 {
+  font-size: $b-fontSize-h2;
+  letter-spacing: -1px;
+
+  @include respond-to($g-m) {
+    font-size: $b-fontSize-h2-l;
+  }
+}
+
+// Third-level
+
+.h--3 {
+  font-size: $b-fontSize-h3;
+
+  @include respond-to($g-m) {
+    font-size: $b-fontSize-h3-l;
+  }
+}
+
+// Fourth-level
+
+.h--4 {
+  font-size: $b-fontSize-h4;
+
+  @include respond-to($g-m) {
+    font-size: $b-fontSize-h4-l;
+  }
+}
+
+// ----- Sizes ----- //
+
+// Large
+
+.h--l {
+  font-size: $b-fontSize-hl;
+
+  @include respond-to($g-m) {
+    font-size: $b-fontSize-hl-l;
+  }
+}
+
+// ----- Weight ----- //
+
+// Light
+
+.h--light {
+  font-weight: 300;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+
+// Semibold
+
+.h--semibold {
+  font-weight: 600;
+  letter-spacing: 0;
+  word-spacing: 0;
+}

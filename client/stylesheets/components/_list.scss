@@ -1,0 +1,153 @@
+// *************************************
+//
+//   List
+//   -> Enumeration of items
+//      CodePen: http://codepen.io/drewbarontini/pen/ouqil
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// %ul.list[[f|s|l] divided[f|s|l] inline[divided|dotted]|object styled|styled--numbered]
+//   %li.list-item List Item
+//     .list-item-header
+//   %li.list-item List Item
+//
+// *************************************
+
+.list {
+  @include list-reset;
+}
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Divided ----- //
+
+.list--divided {
+  > .list-item {
+    border-top: $b-border;
+    padding-top: $b-space;
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  > .list-item--header {
+    border-top: 0;
+
+    + .list-item {
+      border-top: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+// Sizes
+
+.list--divided--f {
+  > .list-item {
+    padding-top: 0;
+  }
+}
+
+.list--divided--s {
+  > .list-item {
+    padding-top: $b-space-s;
+  }
+}
+
+.list--divided--l {
+  > .list-item {
+    padding-top: $b-space-l;
+  }
+}
+
+// ----- Inline ----- //
+
+.list--inline {
+  > .list-item {
+    display: inline;
+    margin-right: $b-space;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// Divided
+
+.list--inline--divided {
+  > .list-item:not(:first-child)::before {
+    content: "|";
+    margin-right: $b-space;
+  }
+}
+
+// Divided: Sizes
+
+.list--inline--divided--xs {
+  > .list-item:not(:first-child)::before {
+    margin-right: $b-space-xs;
+  }
+}
+
+// Sizes
+
+.list--inline--xs {
+  > .list-item {
+    margin-right: $b-space-xs;
+  }
+}
+
+// ----- Sizes ----- //
+
+.list--s {
+  > .list-item {
+    margin-bottom: $b-space-s;
+  }
+}
+
+.list--l {
+  > .list-item {
+    margin-bottom: $b-space-l;
+  }
+}
+
+// ----- Styled ----- //
+
+.list--styled {
+  padding-left: $b-space-l;
+
+  > .list-item {
+    display: list-item;
+    list-style-type: disc;
+    margin-bottom: $b-space-xs;
+  }
+}
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Item ----- //
+
+.list-item {
+  display: block;
+  margin-bottom: $b-space;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Header
+
+.list-item--header {
+  color: darken($c-border, 15%);
+  font-weight: 600;
+}
