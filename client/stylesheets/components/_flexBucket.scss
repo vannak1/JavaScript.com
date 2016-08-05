@@ -1,0 +1,60 @@
+// *************************************
+//
+//   Flex Bucket
+//   -> Fixed media and adjacent content
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .flexBucket[s flag]
+//
+//   .flexBucket-media
+//     / ..
+//
+//   .flexBucket-content
+//     / ..
+//
+// *************************************
+
+.flexBucket {
+  display: flex;
+
+  > :first-child {
+    margin-right: $b-space;
+  }
+}
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Flag ----- //
+
+.flexBucket--flag {
+  align-items: center;
+}
+
+// ----- Sizes ----- //
+
+.flexBucket--s {
+  > :first-child {
+    margin-right: $b-space-s;
+  }
+}
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Content ----- //
+
+.flexBucket-content {
+  flex-grow: 1;
+}
+
+// ----- Media ----- //
+
+.flexBucket-media {
+  flex-shrink: 0;
+}

@@ -1,0 +1,50 @@
+// *************************************
+//
+//   Label
+//   -> Supplementary text
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .label[highlight|subdued](success)
+//
+// *************************************
+
+.label {
+  color: $c-subdue;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Highlight ----- //
+
+.label--highlight {
+  color: $c-highlight;
+}
+
+// ----- Subdued ----- //
+
+.label--subdued {
+  color: $c-subdue;
+}
+
+// -------------------------------------
+//   State
+// -------------------------------------
+
+// ----- Success ----- //
+
+.label.is-success {
+  color: $c-success;
+
+  &::before {
+    content: "✓";
+    padding-right: $b-space-xs;
+  }
+}
