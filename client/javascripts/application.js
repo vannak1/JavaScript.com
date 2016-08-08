@@ -33,6 +33,10 @@ JS.Globals = {
   }
 };
 
+window.klipse_settings = {
+  selector_eval_js: '.js-klipse'
+};
+
 // -------------------------------------
 //   Document Ready
 // -------------------------------------

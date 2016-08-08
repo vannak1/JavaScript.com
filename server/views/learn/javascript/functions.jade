@@ -2,11 +2,9 @@ block layout_variables
   - dispatcher = 'learn'
   - pageTitle = 'JavaScript Functions'
 
-extends /views/layouts/layout
+extends /views/layouts/learn
 
 block content
-  link(rel='stylesheet' href='https://storage.googleapis.com/app.klipse.tech/css/codemirror.css')
-
   section.row
     .cell.well.well--l
       .blockGrid
@@ -31,8 +29,3 @@ block content
             }
 
             greetThePlanet();
-
-  script.
-    window.klipse_settings = { selector_eval_js: '.js-klipse' };
-
-  script(src='https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js')

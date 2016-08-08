@@ -1,0 +1,25 @@
+doctype html
+html.has-site(lang='en')
+
+  block layout_variables
+  include /views/_globals/links
+  include /views/_mixins/all
+
+  include /views/layouts/_head
+  link(rel='stylesheet' href='https://storage.googleapis.com/app.klipse.tech/css/codemirror.css')
+
+  - dispatcher = dispatcher ? dispatcher : ''
+  body.site.js-dispatcher(data-dispatcher-page=dispatcher)
+
+    include /views/partials/_header
+
+    main.site-item.site-item--grow(role='main')
+      block content
+
+    include /views/partials/_footer
+
+    script(src='/javascripts/vendor.js')
+    script(src='/javascripts/application.js')
+    script(src='https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js')
+
+    block inline_javascript
