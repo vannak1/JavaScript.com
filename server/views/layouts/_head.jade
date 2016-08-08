@@ -32,5 +32,8 @@ head
   link(rel='stylesheet' href='/stylesheets/application.css')
   link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700')
 
-  if headPartial.klipseStyles
-    link(rel='stylesheet' href='https://storage.googleapis.com/app.klipse.tech/css/codemirror.css')
+  if headPartial.onLearn
+    link(rel='stylesheet' href='/stylesheets/learn.css')
+
+  if headPartial.onTry
+    link(rel='stylesheet' href='/stylesheets/try.css')
