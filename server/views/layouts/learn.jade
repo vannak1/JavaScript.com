@@ -1,3 +1,5 @@
+- headPartial = { klipseStyles: true }
+
 doctype html
 html.has-site(lang='en')
 
@@ -6,7 +8,6 @@ html.has-site(lang='en')
   include /views/_mixins/all
 
   include /views/layouts/_head
-  link(rel='stylesheet' href='https://storage.googleapis.com/app.klipse.tech/css/codemirror.css')
 
   - dispatcher = dispatcher ? dispatcher : ''
   body.site.js-dispatcher(data-dispatcher-page=dispatcher)
