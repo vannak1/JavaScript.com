@@ -26,7 +26,7 @@ var learn = require(path.join(__dirname, 'routes', 'learn'));
 var news = require(path.join(__dirname, 'routes', 'news'));
 var notFound = require(path.join(__dirname, 'routes', 'notFound'));
 var resources = require(path.join(__dirname, 'routes', 'resources'));
-var tryJavascript = require(path.join(__dirname, 'routes', 'tryJavascript'));
+var tryJavascript = require(path.join(__dirname, 'routes', 'try'));
 var users = require(path.join(__dirname, 'routes', 'users'));
 
 var app = express();
