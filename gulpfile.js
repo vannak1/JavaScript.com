@@ -56,12 +56,16 @@ var options = {
   js: {
     files: [
       'client/javascripts/application.js',
-      'client/javascripts/**/*.js'
+      'client/javascripts/**/*.js',
+      '!client/javascripts/vendor/**'
     ],
     vendorFiles: [
       'bower_components/jquery/dist/jquery.js',
       'bower_components/bootstrap/js/tooltip.js',
       'bower_components/autosize/dist/autosize.js'
+    ],
+    vendorLearnFiles: [
+      'client/javascripts/vendor/klipse.min.js'
     ],
     vendorCourseFiles: [
       'bower_components/angular/angular.js',
@@ -215,6 +219,10 @@ gulp.task('javascript', function() {
     // .pipe(uglify({ mangle: false }))
     .pipe(concat(options.js.destVendorFile))
     .pipe(gulp.dest(options.js.destDir));
+
+  // vendor/*.js
+  gulp.src(options.js.vendorLearnFiles)
+    .pipe(gulp.dest(options.js.destDir))
 
   // vendor-course.js
   gulp.src(options.js.vendorCourseFiles)
