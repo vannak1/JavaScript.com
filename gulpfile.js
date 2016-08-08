@@ -168,7 +168,7 @@ gulp.task('minify-css', function () {
 
 gulp.task('sass', function () {
   gulp.src(options.sass.files)
-      .pipe(sass({ indentedSyntax: true }))
+      .pipe(sass())
       .on('error', function(error) { console.log(error.message); })
       .pipe(autoprefixer({
         browsers: [ 'last 2 versions', 'Explorer >= 9' ],
