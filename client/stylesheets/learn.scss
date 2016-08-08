@@ -6,6 +6,13 @@
 // *************************************
 
 // -------------------------------------
+//   Foundation
+// -------------------------------------
+
+@import 'foundation/helpers';
+@import 'foundation/config';
+
+// -------------------------------------
 //   Vendor
 // -------------------------------------
 
@@ -15,4 +22,16 @@
 //   Inbox
 // -------------------------------------
 
-// ...
+.CodeMirror, .klipse {
+  border: 1px solid $c-border;
+  font-family: $b-fontFamily-mono;
+  padding: 15px 20px;
+}
+
+.CodeMirror-lines {
+  padding: 0;
+}
+
+.CodeMirror pre {
+  padding: 0;
+}
