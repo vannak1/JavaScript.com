@@ -73,4 +73,17 @@ jQuery(function($) {
 //   Inbox
 // -------------------------------------
 
-// ...
+jQuery(function($) {
+  $('.js-codeMirror').each(function() {
+      var $element = $(this);
+      var text = $element.text();
+
+      CodeMirror(this.parentNode, {
+        mode: 'javascript',
+        readOnly: 'nocursor',
+        value: text
+      });
+
+      $element.remove();
+    });
+});
