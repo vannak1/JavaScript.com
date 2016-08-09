@@ -1,3 +1,6 @@
 mixin editor
-  pre.klipse.js-klipse
-    block
+  .codeBlock.codeBlock--editor&attributes(attributes)
+    p.codeBlock-label Editable Code
+
+    pre.codeBlock-pre.js-klipse
+      block
