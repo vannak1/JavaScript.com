@@ -1,0 +1,65 @@
+// *************************************
+//
+//   Code Block
+//   -> Syntax container
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .codeBlock
+//   .codeBlock-label
+//   .codeBlock-pre
+//
+// *************************************
+
+.codeBlock {
+  border: 1px solid $c-border;
+
+  .CodeMirror {
+    border: 0;
+    font-family: $b-fontFamily-mono;
+    font-size: 15px;
+    padding: 15px 20px;
+
+    & + .CodeMirror {
+      border-top: 1px solid $c-border;
+    }
+  }
+
+  .CodeMirror-lines {
+    padding: 0;
+  }
+
+  .CodeMirror pre {
+    padding: 0;
+  }
+}
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Label ----- //
+
+.codeBlock-label {
+  background: $c-border;
+  color: $c-subdue;
+  cursor: default;
+  font-size: $b-fontSize-xs;
+  letter-spacing: 0.075em;
+  line-height: 1;
+  margin: 0;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+// ----- Pre ----- //
+
+.codeBlock-pre {
+  border: 0;
+  font-family: $b-fontFamily-mono;
+  font-size: 15px;
+  padding: 15px 20px;
+}

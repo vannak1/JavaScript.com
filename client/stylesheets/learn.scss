@@ -13,6 +13,12 @@
 @import 'foundation/config';
 
 // -------------------------------------
+//   Structures
+// -------------------------------------
+
+@import 'structures/codeBlock';
+
+// -------------------------------------
 //   Vendor
 // -------------------------------------
 
@@ -22,45 +28,4 @@
 //   Inbox
 // -------------------------------------
 
-.codeBlock {
-  border: 1px solid $c-border;
-}
-
-.codeBlock-label {
-  background: $c-border;
-  color: $c-subdue;
-  font-size: $b-fontSize-xs;
-  letter-spacing: 0.075em;
-  line-height: 1;
-  margin: 0;
-  padding: 5px 20px;
-  text-transform: uppercase;
-}
-
-.codeBlock-pre {
-  border: 0;
-  font-family: $b-fontFamily-mono;
-  font-size: 15px;
-  padding: 15px 20px;
-}
-
-.codeBlock {
-  .CodeMirror {
-    border: 0;
-    font-family: $b-fontFamily-mono;
-    font-size: 15px;
-    padding: 15px 20px;
-
-    & + .CodeMirror {
-      border-top: 1px solid $c-border;
-    }
-  }
-
-  .CodeMirror-lines {
-    padding: 0;
-  }
-
-  .CodeMirror pre {
-    padding: 0;
-  }
-}
+// ...
