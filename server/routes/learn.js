@@ -19,7 +19,7 @@ var router = express.Router();
 // ----- Index ----- //
 
 router.get('/', function(req, res) {
-  res.render('learn/index');
+  res.redirect('/learn/javascript/functions');
 });
 
 // ----- Lessons ----- //
@@ -41,7 +41,7 @@ var subjects = {
 
 var createSubjectRoute = function(subject) {
   router.get(`/${subject}`, function(req, res) {
-    res.render(`learn/${subject}/index`);
+    res.redirect('/learn/javascript/functions');
   });
 };
 
