@@ -1,0 +1,5 @@
+mixin sectionList(sections, activeSection)
+  ol.sectionList
+    - for section in sections
+      li.sectionList-item(class={ 'is-active': section.title === activeSection })
+        a.sectionList-item-link(href=section.url)= section.title
