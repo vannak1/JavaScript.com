@@ -21,10 +21,21 @@ html.has-site(lang='en')
         .cell.well.well--l
           .blockGrid
             .blockGrid-box.blockGrid-box--m--4of12.blockGrid-box--l--3of12
-              nav Nav
+              +sectionList([
+                { title: 'Functions', url: '/learn/javascript/functions' },
+                { title: 'String Functions', url: '/learn/javascript/string-functions' },
+                { title: 'Variables', url: '/learn/javascript/variables' },
+                { title: 'Variable Values', url: '/learn/javascript/variable-value' },
+                { title: 'Numbers', url: '/learn/javascript/numbers' },
+                { title: 'Combining Numbers', url: '/learn/javascript/combining-numbers' },
+                { title: 'Combining Strings', url: '/learn/javascript/combining-strings' },
+                { title: 'Events', url: '/learn/javascript/events' },
+                { title: 'Objects', url: '/learn/javascript/objects' },
+                { title: 'Dates', url: '/learn/javascript/dates' }
+              ], sectionTitle)
 
             .blockGrid-box.blockGrid-box--m--8of12.blockGrid-box--l--6of12
-              h1.h.h--1.mbs= chapterTitle
+              h1.h.h--1.mbs= sectionTitle
 
               block content
 
