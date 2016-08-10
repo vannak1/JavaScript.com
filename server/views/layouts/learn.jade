@@ -17,7 +17,16 @@ html.has-site(lang='en')
     include /views/partials/_header
 
     main.site-item.site-item--grow(role='main')
-      block content
+      section.row
+        .cell.well.well--l
+          .blockGrid
+            .blockGrid-box.blockGrid-box--m--4of12.blockGrid-box--l--3of12
+              nav Nav
+
+            .blockGrid-box.blockGrid-box--m--8of12.blockGrid-box--l--6of12
+              h1.h.h--1.mbs= chapterTitle
+
+              block content
 
     include /views/partials/_footer
 

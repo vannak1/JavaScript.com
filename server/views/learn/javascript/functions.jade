@@ -1,33 +1,28 @@
 block layout_variables
   - pageTitle = 'JavaScript Functions'
+  - chapterTitle = 'Functions'
 
 extends /views/layouts/learn
 
 block content
-  section.row
-    .cell.well.well--l
-      .blockGrid
-        .blockGrid-box.blockGrid-box--m--8of12.blockGrid-box--l--6of12.blockGrid-box--centered
-          h1.h.h--1.mbs Functions
+  p.
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae
+    risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam
+    congue. Donec risus risus, pretium ac, tincidunt eu, tempor eu, quam.
+    Morbi blandit mollis magna. Suspendisse eu tortor. Donec vitae felis
+    nec ligula blandit rhoncus.
 
-          p.
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae
-            risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam
-            congue. Donec risus risus, pretium ac, tincidunt eu, tempor eu, quam.
-            Morbi blandit mollis magna. Suspendisse eu tortor. Donec vitae felis
-            nec ligula blandit rhoncus.
+  p.mbl
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae
+    risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam
+    congue.
 
-          p.mbl
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae
-            risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam
-            congue.
+  +editor.mbl.
+    function greetThePlanet() {
+        return 'Hello world!';
+    }
 
-          +editor.mbl.
-            function greetThePlanet() {
-                return 'Hello world!';
-            }
+    greetThePlanet();
 
-            greetThePlanet();
-
-          +example.
-            var when = "whenever";
+  +example.
+    var when = "whenever";
