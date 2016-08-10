@@ -1,0 +1,69 @@
+// *************************************
+//
+//   Section List
+//   -> Enumeration of sections
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// %ol.sectionList
+//   li.sectionList-item
+//     a.sectionList-item-link
+//
+// *************************************
+
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+$sectionList-borderWidth: 2px;
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+.sectionList {
+  @include list-reset;
+  border-left: $sectionList-borderWidth solid $c-border;
+}
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------
+
+// ----- Item ----- //
+
+.sectionList-item {
+  border-left: $sectionList-borderWidth solid transparent;
+  color: $c-subdue;
+  line-height: 1;
+  margin-left: -$sectionList-borderWidth;
+  padding-bottom: $b-space-xs;
+  padding-left: $b-space;
+  padding-top: $b-space-xs;
+  font-size: $b-fontSize-s;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Active
+
+.sectionList-item.is-active {
+  border-color: $c-highlight;
+  color: $c-text;
+
+  .sectionList-item-link {
+    color: $c-highlight;
+  }
+}
+
+// Link
+
+.sectionList-item-link {
+  color: $c-subdue;
+}
