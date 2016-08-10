@@ -13,17 +13,43 @@
 //
 // *************************************
 
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+$codeBlock-fontSize: 15px;
+$codeBlock-horizontalPadding: 20px;
+$codeBlock-verticalPadding: 15px;
+
+$codeBlock-label-fontSize: 12px;
+$codeBlock-label-letterSpacing: 0.075em;
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
 .codeBlock {
   border: 1px solid $c-border;
 
   .CodeMirror {
     border: 0;
     font-family: $b-fontFamily-mono;
-    font-size: 15px;
-    padding: 15px 20px;
+    font-size: $codeBlock-fontSize;
+    padding: $codeBlock-verticalPadding $codeBlock-horizontalPadding;
 
     & + .CodeMirror {
       border-top: 1px solid $c-border;
+
+      &::before {
+        color: $c-subdue;
+        content: 'Output';
+        display: block;
+        font-family: $b-fontFamily;
+        font-size: $codeBlock-label-fontSize;
+        letter-spacing: $codeBlock-label-letterSpacing;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
     }
   }
 
@@ -46,11 +72,11 @@
   background: $c-border;
   color: $c-subdue;
   cursor: default;
-  font-size: $b-fontSize-xs;
-  letter-spacing: 0.075em;
+  font-size: $codeBlock-label-fontSize;
+  letter-spacing: $codeBlock-label-letterSpacing;
   line-height: 1;
   margin: 0;
-  padding: 5px 20px;
+  padding: 5px $codeBlock-horizontalPadding;
   text-transform: uppercase;
   user-select: none;
 }
@@ -60,6 +86,6 @@
 .codeBlock-pre {
   border: 0;
   font-family: $b-fontFamily-mono;
-  font-size: 15px;
-  padding: 15px 20px;
+  font-size: $codeBlock-fontSize;
+  padding: $codeBlock-verticalPadding $codeBlock-horizontalPadding;
 }
