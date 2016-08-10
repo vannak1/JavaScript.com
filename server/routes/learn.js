@@ -29,7 +29,6 @@ var subjects = {
     'functions',
     'string-functions',
     'variables',
-    'variable-value',
     'numbers',
     'combining-numbers',
     'combining-strings',
