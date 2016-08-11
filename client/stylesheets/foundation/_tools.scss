@@ -45,12 +45,20 @@
 
 // ----- Sides ----- //
 
+// Right
+
 .bdrb {
   border-bottom: $b-border !important;
 }
 
 .bdrbl {
   border-bottom: $b-border-l !important;
+}
+
+// Top
+
+.bdrt {
+  border-top: $b-border !important;
 }
 
 .bdrtl {

@@ -1,17 +1,38 @@
 - current_page = 'Learn'
 - dispatcher = 'learn'
 - headPartial = { onLearn: true }
+-
+  sections = [
+    { title: 'Functions', url: '/learn/javascript/functions' },
+    { title: 'String Functions', url: '/learn/javascript/string-functions' },
+    { title: 'Variables', url: '/learn/javascript/variables' },
+    { title: 'Numbers', url: '/learn/javascript/numbers' },
+    { title: 'Combining Numbers', url: '/learn/javascript/combining-numbers' },
+    { title: 'Combining Strings', url: '/learn/javascript/combining-strings' },
+    { title: 'Events', url: '/learn/javascript/events' },
+    { title: 'Objects', url: '/learn/javascript/objects' },
+    { title: 'Dates', url: '/learn/javascript/dates' }
+  ]
 
 doctype html
 html.has-site(lang='en')
 
   block layout_variables
   include /views/_globals/links
+  include /views/_helpers/all
   include /views/_mixins/all
 
   include /views/layouts/_head
 
   - dispatcher = dispatcher ? dispatcher : ''
+  -
+    sectionIndex = findIndex(sections, function(section) {
+      return section.title === sectionTitle
+    })
+
+    previousSection = sections[sectionIndex - 1]
+    nextSection = sections[sectionIndex + 1]
+
   body.site.js-dispatcher(data-dispatcher-page=dispatcher)
 
     include /views/partials/_header
@@ -21,22 +42,26 @@ html.has-site(lang='en')
         .cell.well.well--l
           .blockGrid
             .blockGrid-box.blockGrid-box--m--4of12.blockGrid-box--l--3of12
-              +sectionList([
-                { title: 'Functions', url: '/learn/javascript/functions' },
-                { title: 'String Functions', url: '/learn/javascript/string-functions' },
-                { title: 'Variables', url: '/learn/javascript/variables' },
-                { title: 'Numbers', url: '/learn/javascript/numbers' },
-                { title: 'Combining Numbers', url: '/learn/javascript/combining-numbers' },
-                { title: 'Combining Strings', url: '/learn/javascript/combining-strings' },
-                { title: 'Events', url: '/learn/javascript/events' },
-                { title: 'Objects', url: '/learn/javascript/objects' },
-                { title: 'Dates', url: '/learn/javascript/dates' }
-              ], sectionTitle)
+              +sectionList(sections, sectionTitle)
 
             .blockGrid-box.blockGrid-box--m--8of12.blockGrid-box--l--6of12
               h1.h.h--1.mbs= sectionTitle
 
-              block content
+              .mbl
+                block content
+
+              .flexSplit.bdrt.pts
+                .flexSplit-item
+                  if previousSection
+                    a(href=previousSection.url)
+                      +icon('arrow-circle-left', 16).mrxs.vam
+                      span.vam= previousSection.title
+
+                .flexSplit-item
+                  if nextSection
+                    a(href=nextSection.url)
+                      span.mrxs.vam= nextSection.title
+                      +icon('arrow-circle-right', 16).vam
 
     include /views/partials/_footer
 
