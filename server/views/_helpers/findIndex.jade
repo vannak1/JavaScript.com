@@ -1,0 +1,12 @@
+-
+  findIndex = function(array, func) {
+    var length = array.length
+
+    if (length === 0) { return -1 }
+
+    for (var i = 0; i < length; i++) {
+      if (func(array[i])) { return i }
+    }
+
+    return -1
+  }
