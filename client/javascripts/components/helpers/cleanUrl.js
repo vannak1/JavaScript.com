@@ -6,7 +6,7 @@
 // *************************************
 
 JS.Helpers.cleanUrl = function(url) {
-  let anchor = document.createElement('a');
+  var anchor = document.createElement('a');
 
   anchor.href = url;
 
